@@ -21,10 +21,22 @@ public class Exam1 {
     System.out.println(0b01001110); //8진수 표기법
 
     //부동소수점 리터럴
-
+    System.out.println(3.14); // 고정소수점
+    System.out.println(0.314e1); // 부동소수점
+    System.out.println(31.4e-1); // 부동소수점
+  
     //논리 리터럴
+    System.out.println(true); // 대소문자 구분
+    System.out.println(false); // 대소문자 구분
 
-    //문자 리터럴
+    //한 문자 리터럴
+    System.out.println('A');
+    System.out.println('가'); // 두글자 이상 쓰면 오류
+
+    //문자열 리터럴
+    System.out.println("안녕하세요");
+    System.out.println("안녕하세요. 비트캠프!");
+
   }
 }
 

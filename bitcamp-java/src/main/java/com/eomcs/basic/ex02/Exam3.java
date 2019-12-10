@@ -1,4 +1,4 @@
-package com.ohoracs.basic.ex02;
+package com.eomcs.basic.ex02;
 
 // 애노테이션(annotation)
 

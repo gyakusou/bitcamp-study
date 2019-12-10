@@ -1,4 +1,4 @@
-package com.ohoracs.basic;
+package com.eomcs.basic;
 
 
 public class Hello5 {

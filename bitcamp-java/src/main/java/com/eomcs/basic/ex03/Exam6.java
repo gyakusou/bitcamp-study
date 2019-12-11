@@ -23,7 +23,7 @@ public class Exam6 {
     System.out.println("취업여부" + false);
     System.err.println("키" + 180.7f);
     
-    String s = "aabb"
+   // String s = "aabb"
 
   }
 }

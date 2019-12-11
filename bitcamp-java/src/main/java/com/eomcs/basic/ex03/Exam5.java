@@ -21,9 +21,31 @@ public class Exam5 {
     
     /*논리 연산의 결과도 논리 값이다. */
     System.out.println(true && true);
-    System.out.println(true && false);
-    System.out.println(true || true);
-    System.out.println(true || false);
+    System.out.println(true && false); // 오른쪽 확인
+
+    System.out.println(false && true); // 오른쪽 값 없이 거짓이 되어 실행 x
+    System.out.println(false && false);
+
+    System.out.println(true || true); // 왼쪽 참이기 떄문에 오른쪽 값 상관없이 넘어간다.
+    System.out.println(false || true); // 오른쪽 확인
+
+    /*
+    1. true || alert(); 에서는 왼쪽이 이미 참이기 때문에 
+    오른쪽 값을 확인하지 않고 넘어가버립니다.
+
+    2. false || alert(); 에서는 왼쪽이 거짓이기 때문에 오른쪽 값을 확인합니다. 
+    따라서 alert() 함수가 실행됩니다.
+
+    3. true && alert(); 에서는 왼쪽이 참이기 때문에 오른쪽을 확인합니다.
+    (and 연산은 둘 다 참이어야 실행됩니다.) 따라서 alert() 함수가 실행됩니다.
+
+    4. false && alert(); 에서는 왼쪽이 이미 거짓이기 때문에 
+    오른쪽을 볼 것도 없이 이미 이 연산은 거짓이 되어 실행되지 않습니다.
+    */
+
+
+
+
 
     /*
     문자 코드와 '' 연산 
@@ -33,6 +55,10 @@ public class Exam5 {
     System.out.println('가' == 44032); // true
     System.out.println('가' == 44033); // false
 
+
+    System.out.println('가' + 44032); // 88064
+    /* 문자코드는 연산시 정수로 간주하기 때문에 가의 고유 값인 44032 + 44032
+    로 연산이 된다.  */
   }
 }
 

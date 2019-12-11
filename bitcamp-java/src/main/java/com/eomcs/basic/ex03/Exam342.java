@@ -30,6 +30,8 @@ public class Exam342 {
     부동소수점은 8바이트로 다뤄라.
     
     */
+
+    System.out.println(54345.66d + 11.23456d);
   }
 }
 

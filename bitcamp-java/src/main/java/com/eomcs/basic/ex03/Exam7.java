@@ -12,9 +12,11 @@ public class Exam7 {
     // - \ [n|r|f|t|b|'|"|\]
     System.out.println("Hello,World!");
     System.out.println("Hello,\nWorld!"); // 줄바꿈 명령
+    System.out.println("1234\r567"); //5674
     System.out.println("Hello,\rabc"); // 커서를 처음으로 돌리는 문자
     //커서란 문자를 출력할 위치를 가리키는 것.
     
+    System.out.println("1234\b\b567");
     System.out.println("Hello,\b\b\bWorld!"); // 커서를 뒤로 한칸 이동시키는 문자
     System.out.println("Hello,\tWorld!"); // 탭 공간을 추가시키는 문자. (탭은 보통 4칸 말한다)
     System.out.println("Hello,\fWorld!"); // formfeed 추가시키는 문자열

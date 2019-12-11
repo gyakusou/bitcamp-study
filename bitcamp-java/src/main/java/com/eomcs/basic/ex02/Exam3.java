@@ -9,7 +9,7 @@ public class Exam3 {
 
   }
 
-  @Override // - annotation 컴파일러에게 메서드를 재정의함을 알리는 명령어.
+  @Override // - annotation 컴파일러에게 메소드를 재정의함을 알리는 명령어.
   public String toString() {
     return "okok" ;
   }

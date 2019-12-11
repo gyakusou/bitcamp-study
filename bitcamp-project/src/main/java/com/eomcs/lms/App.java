@@ -3,16 +3,57 @@
  */
 package com.eomcs.lms;
 
+import java.util.Scanner; 
+
 public class App {
 
   public static void main(String[] args) {
-    System.out.println("번호: 1");
-    System.out.println("수업명: 자바 프로젝트 실습");
-    System.out.println("설명: 자바 프로젝트를 통한 자바 언어 활용법 익히기");
-    System.out.println("시작일: 2019-01-02");
-    System.out.println("종료일: 2019-05-28");
-    System.out.println("총수업시간: 1000 시간");
-    System.out.println("일수업시간: 8 시간");
+    
+    // 키보드에서 사용자가 입력한 값을 읽어 문자열이나, 부동 소수점으로 리턴하는 역할.
+    java.util.Scanner keyboard = new java.util.Scanner(System.in);
+    // java.util. 은 삭제해도 괜찮다. 이미 import에서 명령어 지정을 해 주었기 때문에
+    // 상단에 import java.util.Scanner
+    // = Scanner keyboard = new Scanner(System.in);
+    
+    
+    // print 줄바꿈 없음 , println 줄바꿈 있음
+    System.out.print("번호? ");
+    // = 할당연산자 메모리에 값을 집어 넣어라.
+    String no = keyboard.nextLine();
+    
+    System.out.print("수업명? "); 
+    String title = keyboard.nextLine();
+    
+    System.out.print("설명? ");
+    String description = keyboard.nextLine();
+    
+    System.out.print("시작일? ");
+    String startData = keyboard.nextLine(); // 카멜표기법
+    
+    System.out.print("기간? ");
+    String endData = keyboard.nextLine();
+    
+    System.out.print("총수업시간? ");
+    String totalHours = keyboard.nextLine();
+    
+    System.out.print("일수업시간? ");
+    String dayHours = keyboard.nextLine();
+    
+    System.out.println();
+    
+    System.out.printf("번호: %s\n", no); // n치고 ctrl + spacebar 위의 명령어 나온다.
+    System.out.printf("수업명: %s\n ", title);
+    System.out.printf("설명: %s\n", description);
+    System.out.printf("기간: %s ~ %s\n",  startData, endData);
+    System.out.printf("총수업시간: %s 시간\n", totalHours);
+    System.out.printf("일수업시간: %s 시간\n", dayHours);
 
+    keyboard.close();
   }
 }
+
+
+
+
+
+

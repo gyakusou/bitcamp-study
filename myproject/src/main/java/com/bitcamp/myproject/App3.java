@@ -4,35 +4,55 @@ import java.util.Scanner;
 
 public class App3 {
   public static void main(String[] args) {
+    Scanner keyboard = new Scanner(System.in);
 
-    java.util.Scanner keyboard = new java.util.Scanner(System.in);
+    final int size = 100;
     
-    System.out.print("게시물 번호? ");
-    String listNo = keyboard.nextLine();
-    
-    System.out.print("게시물 제목? ");
-    String listNa = keyboard.nextLine();
-    
-    System.out.print("게시물 내용? ");
-    String listCon = keyboard.nextLine();
-    
-    System.out.print("작성일? ");
-    String listData = keyboard.nextLine();
-    
-    System.out.print("조회수? ");
-    String views = keyboard.nextLine();
+    String[] search = new String[size];
+    String[] listinfo = new String[size];
+    String[] subject = new String[size];
+    String[] writer = new String[size];
     
     
+    String response;
+    
+    int count = 0;
+    
+    for (int i = 0; i < 10; i++) {
+      
+      System.out.print("검색? ");
+      search[i] = keyboard.next();
+      keyboard.nextLine();
+      
+      System.out.print("게시물 제목+내용? ");
+      listinfo[i] = keyboard.nextLine();
+      
+      System.out.print("제목만? ");
+      subject[i] = keyboard.nextLine();
+      
+      System.out.print("글작성자? ");
+      writer[i] = keyboard.nextLine();
+      
+      count++;
+      
+      System.out.println("계속 입력하시겠습니까? (y/n)");
+      response = keyboard.next();
+      
+      if(!response.equalsIgnoreCase("y")) {
+        break;
+       }
+    }
+      
     System.out.println();
     
+     for(int i = 0; i < count; i++) {
     
-    System.out.printf("게시물번호: %s\n", listNo);
-    System.out.printf("게시물제목: %s\n", listNa);
-    System.out.printf("게시물내용: %s\n", listCon);
-    System.out.printf("작성일: %s\n", listData);
-    System.out.printf("조회수: %s\n", views);
+       System.out.printf("%s, %s, %s, %s", search[i], listinfo[i], subject[i], writer[i]);
+       
+       System.out.println();
     
     keyboard.close();
-
+     }
   }
 }
+

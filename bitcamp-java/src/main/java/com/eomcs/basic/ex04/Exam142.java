@@ -11,7 +11,7 @@ public class Exam142 {
     
     int j;
     
-    int i; // 컴파일 오류
+    //int i; // 컴파일 오류
   
 
 

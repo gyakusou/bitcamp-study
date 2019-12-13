@@ -8,7 +8,7 @@ public class Exam152 {
 
     // 변수의 값을 넣지 않고 사용 할 수 없다.
   
-    System.out.println(i); // 오류!
+    //System.out.println(i); // 오류!
     
     
 

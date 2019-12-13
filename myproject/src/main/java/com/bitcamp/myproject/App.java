@@ -7,45 +7,55 @@ import java.util.Scanner;
 
 public class App {
    public static void main(String[] args) {
+     Scanner keyboard = new Scanner(System.in);
      
-     java.util.Scanner keyboard = new java.util.Scanner(System.in);
+     final int size = 100;
      
-     System.out.print("제품명? ");
-     String snid = keyboard.nextLine();
+     String[] brand = new String[size];
+     String[] sneakersname = new String[size];
+     int[] releaseMonth = new int[size];
+     int[] price = new int[size];     
      
-     System.out.print("설명? ");
-     String description = keyboard.nextLine();
+     String response;
      
-     System.out.print("출시정보? ");
-     String release = keyboard.nextLine();
-     
-     System.out.print("가격? ");
-     String price = keyboard.nextLine();
-     
-     System.out.print("응모시작? ");
-     String startData = keyboard.nextLine();
-     
-     System.out.print("응모 끝? ");
-     String endData = keyboard.nextLine();
-     
-     System.out.print("당첨자발표? ");
-     String anno = keyboard.nextLine();
+     int count = 0;
+     for (int i = 0; i < 10; i++) {
+       
+       System.out.print("브랜드명? ");
+       brand[i] = keyboard.next();
+       keyboard.nextLine();
+    
+       System.out.print("신발명? ");
+       sneakersname[i] = keyboard.nextLine();
+
+       System.out.print("출시월? ");
+       releaseMonth[i] = keyboard.nextInt();
+       keyboard.nextLine();
+       
+       System.out.print("가격? ");
+       price[i] = keyboard.nextInt();
+       
+       count++;
+       
+       System.out.print("계속 입력 하시겠습니까? (y/n)");
+       
+       System.out.println();
+       response = keyboard.next();
+       
+       if (!response.equalsIgnoreCase("y")) {
+         break;
+       }
+     }
      
      System.out.println();
      
+     for (int i = 0; i < count; i++) {
      
-     System.out.printf("제품명: %s\n", snid);
-     System.out.printf("설명: %s\n", description);
-     System.out.printf("출시정보: %s\n", release);
-     System.out.printf("가격: %s\n", price);
-     System.out.printf("응모시작: %s\n", startData);
-     System.out.printf("응모 끝: %s\n", endData);
-     System.out.printf("응모기간: %s ~ %s\n", startData, endData);
-     System.out.printf("당첨자발표: %s\n", anno);
+       System.out.printf("%s, %s, %d, %d\n", brand[i], sneakersname[i], releaseMonth[i], price[i]);
+     System.out.println();  
+     }
      
      keyboard.close();
-     
-     
      
     }
 }

@@ -3,56 +3,80 @@
  */
 package com.eomcs.lms;
 
+import java.sql.Date;
 import java.util.Scanner; 
 
 public class App {
+ public static void main(String[] args) {
+    Scanner keyboard = new Scanner(System.in);
 
-  public static void main(String[] args) {
+    int[] no = new int[100];
+    String[] title = new String[100];
+    String[] description = new String[100];
+    Date[] date1 = new Date[100];
+    Date[] date2 = new Date[100];
+    int[] totalHours = new int[100];
+    int[] dayHours = new int[100];
     
-    // 키보드에서 사용자가 입력한 값을 읽어 문자열이나, 부동 소수점으로 리턴하는 역할.
-    java.util.Scanner keyboard = new java.util.Scanner(System.in);
-    // java.util. 은 삭제해도 괜찮다. 이미 import에서 명령어 지정을 해 주었기 때문에
-    // 상단에 import java.util.Scanner
-    // = Scanner keyboard = new Scanner(System.in);
+    String response;
+
+    
+    int count = 0;
+    for (int i = 0; i < 10; i++) {
+      
+      System.out.print("번호? ");
+      no[i] = keyboard.nextInt();
+      keyboard.nextLine(); 
+      
+      System.out.print("수업명? "); 
+      title[i] = keyboard.nextLine();
+      
+      System.out.print("수업내용? ");
+      description[i] = keyboard.nextLine();
+      
+      System.out.print("시작일? ");
+      date1[i] = Date.valueOf(keyboard.next());
+      
+      
+      System.out.print("종료일? ");
+      date2[i] = Date.valueOf(keyboard.next());
+      
+      System.out.print("총수업시간? ");
+      totalHours[i] = keyboard.nextInt();
+      
+      System.out.print("일수업시간? ");
+      dayHours[i] = keyboard.nextInt();
     
     
-    // print 줄바꿈 없음 , println 줄바꿈 있음
-    System.out.print("번호? ");
-    // = 할당연산자 메모리에 값을 집어 넣어라.
-    String no = keyboard.nextLine();
-    
-    System.out.print("수업명? "); 
-    String title = keyboard.nextLine();
-    
-    System.out.print("설명? ");
-    String description = keyboard.nextLine();
-    
-    System.out.print("시작일? ");
-    String startData = keyboard.nextLine(); // 카멜표기법
-    
-    System.out.print("기간? ");
-    String endData = keyboard.nextLine();
-    
-    System.out.print("총수업시간? ");
-    String totalHours = keyboard.nextLine();
-    
-    System.out.print("일수업시간? ");
-    String dayHours = keyboard.nextLine();
+    count++;
     
     System.out.println();
     
-    System.out.printf("번호: %s\n", no); // n치고 ctrl + spacebar 위의 명령어 나온다.
-    System.out.printf("수업명: %s\n ", title);
-    System.out.printf("설명: %s\n", description);
-    System.out.printf("기간: %s ~ %s\n",  startData, endData);
-    System.out.printf("총수업시간: %s 시간\n", totalHours);
-    System.out.printf("일수업시간: %s 시간\n", dayHours);
-
+    
+    System.out.print("계속 입력하시겠습니까? (y/n)"); 
+    System.out.println();
+    response = keyboard.next();
+    
+    if (!response.equalsIgnoreCase("y")) {
+      break;
+    }
+   }
+    
+    System.out.println();
+    
+    for (int i = 0; i < count; i++) {
+      
+      System.out.printf("%d, %s, %s, %s, %s, %d, %d\n", 
+          no[i], title[i], description[i], date1[i],
+           date2[i], totalHours[i], dayHours[i]);
+     
+    }
+   
+    System.out.println();
+    
     keyboard.close();
   }
 }
-
-
 
 
 

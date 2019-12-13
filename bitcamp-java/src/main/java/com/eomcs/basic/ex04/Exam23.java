@@ -11,6 +11,7 @@ public class Exam23 {
   long l = 100;
 
   byte b2;
+  System.out.println(b);
   short s2;
   int i2;
   long l2;

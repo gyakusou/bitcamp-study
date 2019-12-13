@@ -8,7 +8,7 @@ public class Exam153 {
 
     // 변수의 값을 넣지 않고 사용 할 수 없다.
   
-    int j = i;
+    // int j = i;
     
     
 

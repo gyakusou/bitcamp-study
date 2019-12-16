@@ -120,7 +120,7 @@ public class Exam61 {
   //new int[]를 생략 할 수 없다.
 
   //arr8 = {100,90 ,80}; 컴파일 오류
-  arr8 = new int[] {100, 90, 80};
+ // arr8 = new int[] {100, 90, 80};
 
 
 

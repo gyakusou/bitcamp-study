@@ -1,0 +1,39 @@
+package com.eomcs.basic.ex06x.assignment;
+
+// 현재 과제와 가장 유사한 결과를 내는 소스를 가져와서 편집한다.
+
+import java.util.Scanner;
+
+public class Test03 {
+
+  public static void main(String[] args) {
+    // TODO Auto-generated method stub
+
+    Scanner keyScan = new Scanner(System.in);
+
+    System.out.print("밑변 길이? ");
+    int width = keyScan.nextInt();
+
+    int line = 0;
+    while (line++ < width) {
+      if(line % 2 == 0)
+        continue;
+    }
+      int x = 0;
+      while (x++ < line) {
+        System.out.print("*");
+       
+      }
+       
+        System.out.println();
+
+
+
+
+
+    }
+
+    keyScan.close();
+  }
+
+}

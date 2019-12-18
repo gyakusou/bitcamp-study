@@ -62,7 +62,7 @@ public class App {
 
     for (int i = 0; i < count; i++) {
 
-      System.out.printf("%d, %s, %s ~ %s %d\n", 
+      System.out.printf("%d, %s, %s ~ %s, %d\n", 
           no[i], title[i], startDate[i],
           endDate[i], totalHours[i]);
 

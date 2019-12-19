@@ -6,56 +6,75 @@ package com.bitcamp.myproject;
 import java.util.Scanner;
 
 public class App {
-   public static void main(String[] args) {
-     Scanner keyboard = new Scanner(System.in);
-     
-     final int size = 100;
-     
-     String[] brand = new String[size];
-     String[] sneakersname = new String[size];
-     int[] releaseMonth = new int[size];
-     int[] price = new int[size];     
-     
-     String response;
-     
-     int count = 0;
-     for (int i = 0; i < 10; i++) {
-       
-       System.out.print("브랜드명? ");
-       brand[i] = keyboard.next();
-       keyboard.nextLine();
-    
-       System.out.print("신발명? ");
-       sneakersname[i] = keyboard.nextLine();
+  public static void main(String[] args) {
+    Scanner keyboard = new Scanner(System.in);
 
-       System.out.print("출시월? ");
-       releaseMonth[i] = keyboard.nextInt();
-       keyboard.nextLine();
-       
-       System.out.print("가격? ");
-       price[i] = keyboard.nextInt();
-       
-       count++;
-       
-       System.out.print("계속 입력 하시겠습니까? (y/n)");
-       
-       System.out.println();
-       response = keyboard.next();
-       
-       if (!response.equalsIgnoreCase("y")) {
-         break;
-       }
-     }
-     
-     System.out.println();
-     
-     for (int i = 0; i < count; i++) {
-     
-       System.out.printf("%s, %s, %d, %d\n", brand[i], sneakersname[i], releaseMonth[i], price[i]);
-     System.out.println();  
-     }
-     
-     keyboard.close();
-     
+    class Information {
+      String brand;
+      String sneakersName;
+      String releaseMonth;
+      String price;
     }
-}
+
+    final int SIZE = 100;
+
+    Information[] box1 = new Information[SIZE];
+
+    int count = 0;
+
+    String response;
+
+    for (int i = 0; i < 100; i++) {
+
+      count++;
+
+      Information box2 = new Information();
+
+      System.out.print("브랜드명? ");
+      box2.brand = keyboard.next();
+      keyboard.nextLine();
+
+      System.out.print("신발명? ");
+      box2.sneakersName = keyboard.nextLine();
+
+      System.out.print("출시월? ");
+      box2.releaseMonth = keyboard.nextLine();
+      keyboard.nextLine();
+
+      System.out.print("가격? ");
+      box2.price = keyboard.nextLine();
+
+      box1[i] = box2;
+
+
+      System.out.print("계속 입력 하시겠습니까? (y/n)");
+
+      System.out.println();
+
+      response = keyboard.next();
+
+      if (!response.equalsIgnoreCase("y")) {
+        break;
+      }
+    }
+
+      keyboard.close();
+
+      System.out.println();
+
+      for (int i = 0; i < count; i++) {
+
+        Information box2 = box1[i];
+
+        System.out.printf("%s, %s, %s, %s\n", 
+            box2.brand, box2.sneakersName, box2.releaseMonth, box2.price);
+
+
+
+      }
+    }
+  }
+
+
+
+

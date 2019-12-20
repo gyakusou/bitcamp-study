@@ -41,20 +41,6 @@ public class App {
 
     int membercount = 0;
     
-    class Board {
-      int no;
-      String title;
-      Date date;
-      int viewCount;
-    }
-    
-    final int BOARD_SIZE = 100;
-    
-    Board[] boards = new Board[BOARD_SIZE];
-    
-    int boardcount = 0;
-    
-    
     String command;
     
     do {
@@ -145,36 +131,6 @@ public class App {
                 m.tel, m.registeredDate);
           }
             break;
-            
-        case "/board/add":
-          
-          Board board = new Board();
-
-          System.out.print("번호? ");
-          board.no = keyboard.nextInt();
-          keyboard.nextLine(); 
-
-          System.out.print("내용? ");
-          board.title = keyboard.nextLine();
-
-          board.date = new Date(System.currentTimeMillis());
-
-          board.viewCount = 0;
-
-          boards[boardcount++] = board;
-          System.out.println("저장하였습니다.");
-          
-          break;
-          
-        case "/board/list":
-        
-          for (int i = 0; i < boardcount; i++) {
-            Board b = boards[i];
-
-            System.out.printf("%d, %s, %s, %d\n", 
-                b.no, b.title, b.date, b.viewCount);
-          } 
-          break;
           
         default:
           if (!command.equalsIgnoreCase("quit")) {

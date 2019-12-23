@@ -9,13 +9,28 @@ public class Test03 {
     // 배열의 들어 있는 값의 순서를 꺼꾸로 바꿔라. 
     reverse(values); 
     
-    for (int value : values) {
-      System.out.println(value);
+    printValues(values);
     }
     // 출력결과:
     // -22, 0, 45, 22, 12, 78, -3, 4, 34
+  
+  
+  static void reverse(int[] values) {
+    int count = values.length >> 1;
+    int temp = 0;
+    int endPos = values.length - 1;
+    for (int i = 0, j = values.length - 1; i < count; i++, j--) {
+      temp = values[i];
+      values[i] = values[endPos - i];
+      values[endPos - i] = temp;
+    }
   }
   
+  static void printValues(int[] values) {
+    for (int i = 0; i < values.length; i++) {
+      System.out.printf("%3d ", values[i]);
+    }
+    System.out.println();
+    }
+  }
   
-  
-}

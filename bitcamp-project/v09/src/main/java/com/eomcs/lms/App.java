@@ -141,13 +141,16 @@ public class App {
     keyboard.nextLine(); 
 
     lessons[lessonCount++] = lesson;
+    
     System.out.println("저장하였습니다.");
   }
 
   static void listLesson() {
 
     for (int i = 0; i < lessonCount; i++) {
+      
       Lesson l = lessons[i];
+      
       System.out.printf("%d, %s, %s ~ %s, %d\n",
           l.no, l.title, 
           l.startDate, l.endDate, 
@@ -186,7 +189,9 @@ public class App {
   static void listMember() {
 
     for (int i = 0; i < memberCount; i++) {
+      
       Member m = members[i];
+      
       System.out.printf("%d, %s, %s, %s, %s\n", 
           m.no, m.name, m.email, 
           m.tel, m.registeredDate);

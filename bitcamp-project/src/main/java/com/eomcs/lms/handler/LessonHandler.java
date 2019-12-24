@@ -52,6 +52,7 @@ public class LessonHandler {
   public static void listLesson(LessonHandler lessonHandler) {
 
     for (int i = 0; i < lessonHandler.lessonCount; i++) {
+      
       Lesson l = lessonHandler.lessons[i];
       
       System.out.printf("%d, %s, %s ~ %s, %d\n",

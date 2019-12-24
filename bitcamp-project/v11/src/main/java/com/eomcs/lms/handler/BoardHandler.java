@@ -1,4 +1,4 @@
-package com.eomcs.lms;
+package com.eomcs.lms.handler;
 
 import java.sql.Date;
 import java.util.Scanner;
@@ -18,9 +18,9 @@ public class BoardHandler {
 
   static int boardCount = 0;
 
-  static Scanner keyboard;
+  public static Scanner keyboard;
 
-  static void addBoard() {
+  public static void addBoard() {
 
     Board board = new Board();
 
@@ -37,7 +37,7 @@ public class BoardHandler {
     boards[boardCount++] = board;
     System.out.println("저장하였습니다.");
   }
-  static void listBoard() {
+  public static void listBoard() {
     for (int i = 0; i < boardCount; i++) {
       Board b = boards[i];
 

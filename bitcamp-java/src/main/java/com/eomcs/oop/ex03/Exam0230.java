@@ -17,7 +17,7 @@ public class Exam0230 {
         public void compute() {
             // 내장 변수 this에는 compute()를 호출할 때 넘겨준 인스턴스 주소가 들어 있다.
             this.sum = this.kor + this.eng + this.math;
-            this.average = this.sum / 3f;
+            this.average = this.sum / 3f; // this = s1과 s2 호출 때마다 바뀌게 된다.
         }
     }
     

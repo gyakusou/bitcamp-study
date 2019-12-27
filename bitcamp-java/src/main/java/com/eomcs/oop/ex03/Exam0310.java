@@ -8,7 +8,7 @@ public class Exam0310 {
         static void m1() {
             // 클래스 메서드는 인스턴스 주소 없이 호출되기 때문에 
             // 인스턴스 주소를 받는 내장 변수가 없다.
-            //this.value = 100; // 컴파일 오류!
+            // this.value = 100; // 컴파일 오류!
         }
         
         void m2() {
@@ -18,7 +18,7 @@ public class Exam0310 {
         }
         
         void m3() {
-            // 인스턴스 변수를 사용할 때 this를 생략할 수 있다.
+            // 인스턴스 변수를 사용할 때 this를 생략할 수 있다. ★
             //this.value = 200;
             value = 200; // 앞에 자동으로 this가 붙는다.
         }

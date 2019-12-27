@@ -13,21 +13,22 @@ public class App {
     
     // Handler의 메서드를 사용하기 전에 
     // 그 메서드가 작업할 때 사용할 키보드 객체를 설정해줘야 한다.
-    
+    LessonHandler.keyboard = keyboard;
+    MemberHandler.keyboard = keyboard;
+    BoardHandler.keyboard = keyboard;
 
     // BoardHandler 의 메서드가 사용할 메모리만 게시판 마다 따로 생성한다.
+    LessonHandler lessonHandler = new LessonHandler();
     
-    BoardHandler 게시판1 = new BoardHandler(keyboard);
-    BoardHandler 게시판2 = new BoardHandler(keyboard, 200);
-    BoardHandler 게시판3 = new BoardHandler(keyboard, 1000);
-    BoardHandler 게시판4 = new BoardHandler(keyboard);
-    BoardHandler 게시판5 = new BoardHandler(keyboard, 9000);
-    BoardHandler 게시판6 = new BoardHandler(keyboard, 20000);
+    MemberHandler memberHandler = new MemberHandler();
     
-    LessonHandler lessonHandler = new LessonHandler(keyboard);
+    BoardHandler 게시판1 = new BoardHandler();
+    BoardHandler 게시판2 = new BoardHandler();
+    BoardHandler 게시판3 = new BoardHandler();
+    BoardHandler 게시판4 = new BoardHandler();
+    BoardHandler 게시판5 = new BoardHandler();
+    BoardHandler 게시판6 = new BoardHandler();
     
-    MemberHandler memberHandler = new MemberHandler(keyboard);
-
     String command;
     
     do {

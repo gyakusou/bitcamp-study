@@ -10,43 +10,38 @@ public class MemberHandler {
   // 개별적으로 관리해야 하는 변수
   // new 명령을 통해 생성된다.
   
-  Member[] members;
+  Member[] members = new Member[MEMBER_SIZE];
   int memberCount = 0;
 
-  public Scanner input; // 
   // 클래스필드 = 스태틱 필드
   // 공유하는 변수
   // 클래스가 메모리에 로딩 될 때 자동으로 생성된다.
   
   static final int MEMBER_SIZE = 100;
-  
-  public MemberHandler(Scanner input) {
-    this.input = input;
-    this.members = new Member[MEMBER_SIZE];
-  }
+  public static Scanner keyboard; // 
 
 
   public void addMember() {
     Member member = new Member();
 
     System.out.print("번호? ");
-    member.no = input.nextInt();
-    input.nextLine(); 
+    member.no = keyboard.nextInt();
+    keyboard.nextLine(); 
 
     System.out.print("이름? ");
-    member.name = input.nextLine();
+    member.name = keyboard.nextLine();
 
     System.out.print("이메일? ");
-    member.email = input.nextLine();
+    member.email = keyboard.nextLine();
 
     System.out.print("암호? ");
-    member.password = input.nextLine();
+    member.password = keyboard.nextLine();
 
     System.out.print("사진? ");
-    member.photo = input.nextLine();
+    member.photo = keyboard.nextLine();
 
     System.out.print("전화? ");
-    member.tel = input.nextLine();
+    member.tel = keyboard.nextLine();
 
     member.registeredDate = new Date(System.currentTimeMillis());
 

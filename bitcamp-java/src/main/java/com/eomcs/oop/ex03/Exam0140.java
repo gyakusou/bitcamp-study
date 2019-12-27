@@ -3,8 +3,8 @@ package com.eomcs.oop.ex03;
 
 public class Exam0140 {
     static class A {
-        static int v1; 
-        int v2; 
+        static int v1; //클래스변수
+        int v2;  //인스턴스 변수
     }
     
     public static void main(String[] args) {

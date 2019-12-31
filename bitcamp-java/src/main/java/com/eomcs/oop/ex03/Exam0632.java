@@ -30,9 +30,9 @@ public class Exam0632 {
     }
 
     A(int a){
+      // a = 100;
       // a = 200;
       // System.out.println("초기화 블록");
-      // a = 100;
       System.out.println("A(int)");
       this.a = a;
     }

@@ -8,6 +8,7 @@ public class Board {
     private Date date;
     private int viewCount;
     private String writer;
+    
     public int getNo() {
       return no;
     }

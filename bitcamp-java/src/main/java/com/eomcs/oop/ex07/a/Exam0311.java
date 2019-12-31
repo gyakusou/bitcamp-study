@@ -89,8 +89,6 @@ package com.eomcs.oop.ex07.a;
       s1.setEng(90);
       s1.setMath(80);
       
-     
-      
       System.out.printf("%s, %d, %d, %d, %d, %.1f\n",
           s1.getName(), s1.getKor(), s1.getEng(), s1.getMath(), s1.getSum(), s1.getAver());
     }

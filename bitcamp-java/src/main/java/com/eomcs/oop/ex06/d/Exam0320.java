@@ -13,10 +13,10 @@ public class Exam0320 {
         }
         
         // Object로부터 상속 받은 equals() 메서드를 
-        // Member 클래스의 역할에 맞게 재정의해보자!
+        // Member 클래스의 역할에 맞게 재정의해보자! => "오버라이딩" 
         @Override
         public boolean equals(Object obj) {
-            if (!(obj instanceof Member))
+            if (!(obj.getClass() == Member.class))
                 return false;
             Member other = (Member) obj;
             
@@ -33,14 +33,12 @@ public class Exam0320 {
     public static void main(String[] args) {
         Member m1 = new Member("홍길동", 20);
         Member m2 = new Member("홍길동", 20);
+        Member m3 = new Member("홍길동", 21);
         
-        if (m1 == m2) {
-            System.out.println("m1 == m2");
-        } else {
-            System.out.println("m1 != m2");
-        }
+            System.out.println(m1 == m2);
         
         System.out.println(m1.equals(m2));
+        System.out.println(m1.equals(m3));
     }
 }
 

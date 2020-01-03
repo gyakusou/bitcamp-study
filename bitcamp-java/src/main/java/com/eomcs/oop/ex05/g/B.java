@@ -11,7 +11,7 @@ public class B extends A {
         
         // 해결 방법?
         // => 개발자가 직접 수퍼 클래스에 있는 생성자를 호출하라!
-        super(100);
+        super(100);// int값 100을 받는 슈퍼클래스를 호출하라.
         
         System.out.println("B() 생성자!");
     }

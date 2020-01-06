@@ -9,7 +9,7 @@ public class MemberHandler {
   ArrayList memberList;
   Scanner input; 
 
-  public MemberHandler(Scanner input) {
+  public MemberHandler(Scanner input) {// 생성자
     this.input = input;
     memberList = new ArrayList();
   }

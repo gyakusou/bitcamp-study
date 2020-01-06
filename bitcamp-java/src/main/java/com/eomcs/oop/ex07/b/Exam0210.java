@@ -9,7 +9,7 @@ public class Exam0210 extends C {
     public static void main(String[] args) {
         A obj1 = new A();
         
-        //obj1.privateVar = 100; // 접근 불가! 오직 그 클래스 안에서만 사용가능.
+        // obj1.privateVar = 100; // 접근 불가! 오직 그 클래스 안에서만 사용가능. 같은 클래스 인스턴스 멤버만 접근 가능(non-static)
         obj1.defaultVar = 100; // OK! 이 클래스는 A 클래스와 같은 패키지에 소속되어 있다.
         obj1.protectedVar = 100; // OK! 비록 이 클래스가 자식클래스는 아니지만
                                  // 같은 패키지에 소속되어 있다.
@@ -23,7 +23,7 @@ public class Exam0210 extends C {
         obj2.publicVar = 100; // OK! 모두 다 접근 가능.
         
         
-        C obj3 = new C();
+        C obj3 = new C(); // extends c c를 상속받았다.
         
         //obj3.privateVar = 100; // 접근 불가! 오직 그 클래스 안에서만 사용 가능.
         //obj3.defaultVar = 100; // 접근 불가! 같은 패키지까지만 접근 가능.

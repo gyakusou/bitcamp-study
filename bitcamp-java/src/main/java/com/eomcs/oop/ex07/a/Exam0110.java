@@ -9,7 +9,7 @@ class Score {
   int sum;
   float aver;
   
-  void compute() {
+  void compute() {// 연산자 // this에는 s1값이 들어있다.
     this.sum = this.kor + this.eng + this.math;
     this.aver = this.sum / 3f;
   }

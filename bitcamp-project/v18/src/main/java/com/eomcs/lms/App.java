@@ -34,16 +34,6 @@ static Scanner keyboard = new Scanner(System.in);
         case "/member/list":
           memberHandler.listMember();
           break;
-        case "/member/detail":
-          memberHandler.detailMember();
-          break; 
-        case "/member/update":
-          memberHandler.updateMember();
-          break;
-        case "/member/delete":
-          memberHandler.deleteMember();
-          break;
-          
         case "/board/add":
           boardHandler.addBoard();
           break;
@@ -53,13 +43,6 @@ static Scanner keyboard = new Scanner(System.in);
         case "/board/detail":
           boardHandler.detailBoard();
           break;  
-        case "/board/update":
-          boardHandler.updateBoard();
-          break;
-        case "/board/delete":
-          boardHandler.deleteBoard();
-          break;
-          
         default:
           if (!command.equalsIgnoreCase("quit")) {
             System.out.println("실행할 수 없는 명령입니다.");

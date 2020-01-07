@@ -2,7 +2,7 @@ package com.eomcs.oop.ex08.test;
 
 // class member
 
-public class L {
+public class B {
   // field
   static int a; // 클래스 필드 = 스태틱 필드
   String b;     // 인스턴스 필드 = 논 스태틱 필드
@@ -16,11 +16,11 @@ public class L {
   {} // 인스턴스 블럭
   
   // constructor 생성자 이름과 같다.
-  L() {}
+  B() {}
   
   // nested class
-  static class L1 {} // static nested class
-  class L2 {} // non-static nested class = inner class
+  static class B1 {} // static nested class
+  class B2 {} // non-static nested class = inner class
   
   
   

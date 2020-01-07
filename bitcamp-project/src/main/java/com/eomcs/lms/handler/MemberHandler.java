@@ -68,7 +68,6 @@ public class MemberHandler {
       System.out.println("게시글 인덱스가 유효하지 않습니다.");
       return;
     }
-//  m.getNo(), m.getName(), m.getEmail(),m.getTel(), m.getRegisteredDate());
     System.out.printf("번호: %d\n", member.getNo());
     System.out.printf("이름: %s\n", member.getName());
     System.out.printf("이메일: %s\n", member.getEmail());

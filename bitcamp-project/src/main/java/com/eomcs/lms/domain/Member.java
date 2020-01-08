@@ -3,6 +3,7 @@ package com.eomcs.lms.domain;
 import java.sql.Date;
 
 public class Member {
+  
   private int no;
   private String name;
   private String email;
@@ -53,6 +54,4 @@ public class Member {
   public void setRegisteredDate(Date registeredDate) {
     this.registeredDate = registeredDate;
   }
-  
-  
 }

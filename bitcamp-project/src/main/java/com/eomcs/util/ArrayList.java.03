@@ -1,0 +1,31 @@
+package com.eomcs.util;
+
+public class ArrayList {
+  
+  Object[] elementDate;
+  int size;
+  
+  public ArrayList() {
+    super();
+    
+    this.elementDate = new Object[100];
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

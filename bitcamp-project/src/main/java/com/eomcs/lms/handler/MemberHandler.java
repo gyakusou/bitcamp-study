@@ -9,8 +9,9 @@ public class MemberHandler {
 
   ArrayList<Member> memberList;
 
-  public Scanner input;
+  Scanner input;
 
+  
   public MemberHandler(Scanner input) {
     this.input = input;
     this.memberList = new ArrayList<>();
@@ -58,14 +59,14 @@ public class MemberHandler {
   }
   
   public void detailMember() {
-    System.out.print("게시물 인덱스? ");
+    System.out.print("멤버 인덱스? ");
     int index = input.nextInt();
     input.nextLine(); 
 
     Member member = this.memberList.get(index);
 
     if (member == null) {
-      System.out.println("게시글 인덱스가 유효하지 않습니다.");
+      System.out.println("멤버 인덱스가 유효하지 않습니다.");
       return;
     }
     System.out.printf("번호: %d\n", member.getNo());
@@ -76,73 +77,102 @@ public class MemberHandler {
     System.out.printf("전화: %s\n", member.getTel());
     System.out.printf("가입일: %s\n", member.getRegisteredDate());
   }
-  
-  
-  
-  
-  
+
   public void updateMember() {
-    System.out.print("게시물 인덱스? ");
+    System.out.print("멤버 인덱스? ");
     int index = input.nextInt();
     input.nextLine(); 
 
     Member oldMember = this.memberList.get(index);
 
     if (oldMember == null) {
-      System.out.println("게시글 인덱스가 유효하지 않습니다.");
+      System.out.println("멤버 인덱스가 유효하지 않습니다.");
       return;
     }
     
-    System.out.printf("이름(%s) ", oldMember.getName());
-    String Name = input.nextLine();
-    System.out.printf("이메일(%s) ", oldMember.getEmail());
-    String Email = input.nextLine();
-    System.out.printf("비밀번호(%s) ", oldMember.getPassword());
-    String Password = input.nextLine();
-    System.out.printf("사진(%s) ", oldMember.getPhoto());
-    String Photo = input.nextLine();
-    System.out.printf("전화(%s) ", oldMember.getTel());
-    String Tel = input.nextLine();
-    
-//    if (Name.length() == 0) {
-//      System.out.println("게시물 변경을 취소했습니다.");
-//     return;
-//    }
-    
-    //  m.getNo(), m.getName(), m.getEmail(),m.getTel(), m.getRegisteredDate());
-    
+    boolean changed = false;
+    String inputStr = null;
     Member newMember = new Member();
     
-    newMember.setName(Name);
-    newMember.setEmail(Email);
-    newMember.setPassword(Password);
-    newMember.setPhoto(Photo);
-    newMember.setTel(Tel); //
+    newMember.setNo(oldMember.getNo());
     
+    System.out.printf("이름(%s) ", oldMember.getName());
+    inputStr = input.nextLine();
+    if (inputStr.length() == 0) {
+      newMember.setName(oldMember.getName());
+    } else {
+      newMember.setName(inputStr);
+      changed = true;
+    }
+        
+    System.out.printf("이메일(%s) ", oldMember.getEmail());
+    inputStr = input.nextLine();
+    if (inputStr.length() == 0) {
+      newMember.setEmail(oldMember.getEmail());
+    } else {
+      newMember.setEmail(inputStr);
+      changed = true;
+    }
     
-    this.memberList.set(index, newMember);
+    System.out.printf("비밀번호(%s) ", oldMember.getPassword());
+    inputStr = input.nextLine();
+    if (inputStr.length() == 0) {
+      newMember.setPassword(oldMember.getPassword());
+    } else {
+      newMember.setPassword(inputStr);
+      changed = true;
+    }
     
-    System.out.println("게시글을 변경했습니다.");
+    System.out.printf("사진(%s) ", oldMember.getPhoto());
+    inputStr = input.nextLine();
+    if (inputStr.length() == 0) {
+      newMember.setPhoto(oldMember.getPhoto());
+    } else {
+      newMember.setPhoto(inputStr);
+      changed = true;
+    }
     
+    System.out.printf("전화(%s) ", oldMember.getTel());
+    inputStr = input.nextLine();
+    if (inputStr.length() == 0) {
+      newMember.setTel(oldMember.getTel());
+    } else {
+      newMember.setTel(inputStr);
+      changed = true;
+    }
+    
+    System.out.printf("가입일(%s)? ", oldMember.getRegisteredDate());
+    inputStr = input.nextLine();
+    if (inputStr.length() == 0) {
+      newMember.setRegisteredDate(oldMember.getRegisteredDate());
+    } else {
+      newMember.setRegisteredDate(Date.valueOf(inputStr));
+      changed = true;
+    }
+    
+    if (changed) {
+      this.memberList.set(index, newMember);
+      System.out.println("멤버를 변경했습니다");
+    } else {
+      System.out.println("멤버 변경을 취소했습니다.");
+    }
   }
     
     public void deleteMember() {
-      System.out.print("게시물 인덱스? ");
+      System.out.print("멤버 인덱스? ");
       int index = input.nextInt();
       input.nextLine(); 
 
       Member member = this.memberList.get(index);
 
       if (member == null) {
-        System.out.println("게시글 인덱스가 유효하지 않습니다.");
+        System.out.println("멤버 인덱스가 유효하지 않습니다.");
         return;
       }
       
       this.memberList.remove(index);
       
-      System.out.println("게시글을 삭제했습니다.");
+      System.out.println("멤버를 삭제했습니다.");
   }
-  
-  
 }
 

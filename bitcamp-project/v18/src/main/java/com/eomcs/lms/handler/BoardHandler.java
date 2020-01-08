@@ -11,7 +11,6 @@ public class BoardHandler {
 
   Scanner input;
 
-
   public BoardHandler(Scanner input) {
     this.input = input;
     this.boardList = new ArrayList<>();

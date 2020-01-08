@@ -154,7 +154,7 @@ public class LessonHandler {
     if (inputStr.length() == 0) {
       newLesson.setDayHours(oldLesson.getDayHours());
     } else {
-      newLesson.setDayHours(Integer.parseInt(inputStr));
+      newLesson.setDayHours(Integer.parseInt(inputStr)); //
       changed = true;
     }
 

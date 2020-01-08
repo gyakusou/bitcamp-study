@@ -3,7 +3,7 @@ package com.eomcs.lms.domain;
 import java.sql.Date;
 
 public class Member {
-
+  
   private int no;
   private String name;
   private String email;
@@ -11,7 +11,7 @@ public class Member {
   private String photo;
   private String tel;
   private Date registeredDate;
-
+  
   public int getNo() {
     return no;
   }

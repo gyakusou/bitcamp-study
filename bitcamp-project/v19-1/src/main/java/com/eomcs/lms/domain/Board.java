@@ -3,13 +3,13 @@ package com.eomcs.lms.domain;
 import java.sql.Date;
 
 public class Board {
-
+  
   private int no;
   private String title;
   private Date date;
   private int viewCount;
   private String writer;
-
+  
   public int getNo() {
     return no;
   }
@@ -40,6 +40,6 @@ public class Board {
   public void setWriter(String writer) {
     this.writer = writer;
   }
-
-
+  
+  
 }

@@ -3,16 +3,16 @@ package com.eomcs.util;
 import java.util.Arrays;
 
 public class ArrayList<E> {
-
+  
   private static final int DEFAULT_CAPACITY = 2;
-
+  
   Object[] elementData;
   int size;
-
+  
   public ArrayList() {
     this.elementData = new Object[DEFAULT_CAPACITY];
   }
-
+  
   public ArrayList(int initialCapacity) {
     if (initialCapacity < DEFAULT_CAPACITY) {
       this.elementData = new Object[DEFAULT_CAPACITY];
@@ -20,12 +20,12 @@ public class ArrayList<E> {
       this.elementData = new Object[initialCapacity];
     }
   }
-
+  
   public void add(E e) {
     if (this.size == this.elementData.length) {
       int oldSize = this.elementData.length;
       int newSize = oldSize + (oldSize >> 1);
-
+      
       this.elementData = Arrays.copyOf(this.elementData, newSize);
       /*
       Object[] newArr = new Object[newSize];
@@ -33,11 +33,11 @@ public class ArrayList<E> {
         newArr[i] = this.elementData[i];
       }
       this.elementData = newArr;
-       */
+      */
     }
     this.elementData[this.size++] = e;
   }
-
+  
   @SuppressWarnings("unchecked")
   public E get(int index) {
     if (index < 0 || index >= this.size) {
@@ -45,7 +45,7 @@ public class ArrayList<E> {
     }
     return (E) this.elementData[index];
   }
-
+  
   public E set(int index, E e) {
     if (index < 0 || index >= this.size) {
       return null;
@@ -55,12 +55,12 @@ public class ArrayList<E> {
     this.elementData[index] = e;
     return oldValue;
   }
-
+  
   public E remove(int index) {
     if (index < 0 || index >= this.size) {
       return null;
     }
-
+    
     @SuppressWarnings("unchecked")
     E oldValue = (E) this.elementData[index];
     System.arraycopy(this.elementData, index + 1, this.elementData, index, this.size - (index + 1));
@@ -68,15 +68,15 @@ public class ArrayList<E> {
     for (int i = index + 1; i < this.size; i++) {
       this.elementData[i - 1] = this.elementData[i];
     }
-     */
+    */
     this.size--;
     return oldValue;
   }
-
+  
   public int size() {
     return this.size;
   }
-
+  
   public Object[] toArray() {
     return Arrays.copyOf(this.elementData, this.size);
     /*
@@ -85,9 +85,9 @@ public class ArrayList<E> {
       arr[i] = this.elementData[i];
     }
     return arr;
-     */
+    */
   }
-
+  
   @SuppressWarnings("unchecked")
   public E[] toArray(E[] arr) {
     if (arr.length < this.size) {
@@ -98,21 +98,21 @@ public class ArrayList<E> {
     return arr; 
     // 넉넉할 때는 파라미터로 받은 배열을 그대로 리턴.
   }
-
+  
   public void add(int index, E value) {
     if (index < 0 || index >= this.size)
       return;
-
+    
     if (this.size == this.elementData.length) {
       int oldSize = this.elementData.length;
       int newSize = oldSize + (oldSize >> 1);
-
+      
       this.elementData = Arrays.copyOf(this.elementData, newSize);
     }
-
+    
     for (int i = size - 1; i >= index; i--)
       this.elementData[i + 1] = this.elementData[i];
-
+          
     this.elementData[index] = value;
     this.size++;
   }

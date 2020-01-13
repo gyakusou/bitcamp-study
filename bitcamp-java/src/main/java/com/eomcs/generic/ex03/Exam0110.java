@@ -32,7 +32,7 @@ public class Exam0110 {
   public static void main(String[] args) {
 
     ArrayList<Member> obj = new ArrayList<>(Member.class);
-    obj.add(new Member()); // 0
+    obj.add(new Member()); // 0 인스턴트 객체를 생성하는 식
     obj.add(new Student()); // 1
     obj.add(new Teacher()); // 2
     obj.add(new Manager()); // 3

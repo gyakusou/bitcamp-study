@@ -26,7 +26,7 @@ public class App {
     Prompt prompt = new Prompt(keyboard);
     
     //
-    List<Board> boardList = new List<>();
+    LinkedList<Board> boardList = new LinkedList<>();
     BoardHandler boardHandler = new BoardHandler(prompt, boardList);
     
     ArrayList<Lesson> lessonList = new ArrayList<>();

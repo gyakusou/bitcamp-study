@@ -1,35 +1,19 @@
-// 사용자 입력을 받는 코드를 별도의 메서드로 분리한다.
-//
 package com.eomcs.lms.handler;
 
 import com.eomcs.lms.domain.Lesson;
-import com.eomcs.util.AbstractList;
+import com.eomcs.util.Iterator;
+import com.eomcs.util.List;
 import com.eomcs.util.Prompt;
 
 public class LessonHandler {
   
-  // ArrayList나 LinkedList를 마음대로 사용할 수 있도록 
-  // 객체 목록을 관리하는 필드를 선언할 때
-  // 이를 클래스의 수퍼 클래스로 선언한다.
-  // => 대신 이 필드에 들어갈 객체는 생성자에서 파라미터로 받는다.
-  // => 이렇게 하면 ArrayList와 LinkedList를 사용할 수 있어 유지보수에 좋다. 선택의 폭이 넓어진다.
-  
-  AbstractList<Lesson> lessonList;
+  List<Lesson> lessonList;
   
   Prompt prompt;
   
-  public LessonHandler(Prompt prompt, AbstractList<Lesson> list) {
+  public LessonHandler(Prompt prompt, List<Lesson> list) {
     this.prompt = prompt;
     this.lessonList = list;
-    // Handler 가 사용할 List 객체(의존객체; dependency)를 생성자에서 직접 만들지 않고
-    // 이렇게 생성자가 호출될 때 파라미터로 받으면,
-    // 필요에 따라 List 객체를 다른 객체로 대체하기가 쉽다.
-    // 예를들어 ArrayList를 사용하다가 LinkedList로 바꾸기 쉽다.
-    // LinkedList를 사용하다가 다른 객체로 바꾸기가 쉽다.
-    // 즉 다형적 변수 법칙에 따라 List의 하위 객체라면 어떤 객체든지 가능하다.
-    // 이런식으로 의존 객체를 외부에서 주입받는 것을 
-    // Dependency Injection(DI; 의존성주입)이라 부른다.
-    // => 즉 의존 객체를 부품화하여 교체하기 쉽도록 만드는 방식이다.
   }
   
   public void addLesson() {
@@ -49,15 +33,32 @@ public class LessonHandler {
   }
   
   public void listLesson() {
-    // 수업 객체 목록을 복사 받을 배열을 준비하고, toArray()를 실행한다.
-    // toArray()의 리턴 값은 파라미터로 넘겨준 배열의 주소이다.
-    Lesson[] arr = this.lessonList.toArray(new Lesson[this.lessonList.size()]);
-    for (Lesson l : arr) {
+    
+    Iterator<Lesson> iterator = lessonList.iterator();
+    while (iterator.hasNext()) {
+      
+      Lesson l = iterator.next();
+      
       System.out.printf("%d, %s, %s ~ %s, %d\n",
           l.getNo(), l.getTitle(), 
           l.getStartDate(), l.getEndDate(), l.getTotalHours());
     }
   }
+  
+  /* for문으로 listLesson으로 적용.
+   * public void listLesson() {
+   * 
+   * for (int i = 0; i < lessonList.size(); i++) {
+   * Lesson l = lessonList.get(i);
+   * 
+   * System.out.printf("%d, %s, %s ~ %s, %d\n", 
+   * l.getNo(), l.getTitle(), l.getStartDate(), l.getEndDate(), l.getTotalHours()); } }
+   */
+  
+  
+  
+  
+  
   
   public void detailLesson() {
     int index = indexOfLesson(prompt.inputInt("번호? "));

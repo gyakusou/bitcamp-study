@@ -1,4 +1,4 @@
-# 24_2 - `Iterator` 구현체와 스태틱 중첩 클래스(static nested class)
+# 24_3 - `Iterator` 구현체와 논스태틱 중첩 클래스(non-static nested class; inner class)
 
 ## 학습 목표
 

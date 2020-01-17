@@ -10,16 +10,21 @@ public class Exam0120 {
     static int plus(int a, int b) {
       return a + b;
     }
+
     static int plus(int a) {
       return a + a;
     }
+
     static float plus(float a, float b) {
       return a + b;
     }
   }
+
   public static void main(String[] args) {
 
-    // 호출하는 메서드의 이름은 같지만, 아규먼트의 타입이나 개수에 따라 호출되는 메서드가 결정된다.
+    // 호출하는 메서드 이름은 같지만,
+    // 아규먼트의 타입이나 개수에 따라 호출되는 메서드가 결정된다.
+    //
     int r1 = Calculator.plus(100, 200);
     int r2 = Calculator.plus(100);
     float r3 = Calculator.plus(35.7f, 22.2f);
@@ -33,3 +38,9 @@ public class Exam0120 {
 
   }
 }
+
+
+
+
+
+

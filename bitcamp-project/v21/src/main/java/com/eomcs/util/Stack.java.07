@@ -22,7 +22,6 @@ public class Stack {
   }
   
   private void grow() {
-   
     this.elementData = Arrays.copyOf(elementData, newCapacity());
   }
   
@@ -30,9 +29,8 @@ public class Stack {
     int oldCapacity = elementData.length;
     return oldCapacity + (oldCapacity >> 1);
   }
+  
 }
-
-
 
 
 

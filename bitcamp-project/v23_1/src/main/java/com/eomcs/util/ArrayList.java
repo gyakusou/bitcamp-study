@@ -20,7 +20,7 @@ public class ArrayList<E> extends List<E> {
     }
   }
   
-  @Override //
+  @Override
   public void add(E e) {
     if (this.size == this.elementData.length) {
       grow();
@@ -28,7 +28,7 @@ public class ArrayList<E> extends List<E> {
     this.elementData[this.size++] = e;
   }
   
-  @Override //
+  @Override
   @SuppressWarnings("unchecked")
   public E get(int index) {
     if (index < 0 || index >= this.size) {
@@ -48,7 +48,7 @@ public class ArrayList<E> extends List<E> {
     return oldValue;
   }
   
-  @Override //
+  @Override
   @SuppressWarnings("unchecked")
   public E remove(int index) {
     if (index < 0 || index >= this.size) {
@@ -90,7 +90,7 @@ public class ArrayList<E> extends List<E> {
     return arr; // 넉넉할 때는 파라미터로 받은 배열을 그대로 리턴. 
   }
   
-  @Override //
+  @Override
   public void add(int index, E value) {
     if (index < 0 || index >= this.size)
       return;

@@ -1,7 +1,5 @@
 package com.eomcs.util;
 
-import com.eomcs.lms.domain.Member;
-
 public class ArrayListTest {
 
   public static void main(String[] args) {
@@ -14,12 +12,12 @@ public class ArrayListTest {
     a1.add("ddd");
     a1.add("eee");
     a1.add("fff");
-    // a1.add(new Member()); // 컴파일 오류
+    //a1.add(new Member()); // 컴파일 오류!
     
     System.out.println(a1.get(-1));
     System.out.println(a1.get(6));
     
-    String oldValue = (String) a1.set(0, "xxx");
+    String oldValue = a1.set(0, "xxx");
     System.out.printf("%s ==> %s\n", oldValue, a1.get(0));
     
     a1.set(-1, "yyy");
@@ -37,25 +35,25 @@ public class ArrayListTest {
     System.out.println("---------------");
     
     print(a1);
+    
+    System.out.println("---------------");
+    
+    a1.add(0, "1111");
+    a1.add(3, "2222");
+    a1.add(6, "3333");
+    a1.add(-1, "4444");
+    a1.add(8, "5555");
+    print(a1);
+    
+    System.out.println("---------------");
+    
   }
   
   static void print(ArrayList<String> arr) {
-    String[] list = arr.toArray(new String[] {});
+    String[] list = arr.toArray(new String[0]);
     for (String e : list) {
       System.out.println(e);
     }
   }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-

@@ -35,7 +35,7 @@ public class Exam0120 {
     ArrayList<Manager> obj = new ArrayList<>(Manager.class); // OK!
     //ArrayList<Administrator> obj = new ArrayList<>(Administrator.class); // OK!
     
-    obj.add(new Manager()); 
+    obj.add(new Manager());
     obj.add(new Administrator());
 
     System.out.println(obj.get(0));

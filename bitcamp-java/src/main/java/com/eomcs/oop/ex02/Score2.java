@@ -17,13 +17,12 @@ public class Score2 {
 
   // Score 데이터 값을 다룰 수 있는 새 연산자를 정의
   // => 다음 메서드는 Score 객체의 국,영,수 값의 합계와 평균을 계산하는 연산자이다.
-  
   public static void calculate(Score2 score) {
     score.sum = score.kor + score.eng + score.math;
     score.average = score.sum / 3f;
   }
 
-  // 클래스 메서드 = 스태틱 메서드
+  // 클래스 메서드 
   // => static이 붙은 메서드이다.
   // => 특정 인스턴스에 대해 사용하는 것이 아니라, 
   //    모든 인스턴스에 대해 사용할 수 있다.

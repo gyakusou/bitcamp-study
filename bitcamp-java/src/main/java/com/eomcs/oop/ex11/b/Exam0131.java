@@ -19,26 +19,24 @@ public class Exam0131 {
 
   public static void main(String[] args) throws Exception {
     a = 100; // static 필드
-    // b = 100; // 컴파일오류 인스턴스 필드
+    //b = 100; // 컴파일 오류! 인스턴스 필드 
     
     File dir = new File(".");
-    JavaFilter javaFilter; 
+    JavaFilter javaFilter; // 레퍼런스를 선언할 때는 상관없다.
     
     // static 메서드에서는 static이 안붙은 인스턴스 멤버를 사용할 수 없다.
-    // javaFilter = new JavaFilter(); // 컴파일 오류
+    //javaFilter = new JavaFilter(); // 컴파일 오류!
     
-    // static 메서드에서 인스턴스 멤버를 사용하려면
+    // static 메서드에서 인스턴스 멤버를 사용하려면 
     // 인스턴스를 생성해야만 한다.
     Exam0131 obj = new Exam0131();
     
     // 그리고 이 인스턴스를 가지고 인스턴스 필드/메서드/중첩클래스를 사용할 수 있다.
     javaFilter = obj.new JavaFilter();
     
-    
     String[] names = dir.list(javaFilter);
     for (String name : names) {
       System.out.println(name);
-
     }
   }
 

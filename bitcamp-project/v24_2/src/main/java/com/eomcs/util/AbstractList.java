@@ -33,7 +33,6 @@ public abstract class AbstractList<E> implements List<E> {
       return list.get(cursor++);
     }
   }
-
 }
 
 

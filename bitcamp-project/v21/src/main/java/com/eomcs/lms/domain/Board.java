@@ -10,8 +10,7 @@ public class Board {
   private int viewCount;
   private String writer;
   
-  
-  
+
   @Override
   public int hashCode() {
     final int prime = 31;

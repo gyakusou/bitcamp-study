@@ -83,7 +83,7 @@ public class App {
           break;
         case "/board4/detail":
           BoardHandler4.detailBoard();
-          break; 
+          break;  
         case "/board5/add":
           BoardHandler5.addBoard();
           break;
@@ -92,7 +92,7 @@ public class App {
           break;
         case "/board5/detail":
           BoardHandler5.detailBoard();
-          break; 
+          break;  
         case "/board6/add":
           BoardHandler6.addBoard();
           break;
@@ -101,7 +101,7 @@ public class App {
           break;
         case "/board6/detail":
           BoardHandler6.detailBoard();
-          break; 
+          break;  
         default:
           if (!command.equalsIgnoreCase("quit")) {
             System.out.println("실행할 수 없는 명령입니다.");

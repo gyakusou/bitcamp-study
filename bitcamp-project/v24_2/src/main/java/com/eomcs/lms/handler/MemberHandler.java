@@ -19,6 +19,7 @@ public class MemberHandler {
   
   public void listMember() {
     
+    // 목록에서 값을 꺼내는 일을 해 줄 Iterator 객체를 준비한다.
     Iterator<Member> iterator = memberList.iterator();
     
     // Iterator 객체를 통해 값을 꺼낸다.

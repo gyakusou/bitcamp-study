@@ -2,13 +2,13 @@ package com.eomcs.util;
 
 import java.lang.reflect.Array;
 
-public class LinkedList<E>/*타입파라미터*/ extends AbstractList<E> {
+public class LinkedList<E> extends AbstractList<E> {
   
   Node<E> first;
   
   Node<E> last;
   
-  @Override //
+  @Override
   public void add(E value) {
     Node<E> newNode = new Node<>();
     newNode.value = value;
@@ -36,7 +36,7 @@ public class LinkedList<E>/*타입파라미터*/ extends AbstractList<E> {
     return cursor.value;
   }
   
-  @Override //
+  @Override
   public void add(int index, E value) {
     if (index < 0 || index >= size)
       return;
@@ -60,7 +60,7 @@ public class LinkedList<E>/*타입파라미터*/ extends AbstractList<E> {
     this.size++;
   }
   
-  @Override //
+  @Override
   public E remove(int index) {
     if (index < 0 || index >= size)
       return null;
@@ -85,7 +85,7 @@ public class LinkedList<E>/*타입파라미터*/ extends AbstractList<E> {
     return deletedNode.value;
   }
   
-  @Override //
+  @Override
   public E set(int index, E value) {
     if (index < 0 || index >= size)
       return null;
@@ -130,7 +130,6 @@ public class LinkedList<E>/*타입파라미터*/ extends AbstractList<E> {
     
     return arr;
   }
-  
   
   static class Node<T> {
     T value;

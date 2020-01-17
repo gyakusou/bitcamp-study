@@ -12,9 +12,8 @@ public class Exam02 extends Exam01 {
     Exam02 obj = new Exam02();
     
     // Exam02는 Exam01이 구현한 A의 모든 메서드를 상속 받는다.
-    // 따라서 Exam02 는 A 인터페이스를 구현한 것이 된다.
-    
-    A obj2 = obj; // OK
-    obj2.m1();
+    // 따라서 Exam02는 A 인터페이스를 구현한 것이 된다.
+    A obj2 = obj; // OK!
+    obj2.m1(); 
   }
 }

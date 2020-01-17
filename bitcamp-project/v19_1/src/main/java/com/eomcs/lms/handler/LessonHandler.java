@@ -176,9 +176,5 @@ public class LessonHandler {
     
     System.out.println("수업을 삭제했습니다.");
   }
-
+  
 }
-
-
-
-

@@ -1,9 +1,9 @@
-# 24_1 - `Iterator` 구현체와 스태틱 중첩 클래스(static nested class)
+# 24_1 - `Iterator` 디자인 패턴의 활용
 
 ## 학습 목표
 
-- 중첩 클래스를 사용할 수 있다. 
-- 중첩 클래스를 사용하여 인터페이스 구현체를 만들 수 있다.
+- `Iterator` 디자인 패턴의 용도를 이해하고 활용할 수 있다.
+- 자료구조와 상관없이 일관된 방법으로 데이터를 조회할 수 있다.
 
 
 ## 실습 소스 및 결과
@@ -13,8 +13,8 @@
 - src/main/java/com/eomcs/util/List.java 변경
 - src/main/java/com/eomcs/util/AbstractList.java 변경
 - src/main/java/com/eomcs/lms/handler/LessonHandler.java 변경
-- src/main/java/com/eomcs/lms/handler/BoardHandler.java 변경
 - src/main/java/com/eomcs/lms/handler/MemberHandler.java 변경
+- src/main/java/com/eomcs/lms/handler/BoardHandler.java 변경
 - src/main/java/com/eomcs/util/StackIterator.java 추가
 - src/main/java/com/eomcs/util/Stack.java 변경
 - src/main/java/com/eomcs/util/QueueIterator.java 추가
@@ -53,7 +53,7 @@
   - listMember() 변경
 - LessonHandler.java 변경
   - listLesson() 변경 
-  
+
 ### 훈련6. Stack 객체에 들어 있는 값을 꺼내 줄 Iterator 구현체를 준비하고 리턴한다.
 
 - StackIterator.java 생성
@@ -63,22 +63,16 @@
 
 ### 훈련7. Queue 객체에 들어 있는 값을 꺼내 줄 Iterator 구현체를 준비하고 리턴한다.
     
-- QueueIterator.java
+- QueueIterator.java 생성
   - Iterator 인터페이스를 구현한다.
 - Queue.java 변경
-  - `Iterator` 구현체를 리턴하는 iterator() 를 정의한다.
+    - `Iterator` 구현체를 리턴하는 iterator() 를 정의한다.
     
-### 훈련8. Stack과 Queue에서 값을 꺼낼 때 Iterator를 사용하도록 변경하라. 
-    
+### 훈련8. Stack과 Queue에서 값을 꺼낼 때 Iterator를 사용하도록 변경하라.
+
 - App.java 변경
     - `history`, `history2` 명령을 처리할 때 Stack, Queue 객체에서 직접 값을 꺼내지 않고 Iterator 구현체를 통해서 꺼낸다.
-    - printCommandHistory()와 printCommandHistory2() 는 코드가 같기 때문에 하나로 합친다. 
-    
-    
-    
-    
-    
-    
+    - printCommandHistory()와 printCommandHistory2()는 코드가 같기 때문에 하나로 합친다.
     
     
     

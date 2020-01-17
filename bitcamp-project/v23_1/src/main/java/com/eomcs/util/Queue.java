@@ -44,7 +44,7 @@ public class Queue<E> extends LinkedList<E> implements Cloneable {
     // => 그냥 다음과 같이 새 Queue를 만들고, 
     //    기존 Queue에 저장된 값을 꺼내서 새 Queue에 저장해야 한다.
     //
-    Queue<E> temp = new Queue();
+    Queue<E> temp = new Queue<E>();
     
     for (int i = 0; i < this.size(); i++) {
       temp.offer(this.get(i));

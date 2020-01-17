@@ -2,30 +2,17 @@ package com.eomcs.util;
 
 public class ArrayList {
   
-  Object[] elementDate;
+  Object[] elementData;
   int size;
   
   public ArrayList() {
-    this.elementDate = new Object[100];
+    this.elementData = new Object[100];
   }
   
   public ArrayList(int initialCapacity) {
-    this.elementDate = new Object[initialCapacity];
+    this.elementData = new Object[initialCapacity];
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

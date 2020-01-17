@@ -3,7 +3,7 @@ package com.eomcs.lms.domain;
 import java.sql.Date;
 
 public class Lesson {
-
+  
   private int no;
   private String title;
   private String description;
@@ -11,7 +11,7 @@ public class Lesson {
   private Date endDate;
   private int totalHours;
   private int dayHours;
-
+  
   public int getNo() {
     return no;
   }

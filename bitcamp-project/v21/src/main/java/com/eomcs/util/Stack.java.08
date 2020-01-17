@@ -22,7 +22,6 @@ public class Stack {
   }
   
   private void grow() {
-   
     this.elementData = Arrays.copyOf(elementData, newCapacity());
   }
   
@@ -36,21 +35,8 @@ public class Stack {
       return null;
     return this.elementData[--this.size];
   }
+  
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

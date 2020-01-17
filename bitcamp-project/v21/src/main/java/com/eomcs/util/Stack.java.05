@@ -22,4 +22,5 @@ public class Stack {
     }
     this.elementData[size++] = value;
   }
+  
 }

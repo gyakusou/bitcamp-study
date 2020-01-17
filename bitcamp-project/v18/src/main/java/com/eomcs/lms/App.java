@@ -7,7 +7,7 @@ import com.eomcs.lms.handler.MemberHandler;
 
 public class App {
 
-static Scanner keyboard = new Scanner(System.in);
+  static Scanner keyboard = new Scanner(System.in);
   
   public static void main(String[] args) {
     
@@ -56,6 +56,7 @@ static Scanner keyboard = new Scanner(System.in);
     keyboard.close();
   }
 }
+
 
 
 

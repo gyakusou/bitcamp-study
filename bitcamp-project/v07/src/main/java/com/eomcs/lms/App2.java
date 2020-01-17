@@ -3,7 +3,7 @@ package com.eomcs.lms;
 import java.sql.Date;
 import java.util.Scanner;
 
-public class App2 {
+public class App2 { 
   public static void main(String[] args) {
     Scanner keyboard = new Scanner(System.in);
 

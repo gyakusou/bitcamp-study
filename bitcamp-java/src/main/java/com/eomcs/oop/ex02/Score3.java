@@ -1,6 +1,6 @@
 package com.eomcs.oop.ex02;
 
-//# 사용자 정의 데이터 타입 - 연산자를 instance method 메서드로 정의
+//# 사용자 정의 데이터 타입 - 연산자를 instance method 문법으로 정의
 //
 public class Score3 {
   String name;
@@ -27,9 +27,9 @@ public class Score3 {
   // => 이 인스턴스의 주소는 내장된 this라는 변수에 자동 복사된다.
   //    그래서 파라미터 대신 this를 사용하면 된다.
   // => 인스턴스 메서드는 static을 붙이지 않는다.
-  public /*static*/ void calculate(/*Score2 score*/) {
-    this/*score*/.sum = this/*score*/.kor + this/*score*/.eng + this/*score*/.math;
-    this/*score*/.average = this/*score*/.sum / 3f;
+  public void calculate() {
+    this.sum = this.kor + this.eng + this.math;
+    this.average = this.sum / 3f;
   }
 }
 

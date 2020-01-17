@@ -18,11 +18,11 @@ public class Exam0420 {
   // => bin/main/com/eomcs/oop/ex01/Exam0420$B.class
   class B {}
 
-  // => bin/main/com/eomcs/oop/ex01/Exam0420$1C.class
   public static void main(String[] args) {
     // 로컬 클래스(local class)
     // => 메서드 블록 안에 정의된 클래스
     // => 오직 그 메서드 블록 안에서만 사용된다.
+    // => bin/main/com/eomcs/oop/ex01/Exam0420$1C.class
     class C {}
   }
 

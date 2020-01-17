@@ -9,7 +9,7 @@ class Score {
   int sum;
   float aver;
   
-  void compute() {// 연산자 // this에는 s1값이 들어있다.
+  void compute() {
     this.sum = this.kor + this.eng + this.math;
     this.aver = this.sum / 3f;
   }
@@ -17,6 +17,7 @@ class Score {
 
 public class Exam0110 {
   public static void main(String[] args) {
+    
     Score s1 = new Score();
     s1.name = "홍길동";
     s1.kor = 100;
@@ -28,5 +29,14 @@ public class Exam0110 {
         s1.name, s1.kor, s1.eng, s1.math, s1.sum, s1.aver);
   }
 }
+
+
+
+
+
+
+
+
+
 
 

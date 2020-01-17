@@ -9,7 +9,6 @@ import com.eomcs.lms.handler.LessonHandler;
 import com.eomcs.lms.handler.MemberHandler;
 import com.eomcs.util.ArrayList;
 import com.eomcs.util.LinkedList;
-import com.eomcs.util.List;
 import com.eomcs.util.Prompt;
 import com.eomcs.util.Queue;
 import com.eomcs.util.Stack;
@@ -25,13 +24,12 @@ public class App {
     
     Prompt prompt = new Prompt(keyboard);
     
-    //
     LinkedList<Board> boardList = new LinkedList<>();
     BoardHandler boardHandler = new BoardHandler(prompt, boardList);
     
     ArrayList<Lesson> lessonList = new ArrayList<>();
     LessonHandler lessonHandler = new LessonHandler(prompt, lessonList);
-
+    
     LinkedList<Member> memberList = new LinkedList<>();
     MemberHandler memberHandler = new MemberHandler(prompt, memberList);
     
@@ -132,7 +130,7 @@ public class App {
   }
 
   private static void printCommandHistory() {
-    Stack<String> historyStack = (Stack<String>) commandStack.clone();
+    Stack<String> historyStack = commandStack.clone();
     int count = 0;
     while (!historyStack.empty()) {
       System.out.println(historyStack.pop());

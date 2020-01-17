@@ -13,7 +13,7 @@ public class Stack {
   }
   
   public void push(Object value) {
-    this.elementData[size] = value;
-    size++;
+    this.elementData[size++] = value;
   }
+  
 }

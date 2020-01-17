@@ -20,7 +20,7 @@ public class Exam0130 {
     // 그러나 인스턴스 메서드를 사용하면 인스턴스 주소를 넘기기가 더 편하다.
     // 메서드 호출 앞에다 둔다.
     // 훨씬 소스 코드의 목적을 이해하는데 직관적이다.
-    score/*score2*/.calculate(/*score*/); // 변수 뒤에 연산자를 놓는 i++ 의 예와 비슷하다.
+    score.calculate(); // 변수 뒤에 연산자를 놓는 i++ 의 예와 비슷하다.
 
     System.out.printf("%s, %d, %d, %d, %d, %.1f\n", 
         score.name, score.kor, score.eng, score.math, 

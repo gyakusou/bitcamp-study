@@ -2,28 +2,15 @@ package com.eomcs.util;
 
 public class ArrayList {
   
-  Object[] elementDate;
+  Object[] elementData;
   int size;
   
   public ArrayList() {
     super();
     
-    this.elementDate = new Object[100];
+    this.elementData = new Object[100];
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

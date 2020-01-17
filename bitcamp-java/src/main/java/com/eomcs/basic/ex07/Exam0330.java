@@ -2,7 +2,6 @@ package com.eomcs.basic.ex07;
 
 //# 메서드 : call by reference II
 //
-
 public class Exam0330 {
 
   // main()에서 만든 int a와 int b의 값을 바꾸고 싶다면,

@@ -41,7 +41,7 @@ gradlew.bat
 [~/git/eomcs-study/eomcs-java-project]$ gradle init
 ```
 
-자바 소스 파일 외의 기타 파일을 보관할 디렉토리 생성 / init하면 자동생성 만질 필요 없다.
+자바 소스 파일 외의 기타 파일을 보관할 디렉토리 생성
 
 ```
 [~/git/eomcs-study/eomcs-java-project]$ cd src/main

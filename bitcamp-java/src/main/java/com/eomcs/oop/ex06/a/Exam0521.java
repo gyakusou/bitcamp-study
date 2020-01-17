@@ -67,7 +67,9 @@ public class Exam0521 {
     truck.ton = 15;
 
     print(bike);
+    
     print(sedan);
+    
     print(truck);
 
 

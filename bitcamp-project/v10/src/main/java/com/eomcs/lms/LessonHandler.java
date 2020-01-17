@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.util.Scanner;
 
 public class LessonHandler {
-
+  
   static class Lesson {
     int no;
     String title;
@@ -14,18 +14,14 @@ public class LessonHandler {
     int totalHours;
     int dayHours;
   }
-
   static final int LESSON_SIZE = 100;
-
   static Lesson[] lessons = new Lesson[LESSON_SIZE];
-
   static int lessonCount = 0;
-
-  static Scanner keyboard; //
-
+  static Scanner keyboard;
+  
   static void addLesson() {
     Lesson lesson = new Lesson();
-
+    
     System.out.print("번호? ");
     lesson.no = keyboard.nextInt();
 
@@ -49,21 +45,17 @@ public class LessonHandler {
     System.out.print("일수업시간? ");
     lesson.dayHours = keyboard.nextInt();
     keyboard.nextLine(); 
-
+    
     lessons[lessonCount++] = lesson;
     System.out.println("저장하였습니다.");
   }
-
+  
   static void listLesson() {
-
     for (int i = 0; i < lessonCount; i++) {
       Lesson l = lessons[i];
       System.out.printf("%d, %s, %s ~ %s, %d\n",
-          l.no, l.title, 
-          l.startDate, l.endDate, 
-          l.totalHours);
+          l.no, l.title, l.startDate, l.endDate, l.totalHours);
     }
   }
-
+  
 }
-

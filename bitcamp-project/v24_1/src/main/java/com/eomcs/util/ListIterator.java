@@ -1,6 +1,6 @@
 package com.eomcs.util;
 
-//ArrayList 객체에서 Iterator 규칙에 따라 값을 꺼내주는 클래스를 정의
+// List 객체에서 Iterator 규칙에 따라 값을 꺼내주는 클래스를 정의
 public class ListIterator<E> implements Iterator<E> {
   
   List<E> list;

@@ -6,7 +6,6 @@ public class Exam0120 {
   public static void main(String[] args) {
     // 사용자 정의 데이터 타입의 값을 연산자를 사용하여 다뤄보자!
     Score2 score = new Score2();
-    
     score.name = "홍길동";
     score.kor = 100;
     score.eng = 90;

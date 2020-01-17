@@ -11,5 +11,3 @@ public class Lesson {
   public int totalHours;
   public int dayHours;
 }
-
-

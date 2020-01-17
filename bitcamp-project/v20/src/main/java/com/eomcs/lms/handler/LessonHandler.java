@@ -1,5 +1,3 @@
-// 사용자 입력을 받는 코드를 별도의 메서드로 분리한다.
-//
 package com.eomcs.lms.handler;
 
 import com.eomcs.lms.domain.Lesson;

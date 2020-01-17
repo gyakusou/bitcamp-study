@@ -1,6 +1,6 @@
 package com.eomcs.basic.ex07;
 
-//# 메서드 : call by value // 자바 원시타입인 경우만 
+//# 메서드 : call by value
 //
 public class Exam0310 {
 

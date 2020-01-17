@@ -5,21 +5,26 @@ import java.util.Scanner;
 import com.eomcs.lms.domain.Member;
 
 public class MemberHandler {
-
+  
   static final int MEMBER_SIZE = 100;
-
   static Member[] members = new Member[MEMBER_SIZE];
-
   static int memberCount = 0;
-
-  public static Scanner keyboard; // 
+  public static Scanner keyboard;
+  
+  public static void listMember() {
+    for (int i = 0; i < memberCount; i++) {
+      Member m = members[i];
+      System.out.printf("%d, %s, %s, %s, %s\n", 
+          m.no, m.name, m.email, m.tel, m.registeredDate);
+    }
+  }
 
   public static void addMember() {
     Member member = new Member();
 
     System.out.print("번호? ");
     member.no = keyboard.nextInt();
-    keyboard.nextLine(); 
+    keyboard.nextLine(); // 줄바꿈 기호 제거용
 
     System.out.print("이름? ");
     member.name = keyboard.nextLine();
@@ -37,19 +42,8 @@ public class MemberHandler {
     member.tel = keyboard.nextLine();
 
     member.registeredDate = new Date(System.currentTimeMillis());
-
+    
     members[memberCount++] = member;
     System.out.println("저장하였습니다.");
-
   }
-  public static void listMember() {
-
-    for (int i = 0; i < memberCount; i++) {
-      Member m = members[i];
-      System.out.printf("%d, %s, %s, %s, %s\n", 
-          m.no, m.name, m.email, 
-          m.tel, m.registeredDate);
-    }
-  }
-
 }

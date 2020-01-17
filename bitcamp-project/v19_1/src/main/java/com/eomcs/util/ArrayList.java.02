@@ -2,24 +2,7 @@ package com.eomcs.util;
 
 public class ArrayList {
   
-  Object[] elementDate = new Object[100];
+  Object[] elementData = new Object[100];
   int size;
+  
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

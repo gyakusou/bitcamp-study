@@ -6,7 +6,7 @@ import com.eomcs.lms.domain.Member;
 import com.eomcs.util.ArrayList;
 
 public class MemberHandler {
-
+  
   ArrayList<Member> memberList;
 
   public Scanner input;
@@ -15,7 +15,7 @@ public class MemberHandler {
     this.input = input;
     this.memberList = new ArrayList<>();
   }
-
+  
   public void listMember() {
     // Member 객체의 목록을 저장할 배열을 넘기는데 크기가 0인 배열을 넘긴다.
     // toArray()는 내부에서 새 배열을 만들고, 값을 복사한 후 리턴한다.
@@ -50,10 +50,9 @@ public class MemberHandler {
     member.setTel(input.nextLine());
 
     member.setRegisteredDate(new Date(System.currentTimeMillis()));
-
+    
     this.memberList.add(member);
-
+    
     System.out.println("저장하였습니다.");
   }
 }
-

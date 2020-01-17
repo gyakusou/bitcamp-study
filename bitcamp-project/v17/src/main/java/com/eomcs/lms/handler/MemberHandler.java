@@ -5,27 +5,32 @@ import java.util.Scanner;
 import com.eomcs.lms.domain.Member;
 
 public class MemberHandler {
-
+  
   ArrayList memberList;
-  Scanner input; 
+
+  public Scanner input;
 
   public MemberHandler(Scanner input) {
     this.input = input;
-    memberList = new ArrayList();
+    this.memberList = new ArrayList();
   }
-
-  public MemberHandler(Scanner input, int capacity) {
-    this.input = input;
-    memberList = new ArrayList(capacity);
+  
+  public void listMember() {
+    Object[] arr = this.memberList.toArray();
+    for (Object obj : arr) {
+      Member m = (Member) obj;
+      System.out.printf("%d, %s, %s, %s, %s\n", 
+          m.getNo(), m.getName(), m.getEmail(), 
+          m.getTel(), m.getRegisteredDate());
+    }
   }
-
 
   public void addMember() {
     Member member = new Member();
 
     System.out.print("번호? ");
     member.setNo(input.nextInt());
-    input.nextLine(); 
+    input.nextLine(); // 줄바꿈 기호 제거용
 
     System.out.print("이름? ");
     member.setName(input.nextLine());
@@ -45,16 +50,7 @@ public class MemberHandler {
     member.setRegisteredDate(new Date(System.currentTimeMillis()));
     
     this.memberList.add(member);
+    
     System.out.println("저장하였습니다.");
-
-  }
-  public void listMember() {
-    Object[] arr = this.memberList.toArray();
-    for (Object obj : arr) {
-      Member m = (Member) obj; // 타입캐스팅
-      System.out.printf("%d, %s, %s, %s, %s\n", 
-          m.getNo(), m.getName(), m.getEmail(), 
-          m.getTel(), m.getRegisteredDate());
-    }
   }
 }

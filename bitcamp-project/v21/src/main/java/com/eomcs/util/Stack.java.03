@@ -11,4 +11,5 @@ public class Stack {
     this.elementData = new Object[DEFAULT_CAPACITY];
     this.size = 0;
   }
+  
 }

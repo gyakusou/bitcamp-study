@@ -45,7 +45,7 @@ public class BoardHandler {
     for (int i = 0; i < boardCount; i++) {
       if (boards[i].no == no) {
         board = boards[i];
-            break;
+        break;
       }
     }
     

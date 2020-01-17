@@ -5,7 +5,6 @@ package com.eomcs.lms.handler;
 
 import java.sql.Date;
 import com.eomcs.lms.domain.Board;
-import com.eomcs.util.ArrayList;
 import com.eomcs.util.LinkedList;
 import com.eomcs.util.Prompt;
 
@@ -78,7 +77,6 @@ public class BoardHandler {
     newBoard.setTitle(prompt.inputString(
         String.format("내용(%s)? ", oldBoard.getTitle()), 
         oldBoard.getTitle()));
-    
     
     if (newBoard.equals(oldBoard)) {
       System.out.println("게시글 변경을 취소했습니다.");

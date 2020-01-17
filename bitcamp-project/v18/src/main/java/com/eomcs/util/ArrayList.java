@@ -2,17 +2,17 @@ package com.eomcs.util;
 
 import java.util.Arrays;
 
-public class ArrayList<E> { // 데이터 타입을 받는 변수 E
-
+public class ArrayList<E> {
+  
   static final int DEFAULT_CAPACITY = 3;
-
+  
   Object[] list;
   int size = 0;
-
+  
   public ArrayList() {
     this.list = new Object[DEFAULT_CAPACITY];
   }
-
+  
   public ArrayList(int capacity) {
     if (capacity < DEFAULT_CAPACITY || capacity > 10000)
       this.list = new Object[DEFAULT_CAPACITY];
@@ -22,7 +22,7 @@ public class ArrayList<E> { // 데이터 타입을 받는 변수 E
 
   @SuppressWarnings({"unchecked"})
   public E[] toArray(E[] arr) {
-
+    
     if (arr.length < this.size) {
       return (E[]) Arrays.copyOf(this.list, this.size, arr.getClass());
     }
@@ -32,7 +32,7 @@ public class ArrayList<E> { // 데이터 타입을 받는 변수 E
     for (int i = 0; i < this.size; i++) {
       arr[i] = (E) this.list[i];
     }
-     */
+    */
 
     return arr;
   }
@@ -45,7 +45,7 @@ public class ArrayList<E> { // 데이터 타입을 받는 변수 E
     }
     this.list[this.size++] = obj;
   }
-
+  
   @SuppressWarnings("unchecked")
   public E get(int idx) {
     if (idx >= 0 && idx < this.size) {
@@ -54,10 +54,18 @@ public class ArrayList<E> { // 데이터 타입을 받는 변수 E
       return null;
     }
   }
-
+  
   public int size() {
     return this.size;
   }
 }
+
+
+
+
+
+
+
+
 
 

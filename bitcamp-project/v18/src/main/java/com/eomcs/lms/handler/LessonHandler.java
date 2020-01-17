@@ -6,19 +6,19 @@ import com.eomcs.lms.domain.Lesson;
 import com.eomcs.util.ArrayList;
 
 public class LessonHandler {
-
+  
   ArrayList<Lesson> lessonList;
-
+  
   public Scanner input;
-
+  
   public LessonHandler(Scanner input) {
     this.input = input;
     this.lessonList = new ArrayList<>();
   }
-
+  
   public void addLesson() {
     Lesson lesson = new Lesson();
-
+    
     System.out.print("번호? ");
     lesson.setNo(input.nextInt());
 
@@ -42,12 +42,12 @@ public class LessonHandler {
     System.out.print("일수업시간? ");
     lesson.setDayHours(input.nextInt());
     input.nextLine(); 
-
+    
     lessonList.add(lesson);
-
+    
     System.out.println("저장하였습니다.");
   }
-
+  
   public void listLesson() {
     // 수업 객체 목록을 복사 받을 배열을 준비하고, toArray()를 실행한다.
     // toArray()의 리턴 값은 파라미터로 넘겨준 배열의 주소이다.
@@ -58,5 +58,5 @@ public class LessonHandler {
           l.getStartDate(), l.getEndDate(), l.getTotalHours());
     }
   }
-
+  
 }

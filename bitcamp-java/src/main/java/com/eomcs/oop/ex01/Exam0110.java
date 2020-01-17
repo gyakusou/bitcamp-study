@@ -6,23 +6,20 @@ public class Exam0110 {
   public static void main(String[] args) {
     // 낱개의 변수를 사용하여 한 사람의 성적 정보를 저장하라!
     // => 식탁에 밥, 국, 반찬1, 반찬2, 반찬3 을 각각 따로 가져오는 상황.
-    String name; // 데이터 타입에 맞는 메모리를 준비
+    String name;
     int kor;
     int eng;
     int math;
     int sum;
     float aver;
 
-    name = "홍길동"; // 값을 지정
+    name = "홍길동";
     kor = 100;
     eng = 90;
     math = 85;
     sum = kor + eng + math;
-    //aver = (float)sum / (float)3; // 명시적 형 변환 91.7
-    //aver = sum / 3; // 암시적 형 변환 91
-    //aver = sum / (float)3; // 명시적 형 변환 91.7
-    aver = (float)sum / 3; // 명시적 형 변환 91.7
-    
+    aver = (float)sum / 3;
+
     System.out.printf("이름: %s\n", name);
     System.out.printf("국어: %d\n", kor);
     System.out.printf("영어: %d\n", eng);

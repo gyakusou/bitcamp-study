@@ -3,7 +3,7 @@ package com.eomcs.basic.ex07;
 //# 메서드 : 인스턴스와 Heap 메모리 영역
 //
 public class Exam0430 {
-  
+
   static class MyObject {
     int a;
     int b;

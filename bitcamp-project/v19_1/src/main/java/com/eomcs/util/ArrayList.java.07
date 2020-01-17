@@ -4,33 +4,21 @@ public class ArrayList {
   
   private static final int DEFAULT_CAPACITY = 10;
   
-  Object[] elementDate;
+  Object[] elementData;
   int size;
   
   public ArrayList() {
-    this.elementDate = new Object[DEFAULT_CAPACITY];
+    this.elementData = new Object[DEFAULT_CAPACITY];
   }
   
   public ArrayList(int initialCapacity) {
     if (initialCapacity < DEFAULT_CAPACITY) {
-      this.elementDate = new Object[DEFAULT_CAPACITY];
+      this.elementData = new Object[DEFAULT_CAPACITY];
     } else {
-    this.elementDate = new Object[initialCapacity];
+      this.elementData = new Object[initialCapacity];
+    }
   }
- }
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

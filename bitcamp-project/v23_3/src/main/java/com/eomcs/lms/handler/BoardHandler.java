@@ -11,18 +11,17 @@ import com.eomcs.util.Prompt;
 public class BoardHandler {
   
   // 목록을 다루는 객체를 지정할 때,
-  // => 특정 클래스를(예: AbstractList, LinkedList, ArrayList) 지정하는 대신에.
-  // =? 사용 규칙(예: List)을 지정함으로써
-  // 더 다양한 타입의 객체로 교체 할 수 있게 만든다.
-  // => List 사용 규칙을 구현한 객체라면 어떤 클래스에 객체든지 사용 할 수 있다.
-  // 결국 유지보수를 더 유연하게 하기 위함이다. 
-  
+  // => 특정 클래스(예: AbstractList, LinkedList, ArrayList)를 지정하는 대신에,
+  // => 사용 규칙(예: List)을 지정함으로써 
+  // 더 다양한 타입의 객체로 교체할 수 있게 만든다.
+  // => List 사용 규칙을 구현한 객체라면 어떤 클래스의 객체든지 사용할 수 있다.
+  // 결국 유지보수를 더 유연하게 하기 위함이다.
   List<Board> boardList;
   
   Prompt prompt;
   
   public BoardHandler(Prompt prompt, List<Board> list) {
-    // List 파라미터는 List 인터페이스를 구현한 객체를 받는다.
+    // list 파라미터는 List 인터페이스를 구현한 객체를 받는다.
     this.prompt = prompt;
     this.boardList = list;
   }
@@ -85,7 +84,6 @@ public class BoardHandler {
     newBoard.setTitle(prompt.inputString(
         String.format("내용(%s)? ", oldBoard.getTitle()), 
         oldBoard.getTitle()));
-    
     
     if (newBoard.equals(oldBoard)) {
       System.out.println("게시글 변경을 취소했습니다.");

@@ -33,32 +33,18 @@ public class LessonHandler {
   }
   
   public void listLesson() {
-    
+   
+    // 컬렉션에서 값을 꺼내는 일을 해 줄 Iterator 준비하기
     Iterator<Lesson> iterator = lessonList.iterator();
+    
+    // Iterator 객체를 통해 LessonList에 보관되어 있는 값을 꺼낸다.
     while (iterator.hasNext()) {
-      
       Lesson l = iterator.next();
-      
       System.out.printf("%d, %s, %s ~ %s, %d\n",
           l.getNo(), l.getTitle(), 
           l.getStartDate(), l.getEndDate(), l.getTotalHours());
     }
   }
-  
-  /* for문으로 listLesson으로 적용.
-   * public void listLesson() {
-   * 
-   * for (int i = 0; i < lessonList.size(); i++) {
-   * Lesson l = lessonList.get(i);
-   * 
-   * System.out.printf("%d, %s, %s ~ %s, %d\n", 
-   * l.getNo(), l.getTitle(), l.getStartDate(), l.getEndDate(), l.getTotalHours()); } }
-   */
-  
-  
-  
-  
-  
   
   public void detailLesson() {
     int index = indexOfLesson(prompt.inputInt("번호? "));

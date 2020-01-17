@@ -17,7 +17,7 @@ class Score2 {
   private int sum;
   private float aver;
   
-  // sum과 aver의 값을 직접 변경하지는 못하더라도
+  // sum과 aver의 값을 직접 변경하지는 못하더라고
   // 외부에서 이 값들을 조회할 수 있는 방법/수단(method)은 제공해야 한다.
   // => 보통 이렇게 필드의 값을 조회하는 용도로 사용하는 메서드의 경우 
   //    메서드의 용도를 이해하기 쉽도록 getXxx() 형태로 이름을 짓는다.
@@ -41,11 +41,14 @@ class Score2 {
 
 public class Exam0210 {
   public static void main(String[] args) {
+    
     Score2 s1 = new Score2();
+    
     s1.name = "홍길동";
     s1.kor = 100;
     s1.eng = 90;
     s1.math = 80;
+    
     s1.compute();
     
     // 계산을 한 후에 임의적으로 합계나 평균을 변경한다면?
@@ -60,4 +63,14 @@ public class Exam0210 {
         s1.name, s1.kor, s1.eng, s1.math, s1.getSum(), s1.getAver());
   }
 }
+
+
+
+
+
+
+
+
+
+
 

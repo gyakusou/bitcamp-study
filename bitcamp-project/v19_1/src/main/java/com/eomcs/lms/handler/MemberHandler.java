@@ -164,5 +164,3 @@ public class MemberHandler {
     System.out.println("회원을 삭제했습니다.");
   }
 }
-
-

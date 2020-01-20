@@ -43,5 +43,6 @@ class Exam0230_X {
 
   int iValue;
 
+
   void im() {}
 }

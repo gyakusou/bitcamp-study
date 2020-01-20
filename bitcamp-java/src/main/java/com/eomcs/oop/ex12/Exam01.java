@@ -1,4 +1,4 @@
-// 람다(lambda) - 익명 클래스
+// 람다(lambda) - 익명 클래스 //★
 package com.eomcs.oop.ex12;
 
 public class Exam01 {
@@ -18,17 +18,12 @@ public class Exam01 {
       public void play() {
         System.out.println("실행~~~~");
       }
-    }; 
+    };
 
     testPlayer(player);
 
   }
 
 }
-
-
-
-
-
 
 

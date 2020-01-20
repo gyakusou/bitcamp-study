@@ -23,6 +23,7 @@ class Exam0231_X {
     public A(final String name, final int age) {
       this.name = name;
       this.age = age;
+
     }
 
     /*

@@ -17,9 +17,10 @@ public class Exam0530 {
     };
     obj.print();
   }
-  
+
   public static void main(String[] args) {
     Exam0530 r = new Exam0530();
     r.m1();
+    System.out.println();
   }
 }

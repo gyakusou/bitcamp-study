@@ -12,16 +12,17 @@ public class Exam0310 {
   }
 
   public static void main(String[] args) {
-
     // 로컬 클래스
     class MyPlayer implements Player {
-
       @Override
       public void play() {
-        System.out.println("실행");
+        System.out.println("실행!");
       }
     }
+
     testPlayer(new MyPlayer());
+
   }
 }
+
 

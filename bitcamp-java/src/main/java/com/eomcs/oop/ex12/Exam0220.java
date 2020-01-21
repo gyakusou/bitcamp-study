@@ -9,12 +9,12 @@ public class Exam0220 {
     default void stop() {}
 
     static String info() {
-      return "Ok";
+      return "ok!";
     }
   }
 
   public static void main(String[] args) {
-    Player p1 = () -> System.out.println("Hello");
+    Player p1 = () -> System.out.println("Hello!");
     p1.play();
 
   }

@@ -11,14 +11,15 @@ public class Exam0330 {
     System.out.printf("결과: %d\n", c.compute(1, 10));
   }
 
-  public static void main(String[] args) { // compute 메서드
+  public static void main(String[] args) {
     test((a, b) -> {
       int sum = 0;
-      for (int i = 0; i <= b; i++) {
+      for (int i = a; i <= b; i++) {
         sum += i;
       }
       return sum;
     });
   }
 }
+
 

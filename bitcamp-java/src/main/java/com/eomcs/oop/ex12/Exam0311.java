@@ -12,16 +12,16 @@ public class Exam0311 {
   }
 
   public static void main(String[] args) {
-
     // 익명 클래스
     Player p1 = new Player() {
-
       @Override
       public void play() {
-        System.out.println("실행");
+        System.out.println("실행!");
       }
     };
+
     testPlayer(p1);
+
   }
 }
 

@@ -12,14 +12,9 @@ public class Exam0313 {
   }
 
   public static void main(String[] args) {
+    // 람다
+    testPlayer(() -> System.out.println("실행!"));
 
-    // 익명 클래스
-    testPlayer(new Player() {
-      @Override
-      public void play() {
-        System.out.println("실행");
-      }
-    });
   }
 }
 

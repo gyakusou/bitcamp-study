@@ -8,7 +8,7 @@ public class Exam0240 {
   }
 
   public static void main(String[] args) {
-    Player p1 = () -> System.out.println("Hello"); // 컴파일 오류
+    Player p1 = () -> System.out.println("Hello!"); // 컴파일 오류!
     p1.play();
 
   }

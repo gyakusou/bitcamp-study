@@ -8,7 +8,7 @@ public class Exam0210 {
   }
 
   public static void main(String[] args) {
-    Player p1 = () -> System.out.println("Hello");
+    Player p1 = () -> System.out.println("Hello!");
     p1.play();
 
   }

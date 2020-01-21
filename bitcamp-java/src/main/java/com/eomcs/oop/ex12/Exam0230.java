@@ -9,11 +9,8 @@ public class Exam0230 {
     void stop();
   }
 
-  }
-
-  // 람다는 추상 메서드 1개짜리 인터페이스만 가능
   public static void main(String[] args) {
-    Player p1 = () -> System.out.println("Hello"); // 컴파일 오류
+    Player p1 = () -> System.out.println("Hello!"); // 컴파일 오류!
     p1.play();
 
   }

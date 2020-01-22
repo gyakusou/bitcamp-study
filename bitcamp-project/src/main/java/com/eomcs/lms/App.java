@@ -18,6 +18,7 @@ import com.eomcs.lms.handler.BoardListCommand;
 import com.eomcs.lms.handler.BoardUpdateCommand;
 import com.eomcs.lms.handler.Command;
 import com.eomcs.lms.handler.ComputePlusCommand;
+import com.eomcs.lms.handler.ComputePlusCommand2;
 import com.eomcs.lms.handler.HelloCommand;
 import com.eomcs.lms.handler.LessonAddCommand;
 import com.eomcs.lms.handler.LessonDeleteCommand;
@@ -68,6 +69,7 @@ public class App {
     commandMap.put("/hello", new HelloCommand(prompt)); // 3
 
     commandMap.put("/computer/plus", new ComputePlusCommand(prompt));
+    commandMap.put("/computer/plus2", new ComputePlusCommand2(prompt));
 
     String command;
 

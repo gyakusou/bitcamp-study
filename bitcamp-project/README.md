@@ -24,3 +24,21 @@
 - App.java
   - loadBoardData() 를 변경한다.
   - saveBoardData() 를 변경한다.
+  
+### 훈련 2: 회원 데이터를 CSV 문자열로 다루는 코드를 member 클래스로 옮겨라.  
+
+- member.java
+  - CSV 문자열을 가지고 member 객체를 생성하는 valueOf() 를 추가한다.
+  - Board 객체를 가지고 CSV 문자열을 리턴하는 toCsvString() 를 추가한다.
+- App.java
+  - loadMemberData() 를 변경한다.
+  - saveMemberData() 를 변경한다.
+  
+  ### 훈련 2: 수업 데이터를 CSV 문자열로 다루는 코드를 lesson 클래스로 옮겨라.  
+
+- lesson.java
+  - CSV 문자열을 가지고 lesson 객체를 생성하는 valueOf() 를 추가한다.
+  - lesson 객체를 가지고 CSV 문자열을 리턴하는 toCsvString() 를 추가한다.
+- App.java
+  - loadLessonData() 를 변경한다.
+  - saveLessonData() 를 변경한다.

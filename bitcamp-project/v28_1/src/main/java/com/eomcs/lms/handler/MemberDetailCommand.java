@@ -4,13 +4,13 @@ import java.util.List;
 import com.eomcs.lms.domain.Member;
 import com.eomcs.util.Prompt;
 
-public class MemberDeleteCommand implements Command {
+public class MemberDetailCommand implements Command {
 
   List<Member> memberList;
 
   Prompt prompt;
 
-  public MemberDeleteCommand(Prompt prompt, List<Member> list) {
+  public MemberDetailCommand(Prompt prompt, List<Member> list) {
     this.prompt = prompt;
     this.memberList = list;
   }
@@ -24,9 +24,14 @@ public class MemberDeleteCommand implements Command {
       return;
     }
 
-    this.memberList.remove(index);
+    Member member = this.memberList.get(index);
 
-    System.out.println("회원을 삭제했습니다.");
+    System.out.printf("번호: %d\n", member.getNo());
+    System.out.printf("이름: %s\n", member.getName());
+    System.out.printf("이메일: %s\n", member.getEmail());
+    System.out.printf("암호: %s\n", member.getPassword());
+    System.out.printf("사진: %s\n", member.getPhoto());
+    System.out.printf("전화: %s\n", member.getTel());
   }
 
   private int indexOfMember(int no) {

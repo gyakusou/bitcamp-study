@@ -22,7 +22,7 @@ public class MemberListCommand implements Command {
     while (iterator.hasNext()) {
       Member m = iterator.next();
       System.out.printf("%d, %s, %s, %s, %s\n", m.getNo(), m.getName(), m.getEmail(), m.getTel(),
-          m.getRegisteredDate());
+          m.getPhoto(), m.getRegisteredDate());
     }
   }
 }

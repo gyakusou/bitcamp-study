@@ -351,7 +351,8 @@ public class App {
           member.setEmail(data[2]);
           member.setPassword((data[3]));
           member.setTel((data[4]));
-          member.setRegisteredDate(Date.valueOf(data[5]));
+          member.setPhoto(data[5]);
+          member.setRegisteredDate(Date.valueOf(data[6]));
 
           memberList.add(member);
           count++;

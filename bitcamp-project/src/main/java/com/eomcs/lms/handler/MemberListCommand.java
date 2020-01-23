@@ -21,8 +21,8 @@ public class MemberListCommand implements Command {
     // Iterator 객체를 통해 값을 꺼낸다.
     while (iterator.hasNext()) {
       Member m = iterator.next();
-      System.out.printf("%d, %s, %s, %s, %s\n", m.getNo(), m.getName(), m.getEmail(), m.getTel(),
-          m.getPhoto(), m.getRegisteredDate());
+      System.out.printf("%d, %s, %s, %s, %s, %s\n", m.getNo(), m.getName(), m.getEmail(),
+          m.getTel(), m.getPhoto(), m.getRegisteredDate());
     }
   }
 }

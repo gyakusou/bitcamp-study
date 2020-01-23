@@ -334,24 +334,21 @@ public class App {
 
     try {
       in = new FileReader(file);
-
       dataScan = new Scanner(in);
       int count = 0;
 
       while (true) {
         try {
           String line = dataScan.nextLine();
-
           String[] data = line.split(",");
 
           Member member = new Member();
-
           member.setNo(Integer.parseInt(data[0]));
           member.setName(data[1]);
           member.setEmail(data[2]);
-          member.setPassword((data[3]));
-          member.setTel((data[4]));
-          member.setPhoto(data[5]);
+          member.setPassword(data[3]);
+          member.setPhoto(data[4]);
+          member.setTel(data[5]);
           member.setRegisteredDate(Date.valueOf(data[6]));
 
           memberList.add(member);
@@ -361,25 +358,22 @@ public class App {
           break;
         }
       }
-
-      System.out.printf("총 %d 개의 멤버 데이터를 로딩했습니다.\n", count);
+      System.out.printf("총 %d 개의 회원 데이터를 로딩했습니다.\n", count);
 
     } catch (FileNotFoundException e) {
-
       System.out.println("파일 읽기 중 오류 발생! - " + e.getMessage());
-
     } finally {
       try {
         dataScan.close();
       } catch (Exception e) {
       }
-
       try {
         in.close();
       } catch (Exception e) {
       }
     }
   }
+
 
 
   private static void saveMemberData() {
@@ -392,13 +386,14 @@ public class App {
       int count = 0;
 
       for (Member member : memberList) {
-        String line = String.format("%d,%s,%s,%s,%s,%s\n", member.getNo(), member.getName(),
-            member.getEmail(), member.getPassword(), member.getTel(), member.getRegisteredDate());
+        String line = String.format("%d,%s,%s,%s,%s,%s,%s\n", member.getNo(), member.getName(),
+            member.getEmail(), member.getPassword(), member.getPhoto(), member.getTel(),
+            member.getRegisteredDate());
 
         out.write(line);
         count++;
       }
-      System.out.printf("총 %d 개의 멤버 데이터를 저장했습니다.\n", count);
+      System.out.printf("총 %d 개의 회원 데이터를 저장했습니다.\n", count);
 
     } catch (IOException e) {
       System.out.println("파일 쓰기 중 오류 발생! - " + e.getMessage());
@@ -410,7 +405,5 @@ public class App {
       }
     }
   }
-
 }
-
 

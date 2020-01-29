@@ -19,8 +19,9 @@ public class BufferedOutputStream extends FileOutputStream {
     }
 
     // 1바이트 출력하라고 하면 일단 버퍼에 저장할 것이다.
-    buf[cursor++] = (byte)b;
+    buf[cursor++] = (byte) b;
   }
+
 
   @Override
   public void close() throws IOException {
@@ -28,19 +29,15 @@ public class BufferedOutputStream extends FileOutputStream {
     super.close();
   }
 
+
   @Override
   public void flush() throws IOException {
-    if (cursor > 0) {
-      this.write(buf, 0, cursor);
+    if (cursor > 0) { // 배열의 값을 방출하려면 0 보다 커야 한다.
+      this.write(buf, 0, cursor); // 커서가 3이라면 0,1,2 3개 방출
       cursor = 0;
     }
   }
 
 }
-
-
-
-
-
 
 

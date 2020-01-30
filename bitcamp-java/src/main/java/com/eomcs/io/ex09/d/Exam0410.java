@@ -22,17 +22,17 @@ public class Exam0410 {
 
     out.close();
 
-    System.out.println("출력완료");
+    System.out.println("출력 완료!");
   }
 
 }
 
 // 용어 정리!
-// - Serialize : 직렬화
+// 1) Serialize(직렬화)
 // - 객체(인스턴스) ===> 바이트 배열
 // - marshalling 이라고도 부른다.
 //
-// - Deserialize : 객체 복원
+// 2) Deserialize(객체 복원)
 // - 바이트 배열 ===> 객체
 // - unmarshalling 이라고도 부른다.
 //

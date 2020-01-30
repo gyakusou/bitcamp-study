@@ -2,7 +2,6 @@
 // 기능을 변경한다. 즉 DataInputStream을 장신구(decorator)로 만든다.
 package com.eomcs.io.ex08;
 
-import java.io.IOException;
 import java.io.InputStream;
 
 public class DataInputStream extends DecoratorInputStream {
@@ -62,11 +61,6 @@ public class DataInputStream extends DecoratorInputStream {
       return true;
     else
       return false;
-  }
-
-  @Override
-  public void close() throws IOException {
-    연결된부품.close();
   }
 }
 

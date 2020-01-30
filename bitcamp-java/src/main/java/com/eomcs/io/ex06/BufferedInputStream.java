@@ -27,7 +27,7 @@ public class BufferedInputStream extends FileInputStream {
   public int read(byte[] buf) throws IOException {
     int i = 0;
     for (; i < buf.length; i++) {
-      // 1바이트를 읽어서 파라미터로 받은 파이트 배열에 채운다.
+      // 1바이트를 읽어서 파라미터로 받은 바이트 배열에 채운다.
       int b = this.read();
       if (b == -1) {
         // 바이트 배열을 다 채우기도 전에 읽을 데이터가 없다면 읽기를 멈춘다.

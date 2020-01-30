@@ -1,12 +1,3 @@
-# package com.eomcs.basic.ex07;
+# src/main/java
 
-## Exam0310, 0320, 0330
-
-### 차이점
-
-- call by value
-- call by reference 
-
-
-0310의 main a, b의 값과
-0320, 0330 main a, b의 값이 다른이유?
+애플리케이션 자바 소스 파일을 두는 폴더이다.

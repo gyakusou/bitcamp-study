@@ -34,7 +34,8 @@
     - 애플리케이션을 시작할 때 옵저버를 호출한다.
     - 애플리케이션을 종료할 때 옵저버를 호출한다.
     
-    
+### 훈련 4: 애플리케이션을 시작하거나 종료할 때 데이터를 로딩하고 저장하는 옵저버를 만들고 등록한다.
+
 - DataLoaderListener.java (DataLoaderListener.java.01)
     - `ApplicationContextListener`를 구현한다. 즉 `Observer`를 만든다.
     - `App` 클래스에 있는 파일 입출력 코드를 이 클래스로 옮긴다.

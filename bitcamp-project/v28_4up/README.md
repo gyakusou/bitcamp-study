@@ -1,3 +1,8 @@
+build.gradle 변경
+
+implementation group: 'com.google.code.gson', name: 'gson', version: '2.8.6'
+
+
 # 28_4 - 파일 입출력 시에 버퍼 기능 추가하기 
 
 ## 학습 목표 

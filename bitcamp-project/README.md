@@ -31,6 +31,8 @@
 - App.java (App.java.02)
     - 옵저버를 등록하는 메서드를 추가한다.
     - 옵저버를 제거하는 메서드를 추가한다.
+    - 애플리케이션을 시작할 때 옵저버를 호출한다.
+    - 애플리케이션을 종료할 때 옵저버를 호출한다.
     
     
 - DataLoaderListener.java (DataLoaderListener.java.01)

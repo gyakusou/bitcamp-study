@@ -40,18 +40,18 @@ import com.eomcs.lms.handler.MemberListCommand;
 import com.eomcs.lms.handler.MemberUpdateCommand;
 import com.eomcs.util.Prompt;
 
-public class App {
+public class App { // 31
 
-  static Scanner keyboard = new Scanner(System.in);
+  Scanner keyboard = new Scanner(System.in);
 
-  static Deque<String> commandStack = new ArrayDeque<>();
-  static Queue<String> commandQueue = new LinkedList<>();
+  Deque<String> commandStack = new ArrayDeque<>();
+  Queue<String> commandQueue = new LinkedList<>();
 
-  static List<Lesson> lessonList = new ArrayList<>(); //
-  static List<Member> memberList = new ArrayList<>();
-  static List<Board> boardList = new ArrayList<>();
+  List<Lesson> lessonList = new ArrayList<>();
+  List<Member> memberList = new ArrayList<>();
+  List<Board> boardList = new ArrayList<>();
 
-  public static void main(String[] args) {
+  public void service() { // 31
 
     loadLessonData();
     loadMemberData();
@@ -126,9 +126,9 @@ public class App {
     saveMemberData();
     saveBoardData();
 
-  }
+  } // service()
 
-  private static void printCommandHistory(Iterator<String> iterator) {
+  private void printCommandHistory(Iterator<String> iterator) { // 31
     int count = 0;
     while (iterator.hasNext()) {
       System.out.println(iterator.next());
@@ -145,29 +145,27 @@ public class App {
   }
 
   @SuppressWarnings("unchecked")
-  private static void loadLessonData() {
-    // 데이터가 보관된 파일을 정보를 준비한다.
-    File file = new File("./lesson.ser2"); // 30-1
+  private void loadLessonData() { // 31
+    File file = new File("./lesson.ser2");
 
     try (ObjectInputStream in =
         new ObjectInputStream(new BufferedInputStream(new FileInputStream(file)))) {
 
-      lessonList = (List<Lesson>) in.readObject(); // 30-1
+      lessonList = (List<Lesson>) in.readObject();
 
       System.out.printf("총 %d 개의 수업 데이터를 로딩했습니다.\n", lessonList.size());
 
-    } catch (Exception e) { // 30
+    } catch (Exception e) {
       System.out.println("파일 읽기 중 오류 발생! - " + e.getMessage());
     }
   }
 
-  private static void saveLessonData() {
-    // 데이터가 보관된 파일을 정보를 준비한다.
-    File file = new File("./lesson.ser2"); // v30-1
+  private void saveLessonData() { // 31
+    File file = new File("./lesson.ser2");
 
     try (ObjectOutputStream out =
         new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(file)))) {
-      out.writeObject(lessonList); // v30-1
+      out.writeObject(lessonList);
 
       System.out.printf("총 %d 개의 수업 데이터를 저장했습니다.\n", lessonList.size());
 
@@ -177,11 +175,11 @@ public class App {
   }
 
   @SuppressWarnings("unchecked")
-  private static void loadMemberData() {
+  private void loadMemberData() { // 31
     File file = new File("./member.ser2");
 
-    try (ObjectInputStream in = new ObjectInputStream( // v29
-        new BufferedInputStream(new FileInputStream(file)))) {
+    try (ObjectInputStream in =
+        new ObjectInputStream(new BufferedInputStream(new FileInputStream(file)))) {
 
       memberList = (List<Member>) in.readObject();
 
@@ -192,7 +190,7 @@ public class App {
     }
   }
 
-  private static void saveMemberData() {
+  private void saveMemberData() { // 31
     File file = new File("./member.ser2");
 
     try (ObjectOutputStream out =
@@ -209,11 +207,11 @@ public class App {
   }
 
   @SuppressWarnings("unchecked")
-  private static void loadBoardData() {
+  private void loadBoardData() { // 31
     File file = new File("./board.ser2");
 
-    try (ObjectInputStream in = new ObjectInputStream( // v29
-        new BufferedInputStream(new FileInputStream(file)))) {
+    try (ObjectInputStream in =
+        new ObjectInputStream(new BufferedInputStream(new FileInputStream(file)))) {
 
 
       boardList = (List<Board>) in.readObject();
@@ -225,7 +223,7 @@ public class App {
     }
   }
 
-  private static void saveBoardData() {
+  private void saveBoardData() { // 31
     File file = new File("./board.ser2");
 
     try (ObjectOutputStream out =
@@ -239,6 +237,11 @@ public class App {
       System.out.println("파일 쓰기 중 오류 발생! - " + e.getMessage());
 
     }
+  }
+
+  public static void main(String[] args) { // 31
+    App app = new App();
+    app.service(); // app에 대해서 service 호출
   }
 }
 

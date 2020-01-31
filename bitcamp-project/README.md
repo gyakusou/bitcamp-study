@@ -1,17 +1,38 @@
 # v31 - `Observer` 디자인 패턴의 활용
 
-- 특정 상태에서 수행되는 코드를 캡슐화하여 분리하는 방법
-- `Observer` 디자인 패턴의 용도와 이점을 이해하기
+## 학습목표
 
-  
-## 프로젝트 - 수업관리 시스템  
+- 특정 상태에서 수행되는 코드를 캡슐화하여 분리할 수 있다.
+- `Observer` 디자인 패턴의 용도와 이점을 이해한다.
 
-### 과제 1: 애플리케이션 시작하거나 종료할 때 실행될 코드를 `Observer` 디자인 패턴을 적용하여 분리하라.
+## 실습 소스 및 결과
 
-- ApplicationContextListener.java (ApplicationContextListener.java.01)
+- src/main/java/com/eomcs/lms/App.java 변경
+- src/main/java/com/eomcs/context/ApplicationContextListener.java 추가
+- src/main/java/com/eomcs/lms/DataLoaderListener.java 추가
+
+## 실습  
+
+### 훈련 1: App 클래스에 스태틱 필드와 메서드를 인스턴스 멤버로 전환한다.
+
+- App.java (App.java.01)
+    - 스태틱 필드와 스태틱 메서드를 인스턴스 필드와 인스턴스 메서드로 전환한다.
+    - 보통 실무에서는 클래스의 일반적인 구조로 인스턴스 필드와 메서드를 사용한다.
+
+### 훈련 2: 애플리케이션 시작하거나 종료할 때 호출될 옵저버의 규칙을 정의한다.
+
+- ApplicationContextListener.java (ApplicationContextListener.java.01) (Observer)
     - Observer가 갖춰야 할 규칙을 정의한다.
     - 애플리케이션이 시작할 때 자동으로 호출할 메서드의 규칙을 정의한다.
     - 애플리케이션을 종료하기 전에 자동으로 호출할 메서드의 규칙을 정의한다.
+    
+### 훈련 3: App 객체에 옵저버를 등록하고 제거하는 기능을 추가한다.
+
+- App.java (App.java.02)
+    - 옵저버를 등록하는 메서드를 추가한다.
+    - 옵저버를 제거하는 메서드를 추가한다.
+    
+    
 - DataLoaderListener.java (DataLoaderListener.java.01)
     - `ApplicationContextListener`를 구현한다. 즉 `Observer`를 만든다.
     - `App` 클래스에 있는 파일 입출력 코드를 이 클래스로 옮긴다.
@@ -67,8 +88,3 @@
 
 이제 `App`의 실행 결과는 이전 버전과 같다. 애플리케이션을 실행하면 정상적으로 파일에서 데이터를 읽어오고, 종료하면 파일로 데이터를 출력할 것이다.
 
-## 실습 소스
-
-- src/main/java/com/eomcs/context/ApplicationContextListener.java 추가
-- src/main/java/com/eomcs/lms/DataLoaderListener.java 추가
-- src/main/java/com/eomcs/lms/App.java 변경

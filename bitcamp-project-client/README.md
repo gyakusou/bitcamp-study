@@ -1,46 +1,20 @@
-# v32_1 - 자바 클라이언트 프로젝트 만들기
+# v32_2 - 간단한 메세지를 서버에 전송하고 응답 받기
 
 ## 학습목표
 
-- gradle을 이요하여 자바 프로젝트를 만들 수 있다.
-- eclipse로 import 할 수 있다.
+- 클라이언트를 서버와 통신 연결 할 수 있다.
+- 소켓을 통해 데이터를 입출력 할 수 있다.
 
 ## 실습 소스 및 결과
 
-- src/main/java/com/eomcs/lms/ClientApp.java 추가
+- src/main/java/com/eomcs/lms/ClientApp.java 변경
 
 ## 실습  
 
-### 훈련 1: 프로젝트 폴더를 생성한다.
+### 훈련 1: 서버와 연결한다.
 
-- 'bitcamp-study/bitcamp-project-client' 디렉토리 생성한다.
+- ClientApp.java 변경
 
-    
-### 훈련 2: 프로젝트 폴더에 자바 프로젝로 만든다.
+### 훈련 2: 서버에 요청 메세지를 전송하고 응답 메세지를 수신한다.
 
-- '$ gradle init' 실행
-
-### 훈련 3: 이클립스 IDE로 import 한다.
-
-- 'build.gradle' 변경
-  - 'eclipse' gradle 플러그인을 추가한다.
-  - 'javaCompile'을 설정한다.
-  
-- '$ gradle eclipse' 실행
-  - gradle을 실행하여 eclipse 설정 파일을 생성한다.
-  
-- eclipse 에서 프로젝트 폴더를 import 한다.
-
-### 훈련 4: 프로젝트 시작 클래스를 변경한다.
-
-- 'ClientApp.java'생성
-  - 기존의 'App.java'의 클래스 이름을 변경한다.
-  - 소스 코드를 정리한다.
-  - '클라이언트 수업 관리 시스템입니다' 문구를 출력한다.
-  
-- 'src/test/java/ClientAppTest.java' 생성
-  - 기존의 'AppTest.java'의 클래스 이름을 변경한다.
-  - 소스 코드를 정리한다.
-
-- ClientApp.java를 실행하여 결과를 확인한다.
-
+- ClientApp.java 변경

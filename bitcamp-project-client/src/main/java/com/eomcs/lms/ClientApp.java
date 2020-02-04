@@ -12,8 +12,10 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 import com.eomcs.lms.handler.BoardAddCommand;
+import com.eomcs.lms.handler.BoardDeleteCommand;
 import com.eomcs.lms.handler.BoardDetailCommand;
 import com.eomcs.lms.handler.BoardListCommand;
+import com.eomcs.lms.handler.BoardUpdateCommand;
 import com.eomcs.lms.handler.Command;
 import com.eomcs.util.Prompt;
 
@@ -62,12 +64,12 @@ public class ClientApp {
 
     HashMap<String, Command> commandMap = new HashMap<>();
     commandMap.put("/board/list", new BoardListCommand(out, in));
-    commandMap.put("/board/add", new BoardAddCommand(out, in, prompt)); //
-    commandMap.put("/board/detail", new BoardDetailCommand(out, in, prompt)); //
-
+    commandMap.put("/board/add", new BoardAddCommand(out, in, prompt));
+    commandMap.put("/board/detail", new BoardDetailCommand(out, in, prompt));
+    commandMap.put("/board/update", new BoardUpdateCommand(out, in, prompt));
+    commandMap.put("/board/delete", new BoardDeleteCommand(out, in, prompt));
 
     try {
-
       while (true) {
         String command;
         command = prompt.inputString("\n명령> ");
@@ -76,7 +78,7 @@ public class ClientApp {
           continue;
 
         if (command.equals("quit") || command.equals("/server/stop")) {
-          out.writeUTF("quit");
+          out.writeUTF(command);
           out.flush();
           System.out.println("서버: " + in.readUTF());
           System.out.println("안녕!");
@@ -107,7 +109,7 @@ public class ClientApp {
         }
       }
     } catch (Exception e) {
-      System.out.println("프로그램 실행 중 오류 발생");
+      System.out.println("프로그램 실행 중 오류 발생!");
     }
 
     keyboard.close();

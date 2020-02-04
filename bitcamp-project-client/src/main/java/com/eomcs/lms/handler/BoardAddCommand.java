@@ -15,9 +15,9 @@ public class BoardAddCommand implements Command {
   Prompt prompt;
 
   public BoardAddCommand(ObjectOutputStream out, ObjectInputStream in, Prompt prompt) {
-    this.prompt = prompt;
     this.out = out;
     this.in = in;
+    this.prompt = prompt;
   }
 
   @Override
@@ -46,6 +46,7 @@ public class BoardAddCommand implements Command {
       System.out.println("통신 오류 발생!");
     }
   }
+
 }
 
 

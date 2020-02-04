@@ -3,7 +3,7 @@ package com.eomcs.lms.handler;
 import java.sql.Date;
 import java.util.List;
 import com.eomcs.lms.domain.Board;
-import com.eomcs.lms.util.Prompt;
+import com.eomcs.util.Prompt;
 
 // "/board/update" 명령 처리
 public class BoardUpdateCommand implements Command {

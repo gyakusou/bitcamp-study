@@ -2,7 +2,7 @@ package com.eomcs.lms.handler;
 
 import java.util.List;
 import com.eomcs.lms.domain.Board;
-import com.eomcs.lms.util.Prompt;
+import com.eomcs.util.Prompt;
 
 // "/board/delete" 명령 처리
 public class BoardDeleteCommand implements Command {

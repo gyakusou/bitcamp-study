@@ -6,6 +6,10 @@
 
 ## 실습 소스 및 결과
 
+- src/main/java/com/eomcs/util 패키지 추가
+- src/main/java/com/eomcs/util/Prompt.java 추가
+- src/main/java/com/eomcs/lms/handler 패키지 추가
+- src/main/java/com/eomcs/lms/handler/Command.java 추가
 - src/main/java/com/eomcs/lms/ClientApp.java 변경
 
 ## 실습  
@@ -13,7 +17,9 @@
 ### 훈련 1: v31 프로젝트의 App 클래스에서 명령을 입력 받는 부분을 가져온다. 
 
 - com.eomcs.util 패키지 생성한다.
-- com/eomcs/util/prompt.java 클래스를 가져온다.
+- com.eomcs.util.Prompt 클래스를 가져온다.
+- com.eomcs.lms.handler 패키지 생성한다.
+- com.eomcs.lms.Command 인터페이스 가져온다.
 - ClientApp.java 변경한다.
   - 사용자가 입력한 명령을 처리하는 코드를 가져온다.
 

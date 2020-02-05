@@ -2,15 +2,15 @@ package com.eomcs.lms.servlet;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.List;
+import com.eomcs.lms.dao.BoardFileDao;
 import com.eomcs.lms.domain.Board;
 
 public class BoardDetailServlet implements Servlet {
 
-  List<Board> boards;
+  BoardFileDao boardDao;
 
-  public BoardDetailServlet(List<Board> boards) {
-    this.boards = boards;
+  public BoardDetailServlet(BoardFileDao boardDao) {
+    this.boardDao = boardDao;
   }
 
   @Override
@@ -18,13 +18,7 @@ public class BoardDetailServlet implements Servlet {
 
     int no = in.readInt();
 
-    Board board = null;
-    for (Board b : boards) {
-      if (b.getNo() == no) {
-        board = b;
-        break;
-      }
-    }
+    Board board = boardDao.findByNo(no);
 
     if (board != null) {
       out.writeUTF("OK");

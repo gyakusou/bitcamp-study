@@ -22,10 +22,9 @@ public class ServerApp {
   Set<ApplicationContextListener> listeners = new HashSet<>();
   Map<String, Object> context = new HashMap<>();
 
-  List<Board> boards; ///
-  List<Member> members; ///
+  List<Board> boards;
+  List<Member> members;
   List<Lesson> lessons;
-
 
   public void addApplicationContextListener(ApplicationContextListener listener) {
     listeners.add(listener);
@@ -48,14 +47,15 @@ public class ServerApp {
   }
   // 옵저버 관련코드 끝!
 
+  @SuppressWarnings("unchecked")
   public void service() {
 
     notifyApplicationInitialized();
 
-    // DataLoaderListener 가 준비한 데이터를 꺼내 인스턴스 필드에 저장한다.
-    boards = (List<Board>) context.get("boardList"); ///
-    members = (List<Member>) context.get("memberList"); ///
-    lessons = (List<Lesson>) context.get("lessonList"); ///
+    // DataLoaderListener가 준비한 데이터를 꺼내 인스턴스 필드에 저장한다.
+    boards = (List<Board>) context.get("boardList");
+    members = (List<Member>) context.get("memberList");
+    lessons = (List<Lesson>) context.get("lessonList");
 
     try (
         // 서버쪽 연결 준비
@@ -84,10 +84,7 @@ public class ServerApp {
   } // service()
 
 
-  @SuppressWarnings("unchecked")
   int processRequest(Socket clientSocket) {
-
-
 
     try (Socket socket = clientSocket;
         ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
@@ -100,28 +97,62 @@ public class ServerApp {
         System.out.println("클라이언트가 보낸 메시지를 수신하였음!");
 
         switch (request) {
-          case "quit": quit(out); break; // 클라이언트와 연결을 끊는다.
-          case "/server/stop": quit(out); return 9; // 서버를 종료한다.
-          case "/board/list": listBoard(out); break;
-          case "/board/add": addBoard(in, out); break;
-          case "/board/detail": detailBoard(in, out); break;
-          case "/board/update": updateBoard(in, out); break;
-          case "/board/delete": deleteBoard(in, out); break;
-          case "/member/list": listMember(out); break;
-          case "/member/add": addMember(in, out); break;
-          case "/member/detail": detailMember(in, out); break;
-          case "/member/update": updateMember(in, out); break;
-          case "/member/delete": deleteMember(in, out); break;
-          case "/lesson/list": listLesson(out); break;
-          case "/lesson/add": addLesson(in, out); break;
-          case "/lesson/detail": detailLesson(in, out); break;
-          case "/lesson/update": updateLesson(in, out); break;
-          case "/lesson/delete": deleteLesson(in, out); break;
-          default: notFound(out);
-          
+          case "quit":
+            quit(out);
+            return 0; // 클라이언트와 연결을 끊는다.
+          case "/server/stop":
+            quit(out);
+            return 9; // 서버를 종료한다.
+          case "/board/list":
+            listBoard(out);
+            break;
+          case "/board/add":
+            addBoard(in, out);
+            break;
+          case "/board/detail":
+            detailBoard(in, out);
+            break;
+          case "/board/update":
+            updateBoard(in, out);
+            break;
+          case "/board/delete":
+            deleteBoard(in, out);
+            break;
+          case "/member/list":
+            listMember(out);
+            break;
+          case "/member/add":
+            addMember(in, out);
+            break;
+          case "/member/detail":
+            detailMember(in, out);
+            break;
+          case "/member/update":
+            updateMember(in, out);
+            break;
+          case "/member/delete":
+            deleteMember(in, out);
+            break;
+          case "/lesson/list":
+            listLesson(out);
+            break;
+          case "/lesson/add":
+            addLesson(in, out);
+            break;
+          case "/lesson/detail":
+            detailLesson(in, out);
+            break;
+          case "/lesson/update":
+            updateLesson(in, out);
+            break;
+          case "/lesson/delete":
+            deleteLesson(in, out);
+            break;
+          default:
+            notFound(out);
         }
         out.flush();
-        System.out.println("클라이언트로 메시지를 응답하였음!");
+        System.out.println("클라이언트에게 응답하였음!");
       }
     } catch (Exception e) {
       System.out.println("예외 발생:");

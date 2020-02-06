@@ -5,7 +5,7 @@ plugins {
 
 tasks.withType(JavaCompile) {
     // 프로젝트의 소스 파일 인코딩을 gradle에게 알려준다.
-    options.encoding = 'UTF-8' 
+    options.encoding = 'UTF-8'
 
     // 소스 파일을 작성할 때 사용할 자바 버전
     sourceCompatibility = '1.8'
@@ -19,8 +19,6 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.google.guava:guava:28.1-jre'
-
+    implementation 'com.google.guava:guava:28.0-jre'
     testImplementation 'junit:junit:4.12'
 }
-

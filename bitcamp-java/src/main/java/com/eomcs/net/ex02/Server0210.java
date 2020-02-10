@@ -27,6 +27,7 @@ public class Server0210 {
     // 잠깐 멈추기
     // => 클라이언트가 접속하게 하라!
     // => 최대 몇 개까지 접속 가능한가?
+    // 사용자가 엔터를 칠 때까지 리턴하지 않는다.
     keyboard.nextLine();
 
     ss.close();

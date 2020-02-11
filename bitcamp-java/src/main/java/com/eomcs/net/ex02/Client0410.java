@@ -16,8 +16,8 @@ public class Client0410 {
     System.out.println("소켓 생성됨.");
 
     SocketAddress socketAddress = new InetSocketAddress("localhost", 8888);
-
     System.out.println("서버와 연결 중...");
+
     socket.connect(socketAddress, 10000);
     System.out.println("서버와 연결되었음!");
 

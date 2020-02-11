@@ -1,4 +1,4 @@
-// connection-oriented 클라이언트 - 연결 후 데이터 송수신
+// connection-oriented 클라이언트 - 연결 후 데이터 송수신..
 package com.eomcs.net.ex05;
 
 import java.io.PrintStream;

@@ -12,9 +12,13 @@ public class Account {
   // 한 번에 한 스레드 만이 호출하도록 접근을 제한하고 싶다면
   // 메서드 전체를 동기화 블록으로 선언하라!
   // 어떻게? 메서드 앞에 synchronized를 붙인다.
-  // => 이 메서드처럼 여러 스레드가 접근했을 때 문제가 발생하는 critical section이 아니면
-  // synchronized 사용을 자제하라. 왜? 성능이 떨어진다.
+  // => 여러 스레드가 접근했을 때 문제가 발생하는 critical section이 아닌데도
+  // synchronized 사용한다면 실행속도가 떨어질것이다.
   //
+  // 참고
+  // => 여러 스레드가 동시에 실행해도 문제가 없는 코드 블록을
+  // 스레드 안전 (thread safe)라고 부른다.
+
   synchronized public long withdraw(long money) {
 
     // 1) 이 메서드처럼 여러 스레드가 같은 메모리(balance 필드)의 값을 동시에 변경할 때

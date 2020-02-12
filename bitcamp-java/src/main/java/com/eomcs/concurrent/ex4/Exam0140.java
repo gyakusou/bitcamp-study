@@ -3,10 +3,13 @@ package com.eomcs.concurrent.ex4;
 
 public class Exam0140 {
   public static void main(String[] args) throws Exception {
+    
     class MyThread extends Thread {
+
       public MyThread(String name) {
         super(name);
       }
+      
       public void run() {
         for (int i = 0; i < 1000; i++)
           System.out.printf("%s %d\n", this.getName(), i);

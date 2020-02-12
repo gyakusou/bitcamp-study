@@ -26,8 +26,8 @@ public class Server0110 {
     String str = in.nextLine();
     System.out.println("데이터 수신 완료!");
 
-    out.println(str);
-    System.out.println("데이터 송신 완료!");
+    out.printf(str);
+    System.out.printf("데이터 송신 완료!");
 
     in.close();
     out.close();

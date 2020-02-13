@@ -12,6 +12,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 import com.eomcs.lms.dao.proxy.BoardDaoProxy;
+import com.eomcs.lms.dao.proxy.DaoProxyHelper;
 import com.eomcs.lms.dao.proxy.LessonDaoProxy;
 import com.eomcs.lms.dao.proxy.MemberDaoProxy;
 import com.eomcs.lms.handler.BoardAddCommand;
@@ -46,7 +47,7 @@ public class ClientApp {
   HashMap<String, Command> commandMap = new HashMap<>();
 
   public ClientApp() {
-    // 생성자
+    // 생성자?
     // => 객체가 작업할 때 사용할 자원들을 준비하는 일을 한다.
 
     // 사용자가 입력한 명령어를 보관할 객체 준비
@@ -63,8 +64,11 @@ public class ClientApp {
       return;
     }
 
+    // DAO 프록시의 서버 연결을 도와줄 도우미 객체 준비
+    DaoProxyHelper daoProxyHelper = new DaoProxyHelper(host, port);
+
     // DAO 프록시 객체 준비
-    BoardDaoProxy boardDao = new BoardDaoProxy(host, port);
+    BoardDaoProxy boardDao = new BoardDaoProxy(daoProxyHelper);
     LessonDaoProxy lessonDao = new LessonDaoProxy(host, port);
     MemberDaoProxy memberDao = new MemberDaoProxy(host, port);
 
@@ -124,17 +128,14 @@ public class ClientApp {
       }
 
       commandStack.push(command);
-
       commandQueue.offer(command);
 
-      processCommand(command); // porcessCommand 에게 command 처리하게 한다.
-
+      processCommand(command);
     }
     keyboard.close();
   }
 
   private void processCommand(String command) {
-
     Command commandHandler = commandMap.get(command);
     if (commandHandler == null) {
       System.out.println("실행할 수 없는 명령입니다.");

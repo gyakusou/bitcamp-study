@@ -140,6 +140,7 @@ public class ClientApp {
         System.out.println("실행할 수 없는 명령입니다.");
         return;
       }
+     
       commandHandler.execute();
 
     } catch (Exception e) {

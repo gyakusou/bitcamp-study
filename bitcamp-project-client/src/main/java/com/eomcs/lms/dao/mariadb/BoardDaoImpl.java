@@ -21,12 +21,14 @@ public class BoardDaoImpl implements BoardDao {
 
         Statement stmt = con.createStatement()) {
 
+      con.setAutoCommit(true);
+
       // DBMS에게 데이터 입력하라는 명령을 보낸다.
       // SQL 문법:
       // "insert into 테이블명(컬럼명1,컬럼명2, ..) values(값1,값2...)"
       // => executeUpdate()의 리턴 값은 서버에 입력된 데이터의 개수이다.
       int result =
-          stmt.executeUpdate("insert into lms_board(conts) value('" + board.getTitle() + "')");
+          stmt.executeUpdate("insert into lms_board(conts) values('" + board.getTitle() + "')");
 
       return result;
     }

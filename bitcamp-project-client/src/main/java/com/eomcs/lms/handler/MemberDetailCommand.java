@@ -19,7 +19,6 @@ public class MemberDetailCommand implements Command {
     try {
       int no = prompt.inputInt("번호? ");
 
-
       Member member = memberDao.findByNo(no);
 
       System.out.printf("번호: %d\n", member.getNo());

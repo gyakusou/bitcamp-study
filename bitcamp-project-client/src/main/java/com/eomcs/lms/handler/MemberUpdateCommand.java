@@ -23,14 +23,13 @@ public class MemberUpdateCommand implements Command {
       try {
         oldMember = memberDao.findByNo(no);
       } catch (Exception e) {
-        System.out.println("해당 번호의 게시글이 없습니다.");
+        System.out.println("해당 번호의 회원을 찾을 수 없습니다.");
         return;
       }
 
       Member newMember = new Member();
 
       newMember.setNo(oldMember.getNo());
-      newMember.setRegisteredDate(oldMember.getRegisteredDate());
 
       newMember.setName(
           prompt.inputString(String.format("이름(%s)? ", oldMember.getName()), oldMember.getName()));
@@ -47,16 +46,11 @@ public class MemberUpdateCommand implements Command {
       newMember.setTel(
           prompt.inputString(String.format("전화(%s)? ", oldMember.getTel()), oldMember.getTel()));
 
-      if (oldMember.equals(newMember)) {
-        System.out.println("회원 변경을 취소하였습니다.");
-        return;
-      }
-
       memberDao.update(newMember);
       System.out.println("회원을 변경했습니다.");
 
     } catch (Exception e) {
-      System.out.println("변경실패!");
+      System.out.println("변경 실패!");
     }
   }
 }

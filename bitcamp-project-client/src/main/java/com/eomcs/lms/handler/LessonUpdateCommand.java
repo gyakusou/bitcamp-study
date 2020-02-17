@@ -41,10 +41,6 @@ public class LessonUpdateCommand implements Command {
           String.format("총수업시간(%d)? ", oldLesson.getTotalHours()), oldLesson.getTotalHours()));
       newLesson.setDayHours(prompt.inputInt(String.format("일수업시간(%d)? ", oldLesson.getDayHours()),
           oldLesson.getDayHours()));
-      if (oldLesson.equals(newLesson)) {
-        System.out.println("수업 변경을 취소하였습니다.");
-        return;
-      }
 
       lessonDao.update(newLesson);
 

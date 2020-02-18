@@ -290,7 +290,7 @@ DBMS 중에는 고정 크기인 컬럼의 값을 비교할 때 빈자리까지 �
   math int,
   constraint test1_pk primary key(name, age)
   );
-  // constraint (생략가능)
+  // test1_pk- 생략가능
 
 - 입력 테스트:
 > insert into test1(name, age, kor, eng, math) values('aa', 10, 100, 100, 100);

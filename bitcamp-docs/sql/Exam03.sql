@@ -30,7 +30,7 @@ insert into test1(name,class,working) values('ooo','java101','N');
 select * from 테이블;
 select * from test1;
 
-/* 특정 컬럼의 값만 조회할 때 => "프로젝션(projection)"이라 부른다.*/
+/* 특정 컬럼의 값만 조회할 때 => "프로젝션(projection)"이라 부른다.*/ ★
 select 컬럼명,컬럼명 from 테이블;
 select no, name, tel from test1;
 
@@ -58,7 +58,7 @@ select
 from test1; 
 ``` 
 
-### 조회할 때 조건 지정하기
+### 조회할 때 조건 지정하기 ★
 - where 절과 연산자를 이용하여 조회 조건을 지정할 수 있다.
 - 이렇게 조건을 지정하여 결과를 선택하는 것을 "셀렉션(selection)" 이라 한다.
 
@@ -88,6 +88,16 @@ select no, name, class, working
 from test1
 where working='Y' and class='java100';
 
+/* 주의!
+ * where 절을 통해 결과 데이터를 먼저 선택(selection)한 다음
+ * 결과 데이터에서 가져올 컬럼을 선택(projection)한다.
+ * 따라서 실행순서는 
+ * 실행순서 from ==> where ==> select  */
+
+select no, name
+from test1
+where working='Y' and class='java100';
+
 /* 재직자가 아닌 사람만 조회하라!*/
 select no, name, class, working
 from test1
@@ -111,13 +121,13 @@ update test1 set
   tel = '2222'
 where (no % 3) = 0;
 
-/* 전화 번호가 있는 학생만 조회하라!*/
+/* 전화 번호가 있는 학생만 조회하라!*/ ★
 /* => 다음과 같이 null에 != 연산자를 사용하면 조건이 맞지 않는다.*/
 select *
 from test1
 where tel != null; 
 
-/* => null인지 여부를 가릴 때는 is 또는 is not 연산자를 사용하라!*/
+/* => null인지 여부를 가릴 때는 is 또는 is not 연산자를 사용하라!*/ ★
 select *
 from test1
 where tel is not null;
@@ -154,6 +164,7 @@ select (4=5), (4!=5), (4>5), (4>=5), (4<5), (4<=5), (4<>5);
 - 두 값 사이(두 값도 포함)에 있는지 검사한다.
 ```
 select 5 between 3 and 5;
+/* 5는 3~5 사이에 있는가? */
 ```
 
 ### like

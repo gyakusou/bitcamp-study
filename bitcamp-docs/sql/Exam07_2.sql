@@ -9,7 +9,7 @@ select rno, loc, name
 from room
 order by name asc;
 
-/* asc는 생략 가능하다. */
+/* asc는 생략 가능하다. asc 나 desc 지정하지 않으면 기본이 오름차순(asc) */
 select rno, loc, name 
 from room
 order by name;

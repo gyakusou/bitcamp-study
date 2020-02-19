@@ -31,6 +31,7 @@ DROP TABLE IF EXISTS addr RESTRICT;
 DROP TABLE IF EXISTS lect_tcher RESTRICT;
 
 -- 수강생
+-- Artificial key - mno, work, acc_no, bank
 CREATE TABLE stnt (
     mno    INTEGER     NOT NULL COMMENT '수강생번호', -- 수강생번호
     work   CHAR(1)     NOT NULL COMMENT '재직여부', -- 재직여부
@@ -47,6 +48,8 @@ ALTER TABLE stnt
         );
 
 -- 수강생 유니크 인덱스
+-- Asc 정렬조건 작은것에서 큰것으로 정렬 ex. 가, 나, 다.. (오름차순)
+-- Primary key , Unique 는 인덱스 자동생성
 CREATE UNIQUE INDEX UIX_stnt
     ON stnt ( -- 수강생
         acc_no ASC, -- 통장번호
@@ -100,11 +103,15 @@ ALTER TABLE lect
         );
 
 -- 강의 인덱스
-CREATE INDEX IX_lect
+-- 자주 검색하는 데이터에 대해 색인표 생성
+-- ASC 오름차순
+CREATE INDEX IX_lect 
     ON lect( -- 강의
         titl ASC -- 강의명
     );
 
+-- AUTO_INCREMENT 를 적용하려면, ★
+-- PK 지정 후 -> AUTO_INCREMENT 자동증가 적용해야 한다.
 ALTER TABLE lect
     MODIFY COLUMN lno INTEGER NOT NULL AUTO_INCREMENT COMMENT '강의번호';
 
@@ -272,7 +279,14 @@ ALTER TABLE lect_tcher
             mno  -- 강사번호
         );
 
--- 수강생
+-- ----------------------------------------------------------------FK-----------------------------★
+        
+-- memb 부모 1 / stnt 자식 0..1
+-- 부모 1은 자식입장에서 정하고 자식 0..1은 부모입장에서 정한다. 
+-- stnt mno는 memb의 mno를 가리키기 때문에 FK.
+-- FK 없는 곳이 부모, 있는 곳이 자식
+        
+-- 수강생 
 ALTER TABLE stnt
     ADD CONSTRAINT FK_memb_TO_stnt -- 멤버 -> 수강생
         FOREIGN KEY (
@@ -282,6 +296,9 @@ ALTER TABLE stnt
             mno -- 멤버번호
         );
 
+-- memb 부모 1 / tcher 자식 0..1
+-- tcher의 mno는 memb의 mno을 가리기키 때문에 FK.
+        
 -- 강사
 ALTER TABLE tcher
     ADD CONSTRAINT FK_memb_TO_tcher -- 멤버 -> 강사
@@ -292,6 +309,9 @@ ALTER TABLE tcher
             mno -- 멤버번호
         );
 
+-- mgr 0..1 / lect 0..*
+-- lect 가 null을 허용하기 때문에 매니저가          
+
 -- 강의
 ALTER TABLE lect
     ADD CONSTRAINT FK_mgr_TO_lect -- 매니저 -> 강의
@@ -301,6 +321,10 @@ ALTER TABLE lect
         REFERENCES mgr ( -- 매니저
             mno -- 매니저번호
         );
+        
+        
+-- lect 0..*/ room 0..1        
+-- lect가 null 허용. room이 31번 3-1호 32번 4-1번 33번 4-3번
 
 -- 강의
 ALTER TABLE lect
@@ -312,6 +336,8 @@ ALTER TABLE lect
             rno -- 강의실번호
         );
 
+-- memb 1 / mgr 0..1        
+        
 -- 매니저
 ALTER TABLE mgr
     ADD CONSTRAINT FK_memb_TO_mgr -- 멤버 -> 매니저
@@ -321,6 +347,9 @@ ALTER TABLE mgr
         REFERENCES memb ( -- 멤버
             mno -- 멤버번호
         );
+        
+        
+-- stnt 1 / lect_app 0..*        
 
 -- 수강신청
 ALTER TABLE lect_appl
@@ -332,6 +361,9 @@ ALTER TABLE lect_appl
             mno -- 수강생번호
         );
 
+        
+-- lect 1 / lect-appl 0..*
+
 -- 수강신청
 ALTER TABLE lect_appl
     ADD CONSTRAINT FK_lect_TO_lect_appl -- 강의 -> 수강신청
@@ -342,6 +374,9 @@ ALTER TABLE lect_appl
             lno -- 강의번호
         );
 
+
+-- room 1 / room-phot 0..*        
+        
 -- 강의실사진
 ALTER TABLE room_phot
     ADD CONSTRAINT FK_room_TO_room_phot -- 강의실 -> 강의실사진
@@ -352,6 +387,8 @@ ALTER TABLE room_phot
             rno -- 강의실번호
         );
 
+-- addr 0..* / memb 0..1 
+        
 -- 멤버
 ALTER TABLE memb
     ADD CONSTRAINT FK_addr_TO_memb -- 주소 -> 멤버
@@ -362,6 +399,8 @@ ALTER TABLE memb
             ano -- 주소번호
         );
 
+-- tcher 1 / lect_tcher 0..*        
+        
 -- 강의배정
 ALTER TABLE lect_tcher
     ADD CONSTRAINT FK_tcher_TO_lect_tcher -- 강사 -> 강의배정
@@ -372,6 +411,8 @@ ALTER TABLE lect_tcher
             mno -- 강사번호
         );
 
+-- lect 1 / lect_tcher 0..*        
+        
 -- 강의배정
 ALTER TABLE lect_tcher
     ADD CONSTRAINT FK_lect_TO_lect_tcher -- 강의 -> 강의배정

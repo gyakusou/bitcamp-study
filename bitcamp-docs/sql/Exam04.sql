@@ -3,36 +3,37 @@
 
 ```
 /* 게시판 테이블 */
+/* no, title.. artificail key(인공키) */
 create table test1(
   no int not null primary key auto_increment,
   title varchar(255) not null,
   content text,
-  rdt datetime not null
+  rdt datetime not null default now()
 );
 
 /* 첨부 파일 테이블 */
 create table test2(
   fno int not null primary key auto_increment, /* 첨부파일 고유번호 */
-  filepath varchar(255) not null, /* 파일시스템에 저장된 첨부파일의 경로 */
+  filepath varchar(255) not null, /* 데이터 베이스에서는 파일시스템에 저장된 첨부파일의 경로만 저장, 실제 파일은 하드디스크에 저장*/
   bno int not null /* 게시판 번호 */
 );
 ```
 
 게시판 데이터 입력:
 ```
-insert into test1(title,rdt) values('aaa', now());
-insert into test1(title,rdt) values('bbb', now());
-insert into test1(title,rdt) values('ccc', now());
-insert into test1(title,rdt) values('ddd', now());
-insert into test1(title,rdt) values('eee', now());
-insert into test1(title,rdt) values('fff', now());
-insert into test1(title,rdt) values('ggg', now());
-insert into test1(title,rdt) values('hhh', now());
-insert into test1(title,rdt) values('iii', now());
-insert into test1(title,rdt) values('jjj', now());
+insert into test1(title) values('aaa');
+insert into test1(title) values('bbb');
+insert into test1(title) values('ccc');
+insert into test1(title) values('ddd');
+insert into test1(title) values('eee');
+insert into test1(title) values('fff');
+insert into test1(title) values('ggg');
+insert into test1(title) values('hhh');
+insert into test1(title) values('iii');
+insert into test1(title) values('jjj');
 ```
 
-첨부파일 데이터 입력:
+첨부파일 데이터 입력: 
 ```
 insert into test2(filepath, bno) values('c:/download/a.gif', 1);
 insert into test2(filepath, bno) values('c:/download/b.gif', 1);
@@ -46,14 +47,23 @@ insert into test2(filepath, bno) values('c:/download/f.gif', 10);
 - 첨부파일 데이터를 입력할 때 존재하지 않는 게시물 번호가 들어 갈 수 있다.
 - 그러면 첨부파일 데이터를 무효한 데이타 된다.
 ```
-insert into test2(filepath, bno) values('c:/download/x.gif', 100);
+insert into test2(filepath, bno) values('c:/download/x.gif', 100); ★
 ```
 
-- 첨부 파일이 있는 게시물이 삭제될 수 있다.
-- 마찬가지로 게시물이 존재하지 않는 첨부파일 데이터이기 때문에 무효한 데이터가 된다.
+- 첨부 파일이 있는 게시물을 삭제할 수 있다.
+- 마찬가지로 해당 게시물을 참조하는 첨부파일 데이터는 무효한 데이터가 된다.
 ```
 delete from test1 where no=1;
 ```
+
+이런 문제가 발생한 이유?
+- 다른 테이블의 데이터를 참조하는 경우, 참조 데이터의 존재 유무를 검사하지 않기 때문이다.
+- 테이블의 데이터를 삭제할 때 다른 테이블이 참조하는지 여부를 검사하지 않기 때문이다.
+
+해결책?
+- 다른 테이블를 참조하는 경우 해당 데이터의 존재 유무를 검사하도록 강제한다.
+- 다른 데이터에 의해 참조되는지 여부를 검사하도록 강제한다.
+- 이것을 가능하게 하는 문법이 "외부키(Foreign key)" 이다.
 
 ## FK(foreign key) 제약 조건 설정
 - 다른 테이블의 데이터와 연관된 데이터를 저장할 때 무효한 데이터가 입력되지 않도록 하는 문법이다.
@@ -73,6 +83,7 @@ delete from test2;
 alter table test2
     add constraint test2_bno_fk foreign key (bno) references test1(no);
 ```
+/* FK인 bno 는 test1의 no를 참조한다. */
 
 위와 같이 test2 테이블에 FK 제약 조건을 건 다음에 데이터를 입력해보자!
 ```
@@ -89,8 +100,16 @@ insert into test2(filepath, bno) values('c:/download/f.gif', 10);
 /* 2번 게시물은 test2 테이블의 데이터들이 참조하지 않기 때문에 마음대로 지울 수 있다.*/
 delete from test1 where no=2; -- OK!
 
-/* 그러나 5번 게시물은 삭제할 수 없다. 왜? test2 테이블의 데이터 중 일부가 참조하기 때문이다.*/
+/* 그러나 5번 게시물은 삭제할 수 없다. 왜? test2 테이블의 데이터 중 일부가 참조하기 때문이다.*/ ★
 delete from test1 where no=5; -- Error!
+
+/* test1 no=5 을 지우려면 test2에서 test1을 참조하는 bno=5 를 먼저 지우고 지워야 한다.
+ * 
+ * delete from test2 where bno=5;
+ * 
+ * delete from test1 where no=5;
+ * 
+ * */
 ```
 
 ## 용어 정리 

@@ -72,7 +72,7 @@ from memb m join stnt s using (mno);
    => 두 테이블에 같은 이름의 컬럼이 없을 경우
         연결하지 못한다.*/
 
-/* 만약 두 테이블에 같은 이름을 가진 컬럼이 없으면, 
+/* 만약 두 테이블에 같은 이름을 가진 컬럼이 없으면, ★
    natural join을 수행하지 못한다.
    또한 join using 으로도 해결할 수 없다.
    이럴 경우 join ~ on 컬럼a=컬럼b 문법을 사용하여
@@ -96,6 +96,8 @@ where m.mno=s.mno;
         두 테이블의 데이터가 연결된다.
    => 같은 값을 갖는 데이터가 없다면 연결되지 않고, 결과로 출력되지 않는다.
 */
+
+★★
 /* 전체 강의 목록 */
 select lno, titl, rno, mno from lect;
 

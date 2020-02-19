@@ -12,18 +12,22 @@ select mno, name from memb;
 select mno, work, bank from stnt;   
 
 /* => mno가 어떤 테이블의 컬럼인지 지정하지 않으면 실행 오류!*/
+-- 학생과 멤버의 데이터를 조인하라.
+-- mno가 중복되기 때문에 오류
 select mno, name, mno, work, bank
 from memb cross join stnt;
 
 /* => select  컬럼이 두 테이블 모두 있을 경우,
          컬럼명 앞에 테이블명을 명시하여 구분하라!*/ 
+-- 각 테이블간에 1대1로 조인하는 것. 
+-- 1번 테이블에 5개 2번 테이블에 10개의 목록이 있다면 각각 조인 5*10 = 50 개의 결과가 나온다.
+-- 의미없는 조인
 select memb.mno, name, stnt.mno, work, bank
 from memb cross join stnt;
 
 /* 예전 문법 */
 select memb.mno, name, stnt.mno, work, bank
 from memb, stnt;
-
 
 /* => 컬럼명 앞에 테이블명을 붙이면 너무 길다.
          테이블에 별명을 부여하고 
@@ -39,6 +43,13 @@ from memb m, stnt s;
 /* natural join: 같은 이름을 가진 컬럼 값을 기준으로 연결한다. */
 select m.mno, name, s.mno, work, bank
 from memb m natural join stnt s;   
+
+-- ex . 1 우리 1 aaa
+--      2 국민 2 bbb
+--      3 신한 3 ccc
+--             4 ddd
+-- mno 같은 것 끼리만 조인한다. (컬럼이름이 같은 경우에만) 
+-- 즉 1번은 1번이랑 2번은 2번이랑 조인, 4번 ddd는 연결되지 않기 때문에 결과가 나오지 않는다.
 
 /* 예전 문법 */
 select m.mno, name, s.mno, work, bank
@@ -69,7 +80,7 @@ from memb m join stnt s using (mno);
 select m.mno, name, s.mno, work, bank
 from memb m inner join stnt s on m.mno=s.mno;
 
-/* inner는 생략 가능하다 */
+/* inner는 생략 가능하다 */ ★
 select m.mno, name, s.mno, work, bank
 from memb m join stnt s on m.mno=s.mno;
 /* 즉 inner join 은 기준 컬럼의 값이 일치할 때만 데이터를 연결한다. */
@@ -103,6 +114,16 @@ from lect l inner join room r on l.rno=r.rno;
    강의실이 아직 지정되지 않은 강의의 경우 강의실 테이블의 데이터와 연결하지 못해 
    결과로 출력되지 않는 문제가 있다. */
 
+/* inner join의 문제점 예2:
+ * 모든 강의장 이름을 출력하라. 
+ * 단 강의장에 강의가 배정된 경우 그 강의 이름도 출력하라. */
+
+select 
+  r.rno, 
+  r.name, 
+  r.loc, 
+  l.titl
+from room r inner join lect l on r.rno =l.rno;
 
 
 /* => 만약 기준 컬럼의 값과 일치하는 데이터가 없어서 
@@ -135,22 +156,28 @@ from memb;
 -- 2) 학생 데이터를 가져와서 연결하기
 select mno, name, work
 from memb natural join stnt;
+-- 네추럴 조인, 이너 조인
 
 select mno, name, work
 from memb join stnt using(mno);
+-- 네추럴 조인, 이너 조인
 
 select memb.mno, name, work
 from memb, stnt
 where memb.mno=stnt.mno;
+-- 네추럴 조인, 이너 조인
 
 select memb.mno, name, work
 from memb inner join stnt on memb.mno=stnt.mno;
+-- 네추럴 조인, 이너 조인
 
 select memb.mno, name, work
 from memb join stnt on memb.mno=stnt.mno;
+-- 네추럴 조인, 이너 조인
 
 select m.mno, name, work
 from memb m join stnt s on m.mno=s.mno;
+-- 네추럴 조인, 이너 조인
 
 /* 안타깝게도 위의 SQL문은 학생 목록만 출력한다.
     왜? memb테이블의 데이터와 stnt 테이블의 데이터를 
@@ -160,7 +187,7 @@ from memb m join stnt s on m.mno=s.mno;
     select에서 추출하는 방법 */
 select m.mno, name, work
 from memb m left outer join stnt s on m.mno=s.mno;           
-
+-- 왼쪽의 memb m의 mno, name, work의 내용과 일치하는 stnt를 출력하라. left outer 의 내용은 모두 출력
 
 
 /* 여러 테이블의 데이터를 연결하기
@@ -206,7 +233,14 @@ from lect_appl la
  * => 매니저 번호는 lect 테이블에 있다.
  * => 매니저 이름은 memb 테이블에 있다. 
  */
-select la.lano, l.titl, m.name, s.work, la.rdt, r.name, m2.name
+select 
+  la.lano, 
+  l.titl, 
+  m.name member_name, 
+  s.work, 
+  la.rdt, 
+  r.name room_name, 
+  m2.name manager_name
 from lect_appl la 
         join memb m on la.mno=m.mno
         join stnt s on la.mno=s.mno 
@@ -218,7 +252,15 @@ from lect_appl la
  * => 매니저 번호는 lect 테이블 있다.
  * => 매니저 직위는 mgr 테이블에 있다.  
  */
-select la.lano, l.titl, m.name, s.work, la.rdt, r.name, m2.name, mr.posi
+select 
+  la.lano, 
+  l.titl, 
+  m.name, 
+  s.work, 
+  la.rdt, 
+  r.name, 
+  m2.name, 
+  mr.posi
 from lect_appl la 
         join memb m on la.mno=m.mno
         join stnt s on la.mno=s.mno 

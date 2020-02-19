@@ -22,12 +22,12 @@ public class MemberDaoImpl implements MemberDao {
         Statement stmt = con.createStatement()) {
 
       int result =
-          stmt.executeUpdate("insert into lms_member(name, email, pwd, tel, photo) " + "values(" //
-              + "'" + member.getName() + "', " //
-              + "'" + member.getEmail() + "', " //
-              + "'" + member.getPassword() + "'," //
-              + "'" + member.getTel() + "', " //
-              + "'" + member.getPhoto() + "')");
+          stmt.executeUpdate("insert into lms_member(name, email, pwd, tel, photo) " + "values('"
+              + member.getName() + "', '"
+              + member.getEmail() + "', '"
+              + member.getPassword() + "', '"
+              + member.getPhoto() + "', '"
+              + member.getTel() + "')");
 
       return result;
     }

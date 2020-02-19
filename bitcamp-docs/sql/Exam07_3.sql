@@ -1,5 +1,7 @@
 /* as 로 컬럼에 별명(라벨명) 붙이기  */
 
+/* 라벨 명으로 get in get out */
+
 /* 출력 라벨명을 변경하기
    => 라벨명을 지정하지 않으면 컬럼명이 라벨명이 된다*/
 select rno as room_no, loc as location, name 
@@ -11,6 +13,10 @@ from room;
 
 /* 라벨명에 공백을 넣고 싶으면 '' 안에 작성한다.*/
 select rno 'room no', loc location, name 
+from room;
+
+/* 라벨명에 공백 넣으면 오류 */
+select rno room no, loc location, name 
 from room;
 
 /* 복잡한 형식으로 출력할 경우 라벨명(별명)을 부여한다. 

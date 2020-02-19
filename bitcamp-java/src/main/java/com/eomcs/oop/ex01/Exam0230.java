@@ -1,6 +1,6 @@
 package com.eomcs.oop.ex01;
 
-//# 레퍼런스 배열 - 반복문 결합
+// # 레퍼런스 배열 - 반복문 결합
 //
 public class Exam0230 {
   public static void main(String[] args) {
@@ -27,6 +27,7 @@ public class Exam0230 {
     arr[0].name = "홍길동";
     arr[1].name = "임꺽정";
     arr[2].name = "유관순";
+    // arr[3].name = "유관순"; // 배열이 3개 이기 때문에 4개 부터 들어가지 않는다.
 
     // 반복문을 사용하면 배열의 인스턴스 값을 꺼내기 쉽다.
     for (int i = 0; i < arr.length; i++) {
@@ -37,8 +38,5 @@ public class Exam0230 {
 
 // 결론!
 // - 배열은 반복문과 함께 쓸 때 특히 유용한다.
-
-
-
 
 

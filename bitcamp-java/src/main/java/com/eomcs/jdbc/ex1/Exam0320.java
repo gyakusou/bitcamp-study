@@ -47,7 +47,7 @@ public class Exam0320 {
         // => date, datetime: getDate()
         // => float: getFloat()
         //
-        // getXxx(컬럼번호)
+        // getXxx(컬럼번호) ★
         // => select 문에 나열한 컬럼의 순서를 지정한다.
         // 단 번호는 0부터가 아니라 1부터 지정한다.
         // => select 문에 wildcard(*)를 사용했다면,

@@ -56,3 +56,10 @@ public class Exam0210 {
     }
   }
 }
+
+// SQL 삽입 공격 예 확인 Exam0120
+// 번호? 1 or board_id <> 100
+// 제목? kiki
+// 내용? kiki
+//
+

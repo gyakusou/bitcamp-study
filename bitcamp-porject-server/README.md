@@ -1,4 +1,4 @@
-# 37_1 - Application Server 구조로 변경: Servlet + DAO 적용 + 통신규칙 1
+# 37_2 - Application Server 구조로 변경: Servlet + DAO 적용 + 통신규칙 1
 
 ## 학습목표
 

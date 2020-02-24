@@ -19,6 +19,15 @@ public class Lesson implements Serializable {
   private int totalHours;
   private int dayHours;
 
+
+  // ★
+  @Override
+  public String toString() {
+    return "Lesson [no=" + no + ", title=" + title + ", description=" + description + ", startDate="
+        + startDate + ", endDate=" + endDate + ", totalHours=" + totalHours + ", dayHours="
+        + dayHours + "]";
+  }
+
   public static Lesson valueOf(String csv) {
     String[] data = csv.split(",");
 

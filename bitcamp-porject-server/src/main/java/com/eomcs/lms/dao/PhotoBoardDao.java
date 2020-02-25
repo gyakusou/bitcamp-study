@@ -4,6 +4,7 @@ import java.util.List;
 import com.eomcs.lms.domain.PhotoBoard;
 
 public interface PhotoBoardDao {
+  
   int insert(PhotoBoard photoBoard) throws Exception;
 
   List<PhotoBoard> findAllByLessonNo(int lessonNo) throws Exception;

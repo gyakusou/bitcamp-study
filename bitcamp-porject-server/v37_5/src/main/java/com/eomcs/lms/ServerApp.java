@@ -137,6 +137,7 @@ public class ServerApp {
     // 스레드가 끝났는지 검사하며 기다려야 한다.
     while (true) {
       if (executorService.isTerminated()) {
+        // 모든 쓰레드가 업무를 완료할때 까지 대기.
         break;
       }
       try {

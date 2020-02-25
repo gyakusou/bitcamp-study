@@ -59,4 +59,14 @@ public class PhotoFileDaoImpl implements PhotoFileDao {
       return list;
     }
   }
+
+  @Override
+  public int deleteAll(int boardNo) throws Exception {
+    try (Statement stmt = con.createStatement()) {
+      int result = stmt.executeUpdate( //
+          "delete from lms_photo_file" //
+              + " where photo_id=" + boardNo);
+      return result;
+    }
+  }
 }

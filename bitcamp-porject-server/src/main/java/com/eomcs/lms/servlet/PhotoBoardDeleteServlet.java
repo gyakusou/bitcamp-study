@@ -12,7 +12,6 @@ public class PhotoBoardDeleteServlet implements Servlet {
     this.photoBoardDao = photoBoardDao;
   }
 
-
   @Override
   public void service(Scanner in, PrintStream out) throws Exception {
 

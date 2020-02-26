@@ -1,31 +1,26 @@
 package com.eomcs.lms.dao.mariadb;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import com.eomcs.lms.dao.LessonDao;
 import com.eomcs.lms.domain.Lesson;
+import com.eomcs.util.ConnectionFactory;
 
 public class LessonDaoImpl implements LessonDao {
 
-  String jdbcUrl;
-  String username;
-  String password;
+  ConnectionFactory conFactory;
 
-  public LessonDaoImpl(String jdbcUrl, String username, String password) {
-    this.jdbcUrl = jdbcUrl;
-    this.username = username;
-    this.password = password;
+  public LessonDaoImpl(ConnectionFactory conFactory) {
+    this.conFactory = conFactory;
   }
 
   @Override
   public int insert(Lesson lesson) throws Exception {
 
-    try (Connection con = DriverManager.getConnection(jdbcUrl, username, password);
-        Statement stmt = con.createStatement()) {
+    try (Connection con = conFactory.getConnection(); Statement stmt = con.createStatement()) {
 
       con.setAutoCommit(true);
 
@@ -45,7 +40,7 @@ public class LessonDaoImpl implements LessonDao {
 
   @Override
   public List<Lesson> findAll() throws Exception {
-    try (Connection con = DriverManager.getConnection(jdbcUrl, username, password);
+    try (Connection con = conFactory.getConnection();
         Statement stmt = con.createStatement(); //
 
         ResultSet rs = stmt.executeQuery(
@@ -74,7 +69,7 @@ public class LessonDaoImpl implements LessonDao {
   @Override
   public Lesson findByNo(int no) throws Exception {
 
-    try (Connection con = DriverManager.getConnection(jdbcUrl, username, password);
+    try (Connection con = conFactory.getConnection();
         Statement stmt = con.createStatement();
 
         ResultSet rs = stmt.executeQuery( //
@@ -103,8 +98,7 @@ public class LessonDaoImpl implements LessonDao {
 
   @Override
   public int update(Lesson lesson) throws Exception {
-    try (Connection con = DriverManager.getConnection(jdbcUrl, username, password);
-        Statement stmt = con.createStatement()) {
+    try (Connection con = conFactory.getConnection(); Statement stmt = con.createStatement()) {
 
       int result = stmt.executeUpdate("update lms_lesson set" //
           + " titl='" + lesson.getTitle() //
@@ -122,8 +116,7 @@ public class LessonDaoImpl implements LessonDao {
   @Override
   public int delete(int no) throws Exception {
 
-    try (Connection con = DriverManager.getConnection(jdbcUrl, username, password);
-        Statement stmt = con.createStatement()) {
+    try (Connection con = conFactory.getConnection(); Statement stmt = con.createStatement()) {
 
       int result = stmt.executeUpdate //
       ("delete from lms_lesson where lesson_id=" + no);

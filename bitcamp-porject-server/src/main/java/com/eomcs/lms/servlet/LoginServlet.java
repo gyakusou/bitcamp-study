@@ -1,7 +1,5 @@
 package com.eomcs.lms.servlet;
 
-// login
-
 import java.io.PrintStream;
 import java.util.Scanner;
 import com.eomcs.lms.dao.MemberDao;
@@ -26,7 +24,7 @@ public class LoginServlet implements Servlet {
     if (member != null) {
       out.printf("'%s'님 환영합니다.\n", member.getName());
     } else {
-      out.println("사용자가 정보가 유효하지 않습니다.");
+      out.println("사용자 정보가 유효하지 않습니다.");
     }
   }
 }

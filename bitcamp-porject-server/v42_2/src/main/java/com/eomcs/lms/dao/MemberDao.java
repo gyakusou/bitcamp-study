@@ -1,7 +1,5 @@
 package com.eomcs.lms.dao;
 
-// login
-
 import java.util.List;
 import com.eomcs.lms.domain.Member;
 

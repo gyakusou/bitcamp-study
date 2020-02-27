@@ -28,6 +28,7 @@ import com.eomcs.lms.servlet.LessonDeleteServlet;
 import com.eomcs.lms.servlet.LessonDetailServlet;
 import com.eomcs.lms.servlet.LessonListServlet;
 import com.eomcs.lms.servlet.LessonUpdateServlet;
+import com.eomcs.lms.servlet.LoginServlet;
 import com.eomcs.lms.servlet.MemberAddServlet;
 import com.eomcs.lms.servlet.MemberDeleteServlet;
 import com.eomcs.lms.servlet.MemberDetailServlet;
@@ -128,6 +129,8 @@ public class ServerApp {
     servletMap.put("/photoboard/delete", new PhotoBoardDeleteServlet( //
         txManager, photoBoardDao, photoFileDao));
 
+    servletMap.put("/auth/login", new LoginServlet(memberDao));
+
     try (ServerSocket serverSocket = new ServerSocket(9999)) {
 
       System.out.println("클라이언트 연결 대기중...");
@@ -138,13 +141,11 @@ public class ServerApp {
 
         executorService.submit(() -> {
           processRequest(socket);
-
           // 스레드에 보관된 커넥션 객체를 제거한다.
           // => 스레드에서 제거한 Connection 객체는 다시 사용할 수 있도록
           // DataSource에 반납된다.
           //
           dataSource.removeConnection();
-
           System.out.println("--------------------------------------");
         });
 

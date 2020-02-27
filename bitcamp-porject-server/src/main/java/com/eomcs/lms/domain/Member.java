@@ -19,8 +19,6 @@ public class Member implements Serializable {
   private String tel;
   private Date registeredDate;
 
-
-  // ★
   @Override
   public String toString() {
     return "Member [no=" + no + ", name=" + name + ", email=" + email + ", password=" + password

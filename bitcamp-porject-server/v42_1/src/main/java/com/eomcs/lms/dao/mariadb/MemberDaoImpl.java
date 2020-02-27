@@ -3,6 +3,7 @@ package com.eomcs.lms.dao.mariadb;
 // login
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -22,26 +23,26 @@ public class MemberDaoImpl implements MemberDao {
   @Override
   public int insert(Member member) throws Exception {
     try (Connection con = dataSource.getConnection(); //
-        Statement stmt = con.createStatement()) {
-
-      int result = stmt.executeUpdate( //
-          "insert into lms_member(name, email, pwd, tel, photo) "//
-              + "values('" + member.getName() //
-              + "', '" + member.getEmail() //
-              + "', password('" + member.getPassword() //
-              + "'), '" + member.getTel() //
-              + "', '" + member.getPhoto() + "')");
-
-      return result;
-    }
+        PreparedStatement stmt = con.prepareStatement(//
+            "insert into lms_member(name, email, pwd, tel, photo) values(?,?,?,?,?)")) {
+                
+              stmt.setString(1, member.getName());
+              stmt.setString(2, member.getEmail());
+              stmt.setString(3, member.getPassword());
+              stmt.setString(4, member.getTel());
+              stmt.setString(5, member.getPhoto());
+              
+              return stmt.executeUpdate();
+              }
   }
 
   @Override
   public List<Member> findAll() throws Exception {
     try (Connection con = dataSource.getConnection(); //
-        Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery( //
-            "select member_id, name, email, tel, cdt from lms_member")) {
+        PreparedStatement stmt = con.prepareStatement(//
+            "select member_id, name, email, tel, cdt" //
+            + " from lms_member");
+        ResultSet rs = stmt.executeQuery();
 
       ArrayList<Member> list = new ArrayList<>();
 
@@ -64,12 +65,15 @@ public class MemberDaoImpl implements MemberDao {
   @Override
   public Member findByNo(int no) throws Exception {
     try (Connection con = dataSource.getConnection(); //
-        Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery( //
+        PreparedStatement stmt = con.prepareStatement(//
             "select member_id, name, email, pwd, tel, photo" //
-                + " from lms_member" //
-                + " where member_id=" + no)) {
+            + " from lms_member" //
+            + " where member_id=?")) {
+      
+      stmt.setInt(1, no);
 
+        try (ResultSet rs = stmt.executeQuery()) {
+        
       if (rs.next()) {
         Member member = new Member();
         member.setNo(rs.getInt("member_id"));
@@ -85,46 +89,54 @@ public class MemberDaoImpl implements MemberDao {
       }
     }
   }
+  }
 
   @Override
   public int update(Member member) throws Exception {
     try (Connection con = dataSource.getConnection(); //
-        Statement stmt = con.createStatement()) {
+        PreparedStatement stmt = con.prepareStatement(//
+            "update lms_member set "
+            + " name=?" //
+            + " email=?" //
+            + " pwd=?" //
+            + " tel=?" //
+            + " photo=?" //
+            + " where member_id=?")) {
+      
+      stmt.setString(1, member.getName());
+      stmt.setString(2, member.getEmail());
+      stmt.setString(3, member.getPassword());
+      stmt.setString(4, member.getTel());
+      stmt.setString(5, member.getPhoto());
+      stmt.setInt(6, member.getNo());
 
-      int result = stmt.executeUpdate( //
-          "update lms_member set name= '" + member.getName() //
-              + "', email='" + member.getEmail() //
-              + "', pwd=password('" + member.getPassword() //
-              + "'), tel='" + member.getTel() //
-              + "', photo='" + member.getPhoto() //
-              + "' where member_id=" + member.getNo());
-
-      return result;
+      return stmt.executeUpdate();
     }
   }
 
   @Override
   public int delete(int no) throws Exception {
     try (Connection con = dataSource.getConnection(); //
-        Statement stmt = con.createStatement()) {
+        PreparedStatement stmt = con.prepareStatement(//
+            "delete from lms_member"
+            + " where member_id=?")) {
+      
+      stmt.setInt(1, no);
 
-      int result = stmt.executeUpdate("delete from lms_member where member_id=" + no);
-
-      return result;
+      return stmt.executeUpdate();
     }
   }
 
   @Override
   public List<Member> findByKeyword(String keyword) throws Exception {
     try (Connection con = dataSource.getConnection(); //
-        Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery( //
+        PreparedStatement stmt = con.prepareStatement(//
             "select member_id, name, email, tel, cdt" //
-                + " from lms_member" //
-                + " where name like '%" + keyword //
-                + "%' or email like '%" + keyword //
-                + "%' or tel like '%" + keyword + "%'")) {
-
+            + " from lms_member" //
+            + " where name like '%" + keyword //
+            + "%' or email like '%" + keyword //
+            + "%' or tel like '%" + keyword + "%'"));
+        
       ArrayList<Member> list = new ArrayList<>();
 
       while (rs.next()) {
@@ -146,13 +158,14 @@ public class MemberDaoImpl implements MemberDao {
   @Override
   public Member findByEmailAndPassword(String email, String password) throws Exception {
     try (Connection con = dataSource.getConnection(); //
-        Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery( //
+        PreparedStatement stmt = con.prepareStatement(//
             "select member_id, name, email, pwd, tel, photo" //
-                + " from lms_member" //
-                + " where email='" + email //
-                + "' and pwd=password('" + password + "')")) {
+            + " from lms_member" //
+            + " where email=?" + email //
+            + "' and pwd=?('" + password + "'));
 
+            ResultSet rs = stmt.executeQuery();
+            
       if (rs.next()) {
         Member member = new Member();
         member.setNo(rs.getInt("member_id"));

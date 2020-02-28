@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-  <properties resource="com/eomcs/mybatis/ex04/jdbc.properties"></properties>
+  <properties resource="com/eomcs/mybatis/ex02/jdbc.properties"></properties>
 
   <typeAliases>
     <typeAlias type="com.eomcs.mybatis.ex02.Board" alias="Board"/>

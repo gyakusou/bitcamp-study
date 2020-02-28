@@ -11,16 +11,20 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 public class Exam0110 {
 
   public static void main(String[] args) throws Exception {
-    InputStream inputStream =
-        Resources.getResourceAsStream("com/eomcs/mybatis/ex02/mybatis-config01.xml");
-    SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(inputStream);
+    InputStream inputStream = Resources.getResourceAsStream(//
+        "com/eomcs/mybatis/ex02/mybatis-config01.xml");
+    SqlSessionFactory factory = //
+        new SqlSessionFactoryBuilder().build(inputStream);
 
     SqlSession sqlSession = factory.openSession();
 
     List<Board> list = sqlSession.selectList("BoardMapper.selectBoard");
 
     for (Board board : list) {
-      System.out.printf("%d, %s, %s, %s\n", board.getNo(), board.getTitle(), board.getContent(),
+      System.out.printf("%d, %s, %s, %s\n", //
+          board.getNo(), //
+          board.getTitle(), //
+          board.getContent(), //
           board.getRegisteredDate());
     }
     // 실행 오류 발생! 이유?

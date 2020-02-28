@@ -11,7 +11,7 @@ public class Exam0210 {
 
   public static void main(String[] args) throws Exception {
 
-    // => RL 주소를 준비한다.
+    // => URL 주소를 준비한다.
     URL url = new URL("https://www.daum.net");
 
     // => URL 정보를 가지고 HTTP 요청을 수행할 객체를 얻는다.
@@ -23,7 +23,7 @@ public class Exam0210 {
     // => 웹서버의 응답 데이터를 읽어들일 도구를 리턴한다.
     InputStream in = con.getInputStream();
 
-    // 서버가 보낸 데이터를 한 줄씩 읽기 위해 데코레이터를 붙인다.
+    // => 서버가 보낸 데이터를 한 줄씩 읽기 위해 데코레이터를 붙인다.
     BufferedReader in2 = new BufferedReader(new InputStreamReader(in));
 
     while (true) {

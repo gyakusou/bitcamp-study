@@ -19,11 +19,11 @@ public class Exam0510 {
     s.math = 92;
     s.compute();
 
-    // serialize 할 때 transient 가 붙은 필드의 값은 제외된다.
+    // serialize 할 때 transient가 붙은 필드의 값은 제외된다.
     out.writeObject(s);
 
     out.close();
-    System.out.println("출력 완료");
+    System.out.println("출력 완료!");
   }
 
 }

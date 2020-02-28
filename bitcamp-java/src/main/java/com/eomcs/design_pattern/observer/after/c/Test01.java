@@ -7,7 +7,7 @@ public class Test01 {
 
     car.addCarObserver(new SafeBeltCarObserver());
 
-    // 엔진오일을 검사 할 옵저버를 등록한다.
+    // 엔진 오일을 검사할 옵저버를 등록한다.
     car.addCarObserver(new EngineOilCarObserver());
 
     car.start();

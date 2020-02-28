@@ -7,7 +7,8 @@ public class Exam05 {
 
   public static void main(String[] args) throws Exception {
     // 로컬 자원의 위치를 URL로 표현하는 방법
-    URL url = new URL("file:///c:/Users/user/git/bitcamp-study/Hello.java"); // Windows Os
+    // => Windows
+    URL url = new URL("file:///c:/Users/user/git/bitcamp-study/Hello.java");
 
     // URL 분석
     System.out.printf("프로토콜: %s\n", url.getProtocol());

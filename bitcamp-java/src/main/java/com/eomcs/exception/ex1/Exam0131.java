@@ -3,7 +3,6 @@ package com.eomcs.exception.ex1;
 
 public class Exam0131 {
   public static void main(String[] args) {
-
     // 아무리 희귀한 값을 리턴한다 하더라도 결국에는 그 희귀한 값 또한
     // 정상 값일 수 있다.
     // 이것은 해결할 수 없다.

@@ -1,4 +1,4 @@
-// connection-oriented 클라이언트 - 연결 후 데이터 송수신..
+// connection-oriented 클라이언트 - 연결 후 데이터 송수신
 package com.eomcs.net.ex05;
 
 import java.io.PrintStream;
@@ -13,7 +13,7 @@ public class Client0110 {
     Scanner in = new Scanner(socket.getInputStream());
     PrintStream out = new PrintStream(socket.getOutputStream());
 
-    out.println("Hello");
+    out.println("Hello!");
     System.out.println("데이터 보냄!");
 
     String str = in.nextLine();

@@ -1,5 +1,4 @@
-// stateful 방식의 이점 활용 - 계산기 클라이언트 만들기
-
+// stateful 방식의 이점 활용 - 계산기 서버 만들기
 package com.eomcs.net.ex04.stateful2;
 
 import java.io.DataInputStream;
@@ -16,7 +15,7 @@ public class CalcServer {
     while (true) {
       Socket socket = ss.accept();
       // stateful을 사용할 때 이점:
-      // 연결되어 있는 동안 클라이언트의 작업결과를 계속 유지할 수 있다.
+      // => 연결되어 있는 동안 클라이언트의 작업 결과를 계속 유지할 수 있다.
       try {
         processRequest(socket);
       } catch (Exception e) {
@@ -53,10 +52,10 @@ public class CalcServer {
             result /= a;
             break;
           case "quit":
-            break loop; // while 문 나가기
+            break loop;
         }
 
-        out.printf("계산결과: %d\n", result);
+        out.printf("계산 결과: %d\n", result);
       }
       out.println("quit");
     }

@@ -10,7 +10,7 @@ public class BufferedOutputStream extends DecoratorOutputStream {
   int cursor;
 
   public BufferedOutputStream(OutputStream out) {
-    // 연결할 부품을 보관하기 위해 수퍼클래스의 생성자를 호출한다.
+    // 연결할 부품을 보관하기 위해 수퍼 클래스의 생성자를 호출한다.
     super(out);
   }
 

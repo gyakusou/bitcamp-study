@@ -23,6 +23,7 @@ public class Exam0620 {
         return false; // 조회 결과에서 제외하라!
       }
     }
+
     File dir = new File(".");
 
     // => 확장자가 .java 인 파일의 이름만 추출하기

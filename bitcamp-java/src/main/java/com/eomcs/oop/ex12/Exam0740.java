@@ -15,7 +15,7 @@ public class Exam0740 {
     }
 
     public void print() {
-      System.out.printf("%s님 반갑습니다.\n", name);
+      System.out.printf("%s님 반갑습니다!\n", name);
     }
   }
 
@@ -31,14 +31,14 @@ public class Exam0740 {
     Message get(String name, int age);
   }
 
-
-
   public static void main(String[] args) {
 
     Factory1 f1 = Message::new; // Factory() 생성자를 가리킨다.
     Factory2 f2 = Message::new; // Factory(String) 생성자를 가리킨다.
 
-    // Factory3 f3 = Message::new; // Factory(String, int) 생성자가 없기 때문에 컴파일 오류
+    // Factory(String,int) 생성자가 없기 때문에 컴파일 오류!
+    // Factory3 f3 = Message::new; // 컴파일 오류!
+
   }
 }
 

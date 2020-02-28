@@ -35,7 +35,6 @@ public class Exam0310 {
       //
       int count = stmt.executeUpdate( //
           "insert into x_board(title,contents) values('제목10','내용')");
-      // stmt - 전달하고 받아오는 역할
       System.out.printf("%d 개 입력 성공!", count);
     }
   }

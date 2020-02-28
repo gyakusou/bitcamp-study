@@ -3,14 +3,13 @@ package com.eomcs.exception.ex2;
 
 public class Exam0110 {
   public static void main(String[] args) {
-
     String op = "#";
     int a = 100;
     int b = 200;
 
     try {
       // 예외를 던질 수도 있는 메서드를 호출할 때는 try 블록 안에서 호출한다.
-      int result = Calculator3.compute(op, 100, 200);
+      int result = Calculator3.compute(op, a, b);
       System.out.println(result);
 
     } catch (RuntimeException e) {

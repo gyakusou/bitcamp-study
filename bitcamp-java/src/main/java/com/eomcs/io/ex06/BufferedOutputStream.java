@@ -14,7 +14,7 @@ public class BufferedOutputStream extends FileOutputStream {
   @Override
   public void write(int b) throws IOException {
     if (cursor == buf.length) { // 버퍼가 다차면
-      super.write(buf); // 버퍼에 들어있는 데이터를 한 번에 출력한다. // super 클래스에서 write를 찾아라
+      super.write(buf); // 버퍼에 들어있는 데이터를 한 번에 출력한다.
       cursor = 0; // 다시 커서를 초기화시킨다.
     }
 
@@ -25,7 +25,7 @@ public class BufferedOutputStream extends FileOutputStream {
   @Override
   public void write(byte[] buf) throws IOException {
     for (byte b : buf) {
-      this.write(b & 0x000000ff); // 현재 클래스에서 write에서 찾아라
+      this.write(b & 0x000000ff);
     }
   }
 
@@ -39,8 +39,8 @@ public class BufferedOutputStream extends FileOutputStream {
 
   @Override
   public void flush() throws IOException {
-    if (cursor > 0) { // 배열의 값을 방출하려면 0 보다 커야 한다.
-      this.write(buf, 0, cursor); // 커서가 3이라면 0,1,2 3개 방출
+    if (cursor > 0) {
+      this.write(buf, 0, cursor);
       cursor = 0;
     }
   }

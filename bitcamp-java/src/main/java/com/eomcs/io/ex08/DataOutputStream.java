@@ -4,9 +4,8 @@ import java.io.OutputStream;
 
 public class DataOutputStream extends DecoratorOutputStream {
 
-
   public DataOutputStream(OutputStream out) {
-    super(out); // 연결할 부품을 수퍼클래스 생성자를 통해 보관해둔다.
+    super(out); // 연결할 부품을 수퍼 클래스 생성자를 통해 보관해 둔다.
   }
 
   public void writeUTF(String str) throws Exception {

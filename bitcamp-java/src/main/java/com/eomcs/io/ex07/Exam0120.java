@@ -35,7 +35,7 @@ public class Exam0120 {
     member.age += in.read() << 8;
     member.age += in.read();
 
-    // 3) boolean 값 읽는다.
+    // 3) boolean 값을 읽는다.
     if (in.read() == 1)
       member.gender = true;
     else
@@ -44,6 +44,7 @@ public class Exam0120 {
     in.close();
 
     System.out.println(member);
+
     // 매번 이런 식으로 코딩을 해야 한다면
     // 읽어들일 항목이 많을 경우 코드가 매우 복잡할 것이다.
     // 해결책?

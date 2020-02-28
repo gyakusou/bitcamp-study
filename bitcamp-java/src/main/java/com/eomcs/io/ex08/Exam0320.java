@@ -1,4 +1,4 @@
-// 부품 연결 예 1 : FileInputStream ---> DataInputStream
+// 부품 연결 예 : FileInputStream --> DataInputStream
 package com.eomcs.io.ex08;
 
 import java.io.FileInputStream;
@@ -25,7 +25,6 @@ public class Exam0320 {
     System.out.println(end - start);
 
     in.close();
-
   }
 }
 

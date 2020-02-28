@@ -28,7 +28,7 @@ public class Exam0120 {
     list.add(0, "zzz"); // zzz, bbb, yyy, xxx, ddd
     print(list);
 
-    // 삽입할 인덱스가 배열의 크기를 가리킬 경우 맨 끝에 추가한다.
+    // 삽입할 인덱스가 배열의 크기를 가리킬 경우, 맨 끝에 추가한다.
     list.add(5, "ttt"); // zzz, bbb, yyy, xxx, ddd, ttt
     print(list);
 

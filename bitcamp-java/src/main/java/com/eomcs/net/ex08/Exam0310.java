@@ -8,23 +8,12 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
-
-// https://mvnrepository.com/
-// 검색 Apache HttpClient
-// 최신버전 compile group~ 복사
-// 해당 프로젝트 build.gradle 에 dependencies에 붙여넣기
-// compile group -> implementation group 으로 변경 저장
-// 파워쉘
-// 해당 프로젝트로 들어가서 gradle cleanEclipse 수행 후 gradle eclipse 수행
-// 이클립스에서 리프레쉬
-
 public class Exam0310 {
 
   public static void main(String[] args) throws Exception {
 
-    // HTTP 프로토콜을 좀 더 정밀하게 제어하고 싶다면
+    // HTTP 프로토콜을 좀 더 정밀하게 제어하고 싶다면,
     // Apache의 HttpClient 라이브러리를 사용하라.
-    //
     // => HttpClient, HttpGet 등 클래스가 있다.
     // => www.apache.org 사이트에서 제공하는 HttpComponent 라이브러리에 들어 있는 클래스이다.
     // => 사용하려면 먼저 외부 라이브러리를 프로젝트로 가져와야 한다.
@@ -65,3 +54,5 @@ public class Exam0310 {
   }
 
 }
+
+

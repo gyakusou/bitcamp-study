@@ -8,7 +8,6 @@ import java.util.Scanner;
 
 public class Client0110 {
   public static void main(String[] args) {
-
     Scanner keyScan = new Scanner(System.in);
 
     try (Socket socket = new Socket("localhost", 8888);
@@ -22,8 +21,8 @@ public class Client0110 {
 
       System.out.println("서버와 연결되었음!");
 
-      // 서버에 데이터를 보내기 전에 잠깐 멈춤
-      System.out.println(">");
+      // 서버에 데이터를 보내기 전에 잠깐 멈춤!
+      System.out.print(">");
       keyScan.nextLine();
 
       // 서버에게 데이터 보내기
@@ -31,11 +30,9 @@ public class Client0110 {
       // - 실제 write()는 소켓의 내부 버퍼로 출력한다.
       // 따라서 write() 호출 후 즉시 리턴될 것이다.
       out.write(100);
-
       // out.flush();
       // byte stream 을 사용할 때는 바로 출력한다.
       // 따라서 flush()를 호출하지 않아도 된다.
-
       System.out.println("서버에 데이터를 보냈음!");
 
       // 서버의 응답을 받는다.

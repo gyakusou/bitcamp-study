@@ -17,6 +17,7 @@ public class Exam0420 {
 
     try (Scanner keyScan = new Scanner(System.in)) {
 
+      // 사용자로부터 제목, 내용을 입력 받는다.
       System.out.print("제목? ");
       title = keyScan.nextLine();
 
@@ -43,7 +44,6 @@ public class Exam0420 {
 
     try (Connection con = DriverManager.getConnection( //
         "jdbc:mysql://localhost:3306/studydb?user=study&password=1111");
-
         PreparedStatement stmt = con.prepareStatement( //
             "insert into x_board(title,contents) values(?,?)", //
             Statement.RETURN_GENERATED_KEYS);) {
@@ -72,4 +72,5 @@ public class Exam0420 {
     }
   }
 }
+
 

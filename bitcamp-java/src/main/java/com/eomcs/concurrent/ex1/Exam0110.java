@@ -11,8 +11,6 @@ public class Exam0110 {
       System.out.println("==> " + i);
     }
 
-    System.out.println("--------------------------------------------------");
-
     for (int i = 0; i < 1000; i++) {
       System.out.println(">>> " + i);
     }

@@ -1,4 +1,4 @@
-// 멀티 스레드 재사용 - Pooling 기법을 이용하여 생성된 객체를 재활용하기 // 플라이웨이트 기법 = 풀링 기법
+// 멀티 스레드 재사용 - Pooling 기법을 이용하여 생성된 객체를 재활용하기
 package com.eomcs.concurrent.ex6;
 
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public class Exam0210 {
       synchronized (this) {
         try {
           while (true) {
-            // 작업하라는 알림이 올 때 까지 기다린다.
+            // 작업하라는 알림이 올 때까지 기다린다.
             wait();
 
             // 알림이 오면 작업을 실행한다.
@@ -47,7 +47,6 @@ public class Exam0210 {
   }
 
   interface ThreadPool {
-
     Thread get();
 
     void add(Thread obj);
@@ -56,16 +55,16 @@ public class Exam0210 {
   static class MyThreadPool implements ThreadPool {
     ArrayList<MyThread> list = new ArrayList<>();
 
-    public MyThreadPool() { // this 어디 소속인지 알려준다.
-      MyThread t1 = new MyThread("1번 스레드==>", this);
+    public MyThreadPool() {
+      MyThread t1 = new MyThread("1번 스레드=>", this);
       t1.start();
       list.add(t1);
 
-      MyThread t2 = new MyThread("2번 스레드***", this);
+      MyThread t2 = new MyThread("2번 스레드***>", this);
       t2.start();
       list.add(t2);
 
-      MyThread t3 = new MyThread("3번 스레드&&&", this);
+      MyThread t3 = new MyThread("3번 스레드-->", this);
       t3.start();
       list.add(t3);
     }
@@ -83,15 +82,12 @@ public class Exam0210 {
     @Override
     public void add(Thread t) {
       list.add((MyThread) t);
-
     }
   }
 
-  // 스레드풀 준비!
-
-
   public static void main(String[] args) {
 
+    // 스레드풀 준비!
     MyThreadPool threadPool = new MyThreadPool();
 
     Scanner keyScan = new Scanner(System.in);

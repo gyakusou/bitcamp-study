@@ -42,9 +42,9 @@ public class Exam0520 {
             "insert into x_board(title,contents) values(?,?)", //
             Statement.RETURN_GENERATED_KEYS);) {
 
-      // 트랜잭션 (transaction)?
-      // 여러개의 데이터 변경 작업을 한 단위로 묶은 것.
-      // => 한 단위로 모인 모든 작업이 성공했을 때 작업 결과를 저장한다.
+      // 트랜잭션(transaction)?
+      // => 여러 개의 데이터 변경 작업을 한 단위로 묶은 것.
+      // => 한 단위로 묶인 모든 작업이 성공 했을 때 그 작업 결과를 저장한다.
       //
       // 여러 작업을 트랜잭션으로 묶는 방법?
       // => autocommit을 수동으로 전환한다.
@@ -82,8 +82,9 @@ public class Exam0520 {
         System.out.println("첨부파일 등록 완료!");
 
         // 트랜잭션 작업 승인
-        // => 지금까지 수행한 작업을 저장하라고 서버의 요청한다.
+        // => 지금까지 수행한 작업을 저장하라고 서버에 요청한다.
         // => commit()을 호출하지 않으면 서버에 요청한 데이터 변경 작업은 자동 취소된다.
+        //
         con.commit();
 
       } catch (Exception e) {

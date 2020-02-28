@@ -16,7 +16,6 @@ public class Exam0350 {
       // executeUpdate()
       // => DBMS 서버에 update 문을 보낸다.
       // => 리턴 값: 변경된 레코드의 개수이다.
-      // Exam0340 결과값 출력하면서 비교 확인
       int count = stmt.executeUpdate( //
           "update x_board set view_count = view_count + 20" //
               + " where board_id > 1");

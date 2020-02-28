@@ -12,7 +12,7 @@ public class Server0220 {
     System.out.println("서버 실행");
 
     // => new ServerSocket(포트번호, 대기열크기);
-    // 대기열 = back log
+    //
     ServerSocket ss = new ServerSocket(8888, 2);
     System.out.println("서버 소켓 생성 완료!");
     System.out.println("클라이언트 연결을 기다리는 중...");

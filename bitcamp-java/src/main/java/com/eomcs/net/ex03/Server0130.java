@@ -1,4 +1,4 @@
-// 클라이언트와 입출력 테스트 : byte stream : Data 주고 받기
+// 클라이언트와 입출력 테스트 - byte stream : Data 주고 받기
 package com.eomcs.net.ex03;
 
 import java.io.DataInputStream;
@@ -15,13 +15,14 @@ public class Server0130 {
       System.out.println("클라이언트의 연결을 기다리고 있음.");
 
       try (Socket socket = serverSocket.accept();
-          DataOutputStream out = new DataOutputStream(socket.getOutputStream()); // Data 데코레이터를 붙인다.
+          DataOutputStream out = new DataOutputStream(socket.getOutputStream());
           DataInputStream in = new DataInputStream(socket.getInputStream())) {
 
-        System.out.println("클라이언트가 보낸 int 값을 기다리고있음");
+        System.out.println("클라이언트가 보낸 int 값을 기다리고 있음!");
 
         int value = in.readInt();
         System.out.println(value);
+
 
         System.out.println("데이터를 보내기 전에 잠깐!");
         keyboard.nextLine();

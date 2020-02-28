@@ -49,7 +49,7 @@ public class CalcServer {
             result = a / b;
             break;
           case "quit":
-            break loop; // while 문 나가기
+            break loop;
         }
 
         out.printf("%d %s %d = %d\n", a, op, b, result);

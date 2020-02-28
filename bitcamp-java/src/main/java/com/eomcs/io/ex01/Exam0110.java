@@ -11,11 +11,11 @@ public class Exam0110 {
     // => 파일이나 디렉토리를 생성,삭제,변경
 
     // 현재 폴더 정보 조회
-    // "." : 현재 폴더
-    // : 이클립스에서는 프로젝트 폴더를 가리킨다.
-    // : 콘솔에서는 현재 명령어를 실행하는 위치를 가리킨다.
-    // ".." - 상위 폴더
-    // '\' escape 문자로 인식 역슬래시로 고스란히 인식시키기 위해서는 '\\' 두개 붙여야 역슬래시로 인식한다.
+    // - "." 으로 경로를 표시한다.
+    // - 이클립스에서 프로그램을 실행한다면 . 은 프로젝트 폴더를 가리킨다.
+    // - 콘솔에서 프로그램을 실행한다면 . 은 현재 명령어를 실행하는 위치를 가리킨다.
+    // - 상위 경로는 ".."으로 표시한다.
+    //
     File currentDir = new File(".");
     System.out.printf("폴더명: %s\n", currentDir.getName());
     System.out.printf("경로: %s\n", currentDir.getPath());
@@ -33,7 +33,8 @@ public class Exam0110 {
     System.out.printf("감춤폴더: %b\n", currentDir.isHidden());
     System.out.printf("존재여부: %b\n", currentDir.exists());
     System.out.printf("실행가능여부: %b\n", currentDir.canExecute());
-
   }
 
 }
+
+

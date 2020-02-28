@@ -23,7 +23,7 @@ public class Client0310 {
     // => 타임아웃으로 지정된 시간 안에 서버와 연결되지 않으면 즉시 예외가 발생한다.
     //
     System.out.println("서버와 연결 중...");
-    socket.connect(socketAddress, 5000); // timeout : milliseconds 1000=1초
+    socket.connect(socketAddress, 5000); // timeout : milliseconds
     System.out.println("서버와 연결되었음!");
 
     keyScan.nextLine(); // 사용자가 엔터를 칠 때까지 다음 코드로 이동하지 않는다.

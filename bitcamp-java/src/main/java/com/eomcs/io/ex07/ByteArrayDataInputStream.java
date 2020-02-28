@@ -10,10 +10,10 @@ public class ByteArrayDataInputStream extends ByteArrayInputStream {
 
   public String readUTF() throws Exception {
     // 상속 받은 read() 메서드를 사용하여 문자열 출력
-    int size = this.read(); // 문자열이 몇 바이트로 되어있는지 문자열 바이트 개수를 알아내고
-    byte[] bytes = new byte[size]; // 그 개수 만큼 배열을 만들고
-    this.read(bytes); // 이름 배열 개수 만큼 바이트를 읽어 배열에 저장한다.
-    return new String(bytes, "UTF-8"); // 배열에 저장된 문자코드를 가지고 객체를 만든다.
+    int size = this.read();
+    byte[] bytes = new byte[size];
+    this.read(bytes); // 배열 개수 만큼 바이트를 읽어 배열에 저장한다.
+    return new String(bytes, "UTF-8");
   }
 
   public int readInt() throws Exception {

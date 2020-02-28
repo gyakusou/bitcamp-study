@@ -31,14 +31,12 @@ public class Exam0210 {
   // => 메서드 호출자에게 알려주는 것이다.
   static void m1() throws Throwable {
     throw new Throwable(); // OK!
-    // 예외를 던질 때 Throwable 클래스를 직접 사용하지 말라
+    // 예외를 던질 때 Throwable 클래스를 직접 사용하지 말라!
     // 그 하위 클래스를 사용하라.
     // 특히 애플리케이션 오류를 의미하는 Exception 클래스를 사용하라.
   }
 
-
-
-  // 여러개의 오류를 던지는 경우 메서드 선언부에 그대로 나열하라.
+  // 여러 개의 오류를 던지는 경우 메서드 선언부에 그대로 나열하라.
   static void m2() throws FileNotFoundException, RuntimeException {
     int a = 100;
     if (a < 0)
@@ -46,4 +44,7 @@ public class Exam0210 {
     else
       throw new RuntimeException(); // OK!
   }
+
+  public static void main(String[] args) {}
+
 }

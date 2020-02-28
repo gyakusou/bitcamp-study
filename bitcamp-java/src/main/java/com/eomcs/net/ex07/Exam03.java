@@ -8,7 +8,6 @@ public class Exam03 {
   public static void main(String[] args) throws Exception {
     // 웹 상에서 자원의 위치를 표현하는 방법
     URL url = new URL("http://www.bitcamp.co.kr/a/b/hello.html#footer");
-    // # (html 문서)안의 위치 표현할 때 // 아래 주석 참조
 
     // URL 분석
     System.out.printf("프로토콜: %s\n", url.getProtocol());

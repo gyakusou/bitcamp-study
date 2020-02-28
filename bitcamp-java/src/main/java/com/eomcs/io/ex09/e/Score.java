@@ -30,7 +30,7 @@ public class Score implements Serializable {
   transient float aver;
 
   public Score() {
-    System.out.println("Score() 생성자 호출");
+    System.out.println("Score() 생성자 호출!");
   }
 
   public void compute() {

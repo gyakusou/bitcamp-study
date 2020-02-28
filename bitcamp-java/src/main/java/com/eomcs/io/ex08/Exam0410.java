@@ -1,4 +1,4 @@
-// 부품 연결 예 1 : FileOutputStream ---> BufferedOutputStream ---> DataOutputStream
+// 부품 연결 예 : FileOutputStream --> BufferedOutputStream --> DataOutputStream
 package com.eomcs.io.ex08;
 
 import java.io.FileOutputStream;
@@ -8,8 +8,9 @@ public class Exam0410 {
   public static void main(String[] args) throws Exception {
 
     FileOutputStream fileOut = new FileOutputStream("temp/test7.data");
+
     // 데코레이터 설계 기법의 장점은
-    // 다음과 같이 필요한 기능을 쉽게 삽입 할 수 있다는 것이다.
+    // 다음과 같이 필요한 기능을 쉽게 삽입할 수 있다는 것이다.
     BufferedOutputStream bufOut = new BufferedOutputStream(fileOut);
 
     DataOutputStream out = new DataOutputStream(bufOut);

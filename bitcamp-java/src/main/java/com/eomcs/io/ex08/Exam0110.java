@@ -8,16 +8,16 @@ public class Exam0110 {
   public static void main(String[] args) throws Exception {
 
     // 상속을 통한 기능 확장의 문제점
-    // - 자바는 다중 상속이 불가능 하기 때문에
+    // - 자바는 다중 상속이 불가능하기 때문에
     // 여러 클래스에 있는 기능을 조합하려면
-    // 별도의 클래스를 생성하여 기존 코드를 복사해와야한다.
+    // 별도의 클래스를 생성하여 기존 코드를 복사해 와야 한다.
     // - 결국 코드가 중복되는 문제가 발생한다.
     // - 또한 상황에 따라 다양한 조합을 수행하다 보면
     // 중복 코드를 갖는 클래스가 많이 생성된다.
-    // - 이 또한 유지보수를 어렵게 하는 요인인 것이다.
+    // - 이 또한 유지보수를 어렵하는 요인인 것이다.
     //
     // 해결책?
-    // - 확장 기능을 장식품(Decoration) 붙였다 뗏다 할 수 있게 만들자.
+    // - 확장 기능을 장식품(decorator)처럼 붙였다 뗐다 할 수 있게 만들자.
     // - 예) 레고 블록
     // 모든 블록은 붙이는 부분이 같은 유형으로 되어 있다.
     // 그래서 다른 블록에 마음대로 붙였다 뗄 수 있다.
@@ -31,12 +31,11 @@ public class Exam0110 {
     // 첫 번째 부품
     FileOutputStream fileOut = new FileOutputStream("temp/test6.data");
 
-    // 부품추가
+    // 부품 추가
     // - 기존의 FileOutputStream 객체에 String,int,boolean 값을 출력하는
     // 장신구/보조장치/플러그인(decorator)을 장착한다.
-    // - 장신구 객체를 생성할 때 이 장신구가 사용할 부품을 생성자 파라미터로 전달한다.
-    DataOutputStream out = new DataOutputStream(fileOut); // fileOut을 DataOutputStream와 연결 실제로 일은
-                                                          // FileOutputStream (fileOut)이 한다.
+    // - 장신구 객체를 생성할 때 이 장식구가 사용할 부품을 생성자 파라미터로 전달한다.
+    DataOutputStream out = new DataOutputStream(fileOut);
 
     Member member = new Member();
     member.name = "AB가각간";

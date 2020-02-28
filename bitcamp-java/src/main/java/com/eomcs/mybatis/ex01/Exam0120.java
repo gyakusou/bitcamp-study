@@ -46,7 +46,29 @@ public class Exam0120 {
 
     sqlSession.close();
   }
-
 }
+
+// selectList() 동작 원리
+// --------------------------------------------------------------------
+// <select id="selectBoard" resultType="com.eomcs.mybatis.ex01.Board">
+// select
+// board_id,
+// title,
+// contents,
+// created_date,
+// view_count
+// from x_board
+// </select>
+// --------------------------------------------------------------------
+// => resultType 에 지정한 클래스의 인스턴스를 생성한다.
+// => 컬럼 이름과 일치하는 프로퍼티를 찾아 값을 입력한다.
+// board_id -> setBoard_id(컬럼값)
+// title -> setTitle(컬럼값)
+// contents -> setContents(컬럼값)
+// created_date -> setCreated_date(컬럼값)
+// view_count -> setView_count(컬럼값)
+// => 컬럼 이름과 일치하는 프로퍼티(setter)가 없다면
+// 그 컬럼의 값은 객체에 담을 수 없다
+// => 이 예제에서 컬럼 이름과 일치하는 프로퍼티는 title 밖에 없다.
 
 

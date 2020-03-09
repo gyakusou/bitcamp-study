@@ -1,4 +1,4 @@
-// // dynamic sql 다루기 - 조건문 사용 후
+// // dynamic sql 다루기 - 조건문 사용 2
 package com.eomcs.mybatis.ex03;
 
 import java.io.InputStream;
@@ -41,9 +41,10 @@ public class Exam1130 {
     List<Board> list = sqlSession.selectList("BoardMapper.select4", params);
 
     for (Board board : list) {
-      System.out.printf("%d, %s, %s, %d\n", //
+      System.out.printf("%d, %s, %s, %s, %d\n", //
           board.getNo(), //
           board.getTitle(), //
+          board.getContent(), //
           board.getRegisteredDate(), //
           board.getViewCount());
     }

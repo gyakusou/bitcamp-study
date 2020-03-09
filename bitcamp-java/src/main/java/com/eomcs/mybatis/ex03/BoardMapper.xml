@@ -70,7 +70,7 @@
     where title like concat('%', #{keyword}, '%')
     </if>
     <if test="item == 3">
-    where content=#{keyword}
+    where contents like concat('%', #{keyword}, '%')
     </if>
   </select>
   <!-- 1번 번호, 2번 제목, 3번 내용  -->

@@ -25,7 +25,7 @@
     <mapper resource="com/eomcs/mybatis/ex03/BoardMapper.xml"/>
   </mappers>
 </configuration>
-
+ 
 
 
 

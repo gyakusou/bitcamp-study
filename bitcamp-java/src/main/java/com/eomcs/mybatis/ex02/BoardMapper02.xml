@@ -9,7 +9,8 @@
        컬럼의 이름이 프로퍼티 이름과 다르다면,
        셋터를 호출할 수 없다.
        컬럼 이름을 프로퍼티 이름과 일치시켜야만 정확하게 호출할 수 있다.
-       select 문에서 컬럼의 별명을 프로퍼티명과 같게 하라! --> 
+       select 문에서 컬럼의 별명을 프로퍼티명과 같게 하라! 
+       as 생략 가능. --> 
   <select id="selectBoard" resultType="Board">
     select 
       board_id as no,     <!-- Board.setNo() 호출 as ~ 컬럼의 별명을 프로퍼티 이름과 맞추면 된다.-->

@@ -1,4 +1,4 @@
-// // dynamic sql 다루기 - <bind> 사용법
+// dynamic sql 다루기 - <bind> 사용법
 package com.eomcs.mybatis.ex03;
 
 import java.io.InputStream;
@@ -37,6 +37,7 @@ public class Exam0280 {
     List<Board> list = sqlSession.selectList("BoardMapper.select26", params);
     // <bind> 태그를 사용하면
     // => like 문의 문자열 패턴을 만들 때 편하다.
+
 
     for (Board board : list) {
       System.out.printf("%d, %s, %s, %s, %d\n", //

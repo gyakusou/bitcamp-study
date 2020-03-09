@@ -52,11 +52,11 @@
        
        while (rs.next()) {
            Board board = new Board();
-           board.setBoard_id(rs.getNo("board_id")); // 이런 셋터가 없다.
-           board.setTitle(rs.getString("title")); // 이 셋터는 있다.
-           board.setContents(rs.getString("contents")); // 이런 셋터가 없다.
-           board.setCreated_date(rs.getDate("created_date")); // 이런 셋터가 없다.
-           board.setView_count(rs.getDate("view_count")); // 이런 셋터가 없다.
+           board.setBoard_id(rs.getNo("board_id")); // 이런 셋터가 없다. // setter = no
+           board.setTitle(rs.getString("title")); // 이 셋터는 있다. // setter = title
+           board.setContents(rs.getString("contents")); // 이런 셋터가 없다. // setter = content
+           board.setCreated_date(rs.getDate("created_date")); // 이런 셋터가 없다. // setter = registeredDate
+           board.setView_count(rs.getDate("view_count")); // 이런 셋터가 없다. // setter = viewCount
            list.add(board);
        } 
        return list;

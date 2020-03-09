@@ -50,8 +50,8 @@
       created_date,
       view_count 
     from x_board
-    <if test="value != null">
-    where board_id=#{value}
+    <if test="no != null">
+    where board_id=#{no}
     </if>
   </select>
   

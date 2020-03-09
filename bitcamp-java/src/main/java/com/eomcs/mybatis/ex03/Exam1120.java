@@ -37,10 +37,16 @@ public class Exam1120 {
 
     try {
       // 게시글 번호가 주어지면 해당 게시글만 출력한다.
-      list = sqlSession.selectList("BoardMapper.select1", Integer.parseInt(str));
+      list = sqlSession.selectList("BoardMapper.select3", Integer.parseInt(str));
     } catch (Exception e) {
-      // 게시글 번호가 없으면 전체 게시글을 출력한다.
-      list = sqlSession.selectList("BoardMapper.select2");
+      e.printStackTrace();
+      // 게시글 번호가 없거나 예외가 발생하면 전체 게시글을 출력한다.
+      list = sqlSession.selectList("BoardMapper.select3");
+
+      // 이 때 같은 SQL문(select3)을 실행한다.
+      // => Mapper 파일에서 조건으로 SQL을 제어한다.
+      // => 조건에 따라 여러개의 SQL문을 생성할 필요가 없어 편리하다.
+      // => 다만 SQL 문을 작성하는데 복잡하다.
     }
     for (Board board : list) {
       System.out.printf("%d, %s, %s, %d\n", //

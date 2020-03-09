@@ -29,7 +29,8 @@
     <result column="view_count" property="viewCount"/>
   </resultMap>
   
-  <!-- 위에서 정의한 연결 정보를 사용하고 싶다면,
+  <!-- ★
+       위에서 정의한 연결 정보를 사용하고 싶다면,
        resultMap="컬럼과 프로퍼티의 연결을 정의한 resultMap 아이디" 를 설정하라! 
        참고!
        resultType="클래스명 또는 별명"

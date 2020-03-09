@@ -10,10 +10,11 @@ public class Exam0112 {
 
   public static void main(String[] args) throws Exception {
 
-    // 코드정리
+    // 코드정리 ★
     //
     SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(//
-        Resources.getResourceAsStream("com/eomcs/mybatis/ex01/mybatis-config.xml"));
+        Resources.getResourceAsStream(//
+            "com/eomcs/mybatis/ex01/mybatis-config.xml"));
 
     SqlSession sqlSession = factory.openSession();
 

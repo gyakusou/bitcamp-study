@@ -12,7 +12,7 @@
        select 문에서 컬럼의 별명을 프로퍼티명과 같게 하라! --> 
   <select id="selectBoard" resultType="Board">
     select 
-      board_id as no,     <!-- Board.setNo() 호출 -->
+      board_id as no,     <!-- Board.setNo() 호출 as ~ 컬럼의 별명을 프로퍼티 이름과 맞추면 된다.-->
       title,              <!-- Board.setTitle() 호출 -->
       contents content,   <!-- Board.setContent() 호출 -->
       created_date as registeredDate, <!-- Board.setRegisteredDate() 호출 -->

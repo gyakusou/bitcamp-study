@@ -37,6 +37,9 @@ public class Exam0120 {
     // -- SQL 문장 아이디 : <select id="SQL문장 아이디">...</select>
     // - 파라미터 값 = primitive type 및 모든 자바 객체가 가능하다.
     // --여러 개의 값을 전달할 때는 Map에 담아 넘겨라!
+    //
+    // boardMapper 의 namespace = BoardMapper / id = selectBoard
+    //
     List<Board> list = sqlSession.selectList("BoardMapper.selectBoard");
 
     for (Board board : list) {

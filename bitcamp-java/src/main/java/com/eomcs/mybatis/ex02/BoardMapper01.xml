@@ -37,7 +37,7 @@
    -->
   <select id="selectBoard" resultType="Board">
     select 
-      board_id, <!-- Board.setBoard_id() 호출 -->
+      board_id, <!-- Board.setBoard_id() 호출 // 프로퍼티는 setter getter 메서드의 이름 -->
       title,    <!-- Board.setTitle() 호출 -->
       contents, <!-- Board.setContents() 호출 -->
       created_date, <!-- Board.setCreated_date() 호출 -->

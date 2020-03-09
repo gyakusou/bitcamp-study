@@ -231,6 +231,23 @@
     </where>
   </select>  
   
+  <select id="select23" resultMap="BoardMap" parameterType="map">
+    select 
+      board_id,
+      title, 
+      contents, 
+      created_date,
+      view_count 
+    from x_board
+    <where> 
+      <foreach collection="noList" item="no">
+        or board_id = #{no}
+      </foreach>
+    </where>
+  </select>  
+  
+  <!-- arrayList 에서 꺼낸 값을 no 라고 하고 noList에 넣는다. -->
+  
 </mapper>
 
 

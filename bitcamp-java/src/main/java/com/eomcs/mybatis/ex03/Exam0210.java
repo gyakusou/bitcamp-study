@@ -25,7 +25,7 @@ public class Exam0210 {
     // => 제목, 내용, 번호로 검색하기
 
     Scanner keyScan = new Scanner(System.in);
-    System.out.print("항목(1:번호, 2:제목, 3:내용, 그외:전체)? ");
+    System.out.print("항목(1:번호, 2:제목, 그 외:내용)? ");
     String item = keyScan.nextLine();
 
     System.out.print("검색어? ");
@@ -38,7 +38,7 @@ public class Exam0210 {
     params.put("item", item);
     params.put("keyword", keyword);
 
-    List<Board> list = sqlSession.selectList("BoardMapper.select4", params);
+    List<Board> list = sqlSession.selectList("BoardMapper.select8", params);
 
     for (Board board : list) {
       System.out.printf("%d, %s, %s, %s, %d\n", //

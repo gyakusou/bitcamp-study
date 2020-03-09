@@ -1,4 +1,4 @@
-// dynamic sql 다루기 - <where> 사용 후
+// dynamic sql 다루기 - <trim> 사용법
 package com.eomcs.mybatis.ex03;
 
 import java.io.InputStream;
@@ -49,11 +49,11 @@ public class Exam0170 {
 
     keyScan.close();
 
-    List<Board> list = sqlSession.selectList("BoardMapper.select7", params);
+    List<Board> list = sqlSession.selectList("BoardMapper.select8", params);
 
-    // select7의 이점
+    // select8:
+    // => <where> 대신에 <trim>을 사용하여 불필요한 SQL 코드 제거
     // => or/and 앞에 조건이 없을 때 or/and를 자동으로 제거한다.
-    // => where 조건이 없을 때는 where절을 생성하지 않는다.
 
     for (Board board : list) {
       System.out.printf("%d, %s, %s, %s, %d\n", //

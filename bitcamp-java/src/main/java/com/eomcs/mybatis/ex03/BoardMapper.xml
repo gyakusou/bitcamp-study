@@ -165,6 +165,32 @@
   
   <!-- choose when otherwise 문 -->
   
+  <select id="select8" resultMap="BoardMap" parameterType="map">
+    select 
+      board_id, <!-- BoardMap의 연결정보를 참조하기 때문에 별명을 주지 않아도 된다. -->
+      title, 
+      contents, 
+      created_date,
+      view_count 
+    from x_board
+    
+    <trim prefix="where" prefixOverrides="OR | AND"> 
+    <!-- or/and 앞에 아무것도 없을 때 or/and 를 자동으로 제거한다. ★ -->
+    
+    <if test="no != null">
+    board_id=#{no} 
+    </if>
+    <if test="title != null">
+    or title like concat('%', #{title}, '%')
+    </if>
+    <if test="content != null">
+    or contents like concat('%', #{content}, '%')
+    </if>
+    </trim>
+  </select>
+  
+  <!-- trim문 -->
+  
 </mapper>
 
 

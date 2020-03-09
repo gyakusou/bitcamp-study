@@ -35,10 +35,17 @@ public class Exam0210 {
 
     // SQL Mapper 에 여러개의 파라미터 값을 넘길 때 주로 Map을 사용한다.
     HashMap<String, Object> params = new HashMap<>();
-    params.put("item", item);
+    if (item.equals("1")) {
+      params.put("item", "no");
+    } else if (item.equals("2")) {
+      params.put("item", "title");
+    } else {
+      params.put("item", "content");
+    }
+
     params.put("keyword", keyword);
 
-    List<Board> list = sqlSession.selectList("BoardMapper.select8", params);
+    List<Board> list = sqlSession.selectList("BoardMapper.select21", params);
 
     for (Board board : list) {
       System.out.printf("%d, %s, %s, %s, %d\n", //

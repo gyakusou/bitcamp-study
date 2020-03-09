@@ -141,7 +141,7 @@
     </where>
   </select>
   
-  <select id="select8" resultMap="BoardMap" parameterType="map">
+  <select id="select21" resultMap="BoardMap" parameterType="map">
     select 
       board_id, <!-- BoardMap의 연결정보를 참조하기 때문에 별명을 주지 않아도 된다. -->
       title, 
@@ -151,10 +151,10 @@
     from x_board
 	  where
 	  <choose>
-	    <when test="item == 1">
+	    <when test="item == 'no'">
 	    board_id=#{keyword}
 	    </when>
-	    <when test="item == 2">
+	    <when test='item == "title"'>
 	    title like concat('%', #{keyword}, '%')
 	    </when>
 	    <otherwise>
@@ -162,6 +162,8 @@
 	    </otherwise>
 	  </choose> 
   </select>
+  
+  <!-- choose when otherwise 문 -->
   
 </mapper>
 

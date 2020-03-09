@@ -248,6 +248,46 @@
   
   <!-- arrayList 에서 꺼낸 값을 no 라고 하고 noList에 넣는다. -->
   
+  <select id="select24" resultMap="BoardMap" parameterType="map">
+    select 
+      board_id,
+      title, 
+      contents, 
+      created_date,
+      view_count 
+    from x_board
+    
+    <where> 
+      board_id in <!-- 1, 2, 11, 12 --> 
+      <foreach collection="noList" item="no" open="(" separator="," close=")">
+        #{no}
+      </foreach>
+    </where>
+  </select>  
+  <!-- in 은 컬럼 값이 1, 2 .. 인것만 셀렉한다. 
+  where board_id in (1, 2, 11, 12, 15) -->
+  
+  <!-- 주석 1. xml 주석. 서버에 보내지 않는다. 실행에 영향을 끼치지 않는다. -->
+  /* 주석2. 주석. 서버에 보내진다. 실행에 영향을 끼지지 않는다. */
+  
+    <select id="select25" resultMap="BoardMap" parameterType="map">
+    select 
+      board_id,
+      title, 
+      contents, 
+      created_date,
+      view_count 
+    from x_board
+    
+    <where> 
+      board_id in <!-- 1, 2, 11, 12 --> 
+      <foreach collection="noList" item="no" open="(" separator="," close=")">
+        #{no}
+      </foreach>
+    </where>
+  </select> 
+  
+  
 </mapper>
 
 

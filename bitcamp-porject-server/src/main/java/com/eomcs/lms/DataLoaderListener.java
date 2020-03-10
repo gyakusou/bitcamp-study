@@ -41,7 +41,7 @@ public class DataLoaderListener implements ApplicationContextListener {
 
       // 이 메서드를 호출한 쪽(App)에서 DAO 객체를 사용할 수 있도록 Map 객체에 담아둔다.
       context.put("boardDao", new BoardDaoImpl(sqlSessionFactory));
-      context.put("lessonDao", new LessonDaoImpl(dataSource));
+      context.put("lessonDao", new LessonDaoImpl(sqlSessionFactory));
       context.put("memberDao", new MemberDaoImpl(dataSource));
       context.put("photoBoardDao", new PhotoBoardDaoImpl(dataSource));
       context.put("photoFileDao", new PhotoFileDaoImpl(dataSource));

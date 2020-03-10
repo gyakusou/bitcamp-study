@@ -19,6 +19,8 @@ repositories {
 }
 
 dependencies {
+    // Mybatis
+    implementation 'org.mybatis:mybatis:3.5.4'
     // MariaDB
     implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.5.4'
     // JSON 형식의 문자열을 다루는 라이브러리

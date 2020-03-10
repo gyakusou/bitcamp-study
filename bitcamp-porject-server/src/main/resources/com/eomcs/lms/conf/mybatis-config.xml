@@ -2,7 +2,6 @@
 <!DOCTYPE configuration
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
-  
 <configuration>
   <properties resource="com/eomcs/lms/conf/jdbc.properties"></properties>
 
@@ -30,11 +29,12 @@
     <mapper resource="com/eomcs/lms/mapper/BoardMapper.xml"/>
     <mapper resource="com/eomcs/lms/mapper/LessonMapper.xml"/>
     <mapper resource="com/eomcs/lms/mapper/MemberMapper.xml"/>
-     <mapper resource="com/eomcs/lms/mapper/PhotoFileMapper.xml"/>
+    <mapper resource="com/eomcs/lms/mapper/PhotoBoardMapper.xml"/>
+    <mapper resource="com/eomcs/lms/mapper/PhotoFileMapper.xml"/>
   </mappers>
 </configuration>
 
- 
+
 
 
 

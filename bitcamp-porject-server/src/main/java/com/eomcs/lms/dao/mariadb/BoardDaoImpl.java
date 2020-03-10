@@ -10,13 +10,13 @@ public class BoardDaoImpl implements BoardDao {
 
   SqlSessionFactory sqlSessionFactory;
 
-  public BoardDaoImpl(SqlSessionFactory sqlSessionFactory) {
+  public BoardDaoImpl( //
+      SqlSessionFactory sqlSessionFactory) {
     this.sqlSessionFactory = sqlSessionFactory;
   }
 
   @Override
   public int insert(Board board) throws Exception {
-
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       int count = sqlSession.insert("BoardMapper.insertBoard", board);
       sqlSession.commit();

@@ -5,22 +5,21 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import com.eomcs.lms.dao.PhotoFileDao;
 import com.eomcs.lms.domain.PhotoFile;
-import com.eomcs.sql.DataSource;
 
 public class PhotoFileDaoImpl implements PhotoFileDao {
 
   SqlSessionFactory sqlSessionFactory;
-  DataSource dataSource;
 
-  public PhotoFileDaoImpl(DataSource dataSource, SqlSessionFactory sqlSessionFactory) {
-    this.dataSource = dataSource;
+  public PhotoFileDaoImpl( //
+      SqlSessionFactory sqlSessionFactory) {
     this.sqlSessionFactory = sqlSessionFactory;
   }
 
   @Override
   public int insert(PhotoFile photoFile) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-      int count = sqlSession.insert("PhotoFileMapper.insertPhotoFile", photoFile);
+      int count = sqlSession.insert(//
+          "PhotoFileMapper.insertPhotoFile", photoFile);
       sqlSession.commit();
       return count;
     }
@@ -29,14 +28,16 @@ public class PhotoFileDaoImpl implements PhotoFileDao {
   @Override
   public List<PhotoFile> findAll(int boardNo) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-      return sqlSession.selectList("PhotoFileMapper.selectPhotoFile", boardNo);
+      return sqlSession.selectList(//
+          "PhotoFileMapper.selectPhotoFile", boardNo);
     }
   }
 
   @Override
   public int deleteAll(int boardNo) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-      int count = sqlSession.delete("PhotoFileMapper.deletePhotoFile", boardNo);
+      int count = sqlSession.delete(//
+          "PhotoFileMapper.deletePhotoFile", boardNo);
       sqlSession.commit();
       return count;
     }

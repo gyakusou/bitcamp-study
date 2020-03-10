@@ -41,7 +41,6 @@
       board_id=#{no}
   </select>
 
-
   <update id="updateBoard" parameterType="Board">
     update lms_board set
      conts=#{title}

@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="BoardMapper">
+<mapper namespace="BoardMapper2">
 
   <resultMap type="Board" id="BoardMap">
     <id column="board_id" property="no"/>
@@ -21,24 +21,22 @@
     <result column="board_id" property="boardNo"/>
   </resultMap>
   
-  <select id="selectBoard" resultMap="BoardMap" parameterType="int">
+  <select id="selectBoardWithFile" resultMap="BoardMap" parameterType="int">
     select 
-      board_id,
-      title, 
-      contents, 
-      created_date,
-      view_count 
-    from x_board
-    <if test="no != null">
-      where board_id = #{no}
-    </if>
+      b.board_id,
+      b.title, 
+      b.contents, 
+      b.created_date,
+      b.view_count,
+      f.board_file_id,
+      f.file_path 
+    from x_board b 
+    join x_board_file f on b.board_id=f.board_id 
+      where b.board_id = #{no}
   </select>
+  <!-- b.board_id=f.board_id 일치하는 것에 대해서 x_board b 정보를 가져와서(왼쪽데이터는 다뽑아낸다.) 
+  x_board_file 와 조인한다. -->
   
-
-<!-- resultType은 패키지를 다 적어야 한다. com.eomcs.mybatis.ex04.AttachFile 
-다 적기 싫을 경우에는 config에서 별명 설정한다. 
-컬럼값의 경우도 resultMap을 미리 정의하면 컬럼 이름이 다르더라도 -->
-
   <select id="selectFile" 
           resultMap="AttachFileMap" 
           parameterType="int">

@@ -27,15 +27,14 @@ public class Exam0120 {
     System.out.printf("조회수: %d\n", board.getViewCount());
     System.out.println();
 
-    // 조인을 사용하지 않으면 다음과 같이
-    // 게시글의 첨부파일 데이터를 따로 조회해야 한다.
+    // 조인을 사용하면
+    // 게시글 객체 안에 첨부파일 객체가 들어 있다.
+    // 그래서 따로 첨부파일을 select 할 필요가 없다.
 
-    // List<AttachFile> files = sqlSession.selectList("BoardMapper.selectFile", 1);
-    //
-    // System.out.println("[첨부파일]");
-    // for (AttachFile file : files) {
-    // System.out.printf("%d, %s\n", file.getNo(), file.getFilePath());
-    // }
+    System.out.println("[첨부파일]");
+    for (AttachFile file : board.getFiles()) {
+      System.out.printf("%d, %s\n", file.getNo(), file.getFilePath());
+    }
 
     sqlSession.close();
   }

@@ -63,12 +63,11 @@
     update lms_member 
     <!--
     set 은 update 할때 사용하면 유용하다. 
-    string 일때 null / ''
-    나머지 null -->
+    string 일때 null / '' 둘다 사용한다. 그 외는 null 만 -->
     <set> 
       <if test="name != null and name != ''">name=#{name},</if>
       <if test="email != null and email != ''">email=#{email},</if>
-      <if test="password != null and password != ''">pwd=password(#{password}),</if>
+      <if test="password != null">pwd=password(#{password}),</if>
       <if test="tel != null and tel != ''">tel=#{tel},</if>
       <if test="photo != null and photo != ''">photo=#{photo}</if>
     </set>

@@ -45,6 +45,14 @@ insert into test1(name,fax,tel,no,pstno,addr)
   자동 증가 컬럼이기 때문에 값을 입력하지 않아도 된다.*/
 insert into test1(name,tel) values('ccc','333');
 ```
+### 여러개의 값을 한 번데 insert 하기
+
+```
+insert into x_board(title,contents) values
+ ('1111', 'xxxx'),
+ ('2222', 'xxxx'),
+ ('3333', 'xxxx');
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ### select 결과를 테이블에 insert하기
 ```

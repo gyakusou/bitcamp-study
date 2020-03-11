@@ -20,8 +20,6 @@ public class PhotoBoardDaoImpl implements PhotoBoardDao {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       int count = sqlSession.insert(//
           "PhotoBoardMapper.insertPhotoBoard", photoBoard);
-      sqlSession.commit();
-      // DAO에서는 commit 해서는 안됀다. insert, delete, udpate 할 때 다른 DAO 작업과 묶일수 없기 때문에
       return count;
     }
   }
@@ -46,7 +44,6 @@ public class PhotoBoardDaoImpl implements PhotoBoardDao {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       int count = sqlSession.update(//
           "PhotoBoardMapper.updatePhotoBoard", photoBoard);
-      sqlSession.commit();
       return count;
     }
   }
@@ -55,7 +52,6 @@ public class PhotoBoardDaoImpl implements PhotoBoardDao {
   public int delete(int no) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       int count = sqlSession.delete("PhotoBoardMapper.deletePhotoBoard", no);
-      sqlSession.commit();
       return count;
     }
   }

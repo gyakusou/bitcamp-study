@@ -18,6 +18,17 @@ public class SqlSessionFactoryProxy implements SqlSessionFactory {
     this.originalFactory = originalFactory;
   }
 
+  // 스레드 작업이 끝난 후 SqlSession 객체를 제거하고 닫는다.
+  public void closeSession() {
+    // 스레드에서 꺼낸다.
+    SqlSession sqlSession = sqlSessionLocal.get();
+    if (sqlSession != null) {
+      sqlSessionLocal.remove(); // 스레드에서 제거
+      // 이제 진짜로 SqlSession을 닫는다.
+      ((SqlSessionProxy) sqlSession).close(); // SqlSession 닫기
+    }
+  }
+
   @Override
   public SqlSession openSession() {
     // 기본으로 자동 커밋으로 동작하는 SqlSession 을 만들어 리턴한다.

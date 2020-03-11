@@ -12,6 +12,10 @@ public class PlatformTransactionManager {
   }
 
   public void beginTransaction() throws Exception {
+
+    // 기존에 스레드에 존재하는 SqlSession 객체를 지운다.
+    ((SqlSessionFactoryProxy) sqlSessionFactory).closeSession();
+
     // 수동 커밋으로 동작하는 SqlSession 객체를 준비한다.
     sqlSessionFactory.openSession(false);
 

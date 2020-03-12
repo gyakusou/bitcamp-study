@@ -30,7 +30,6 @@ public class DataLoaderListener implements ApplicationContextListener {
   public void contextInitialized(Map<String, Object> context) {
 
     try {
-
       // Mybatis 객체 준비
       InputStream inputStream = Resources.getResourceAsStream(//
           "com/eomcs/lms/conf/mybatis-config.xml");

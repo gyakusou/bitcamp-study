@@ -113,12 +113,12 @@ public class ServerApp {
     servletMap.put("/board/update", new BoardUpdateServlet(boardService));
     servletMap.put("/board/delete", new BoardDeleteServlet(boardService));
 
-    servletMap.put("/lesson/list", new LessonListServlet(lessonDao));
-    servletMap.put("/lesson/add", new LessonAddServlet(lessonDao));
-    servletMap.put("/lesson/detail", new LessonDetailServlet(lessonDao));
-    servletMap.put("/lesson/update", new LessonUpdateServlet(lessonDao));
-    servletMap.put("/lesson/delete", new LessonDeleteServlet(lessonDao));
-    servletMap.put("/lesson/search", new LessonSearchServlet(lessonDao));
+    servletMap.put("/lesson/list", new LessonListServlet(lessonService));
+    servletMap.put("/lesson/add", new LessonAddServlet(lessonService));
+    servletMap.put("/lesson/detail", new LessonDetailServlet(lessonService));
+    servletMap.put("/lesson/update", new LessonUpdateServlet(lessonService));
+    servletMap.put("/lesson/delete", new LessonDeleteServlet(lessonService));
+    servletMap.put("/lesson/search", new LessonSearchServlet(lessonService));
 
     servletMap.put("/member/list", new MemberListServlet(memberService));
     servletMap.put("/member/add", new MemberAddServlet(memberService));

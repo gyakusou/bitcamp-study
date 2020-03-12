@@ -9,7 +9,7 @@ public class Exam0110 {
     MyInterface obj = (MyInterface) Proxy.newProxyInstance( //
         Exam0110.class.getClassLoader(), // 클래스를 메모리에 로딩하는 일을 할 객체
         new Class[] {MyInterface.class}, // 자동 생성 할 클래스가 구현해야 하는 인터페이스 목록 // 레퍼런스배열 1개
-        new MyInvocationHandler());
+        new MyInvocationHandler()); // InvocationHandler
 
     obj.m1();
     obj.m2();

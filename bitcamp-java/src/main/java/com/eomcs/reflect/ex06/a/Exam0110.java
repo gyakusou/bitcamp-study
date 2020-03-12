@@ -2,9 +2,9 @@ package com.eomcs.reflect.ex06.a;
 
 import java.lang.reflect.Proxy;
 
+// 프록시 객체를 만드는 방법
 public class Exam0110 {
   public static void main(String[] args) {
-
 
     MyInterface obj = (MyInterface) Proxy.newProxyInstance( //
         Exam0110.class.getClassLoader(), // 클래스를 메모리에 로딩하는 일을 할 객체

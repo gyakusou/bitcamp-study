@@ -19,6 +19,8 @@ import com.eomcs.lms.dao.LessonDao;
 import com.eomcs.lms.dao.MemberDao;
 import com.eomcs.lms.dao.PhotoBoardDao;
 import com.eomcs.lms.dao.PhotoFileDao;
+import com.eomcs.lms.service.LessonService;
+import com.eomcs.lms.service.PhotoBoardService;
 import com.eomcs.lms.servlet.BoardAddServlet;
 import com.eomcs.lms.servlet.BoardDeleteServlet;
 import com.eomcs.lms.servlet.BoardDetailServlet;
@@ -90,6 +92,12 @@ public class ServerApp {
     SqlSessionFactory sqlSessionFactory = //
         (SqlSessionFactory) context.get("sqlSessionFactory");
 
+    // DataLoaderListener 가 준비한 서비스 객체를 꺼내 변수에 저장한다.
+    LessonService lessonService = //
+        (LessonService) context.get("lessonService");
+    PhotoBoardService photoBoardService = //
+        (PhotoBoardService) context.get("photoBoardService");
+
     // DataLoaderListener가 준비한 DAO 객체를 꺼내 변수에 저장한다.
     BoardDao boardDao = (BoardDao) context.get("boardDao");
     LessonDao lessonDao = (LessonDao) context.get("lessonDao");
@@ -127,7 +135,7 @@ public class ServerApp {
     servletMap.put("/photoboard/detail", new PhotoBoardDetailServlet( //
         photoBoardDao));
     servletMap.put("/photoboard/add", new PhotoBoardAddServlet( //
-        txManager, photoBoardDao, lessonDao, photoFileDao));
+        lessonService, photoBoardService));
     servletMap.put("/photoboard/update", new PhotoBoardUpdateServlet( //
         txManager, photoBoardDao, photoFileDao));
     servletMap.put("/photoboard/delete", new PhotoBoardDeleteServlet( //

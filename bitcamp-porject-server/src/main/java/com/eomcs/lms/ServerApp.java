@@ -19,6 +19,7 @@ import com.eomcs.lms.dao.LessonDao;
 import com.eomcs.lms.dao.MemberDao;
 import com.eomcs.lms.service.BoardService;
 import com.eomcs.lms.service.LessonService;
+import com.eomcs.lms.service.MemberService;
 import com.eomcs.lms.service.PhotoBoardService;
 import com.eomcs.lms.servlet.BoardAddServlet;
 import com.eomcs.lms.servlet.BoardDeleteServlet;
@@ -97,6 +98,8 @@ public class ServerApp {
         (PhotoBoardService) context.get("photoBoardService");
     BoardService boardService = //
         (BoardService) context.get("boardService");
+    MemberService memberService = //
+        (MemberService) context.get("memberService");
 
     // DataLoaderListener가 준비한 DAO 객체를 꺼내 변수에 저장한다.
     BoardDao boardDao = (BoardDao) context.get("boardDao");
@@ -117,12 +120,12 @@ public class ServerApp {
     servletMap.put("/lesson/delete", new LessonDeleteServlet(lessonDao));
     servletMap.put("/lesson/search", new LessonSearchServlet(lessonDao));
 
-    servletMap.put("/member/list", new MemberListServlet(memberDao));
-    servletMap.put("/member/add", new MemberAddServlet(memberDao));
-    servletMap.put("/member/detail", new MemberDetailServlet(memberDao));
-    servletMap.put("/member/update", new MemberUpdateServlet(memberDao));
-    servletMap.put("/member/delete", new MemberDeleteServlet(memberDao));
-    servletMap.put("/member/search", new MemberSearchServlet(memberDao));
+    servletMap.put("/member/list", new MemberListServlet(memberService));
+    servletMap.put("/member/add", new MemberAddServlet(memberService));
+    servletMap.put("/member/detail", new MemberDetailServlet(memberService));
+    servletMap.put("/member/update", new MemberUpdateServlet(memberService));
+    servletMap.put("/member/delete", new MemberDeleteServlet(memberService));
+    servletMap.put("/member/search", new MemberSearchServlet(memberService));
 
     servletMap.put("/photoboard/list", new PhotoBoardListServlet( //
         photoBoardService, lessonService));

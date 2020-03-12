@@ -116,5 +116,4 @@ public class Board implements Serializable {
     this.writer = writer;
   }
 
-
 }

@@ -14,7 +14,6 @@ public class PhotoBoardUpdateServlet implements Servlet {
   PhotoBoardService photoBoardService;
 
   public PhotoBoardUpdateServlet(PhotoBoardService photoBoardService) {
-
     this.photoBoardService = photoBoardService;
   }
 
@@ -44,7 +43,6 @@ public class PhotoBoardUpdateServlet implements Servlet {
         "사진을 변경하시겠습니까?(y/N) ");
 
     if (response.equalsIgnoreCase("y")) {
-      // 사용자가 입력한 파일 목록을 PhotoBoard 객체에 저장한다.
       photoBoard.setFiles(inputPhotoFiles(in, out));
     }
 

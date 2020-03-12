@@ -9,10 +9,9 @@ public interface BoardService {
 
   List<Board> list() throws Exception;
 
+  int delete(int no) throws Exception;
+
   Board get(int no) throws Exception;
 
   int update(Board board) throws Exception;
-
-  int delete(int no) throws Exception;
-
 }

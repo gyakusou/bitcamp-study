@@ -19,13 +19,13 @@ public class MemberServiceImpl implements MemberService {
   }
 
   @Override
-  public int add(Member member) throws Exception {
-    return memberDao.insert(member);
+  public int delete(int no) throws Exception {
+    return memberDao.delete(no);
   }
 
   @Override
-  public int delete(int no) throws Exception {
-    return memberDao.delete(no);
+  public int add(Member member) throws Exception {
+    return memberDao.insert(member);
   }
 
   @Override
@@ -34,8 +34,8 @@ public class MemberServiceImpl implements MemberService {
   }
 
   @Override
-  public int update(Member member) throws Exception {
-    return memberDao.update(member);
+  public Member get(String email, String password) throws Exception {
+    return memberDao.findByEmailAndPassword(email, password);
   }
 
   @Override
@@ -44,7 +44,7 @@ public class MemberServiceImpl implements MemberService {
   }
 
   @Override
-  public Member get(String email, String password) throws Exception {
-    return memberDao.findByEmailAndPassword(email, password);
+  public int update(Member member) throws Exception {
+    return memberDao.update(member);
   }
 }

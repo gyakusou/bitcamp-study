@@ -14,7 +14,6 @@ public class BoardUpdateServlet implements Servlet {
     this.boardService = boardService;
   }
 
-
   @Override
   public void service(Scanner in, PrintStream out) throws Exception {
 

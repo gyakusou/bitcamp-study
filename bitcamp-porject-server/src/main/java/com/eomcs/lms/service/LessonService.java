@@ -5,7 +5,6 @@ import java.util.List;
 import com.eomcs.lms.domain.Lesson;
 
 public interface LessonService {
-
   Lesson get(int no) throws Exception;
 
   int add(Lesson lesson) throws Exception;
@@ -17,6 +16,4 @@ public interface LessonService {
   List<Lesson> search(HashMap<String, Object> params) throws Exception;
 
   int update(Lesson lesson) throws Exception;
-
 }
-//

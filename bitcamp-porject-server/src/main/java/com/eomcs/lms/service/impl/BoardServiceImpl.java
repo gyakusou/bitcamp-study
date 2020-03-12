@@ -14,13 +14,13 @@ public class BoardServiceImpl implements BoardService {
   }
 
   @Override
-  public List<Board> list() throws Exception {
-    return boardDao.findAll();
+  public void add(Board board) throws Exception {
+    boardDao.insert(board);
   }
 
   @Override
-  public void add(Board board) throws Exception {
-    boardDao.insert(board);
+  public List<Board> list() throws Exception {
+    return boardDao.findAll();
   }
 
   @Override
@@ -37,5 +37,4 @@ public class BoardServiceImpl implements BoardService {
   public int update(Board board) throws Exception {
     return boardDao.update(board);
   }
-
 }

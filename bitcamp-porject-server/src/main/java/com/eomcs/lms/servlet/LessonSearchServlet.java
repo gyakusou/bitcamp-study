@@ -19,7 +19,6 @@ public class LessonSearchServlet implements Servlet {
 
   @Override
   public void service(Scanner in, PrintStream out) throws Exception {
-
     HashMap<String, Object> params = new HashMap<>();
     String keyword = Prompt.getString(in, out, "강의명 검색: ");
     if (keyword.length() > 0) {
@@ -28,12 +27,12 @@ public class LessonSearchServlet implements Servlet {
 
     Date date = Prompt.getDate(in, out, "시작일 검색: ");
     if (date != null) {
-      params.put("startDate", date.toString());
+      params.put("startDate", date);
     }
 
     date = Prompt.getDate(in, out, "종료일 검색: ");
     if (date != null) {
-      params.put("endDate", date.toString());
+      params.put("endDate", date);
     }
 
     int value = Prompt.getInt(in, out, "총강의시간 검색: ");
@@ -46,7 +45,7 @@ public class LessonSearchServlet implements Servlet {
       params.put("dayHours", value);
     }
     out.println("------------------------------");
-    out.println("[검색결과]");
+    out.println("[검색 결과]");
     out.println();
 
     List<Lesson> lessons = lessonService.search(params);
@@ -56,4 +55,5 @@ public class LessonSearchServlet implements Servlet {
     }
   }
 }
-//
+
+

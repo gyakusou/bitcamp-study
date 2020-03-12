@@ -13,14 +13,14 @@ import com.eomcs.util.Prompt;
 
 public class PhotoBoardAddServlet implements Servlet {
 
-
   PhotoBoardService photoBoardService;
   LessonService lessonService;
 
-
-  public PhotoBoardAddServlet(LessonService lessonService, PhotoBoardService photoBoardService) {
-    this.lessonService = lessonService;
+  public PhotoBoardAddServlet(//
+      PhotoBoardService photoBoardService, //
+      LessonService lessonService) {
     this.photoBoardService = photoBoardService;
+    this.lessonService = lessonService;
   }
 
   @Override
@@ -36,7 +36,6 @@ public class PhotoBoardAddServlet implements Servlet {
       out.println("수업 번호가 유효하지 않습니다.");
       return;
     }
-
     photoBoard.setLesson(lesson);
 
     // 사용자로부터 사진 게시글에 첨부할 파일을 입력 받는다.
@@ -45,7 +44,6 @@ public class PhotoBoardAddServlet implements Servlet {
 
     photoBoardService.add(photoBoard);
     out.println("새 사진 게시글을 등록했습니다.");
-
   }
 
   private List<PhotoFile> inputPhotoFiles(Scanner in, PrintStream out) {

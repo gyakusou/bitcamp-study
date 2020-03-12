@@ -11,8 +11,8 @@ public class PhotoBoardDetailServlet implements Servlet {
 
   PhotoBoardService photoBoardService;
 
-  public PhotoBoardDetailServlet(PhotoBoardService photoBoardService) {
-
+  public PhotoBoardDetailServlet( //
+      PhotoBoardService photoBoardService) {
     this.photoBoardService = photoBoardService;
   }
 

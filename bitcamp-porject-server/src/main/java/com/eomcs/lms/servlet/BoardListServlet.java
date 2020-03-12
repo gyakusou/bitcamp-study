@@ -16,7 +16,6 @@ public class BoardListServlet implements Servlet {
 
   @Override
   public void service(Scanner in, PrintStream out) throws Exception {
-
     List<Board> boards = boardService.list();
     for (Board board : boards) {
       out.printf("=> %d, %s, %s, %d\n", //

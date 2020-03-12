@@ -29,7 +29,7 @@ public class MemberServiceImpl implements MemberService {
   }
 
   @Override
-  public Member get(int no) throws Exception { // get 어디서?
+  public Member get(int no) throws Exception {
     return memberDao.findByNo(no);
   }
 
@@ -44,7 +44,7 @@ public class MemberServiceImpl implements MemberService {
   }
 
   @Override
-  public Member get(String email, String password) throws Exception { // 어디?
+  public Member get(String email, String password) throws Exception {
     return memberDao.findByEmailAndPassword(email, password);
   }
 }

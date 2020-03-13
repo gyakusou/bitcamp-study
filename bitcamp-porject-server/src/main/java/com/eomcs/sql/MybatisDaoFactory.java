@@ -12,8 +12,10 @@ public class MybatisDaoFactory {
     daoInvocationHandler = new DaoInvocationHandler(sqlSessionFactory);
   }
 
-  public Object createDao(Class<?> daoInterface) {
-    return Proxy.newProxyInstance( //
+  // T는 클래스 이름을 담고 있는 변수.
+  @SuppressWarnings("unchecked")
+  public <T> T createDao(Class<T> daoInterface) {
+    return (T) Proxy.newProxyInstance( //
         this.getClass().getClassLoader(), //
         new Class[] {daoInterface}, //
         daoInvocationHandler);

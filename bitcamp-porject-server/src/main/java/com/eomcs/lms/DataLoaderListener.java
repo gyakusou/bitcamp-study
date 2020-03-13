@@ -41,11 +41,11 @@ public class DataLoaderListener implements ApplicationContextListener {
       MybatisDaoFactory daoFactory = new MybatisDaoFactory(sqlSessionFactory);
 
       // 서비스 객체가 사용할 DAO를 준비한다.
-      LessonDao lessonDao = (LessonDao) daoFactory.createDao(LessonDao.class);
-      BoardDao boardDao = (BoardDao) daoFactory.createDao(BoardDao.class);
-      MemberDao memberDao = (MemberDao) daoFactory.createDao(MemberDao.class);
-      PhotoBoardDao photoBoardDao = (PhotoBoardDao) daoFactory.createDao(PhotoBoardDao.class);
-      PhotoFileDao photoFileDao = (PhotoFileDao) daoFactory.createDao(PhotoFileDao.class);
+      LessonDao lessonDao = daoFactory.createDao(LessonDao.class);
+      BoardDao boardDao = daoFactory.createDao(BoardDao.class);
+      MemberDao memberDao = daoFactory.createDao(MemberDao.class);
+      PhotoBoardDao photoBoardDao = daoFactory.createDao(PhotoBoardDao.class);
+      PhotoFileDao photoFileDao = daoFactory.createDao(PhotoFileDao.class);
 
       // 트랜잭션 관리자 준비
       PlatformTransactionManager txManager = new PlatformTransactionManager(//

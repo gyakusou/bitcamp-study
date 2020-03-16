@@ -1,6 +1,7 @@
 package com.eomcs.util;
 
 import java.io.File;
+import java.io.FileFilter;
 import org.apache.ibatis.io.Resources;
 
 // 역할:
@@ -26,7 +27,14 @@ public class ApplicationContext {
   }
 
   private void findClasses(File path, String packageName) {
-    File[] files = path.listFiles(); // 폴더 아래에 있는 파일 배열을 리턴한다.
+    File[] files = path.listFiles(new FileFilter() {
+      @Override
+      public boolean accept(File pathname) {
+        if (pathname.isDirectory() || pathname.getName().endsWith(".class"))
+          return true;
+        return false;
+      }
+    });
     for (File f : files) {
       String classOrPackageName = //
           packageName + "." + f.getName().replace(".class", "");

@@ -6,6 +6,8 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.Parameter;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import org.apache.ibatis.io.Resources;
 
 // 역할:
@@ -17,6 +19,9 @@ public class ApplicationContext {
 
   // 클래스 이름을 담을 저장소
   ArrayList<String> classNames = new ArrayList<>();
+
+  // 객체 저장소
+  HashMap<String, Object> objPool = new HashMap<>();
 
   public ApplicationContext(String packageName) throws Exception {
     // 패키지의 실제 파일 시스템 경로를 알아낸다.
@@ -51,13 +56,36 @@ public class ApplicationContext {
       // 생성자의 파라미터 정보를 알아낸다.
       Parameter[] params = constructor.getParameters();
 
-      // 생성자 정보를 출력한다.
-      System.out.print(clazz.getName() + "(");
+      // 생성자에 넘겨 줄 파라미터 객체를 준비한다.
+      ArrayList<Object> values = new ArrayList<>();
       for (Parameter param : params) {
-        System.out.printf("%s,", param.getType().getSimpleName());
+        values.add(getParameterInstance(param));
       }
-      System.out.println(")");
+      // 생성자를 호출하여 객체를 준비한다.
+      Object obj = constructor.newInstance(values.toArray());
+
+      // 생성된 객체를 보관소에 저장한다.
+      objPool.put(className, obj);
     }
+  }
+
+  private Object getParameterInstance(Parameter param) {
+    // 먼저 객체 보관소에 파라미터 객체가 있는지 검사한다.
+    Collection<?> objs = objPool.values();
+
+    for (Object obj : objs) {
+      if (param.getType().isInstance(obj)) { // 있으면, 리턴한다.
+        return obj;
+      }
+      // 없으면, 파라미터 객체를 생성한다.
+      return createParameterInstance(param);
+    }
+    return null;
+  }
+
+  private Object createParameterInstance(Parameter param) {
+    // TODO Auto-generated method stub
+    return null;
   }
 
   private boolean isConcreateClass(Class<?> clazz) {

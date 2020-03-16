@@ -7,4 +7,8 @@ package com.eomcs.util;
 //
 public class ApplicationContext {
 
+  public ApplicationContext(String packageName) {
+    //
+  }
+
 }

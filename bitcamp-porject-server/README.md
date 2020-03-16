@@ -66,8 +66,14 @@
 
 - com.eomcs.util.ApplicationContext 클래스 생성
 
+### 훈련2: 특정 패키지의 클래스 이름을 수집한다. (ApplicationContext02)
 
-
+- com.eomcs.util.ApplicationContext 클래스 변경
+  - 패키지명을 입력받아서 해당 패키지를 뒤져 모든 클래스의 이름을 가져온다.
+- com.eomcs.lms.DataLoaderListener 의 이름 변경
+  - 이제 이 클래스는 데이터를 저장하고 꺼내는 로딩하는 역할을 넘어섰다.
+  - 애플리케이션을 실행할 때 사용할 객체나 환경을 준비하는 일을 한다.
+  - 그래서 이름을 그에 걸맞게 'ContextLoaderListenr'라 변경한다.
 
 
 

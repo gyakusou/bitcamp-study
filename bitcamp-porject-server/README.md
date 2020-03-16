@@ -82,8 +82,10 @@
 - com.eomcs.util.ApplicationContext 클래스 변경
   - reflection API를 사용하여 인터페이스와 추상클래스 등을 구분한다.
 
+### 훈련3: concreate class 객체를 생성하여 보관한다. (ApplicationContext04)
 
-
+- com.eomcs.util.ApplicationContext 클래스 변경
+  - reflection API 
 
 
 

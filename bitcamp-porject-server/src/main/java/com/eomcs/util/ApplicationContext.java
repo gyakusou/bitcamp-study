@@ -2,7 +2,9 @@ package com.eomcs.util;
 
 import java.io.File;
 import java.io.FileFilter;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Modifier;
+import java.lang.reflect.Parameter;
 import java.util.ArrayList;
 import org.apache.ibatis.io.Resources;
 
@@ -42,7 +44,20 @@ public class ApplicationContext {
       if (!isConcreateClass(clazz)) {
         continue; // 객체를 생성할 수 없는 경우 건너 뛴다.
       }
-      System.out.println("ApplicationContext: " + className);
+
+      // 클래스의 생성자 정보를 알아낸다.
+      Constructor<?> constructor = clazz.getConstructors()[0];
+
+      // 생성자의 파라미터 정보를 알아낸다.
+      Parameter[] params = constructor.getParameters();
+
+      System.out.print(clazz.getName() + "(");
+
+      // 파라미터의 해당하는 객체를 생성한다.
+      for (Parameter param : params) {
+        System.out.printf("%s,", param.getType().getSimpleName());
+      }
+      System.out.println(")");
     }
   }
 

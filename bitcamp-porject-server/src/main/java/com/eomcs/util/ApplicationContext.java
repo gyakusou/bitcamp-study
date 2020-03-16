@@ -8,6 +8,8 @@ import java.lang.reflect.Parameter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 import org.apache.ibatis.io.Resources;
 
 // 역할:
@@ -26,25 +28,31 @@ public class ApplicationContext {
   // 객체 저장소
   HashMap<String, Object> objPool = new HashMap<>();
 
-  public ApplicationContext(String packageName) throws Exception {
-    // 패키지의 실제 파일 시스템 경로를 알아낸다.
-    // System.out.println("ApplicationContext: " + packageName);
+  public ApplicationContext(String packageName, Map<String, Object> beans) throws Exception {
 
-    String packagePath = packageName.replace('.', '/');
-    // System.out.println("ApplicationContext: " + packagePath);
+    // Map 들어 있는 객체를 먼저 객체풀에 보관한다.
+    Set<String> keySet = beans.keySet();
+    for (String key : keySet) {
+      objPool.put(key, beans.get(key));
+    }
 
+    // 그런 후 패키지의 클래스를 찾아 인스턴스를 만들고 보관한다.
+
+    // => 패키지의 실제 파일 시스템 경로를 알아낸다.
     File path = Resources.getResourceAsFile(//
-        packagePath /* 패키지명을 파일 시스템 경로로 바꿔서 전달한다. */);
-    // System.out.println("ApplicationContext: " + path.getAbsolutePath());
+        packageName.replace('.', '/') /* 패키지명을 파일 시스템 경로로 바꿔서 전달한다. */);
 
     // 해당 경로를 뒤져서 모든 클래스의 이름을 알아낸다.
     findClasses(path, packageName);
 
-    // 객체를 생성할 때 사용할 concrete class 목록을 준비한다.
-    // concrete class = 일반 클래스 (서블릿, 서비스)
+    // => 클래스 이름으로 클래스를 로딩한다.
+    // 객체 생성이 가능한 concrete class 를 별도의 목록으로 준비한다.
     prepareConcreteClasses();
 
-    // concrete class의 객체를 생성한다.
+    // => concrete class의 객체를 생성한다.
+    // => concrete class의 생성자를 호출할 때 의존 객체를 함께 주입한다.
+    // => 의존 객체 또한 객체풀에서 찾아 주입한다.
+    // => 객체풀에 의존 객체가 없으면 생성하여 주입한다.
     for (Class<?> clazz : concreteClasses) {
       try {
         createInstance(clazz);
@@ -60,6 +68,11 @@ public class ApplicationContext {
     for (Object o : objs) {
       System.out.println(o.getClass().getName());
     }
+  }
+
+  // 객체를 한 개 등록한다.
+  public void addBean(String name, Object bean) {
+    objPool.put(name, bean);
   }
 
   private void prepareConcreteClasses() throws Exception {

@@ -28,7 +28,9 @@ public class ApplicationContext {
   private void findClass(File path, String packageName) {
     File[] files = path.listFiles(); // 폴더 아래에 있는 파일 배열을 리턴한다.
     for (File f : files) {
-      System.out.println("ApplicationContext: " + f.getName());
+      if (f.isFile()) {
+        System.out.println("ApplicationContext: " + f.getName());
+      }
     }
   }
 

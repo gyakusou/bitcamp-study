@@ -20,6 +20,9 @@ public class ApplicationContext {
   // 클래스 이름을 담을 저장소
   ArrayList<String> classNames = new ArrayList<>();
 
+  // concreate Class를 담을 저장소
+  ArrayList<Class<?>> concreteClasses = new ArrayList<>();
+
   // 객체 저장소
   HashMap<String, Object> objPool = new HashMap<>();
 
@@ -37,18 +40,37 @@ public class ApplicationContext {
     // 해당 경로를 뒤져서 모든 클래스의 이름을 알아낸다.
     findClasses(path, packageName);
 
+    // 객체를 생성할 때 사용할 concrete class 목록을 준비한다.
+    prepareConcreateClasses();
+
+    // concrete class 의 객체를 생성한다.
+    for (Class<?> clazz : concreteClasses) {
+      try {
+        createInstance(clazz);
+      } catch (Exception e) {
+        System.out.printf("%s 클래스의 객체를 생성할 수 없습니다.\n", clazz.getName());
+      }
+    }
+  }
+
+  private void prepareConcreateClasses() throws Exception {
+
     // 클래스 이름으로 객체를 생성한다.
     for (String className : classNames) {
+
       // 클래스 이름으로 클래스 정보를 가져온다.
       Class<?> clazz = Class.forName(className);
       if (!isConcreateClass(clazz)) {
         continue; // 객체를 생성할 수 없는 경우 건너 뛴다.
       }
-      createInstance(clazz);
+
+      concreteClasses.add(clazz);
     }
   }
 
-  private void createInstance(Class<?> clazz) throws Exception {
+  private Object createInstance(Class<?> clazz) throws Exception {
+
+
 
     // 클래스의 생성자 정보를 알아낸다.
     Constructor<?> constructor = clazz.getConstructors()[0];
@@ -61,32 +83,76 @@ public class ApplicationContext {
     for (Parameter param : params) {
       values.add(getParameterInstance(param));
     }
+
     // 생성자를 호출하여 객체를 준비한다.
     Object obj = constructor.newInstance(values.toArray());
-
-    // 생성된 객체를 보관소에 저장한다.
+    System.out.printf("%s 객체를 생성하였음!\n ", //
+        clazz.getSimpleName());
+    // 생성된 객체는 객체 풀에 보관한다.
     objPool.put(clazz.getName(), obj);
-
+    return obj;
   }
 
-  private Object getParameterInstance(Parameter param) {
+  private Object getParameterInstance(Parameter param) throws Exception {
     Collection<?> objs = objPool.values();
 
     // 먼저 객체 보관소에 파라미터 객체가 있는지 검사한다.
     for (Object obj : objs) {
-      // 있으면, 리턴한다.
+      // 있으면, 같은 객체를 또 만들지 않고 기존의 생성된 객체를 리턴한다.
       if (param.getType().isInstance(obj)) {
         return obj;
       }
     }
 
     // 없으면, 파라미터 객체를 생성한다.
-    return createParameterInstance(param);
+    // => 단, 현재 클래스 이름으로 등록된 객체에 대해서만 파라미터 객체를 생성할 수 있다.
+    Class clazz = findParameterClassInfo(param.getType());
+    if (clazz == null) {
+      // 파라미터에 해당하는 적절한 클래스를 찾지 못했으면
+      // 파라미터 객체를 생성할 수 없다.
+      return null;
+    }
+
+    return createInstance(clazz);
   }
 
-  private Object createParameterInstance(Parameter param) {
-    // TODO Auto-generated method stub
+  private Class<?> findParameterClassInfo(Class<?> paramType) {
+    // concrete class 목록에서 파라미터에 해당하는 클래스가 있는지 조사한다.
+    for (Class<?> clazz : concreteClasses) {
+
+      if (paramType.isInterface()) {
+        // 파라미가 인터페이스라면
+        // 각각의 클래스에 대해 그 인터페이스를 구현했는지 검사한다.
+        Class<?>[] interfaces = clazz.getInterfaces();
+        for (Class<?> interfaceInfo : interfaces) {
+          if (interfaceInfo == paramType) {
+            return clazz;
+          }
+        }
+      } else if (isType(clazz, paramType)) {
+        // 파라미터가 클래스라면,
+        // 각각의 클래스에 대해 같은 타입이거나 수퍼클래스인지 검사한다.
+        // 혹시 수퍼 클래스는 아닌지 검사한다.
+        return clazz;
+      }
+    }
+
+    // 파라미터에 해당하는 타입이 concrete class 목록에 없다면
+    // 그냥 null을 리턴한다.
     return null;
+  }
+
+  private boolean isType(Class<?> clazz, Class<?> target) {
+    // 수퍼 클래스로 따라 올라가면서 같은 타입인지 검사한다.
+    if (clazz == target) {
+      return true;
+    }
+
+    if (clazz == Object.class) {
+      // 더이상 상위 클래스가 없다면,
+      return false;
+    }
+    return isType(clazz.getSuperclass(), target);
   }
 
   private boolean isConcreateClass(Class<?> clazz) {

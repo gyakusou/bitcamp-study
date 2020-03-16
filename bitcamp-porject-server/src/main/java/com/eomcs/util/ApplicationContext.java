@@ -75,6 +75,11 @@ public class ApplicationContext {
     objPool.put(name, bean);
   }
 
+  // 객체 이름으로 객체를 찾아 꺼내준다.
+  public Object getBean(String name) {
+    return objPool.get(name);
+  }
+
   private void prepareConcreteClasses() throws Exception {
     // 클래스 이름으로 객체를 생성한다.
     for (String className : classNames) {
@@ -105,8 +110,8 @@ public class ApplicationContext {
 
     // 생성자를 호출하여 객체를 준비한다.
     Object obj = constructor.newInstance(values.toArray());
-    System.out.printf("%s 객체를 생성하였음!\n", //
-        clazz.getSimpleName());
+    // System.out.printf("%s 객체를 생성하였음!\n", //
+    // clazz.getSimpleName());
 
     // 생성된 객체는 객체풀에 보관한다.
     objPool.put(clazz.getName(), obj);

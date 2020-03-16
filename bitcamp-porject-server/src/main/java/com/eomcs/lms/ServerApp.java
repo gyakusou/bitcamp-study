@@ -14,10 +14,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import org.apache.ibatis.session.SqlSessionFactory;
 import com.eomcs.lms.context.ApplicationContextListener;
-import com.eomcs.lms.service.BoardService;
-import com.eomcs.lms.service.LessonService;
-import com.eomcs.lms.service.MemberService;
-import com.eomcs.lms.service.PhotoBoardService;
 import com.eomcs.lms.servlet.BoardAddServlet;
 import com.eomcs.lms.servlet.BoardDeleteServlet;
 import com.eomcs.lms.servlet.BoardDetailServlet;
@@ -43,6 +39,7 @@ import com.eomcs.lms.servlet.PhotoBoardListServlet;
 import com.eomcs.lms.servlet.PhotoBoardUpdateServlet;
 import com.eomcs.lms.servlet.Servlet;
 import com.eomcs.sql.SqlSessionFactoryProxy;
+import com.eomcs.util.ApplicationContext;
 
 public class ServerApp {
 
@@ -84,23 +81,20 @@ public class ServerApp {
 
     notifyApplicationInitialized();
 
+    // ApplicationContext (IoC 컨테이너)를 꺼낸다.
+    ApplicationContext iocContainer = //
+        (ApplicationContext) context.get("iocContaiver");
+
     // SqlSessionFactory를 꺼낸다.
     SqlSessionFactory sqlSessionFactory = //
-        (SqlSessionFactory) context.get("sqlSessionFactory");
-
-    // DataLoaderListener가 준비한 서비스 객체를 꺼내 변수에 저장한다.
-    LessonService lessonService = //
-        (LessonService) context.get("lessonService");
-    PhotoBoardService photoBoardService = //
-        (PhotoBoardService) context.get("photoBoardService");
-    BoardService boardService = //
-        (BoardService) context.get("boardService");
-    MemberService memberService = //
-        (MemberService) context.get("memberService");
+        (SqlSessionFactory) iocContainer.getBean( //
+            "com.eomcs.sql.sqlSessionFactoryProxy");
 
     // 커맨드 객체 역할을 수행하는 서블릿 객체를 맵에 보관한다.
-    servletMap.put("/board/list", new BoardListServlet(boardService));
-    servletMap.put("/board/add", new BoardAddServlet(boardService));
+    servletMap.put("/board/list", (BoardListServlet) iocContainer.getBean( //
+        "com.eomcs.lms.servlet.BoardListServlet"));
+    servletMap.put("/board/add", (BoardAddServlet) iocContainer.getBean( //
+        "com.eomcs.lms.servlet.BoardAddServlet"));
     servletMap.put("/board/detail", new BoardDetailServlet(boardService));
     servletMap.put("/board/update", new BoardUpdateServlet(boardService));
     servletMap.put("/board/delete", new BoardDeleteServlet(boardService));

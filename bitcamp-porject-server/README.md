@@ -74,7 +74,13 @@
   - 이제 이 클래스는 데이터를 저장하고 꺼내는 로딩하는 역할을 넘어섰다.
   - 애플리케이션을 실행할 때 사용할 객체나 환경을 준비하는 일을 한다.
   - 그래서 이름을 그에 걸맞게 'ContextLoaderListenr'라 변경한다.
-- com.eomcs.lms.ContextLoaderListenr
+- com.eomcs.lms.ContextLoaderListener 변경
+   - ApplicationContext 객체를 생성하여 맵에 보관한다.
+   
+### 훈련3: 객체를 생성할 수 있는 concreate class만 추출한다. (ApplicationContext03)
+
+- com.eomcs.util.ApplicationContext 클래스 변경
+  - reflection API를 사용하여 인터페이스와 추상클래스 등을 구분한다.
 
 
 

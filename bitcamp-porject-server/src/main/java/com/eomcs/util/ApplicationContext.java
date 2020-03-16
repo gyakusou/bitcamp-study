@@ -64,9 +64,11 @@ public class ApplicationContext {
 
     System.out.println("----------------------");
 
-    Collection<Object> objs = objPool.values();
-    for (Object o : objs) {
-      System.out.println(o.getClass().getName());
+    Set<String> beanNames = objPool.keySet();
+    for (String beanName : beanNames) {
+      System.out.printf("%s ======> %s\n", //
+          beanName, //
+          objPool.get(beanName).getClass().getName());
     }
   }
 
@@ -114,8 +116,20 @@ public class ApplicationContext {
     // clazz.getSimpleName());
 
     // 생성된 객체는 객체풀에 보관한다.
-    objPool.put(clazz.getName(), obj);
+    String beanName = getBeanName(clazz);
+    objPool.put( //
+        beanName == null ? clazz.getName() : beanName, // 객체 이름
+        obj); // 객체
+
     return obj;
+  }
+
+  private String getBeanName(Class<?> clazz) {
+    Component compAnno = clazz.getAnnotation(Component.class);
+    if (compAnno == null) {
+      return null;
+    }
+    return compAnno.value();
   }
 
   private Object getParameterInstance(Parameter param) throws Exception {

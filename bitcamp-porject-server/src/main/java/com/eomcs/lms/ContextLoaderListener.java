@@ -18,6 +18,7 @@ import com.eomcs.lms.service.impl.PhotoBoardServiceImpl;
 import com.eomcs.sql.MybatisDaoFactory;
 import com.eomcs.sql.PlatformTransactionManager;
 import com.eomcs.sql.SqlSessionFactoryProxy;
+import com.eomcs.util.ApplicationContext;
 
 // 애플리케이션이 시작되거나 종료될 때
 // 데이터를 로딩하고 저장하는 일을 한다.
@@ -28,6 +29,11 @@ public class ContextLoaderListener implements ApplicationContextListener {
   public void contextInitialized(Map<String, Object> context) {
 
     try {
+      // IoC 컨테이너 준비
+      ApplicationContext appCtx = new ApplicationContext("com.eomcs.lms"); // 패키지명을 입력받아서 해당 패키지를 뒤져
+                                                                           // 모든 클래스의 이름을 가져온다.
+      context.put("iocContainer", appCtx);
+
       // Mybatis 객체 준비
       InputStream inputStream = Resources.getResourceAsStream(//
           "com/eomcs/lms/conf/mybatis-config.xml");

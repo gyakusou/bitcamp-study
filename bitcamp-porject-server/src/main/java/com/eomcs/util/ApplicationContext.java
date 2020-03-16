@@ -22,8 +22,8 @@ public class ApplicationContext {
   // 클래스 이름을 담을 저장소
   ArrayList<String> classNames = new ArrayList<>();
 
-  // concrete class를 담을 저장소
-  ArrayList<Class<?>> concreteClasses = new ArrayList<>();
+  // @Component 애노테이션이 붙은 클래스를 담을 저장소
+  ArrayList<Class<?>> componentClasses = new ArrayList<>();
 
   // 객체 저장소
   HashMap<String, Object> objPool = new HashMap<>();
@@ -45,15 +45,16 @@ public class ApplicationContext {
     // 해당 경로를 뒤져서 모든 클래스의 이름을 알아낸다.
     findClasses(path, packageName);
 
-    // => 클래스 이름으로 클래스를 로딩한다.
-    // 객체 생성이 가능한 concrete class 를 별도의 목록으로 준비한다.
-    prepareConcreteClasses();
+    // => 클래스 이름으로 클래스를
+    // 로딩한다.////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // @Component
+    prepareComponentClasses();
 
     // => concrete class의 객체를 생성한다.
     // => concrete class의 생성자를 호출할 때 의존 객체를 함께 주입한다.
     // => 의존 객체 또한 객체풀에서 찾아 주입한다.
     // => 객체풀에 의존 객체가 없으면 생성하여 주입한다.
-    for (Class<?> clazz : concreteClasses) {
+    for (Class<?> clazz : componentClasses) {
       try {
         createInstance(clazz);
       } catch (Exception e) {
@@ -61,6 +62,9 @@ public class ApplicationContext {
             clazz.getName());
       }
     }
+  }
+
+  public void printBeans() {
 
     System.out.println("----------------------");
 
@@ -70,6 +74,7 @@ public class ApplicationContext {
           beanName, //
           objPool.get(beanName).getClass().getName());
     }
+
   }
 
   // 객체를 한 개 등록한다.
@@ -82,17 +87,17 @@ public class ApplicationContext {
     return objPool.get(name);
   }
 
-  private void prepareConcreteClasses() throws Exception {
+  private void prepareComponentClasses() throws Exception {
     // 클래스 이름으로 객체를 생성한다.
     for (String className : classNames) {
 
       // 클래스 이름으로 클래스 정보를 가져온다.
       Class<?> clazz = Class.forName(className);
-      if (!isConcreteClass(clazz)) {
-        continue; // 객체를 생성할 수 없는 경우 건너 뛴다.
+      if (!isComponentClass(clazz)) {
+        continue; // @Component 애노테이션이 붙지 않은 경우 건너뛴다.
       }
 
-      concreteClasses.add(clazz);
+      componentClasses.add(clazz);
     }
   }
 
@@ -116,18 +121,16 @@ public class ApplicationContext {
     // clazz.getSimpleName());
 
     // 생성된 객체는 객체풀에 보관한다.
-    String beanName = getBeanName(clazz);
-    objPool.put( //
-        beanName == null ? clazz.getName() : beanName, // 객체 이름
-        obj); // 객체
-
+    objPool.put(getBeanName(clazz), obj); // 객체
     return obj;
   }
 
   private String getBeanName(Class<?> clazz) {
     Component compAnno = clazz.getAnnotation(Component.class);
-    if (compAnno == null) {
-      return null;
+    if (compAnno == null || compAnno.value().length() == 0) {
+      // @Component 애노테이션이 없거나 이름을 지정하지 않았으면
+      // 클래스 이름을 빈의 이름으로 사용한다.
+      return clazz.getName();
     }
     return compAnno.value();
   }
@@ -156,7 +159,7 @@ public class ApplicationContext {
 
   private Class<?> findParameterClassInfo(Class<?> paramType) throws Exception {
     // concrete class 목록에서 파라미터에 해당하는 클래스가 있는지 조사한다.
-    for (Class<?> clazz : concreteClasses) {
+    for (Class<?> clazz : componentClasses) {
       if (paramType.isInterface()) {
         // 파라미터가 인터페이스라면
         // 각각의 클래스에 대해 그 인터페이스를 구현했는지 검사한다.
@@ -193,13 +196,21 @@ public class ApplicationContext {
     return isType(clazz.getSuperclass(), target);
   }
 
-  private boolean isConcreteClass(Class<?> clazz) {
+  private boolean isComponentClass(Class<?> clazz) {
     if (clazz.isInterface() // 인터페이스인 경우
         || clazz.isEnum() // Enum 타입인 경우
         || Modifier.isAbstract(clazz.getModifiers()) // 추상 클래스인 경우
     ) {
       return false; // 이런 클래스를 객체를 생성할 수 없다.
     }
+
+    // 클래스에서 @Component 애노테이션 정보를 추출한다.
+    Component compAnno = clazz.getAnnotation(Component.class);
+    if (compAnno == null) {
+      return false;
+    }
+
+    // 오직 @Component 애노테이션이 붙은 일반 클래스만이 객체 생성 대상이다.
     return true;
   }
 

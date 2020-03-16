@@ -29,8 +29,10 @@ public class ApplicationContext {
   private void findClasses(File path, String packageName) {
     File[] files = path.listFiles(new FileFilter() {
       @Override
-      public boolean accept(File pathname) {
-        if (pathname.isDirectory() || pathname.getName().endsWith(".class"))
+      public boolean accept(File file) {
+        if (file.isDirectory() // 디렉토리면 트루
+            || (file.getName().endsWith(".class") // 조건을 만족시키면 true (.class 이면서 파일에 $를 포함 하면 안된다.)
+                && !file.getName().contains("$"))) //
           return true;
         return false;
       }

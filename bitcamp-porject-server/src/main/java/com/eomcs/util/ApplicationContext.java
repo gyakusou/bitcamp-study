@@ -22,16 +22,21 @@ public class ApplicationContext {
     System.out.println("ApplicationContext: " + path.getAbsolutePath());
 
     // 해당 경로를 뒤져서 모든 클래스의 이름을 알아낸다.
-    findClass(path, packageName);
+    findClasses(path, packageName);
   }
 
-  private void findClass(File path, String packageName) {
+  private void findClasses(File path, String packageName) {
     File[] files = path.listFiles(); // 폴더 아래에 있는 파일 배열을 리턴한다.
     for (File f : files) {
+      String classOrPackageName = //
+          packageName + "." + f.getName().replace(".class", "");
       if (f.isFile()) {
-        System.out.println("ApplicationContext: " + f.getName());
+        System.out.println("ApplicationContext: " + classOrPackageName);
+      } else {
+        // findClasses(f, classOrPackageName);
       }
     }
   }
-
 }
+
+

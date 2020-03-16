@@ -33,7 +33,7 @@ public class ApplicationContext {
       if (f.isFile()) {
         System.out.println("ApplicationContext: " + classOrPackageName);
       } else {
-        // findClasses(f, classOrPackageName);
+        findClasses(f, classOrPackageName);
       }
     }
   }

@@ -29,8 +29,7 @@ public class ApplicationContext {
   HashMap<String, Object> objPool = new HashMap<>();
 
   public ApplicationContext(String packageName, Map<String, Object> beans) throws Exception {
-
-    // Map 들어 있는 객체를 먼저 객체풀에 보관한다.
+    // Map에 들어 있는 객체를 먼저 객체풀에 보관한다.
     Set<String> keySet = beans.keySet();
     for (String key : keySet) {
       objPool.put(key, beans.get(key));
@@ -40,19 +39,19 @@ public class ApplicationContext {
 
     // => 패키지의 실제 파일 시스템 경로를 알아낸다.
     File path = Resources.getResourceAsFile(//
-        packageName.replace('.', '/') /* 패키지명을 파일 시스템 경로로 바꿔서 전달한다. */);
+        packageName.replace('.', '/') // 패키지명을 파일 시스템 경로로 바꿔서 전달한다.
+    );
 
-    // 해당 경로를 뒤져서 모든 클래스의 이름을 알아낸다.
+    // => 해당 경로를 뒤져서 모든 클래스의 이름을 알아낸다.
     findClasses(path, packageName);
 
-    // => 클래스 이름으로 클래스를
-    // 로딩한다.////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // @Component
+    // => 클래스 이름으로 클래스 정보를 로딩한다.
+    // => @Component 애노테이션이 붙은 클래스를 별도의 목록으로 준비한다.
     prepareComponentClasses();
 
     // => concrete class의 객체를 생성한다.
     // => concrete class의 생성자를 호출할 때 의존 객체를 함께 주입한다.
-    // => 의존 객체 또한 객체풀에서 찾아 주입한다.
+    // => 의존 객체는 객체풀에서 찾아 주입한다.
     // => 객체풀에 의존 객체가 없으면 생성하여 주입한다.
     for (Class<?> clazz : componentClasses) {
       try {
@@ -65,16 +64,14 @@ public class ApplicationContext {
   }
 
   public void printBeans() {
-
-    System.out.println("----------------------");
-
+    System.out.println("-----------------------------------");
     Set<String> beanNames = objPool.keySet();
     for (String beanName : beanNames) {
-      System.out.printf("%s ======> %s\n", //
-          beanName, //
-          objPool.get(beanName).getClass().getName());
+      System.out.printf("%s =====> %s\n", //
+          beanName, // 객체 이름
+          objPool.get(beanName).getClass().getName() // 클래스명
+      );
     }
-
   }
 
   // 객체를 한 개 등록한다.
@@ -90,13 +87,11 @@ public class ApplicationContext {
   private void prepareComponentClasses() throws Exception {
     // 클래스 이름으로 객체를 생성한다.
     for (String className : classNames) {
-
       // 클래스 이름으로 클래스 정보를 가져온다.
       Class<?> clazz = Class.forName(className);
       if (!isComponentClass(clazz)) {
-        continue; // @Component 애노테이션이 붙지 않은 경우 건너뛴다.
+        continue; // @Component 애노테이션이 붙지 않은 경우 건너 뛴다.
       }
-
       componentClasses.add(clazz);
     }
   }
@@ -121,7 +116,7 @@ public class ApplicationContext {
     // clazz.getSimpleName());
 
     // 생성된 객체는 객체풀에 보관한다.
-    objPool.put(getBeanName(clazz), obj); // 객체
+    objPool.put(getBeanName(clazz), obj);
     return obj;
   }
 

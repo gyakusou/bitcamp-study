@@ -70,17 +70,18 @@ public class ApplicationContext {
   }
 
   private Object getParameterInstance(Parameter param) {
-    // 먼저 객체 보관소에 파라미터 객체가 있는지 검사한다.
     Collection<?> objs = objPool.values();
 
+    // 먼저 객체 보관소에 파라미터 객체가 있는지 검사한다.
     for (Object obj : objs) {
-      if (param.getType().isInstance(obj)) { // 있으면, 리턴한다.
+      // 있으면, 리턴한다.
+      if (param.getType().isInstance(obj)) {
         return obj;
       }
-      // 없으면, 파라미터 객체를 생성한다.
-      return createParameterInstance(param);
     }
-    return null;
+
+    // 없으면, 파라미터 객체를 생성한다.
+    return createParameterInstance(param);
   }
 
   private Object createParameterInstance(Parameter param) {

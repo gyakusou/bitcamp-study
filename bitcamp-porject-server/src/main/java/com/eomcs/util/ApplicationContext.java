@@ -38,35 +38,35 @@ public class ApplicationContext {
     findClasses(path, packageName);
 
     // 클래스 이름으로 객체를 생성한다.
-    createInstance();
-
-  }
-
-  private void createInstance() throws Exception {
     for (String className : classNames) {
       // 클래스 이름으로 클래스 정보를 가져온다.
       Class<?> clazz = Class.forName(className);
       if (!isConcreateClass(clazz)) {
         continue; // 객체를 생성할 수 없는 경우 건너 뛴다.
       }
-
-      // 클래스의 생성자 정보를 알아낸다.
-      Constructor<?> constructor = clazz.getConstructors()[0];
-
-      // 생성자의 파라미터 정보를 알아낸다.
-      Parameter[] params = constructor.getParameters();
-
-      // 생성자에 넘겨 줄 파라미터 객체를 준비한다.
-      ArrayList<Object> values = new ArrayList<>();
-      for (Parameter param : params) {
-        values.add(getParameterInstance(param));
-      }
-      // 생성자를 호출하여 객체를 준비한다.
-      Object obj = constructor.newInstance(values.toArray());
-
-      // 생성된 객체를 보관소에 저장한다.
-      objPool.put(className, obj);
+      createInstance(clazz);
     }
+  }
+
+  private void createInstance(Class<?> clazz) throws Exception {
+
+    // 클래스의 생성자 정보를 알아낸다.
+    Constructor<?> constructor = clazz.getConstructors()[0];
+
+    // 생성자의 파라미터 정보를 알아낸다.
+    Parameter[] params = constructor.getParameters();
+
+    // 생성자에 넘겨 줄 파라미터 객체를 준비한다.
+    ArrayList<Object> values = new ArrayList<>();
+    for (Parameter param : params) {
+      values.add(getParameterInstance(param));
+    }
+    // 생성자를 호출하여 객체를 준비한다.
+    Object obj = constructor.newInstance(values.toArray());
+
+    // 생성된 객체를 보관소에 저장한다.
+    objPool.put(clazz.getName(), obj);
+
   }
 
   private Object getParameterInstance(Parameter param) {

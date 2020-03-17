@@ -154,7 +154,6 @@ public class ServerApp {
 
       if (requestHandler != null) {
         try {
-          // servlet.service(in, out);
           requestHandler.getMethod().invoke( //
               requestHandler.getBean(), //
               in, out);

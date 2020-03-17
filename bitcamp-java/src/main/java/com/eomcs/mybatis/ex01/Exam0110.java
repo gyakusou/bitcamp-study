@@ -61,7 +61,7 @@ public class Exam0110 {
 
     // 4. SQL을 실행시키는 객체 준비
     // => SqlSession 팩토리 객체로부터 SqlSession 객체를 얻는다.
-    // => openSession90은 수동 커밋으로 SQL을 다루는 객체를 리턴한다.
+    // => openSession()은 수동 커밋으로 SQL을 다루는 객체를 리턴한다.
     // => 자동 커밋으로 SQL을 다루고 싶다면
     // openSession(boolean autoCommit) 메서드를 호출하라.
     //

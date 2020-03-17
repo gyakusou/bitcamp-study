@@ -72,7 +72,12 @@ public class ContextLoaderListener implements ApplicationContextListener {
       String[] beanNames = appCtx.getBeanNamesForAnnotation(Component.class);
       for (String beanName : beanNames) {
         Object component = appCtx.getBean(beanName);
+
+        // @RequestHandler 가 붙은 메서드를 찾는다.
         Method requestHandler = getRequestHandler(component.getClass());
+        if (requestHandler != null) {
+          System.out.printf("%s.%s()\n", beanName, requestHandler.getName());
+        }
       }
 
     } catch (Exception e) {

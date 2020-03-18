@@ -7,6 +7,8 @@ import java.util.Map;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import com.eomcs.lms.context.ApplicationContextListener;
 import com.eomcs.lms.dao.BoardDao;
 import com.eomcs.lms.dao.LessonDao;
@@ -16,7 +18,6 @@ import com.eomcs.lms.dao.PhotoFileDao;
 import com.eomcs.sql.MybatisDaoFactory;
 import com.eomcs.sql.PlatformTransactionManager;
 import com.eomcs.sql.SqlSessionFactoryProxy;
-import com.eomcs.util.ApplicationContext;
 import com.eomcs.util.Component;
 import com.eomcs.util.RequestHandler;
 import com.eomcs.util.RequestMapping;
@@ -59,11 +60,9 @@ public class ContextLoaderListener implements ApplicationContextListener {
           sqlSessionFactory);
       beans.put("transactionManager", txManager);
 
-      // IoC 컨테이너 준비
-      ApplicationContext appCtx = new ApplicationContext(//
-          "com.eomcs.lms", // 새로 생성할 객체의 패키지
-          beans); // 기존에 따로 생성한 객체 목록
-      appCtx.printBeans();
+      // IoC 컨테이너 준비 (★ 스프링에서 제공하는 패키지를 적용한다.)
+      ApplicationContext appCtx = new AnnotationConfigApplicationContext(//
+          AppConfig.class); // Spring IoC 컨테이너에 설정 정보를 담고 있는 클래스 타입을 지정한다.
 
       // ServerApp이 사용할 수 있게 context 맵에 담아 둔다.
       context.put("iocContainer", appCtx);

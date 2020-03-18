@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.stereotype.Component;
 import com.eomcs.lms.context.ApplicationContextListener;
 import com.eomcs.lms.dao.BoardDao;
 import com.eomcs.lms.dao.LessonDao;
@@ -18,7 +19,6 @@ import com.eomcs.lms.dao.PhotoFileDao;
 import com.eomcs.sql.MybatisDaoFactory;
 import com.eomcs.sql.PlatformTransactionManager;
 import com.eomcs.sql.SqlSessionFactoryProxy;
-import com.eomcs.util.Component;
 import com.eomcs.util.RequestHandler;
 import com.eomcs.util.RequestMapping;
 import com.eomcs.util.RequestMappingHandlerMapping;
@@ -64,6 +64,8 @@ public class ContextLoaderListener implements ApplicationContextListener {
       ApplicationContext appCtx = new AnnotationConfigApplicationContext(//
           AppConfig.class); // Spring IoC 컨테이너에 설정 정보를 담고 있는 클래스 타입을 지정한다.
 
+      printBeans(appCtx);
+
       // ServerApp이 사용할 수 있게 context 맵에 담아 둔다.
       context.put("iocContainer", appCtx);
 
@@ -94,6 +96,16 @@ public class ContextLoaderListener implements ApplicationContextListener {
 
     } catch (Exception e) {
       e.printStackTrace();
+    }
+  }
+
+  private void printBeans(ApplicationContext appCtx) {
+    System.out.println("Spring IoC 컨테이너에 들어 있는 객체들: ");
+    String[] beanNames = appCtx.getBeanDefinitionNames();
+    for (String beanName : beanNames) {
+      System.out.printf("%s ==========> %s\n", //
+          beanName, //
+          appCtx.getBean(beanName).getClass().getName());
     }
   }
 

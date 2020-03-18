@@ -5,8 +5,11 @@ import javax.sql.DataSource;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import com.eomcs.lms.dao.BoardDao;
 import com.eomcs.lms.dao.LessonDao;
 import com.eomcs.lms.dao.MemberDao;
@@ -21,7 +24,27 @@ import com.eomcs.sql.SqlSessionFactoryProxy;
 // @Component 애노테이션이 붙은 클래스를 찾아 객체를 생성한다.
 //
 @ComponentScan(value = "com.eomcs.lms")
+
+// Spring IoC 컨테이너에서 사용할 Properties 파일을 로딩하기
+@PropertySource("classpath:com/eomcs/lms/conf/JDBC.properties")
+
 public class AppConfig {
+
+  // @PropertySource 로 로딩한 .properties 파일의 값을 사용하고 싶다면,
+  // 다음 애노테이션을 인스턴스 필드 앞에 붙여라.
+  // Spring IoC 컨테이너가 이 클래스의 객체를 생성할 때
+  // 해당 필드에 프로퍼티 값을 자동으로 주입할 것이다.
+  @Value("${jdbc.driver}")
+  String jdbcDriver;
+
+  @Value("${jdbc.url}")
+  String jdbcUrl;
+
+  @Value("${jdbc.username}")
+  String jdbcUsername;
+
+  @Value("${jdbc.password}")
+  String jdbcPassword;
 
   // Spring IoC 컨테이너에 수동으로 객체를 등록하고 싶다면,
   // 그 객체를 만들어주는 팩토리 메서드를 정의해야 한다.
@@ -31,7 +54,12 @@ public class AppConfig {
 
   @Bean
   public DataSource dataSource() {
-    DriverManagerDataSource
+    DriverManagerDataSource ds = new DriverManagerDataSource();
+    ds.setDriverClassName(driverClassName);
+    ds.setUrl(url);
+    ds.setUsername(username);
+    ds.setPassword(password);
+    return ds;
   }
 
   @Bean

@@ -1,6 +1,7 @@
 package com.eomcs.lms;
 
 import java.io.InputStream;
+import javax.sql.DataSource;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -27,6 +28,11 @@ public class AppConfig {
   // => 단, 메서드 선언부에 @Bean 애노테이션을 붙여야한다.
   // => 그래야만 Spring IoC 컨테이너는
   // 이 메서드를 호출하고 그 리턴 값을 보관한다.
+
+  @Bean
+  public DataSource dataSource() {
+    DriverManagerDataSource
+  }
 
   @Bean
   public SqlSessionFactory sqlSessionFactory() throws Exception {

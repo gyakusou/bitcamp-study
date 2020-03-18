@@ -28,7 +28,6 @@ public class AppConfig {
   // => 그래야만 Spring IoC 컨테이너는
   // 이 메서드를 호출하고 그 리턴 값을 보관한다.
 
-
   @Bean
   public SqlSessionFactory sqlSessionFactory() throws Exception {
     // Mybatis 설정 파일을 로딩할 때 사용할 입력 스트림 준비

@@ -3,6 +3,7 @@ package com.eomcs.lms;
 import javax.sql.DataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -11,15 +12,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.transaction.PlatformTransactionManager;
-import com.eomcs.lms.dao.BoardDao;
-import com.eomcs.lms.dao.LessonDao;
-import com.eomcs.lms.dao.MemberDao;
-import com.eomcs.lms.dao.PhotoBoardDao;
-import com.eomcs.lms.dao.PhotoFileDao;
-import com.eomcs.sql.MybatisDaoFactory;
 
-// Spring IoC 컨테이너가 탐색할 패키지 설정
-// => 지정한 패키지 및 그 하위 패키지를 모두 뒤져서
 // @Component 애노테이션이 붙은 클래스를 찾아 객체를 생성한다.
 //
 @ComponentScan(value = "com.eomcs.lms")
@@ -27,6 +20,9 @@ import com.eomcs.sql.MybatisDaoFactory;
 // Spring IoC 컨테이너에서 사용할 Properties 파일을 로딩하기
 // resources -
 @PropertySource("classpath:com/eomcs/lms/conf/JDBC.properties")
+
+// Mybatis DAO 프록시를 자동 생성할 인터페이스를 지정한다.
+@MapperScan("com.eomcs.lms.dao")
 
 public class AppConfig {
 
@@ -81,65 +77,12 @@ public class AppConfig {
   }
 
   @Bean
-  public MybatisDaoFactory daoFactory(//
-      // 이 메서드를 호출할 때 Spring IoC 컨테이너에 들어 있는 객체를 원한다면,
-      // 이렇게 파라미터로 선언하라.
-      // 그러면 Spring IoC 컨테이너가 이 팩토리 메서드를 호출하기 전에
-      // SqlSessionFactory를 먼저 준비한 다음에 이 메서드를 실행할 것이다.
-      SqlSessionFactory sqlSessionFactory) {
-
-    return new MybatisDaoFactory(sqlSessionFactory);
-  }
-
-  @Bean
   public PlatformTransactionManager TransactionManager( //
       // 필요한 값이 있다면 이렇게 파라미터로 선언만 하라.
       // 단 IoC 컨테이너에 들어있는 값이어야 한다.
       DataSource dataSource) {
     return new DataSourceTransactionManager(dataSource);
   }
-
-  @Bean
-  public BoardDao boardDao( //
-      // 필요한 값이 있다면 이렇게 파라미터로 선언만 하라.
-      // 단 IoC 컨테이너에 들어있는 값이어야 한다.
-      MybatisDaoFactory daoFactory) {
-    return daoFactory.createDao(BoardDao.class);
-  }
-
-  @Bean
-  public LessonDao lessonDao( //
-      // 필요한 값이 있다면 이렇게 파라미터로 선언만 하라.
-      // 단 IoC 컨테이너에 들어있는 값이어야 한다.
-      MybatisDaoFactory daoFactory) {
-    return daoFactory.createDao(LessonDao.class);
-  }
-
-  @Bean
-  public MemberDao memberDao( //
-      // 필요한 값이 있다면 이렇게 파라미터로 선언만 하라.
-      // 단 IoC 컨테이너에 들어있는 값이어야 한다.
-      MybatisDaoFactory daoFactory) {
-    return daoFactory.createDao(MemberDao.class);
-  }
-
-  @Bean
-  public PhotoBoardDao photoBoardDao( //
-      // 필요한 값이 있다면 이렇게 파라미터로 선언만 하라.
-      // 단 IoC 컨테이너에 들어있는 값이어야 한다.
-      MybatisDaoFactory daoFactory) {
-    return daoFactory.createDao(PhotoBoardDao.class);
-  }
-
-  @Bean
-  public PhotoFileDao photoFileDao( //
-      // 필요한 값이 있다면 이렇게 파라미터로 선언만 하라.
-      // 단 IoC 컨테이너에 들어있는 값이어야 한다.
-      MybatisDaoFactory daoFactory) {
-    return daoFactory.createDao(PhotoFileDao.class);
-  }
-
-
 }
 
 

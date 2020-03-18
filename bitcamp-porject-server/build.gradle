@@ -19,6 +19,8 @@ repositories {
 }
 
 dependencies {
+    // Mybatis와 Spring IoC를 연결해주는 어댑터
+    implementation 'org.mybatis:mybatis-spring:2.0.4'
     // Spring IoC 컨테이너
     implementation 'org.springframework:spring-context:5.2.4.RELEASE'
     // Mybatis

@@ -1,4 +1,4 @@
-// 프로퍼티 값 지정하기
+// 프로퍼티 값이 제대로 설정되었는지 확인하기
 package com.eomcs.spring.ioc.ex04.a;
 
 import org.springframework.context.ApplicationContext;

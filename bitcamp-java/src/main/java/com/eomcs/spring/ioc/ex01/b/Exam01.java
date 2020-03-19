@@ -17,7 +17,7 @@ public class Exam01 {
     // 역슬래시는 \\ 두개 슬래시는 / 한개 붙이면 된다.
     //
     ApplicationContext iocContainer = new FileSystemXmlApplicationContext(
-        "file:///Users\\user\\git\\bitcamp-study\\bitcamp-java\\src\\main\\java\\com\\eomcs\\spring\\ioc\\ex01\\b\\application-context.xml");
+        "file:///C:\\Users\\user\\git\\bitcamp-study\\bitcamp-java\\src\\main\\java\\com\\eomcs\\spring\\ioc\\ex01\\b\\application-context.xml");
 
     System.out.println("실행 완료!");
   }

@@ -41,8 +41,8 @@ public class Exam01 {
     // 물론 JVM이 클래스 파일을 찾을 JVM의 기본 경로($JAVA_HOME/lib)를 가장 먼저 뒤진다.
     // => 설정 파일 경로를 지정할 때 자바 패키지 경로를 지정한다.
     // 파일 경로이기 때문에 패키지와 패키지 사이에는 . 대신에 /를 사용해야 한다.
-    ApplicationContext iocContainer =
-        new ClassPathXmlApplicationContext("ch29/a/application-context.xml");
+    ApplicationContext iocContainer = new ClassPathXmlApplicationContext(//
+        "com/eomcs/spring/ioc/ex01/a/application-context.xml");
 
     System.out.println("실행 완료!");
   }

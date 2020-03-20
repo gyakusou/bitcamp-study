@@ -52,6 +52,8 @@ public class CarFactoryBean implements FactoryBean<Car> {
 
   @Override
   public Class<?> getObjectType() {
+    // getObject()가 생성해주는 객체의 타입정보를 리턴한다.
+    // 이 메서드는
     System.out.println("CarFactoryBean.getObjectType() 호출됨.");
     return Car.class;
   }

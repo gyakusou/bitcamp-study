@@ -1,8 +1,8 @@
-package com.eomcs.spring.ioc.ex05;
+package com.eomcs.spring.ioc.ex05.c;
 
 import java.util.Map;
 
-public class Car3 {
+public class Car {
   String model;
   String maker;
   int cc;

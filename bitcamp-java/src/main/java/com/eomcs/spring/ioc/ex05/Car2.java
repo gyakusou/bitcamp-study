@@ -1,6 +1,7 @@
 package com.eomcs.spring.ioc.ex05;
 
 import java.util.List;
+import com.eomcs.spring.ioc.ex05.a.Tire;
 
 public class Car2 {
   String model;

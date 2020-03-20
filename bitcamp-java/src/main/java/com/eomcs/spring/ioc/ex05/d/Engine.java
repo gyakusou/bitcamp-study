@@ -1,4 +1,4 @@
-package com.eomcs.spring.ioc.ex05;
+package com.eomcs.spring.ioc.ex05.d;
 
 public class Engine {
   String maker;

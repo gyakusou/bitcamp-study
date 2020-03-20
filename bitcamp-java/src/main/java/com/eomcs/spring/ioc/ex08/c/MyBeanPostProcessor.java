@@ -3,9 +3,9 @@ package com.eomcs.spring.ioc.ex08.c;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 
-// Spring IoC 컨테이너에 기능을 추가하는 예:
+// Spring IoC 컨테이너에 새 기능을 추가하는 예:
 // => 새 기능이 IoC 컨테이너가 생성한 객체를 사용해야 한다면,
-// 객체 생성 후에 그 작업을 수행하면된다.
+// 객체 생성 후에 그 작업을 수행하면 된다.
 // => 이렇게 개발자가 컨테이너의 기능을 확장할 수 있도록
 // BeanPostProcessor라는 규칙을 제공한다.
 //

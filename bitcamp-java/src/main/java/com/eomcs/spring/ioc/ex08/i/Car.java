@@ -1,8 +1,9 @@
-package com.eomcs.spring.ioc.ex08.f;
+package com.eomcs.spring.ioc.ex08.i;
 
 import java.sql.Date;
+import javax.annotation.Resource;
 
-// 의존 객체 Engine 주입 - 생성자를 통해 의존 객체 주입
+// 의존 객체 Engine 주입 - @Autowired + @Qualifier = @Resource
 public class Car {
 
   private String model;
@@ -10,17 +11,17 @@ public class Car {
   private int cc;
   private boolean auto;
   private Date createdDate;
+
+  // => 이 애노테이션은 스프링 프레임워크가 아닌 자바에서 제공한다.
+  // => 자바 기본 라이브러리에 포함되어 있지 않다.
+  // => 따로 라이브러리를 다운로드 받아 포함시켜야 한다.
+  // => search.maven.org 에서 'javax.annotation'으로 검색하라.
+  // 1.3.2 이상의 버전 사용.
+  @Resource(name = "e1")
   private Engine engine;
 
-  // Spring IoC 컨테이너로부터 의존 객체를 주입 받고 싶다면,
-  // 생성자에 파라미터를 선언하라.
-  // @Autowired 는 붙일 필요가 없다. (붙여도 된다)
-  // 주의!
-  // => 이 일 또한 AutowiredAnnotationBeanPostProcessor 객체가 처리한다.
-  //
-  public Car(Engine engine) {
-    System.out.println("Car(Engine)");
-    this.engine = engine;
+  public Car() {
+    System.out.println("Car()");
   }
 
   @Override

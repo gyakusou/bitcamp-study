@@ -5,14 +5,14 @@ import com.eomcs.spring.ioc.ex06.Car;
 
 // 스프링 IoC 컨테이너가 정한 규칙에 따라 공장 클래스를 만들면,
 // 구현할 때 복잡한 면이 있다.
-// 하지만, 빈 생성을 설정할 때는 기존 방식 보다 쉽다.
+// 하지만 빈 생성을 설정할 때는 기존 방식 보다 쉽다.
 //
 // 스프링에서 공장 클래스를 만들 때 제안한 규칙?
 // => org.springframework.beans.factory.FactoryBean 인터페이스
 //
 public class CarFactory implements FactoryBean<Car> {
 
-  String model; // ★
+  String model;
 
   public CarFactory() {
     System.out.println("CarFactory() 생성자 호출됨.");
@@ -44,7 +44,7 @@ public class CarFactory implements FactoryBean<Car> {
         return c;
       case "SM5":
         c.setMaker("르노삼성자동차");
-        c.setModel("SM5");
+        c.setMaker("SM5");
         c.setCc(1990);
         return c;
       default:
@@ -58,8 +58,8 @@ public class CarFactory implements FactoryBean<Car> {
   @Override
   public Class<?> getObjectType() {
     // getObject()가 생성해주는 객체의 타입 정보를 리턴한다.
-    // 이 메서드는 Spring IoC 컨테이너가 객체를 관리할 때 사용한다.
-    System.out.println("CarFactory3.getObjectType() 호출됨.");
+    // 이 메서드는 Spring IoC 컨테이너가 타입으로 객체를 찾을 때 사용한다.
+    System.out.println("CarFactory.getObjectType() 호출됨.");
     return Car.class;
   }
 }

@@ -37,10 +37,10 @@
                       p:maker="한국타이어" p:width="180"/>
                 <bean class="com.eomcs.spring.ioc.ex05.a.Tire" 
                       p:maker="한국타이어" p:width="180"/>
-                <bean class="com.eomcs.spring.ioc.ex05.a.Tire" >
-                 <property name="maker" value="비트타이어"/>
+                <bean class="com.eomcs.spring.ioc.ex05.a.Tire">
+                  <property name="maker" value="비트타이어"/>
                   <property name="width" value="100"/>
-                </bean>
+                </bean> 
             </list>
         </property>
     </bean>

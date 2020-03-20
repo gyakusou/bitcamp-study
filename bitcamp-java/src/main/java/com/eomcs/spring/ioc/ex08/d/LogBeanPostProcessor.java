@@ -4,10 +4,11 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 
 // 역할:
-// => IoC 컨테이너가 빈을 생성할때 마다 로그를 출력한다.
+// => IoC 컨테이너가 빈을 생성할 때 마다 로그를 출력한다.
+//
 public class LogBeanPostProcessor implements BeanPostProcessor {
   public LogBeanPostProcessor() {
-    System.out.println("MyBeanPostProcessor()");
+    System.out.println("LogBeanPostProcessor()");
   }
 
   @Override
@@ -18,7 +19,7 @@ public class LogBeanPostProcessor implements BeanPostProcessor {
 
   @Override
   public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-    System.out.println("====>" + bean.getClass().getName());
+    System.out.println("===> " + bean.getClass().getName());
     return null;
   }
 }

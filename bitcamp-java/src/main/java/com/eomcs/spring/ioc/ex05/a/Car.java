@@ -7,7 +7,7 @@ public class Car {
   String maker;
   int cc;
   Engine engine;
-  Tire[] tires; // 배열 ★
+  Tire[] tires;
 
   @Override
   public String toString() {

@@ -37,8 +37,6 @@ public class CustomDateEditor extends PropertyEditorSupport {
   public Object getValue() {
     // 이 메서드는 호출되었을 때 그것을 표시하기 위해 오버라이딩 했다.
     System.out.println("CustomDateEditor.getValue()");
-    return super.getValue();
-    // 수퍼클래스부터 getValue()를 찾아라.
-    // 그 중 첫번째로 나오는 getValue()를 리턴한다. 원래 하던 일을 수행한다.
+    return super.getValue(); // 원래 하던 일을 수행한다.
   }
 }

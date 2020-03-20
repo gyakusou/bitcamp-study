@@ -11,11 +11,7 @@
         <property name="cc" value="890"/>
         <property name="auto" value="true"/>
         <property name="createdDate" value="2018-5-8"/>
-        
-        <property name="engine" value="비트자동차,16,4"/> 
-        <!-- 문자열을 property의 특정 값으로 넣고자 할때 아래와 같은 property 에디터를 장착한다. 
-             ex. Date -->
-        
+        <property name="engine" value="비트자동차,16,4"/>
     </bean>
     
     <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
@@ -23,10 +19,8 @@
 	        <map>
 	            <entry key="java.sql.Date" 
 	                   value="com.eomcs.spring.ioc.ex07.c.CustomDateEditor"/>
-	                   
 	            <entry key="com.eomcs.spring.ioc.ex07.Engine" 
                      value="com.eomcs.spring.ioc.ex07.d.CustomEngineEditor"/>
-                      
 	        </map>
 	    </property>
 	</bean>

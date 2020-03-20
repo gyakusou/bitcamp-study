@@ -5,19 +5,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 // 의존 객체 Engine 주입 - 필수 또는 선택
 public class Car {
+
   private String model;
   private String maker;
   private int cc;
   private boolean auto;
   private Date createdDate;
-  @Autowired
-  private Engine engine;
 
+  // @Autowired의 required 값은 기본이 true이다.
+  // => 즉 의존객체 주입이 필수사항이다.
+  // => 선택사항으로 바꾸고 싶으면 false로 설정하라!
+  @Autowired(required = false)
+  private Engine engine;
 
   public Car() {
     System.out.println("Car()");
   }
-
 
   @Override
   public String toString() {
@@ -29,8 +32,6 @@ public class Car {
     return engine;
   }
 
-
-  //
   // public void setEngine(Engine engine) {
   // System.out.println("Car.setEngine()");
   // this.engine = engine;

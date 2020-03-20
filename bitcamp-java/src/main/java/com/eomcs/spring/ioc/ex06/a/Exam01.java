@@ -12,7 +12,7 @@ public class Exam01 {
     Car c = CarFactory.create("티코");
 
     // Spring IoC 컨테이너에서 팩토리 메서드를 사용하여 객체 생성하기
-    ApplicationContext iocContainer = new ClassPathXmlApplicationContext( //
+    ApplicationContext iocContainer = new ClassPathXmlApplicationContext(//
         "com/eomcs/spring/ioc/ex06/a/application-context.xml");
 
     System.out.println(iocContainer.getBean("c1"));

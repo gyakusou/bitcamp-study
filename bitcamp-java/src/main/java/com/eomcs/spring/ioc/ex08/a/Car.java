@@ -1,7 +1,6 @@
 package com.eomcs.spring.ioc.ex08.a;
 
 import java.sql.Date;
-import com.eomcs.spring.ioc.ex08.Engine;
 
 public class Car {
   String model;

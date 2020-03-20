@@ -6,9 +6,8 @@ public class Engine {
   int cylinder;
 
   public Engine() {
-    System.out.println("Engine() 생성자 호출됨");
+    System.out.println("Engine() 생성자 호출됨!");
   }
-
 
   @Override
   public String toString() {

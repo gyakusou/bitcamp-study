@@ -18,10 +18,9 @@ public class Exam02 {
     System.out.println(obj1 == obj2);
     System.out.println(obj1 == obj3);
 
-    // singleton 으로 설정된 객체는
+    // singleton으로 설정된 객체는
     // 오직 한 개만 생성된다.
-    // getBean()을 여러번 호출하더라도 같은 객체를 리턴한다.
-
+    // getBean()을 여러 번 호출하더라도 같은 객체를 리턴한다.
   }
 
 }

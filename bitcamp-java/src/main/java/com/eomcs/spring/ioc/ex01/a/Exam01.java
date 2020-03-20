@@ -16,26 +16,28 @@ public class Exam01 {
     // Spring IoC 컨테이너
     // => spring.io 사이트에서 제공하는 프레임워크이다.
     // => 프로젝트에 Spring IoC 컨테이너 포함하기
-    // mvnrepository.com 에서 spring-context 로 라이브러리를 검색한다.
-    // build.gradle 에 의존 라이브러리 정보를 추가한다.
-    // '$ gradle eclipse'를 실행하여 라이브러리 파일을 다운로드 받고 이클립스 설정 파일을 갱신한다.
-    // 이클립스에서 프로젝트 정보를 갱신한다.
+    // mvnrepository.com 또는 search.maven.org에서
+    // spring-context 로 라이브러리를 검색한다.
+    // => build.gradle 에 의존 라이브러리 정보를 추가한다.
+    // => '$ gradle eclipse'를 실행하여 라이브러리 파일을 다운로드 받고
+    // 이클립스 설정 파일을 갱신한다.
+    // => 이클립스에서 프로젝트 정보를 갱신한다.
     //
     // ApplicationContext 인터페이스
     // => 스프링 IoC 컨테이너의 사용 규칙을 정의한 인터페이스이다.
     // => 모든 스프링 IoC 컨테이너는 이 규칙에 따라 정의되어 있다.
     //
     // ApplicationContext 구현체(implements, 인터페이스를 구현한 클래스 또는 그 클래스의 인스턴스)의 종류
-    // => XML 파일에서 설정 정보를 읽어들이는 IoC 컨테이너
+    // 1) XML 파일에서 설정 정보를 읽어들이는 IoC 컨테이너
     // - ClassPathXmlApplicationContext : 설정 파일을 자바 CLASSPATH 경로에서 찾는다.
     // - FileSystemXmlApplicationContext : 설정 파일을 OS 경로에서 찾는다.
-    // => 자바 클래스 파일의 애노테이션에서 설정 정보를 읽어 들이는 IoC 컨테이너
+    // 2) 자바 클래스 파일의 애노테이션에서 설정 정보를 읽어 들이는 IoC 컨테이너
     // - AnnotationConfigApplicationContext : 설정 정보를 자바 클래스에서 찾는다.
     //
 
     // 1) 자바 CLASSPATH 에서 설정 파일을 찾는 IoC 컨테이너
     // => 자바 CLASSPATH?
-    // 예를 들면 /Users/eomjinyoung/git/bitcamp-2018-12/java-basic/bin/main
+    // 예를 들면 /Users/eomjinyoung/git/bitcamp-study/java-basic/bin/main
     // 즉, JVM이 자바 클래스 파일(.class)을 로딩하기 위해 찾는 경로이다.
     // 보통 JVM을 실행할 때 -classpath 옵션이나 -cp 옵션으로 경로를 지정한다.
     // 물론 JVM이 클래스 파일을 찾을 JVM의 기본 경로($JAVA_HOME/lib)를 가장 먼저 뒤진다.

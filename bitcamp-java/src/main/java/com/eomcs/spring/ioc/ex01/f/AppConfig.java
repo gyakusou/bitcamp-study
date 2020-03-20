@@ -11,5 +11,4 @@ public class AppConfig {
   public Car c1() {
     return new Car();
   }
-
 }

@@ -8,17 +8,16 @@ import com.eomcs.spring.ioc.ex01.Car;
 
 public class Exam01 {
   public static void main(String[] args) {
-
     ApplicationContext iocContainer = new ClassPathXmlApplicationContext(//
         "com/eomcs/spring/ioc/ex01/g/application-context.xml");
 
-    // 현재 IoC 컨테이너에 들어있는 객체를 출력해보자.
+    // 현재 IoC 컨테이너에 들어 있는 객체를 출력해 보자.
     SpringUtils.printBeanList(iocContainer);
 
-    // 1. 객체 이름으로 꺼내기
+    // 1) 객체 이름으로 꺼내기
     System.out.println(iocContainer.getBean("c1"));
 
-    // 2. 객체 타입으로 꺼내기
+    // 2) 객체 타입으로 꺼내기
     System.out.println(iocContainer.getBean(Car.class));
 
     System.out.println("실행 완료!");

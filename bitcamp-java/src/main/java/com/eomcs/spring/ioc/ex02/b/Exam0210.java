@@ -1,4 +1,4 @@
-// 객체 생성 - bean의 이름을 지정하는 다양한 방법
+// 객체 생성 - bean의 별명을 알아내기
 package com.eomcs.spring.ioc.ex02.b;
 
 import org.springframework.context.ApplicationContext;
@@ -15,7 +15,7 @@ public class Exam0210 {
     SpringUtils.printBeanList(iocContainer);
 
     String[] aliases = iocContainer.getAliases("c5");
-    System.out.println("별명");
+    System.out.println("[별명]");
     for (String alias : aliases) {
       System.out.println(alias);
     }

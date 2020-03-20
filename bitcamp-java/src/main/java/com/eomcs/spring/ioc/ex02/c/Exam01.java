@@ -18,7 +18,7 @@ public class Exam01 {
     for (String name : names) {
       System.out.println(name);
     }
-    // 객체가 생서되지 않았더라도 빈의 이름은 모두 등록되어 있다.
+    // => 객체가 생성되지 않았더라도 빈의 이름은 모두 등록되어 있다.
   }
 
 }

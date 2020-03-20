@@ -5,9 +5,7 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
     
-    <!-- 프로퍼티 설정하기 = 셋터 호출하기
-    프로퍼티명 set이나 get 다음 이름/ ex setModel 이라면 set을 제외한 Model에서 소문자로 바꾼다. 
-    즉 프로퍼티명은 model -->
+    <!-- 프로퍼티 설정하기 = 셋터 호출하기 -->
     
     <bean id="c1" class="com.eomcs.spring.ioc.ex04.Car">
         <property name="model"><value type="java.lang.String">티코1</value></property>
@@ -24,8 +22,8 @@
     -->
     
     <!-- 프로퍼티의 타입을 생략하면 IoC 컨테이너가 
-     String을 프로퍼티의 타입에 맞춰서 자동 형변환한다. -->
-     
+         String을 프로퍼티의 타입에 맞춰서 자동 형변환한다. 
+    -->
     <bean id="c2" class="com.eomcs.spring.ioc.ex04.Car">
         <property name="model"><value>티코2</value></property>
         <property name="maker"><value>비트자동차</value></property>

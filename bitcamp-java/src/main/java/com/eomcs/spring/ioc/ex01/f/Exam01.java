@@ -1,4 +1,4 @@
-// IoC 컨테이너에 객체를 보관하기 2
+// IoC 컨테이너에 객체를 보관하기 II
 package com.eomcs.spring.ioc.ex01.f;
 
 import org.springframework.context.ApplicationContext;
@@ -7,11 +7,10 @@ import com.eomcs.spring.ioc.SpringUtils;
 
 public class Exam01 {
   public static void main(String[] args) {
-
-    ApplicationContext iocContainer = new AnnotationConfigApplicationContext( //
+    ApplicationContext iocContainer = new AnnotationConfigApplicationContext(//
         AppConfig.class);
 
-    // 현재 IoC 컨테이너에 들어있는 객체를 출력해보자.
+    // 현재 IoC 컨테이너에 들어 있는 객체를 출력해 보자.
     SpringUtils.printBeanList(iocContainer);
 
     // 애노테이션을 처리하는 기본 도구 외에

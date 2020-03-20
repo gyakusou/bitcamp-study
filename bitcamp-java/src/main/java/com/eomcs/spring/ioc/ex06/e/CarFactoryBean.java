@@ -3,7 +3,8 @@ package com.eomcs.spring.ioc.ex06.e;
 import org.springframework.beans.factory.FactoryBean;
 import com.eomcs.spring.ioc.ex06.Car;
 
-// 보통 FactoryBean 구현체를 만들 때는 클래스 이름 뒤에 접미사로 FactoryBean을 붙여
+// 보통 FactoryBean 구현체를 만들 때는
+// 클래스 이름 뒤에 접미사로 FactoryBean을 붙여
 // 다른 개발자가 쉽게 알아보도록 만든다.
 //
 public class CarFactoryBean implements FactoryBean<Car> {
@@ -39,7 +40,7 @@ public class CarFactoryBean implements FactoryBean<Car> {
         return c;
       case "SM5":
         c.setMaker("르노삼성자동차");
-        c.setModel("SM5");
+        c.setMaker("SM5");
         c.setCc(1990);
         return c;
       default:
@@ -52,8 +53,8 @@ public class CarFactoryBean implements FactoryBean<Car> {
 
   @Override
   public Class<?> getObjectType() {
-    // getObject()가 생성해주는 객체의 타입정보를 리턴한다.
-    // 이 메서드는
+    // getObject()가 생성해주는 객체의 타입 정보를 리턴한다.
+    // 이 메서드는 Spring IoC 컨테이너가 타입으로 객체를 찾을 때 사용한다.
     System.out.println("CarFactoryBean.getObjectType() 호출됨.");
     return Car.class;
   }

@@ -1,4 +1,6 @@
-package com.eomcs.spring.ioc.ex06;
+package com.eomcs.spring.ioc.ex06.a;
+
+import com.eomcs.spring.ioc.ex06.Car;
 
 public class CarFactory {
   public static Car create(String model) {

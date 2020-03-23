@@ -1,4 +1,4 @@
-// // dynamic sql 다루기 - 조건문 사용 2
+// dynamic sql 다루기 - 조건문 사용 II
 package com.eomcs.mybatis.ex03;
 
 import java.io.InputStream;
@@ -25,7 +25,8 @@ public class Exam0130 {
     // => 제목, 내용, 번호로 검색하기
 
     Scanner keyScan = new Scanner(System.in);
-    System.out.print("항목(1:번호, 2:제목, 3:내용, 그외:전체)? ");
+
+    System.out.print("항목(1:번호, 2:제목, 3: 내용, 그 외: 전체)? ");
     String item = keyScan.nextLine();
 
     System.out.print("검색어? ");
@@ -33,12 +34,13 @@ public class Exam0130 {
 
     keyScan.close();
 
-    // SQL Mapper 에 여러개의 파라미터 값을 넘길 때 주로 Map을 사용한다.
+    // SQL 매퍼에 여러 개의 파라미터 값을 넘길 때 주로 Map을 사용한다.
     HashMap<String, Object> params = new HashMap<>();
     params.put("item", item);
     params.put("keyword", keyword);
 
-    List<Board> list = sqlSession.selectList("BoardMapper.select4", params);
+    List<Board> list = sqlSession.selectList("BoardMapper.select4", //
+        params);
 
     for (Board board : list) {
       System.out.printf("%d, %s, %s, %s, %d\n", //

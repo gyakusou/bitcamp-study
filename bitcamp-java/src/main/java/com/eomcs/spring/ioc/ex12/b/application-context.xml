@@ -8,11 +8,11 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
     
-    <context:component-scan base-package="com.eomcs.spring.ioc.ex12.b"></context:component-scan>
+    <context:component-scan base-package="com.eomcs.spring.ioc.ex12.b"/>
 
 <!-- Mybatis SqlSessionFactory 준비하기 -->
     <bean id="sqlSessionFactory"
-          class="come.eomcs.spring.ioc.ex12.b.SqlSessionFactoryFactoryBean">
+          class="com.eomcs.spring.ioc.ex12.b.SqlSessionFactoryFactoryBean">
       <property name="configLocation" 
                 value="com/eomcs/spring/ioc/ex12/b/mybatis-config.xml"/>
     </bean>

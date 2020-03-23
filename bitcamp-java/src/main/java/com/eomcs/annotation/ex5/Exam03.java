@@ -7,9 +7,9 @@ public class Exam03 {
     Class<?> clazz = MyClass3.class;
     MyAnnotation3 obj = clazz.getAnnotation(MyAnnotation3.class);
 
-    System.out.println(obj.v1()[0]);
-    System.out.println(obj.v2()[0]);
-    System.out.println(obj.v3()[0]);
+    System.out.println(obj.v1());
+    System.out.println(obj.v2());
+    System.out.println(obj.v3());
 
   }
 }

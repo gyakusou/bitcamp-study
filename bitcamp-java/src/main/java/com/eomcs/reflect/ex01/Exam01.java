@@ -1,7 +1,6 @@
 // Reflection API : 클래스 로딩
 package com.eomcs.reflect.ex01;
 
-// 패키지 멤버클래스
 class A {
   static int i;
 
@@ -15,7 +14,6 @@ class A {
 }
 
 
-// public 클래스는 1개여야 하고 파일 명과 클래스 이름은 같아야 한다.
 public class Exam01 {
 
   public static void main(String[] args) throws Exception {
@@ -32,7 +30,7 @@ public class Exam01 {
     // A.i = 100; // 클래스 로딩 확인!
     // A.m(); // 클래스 로딩 확인!
     // new A(); // 클래스 로딩 확인!
-    // new A(); // 클래스는 중복으로 로딩되지 않는다. ★
+    // new A(); // 클래스는 중복으로 로딩되지 않는다.
     // Class.forName("com.eomcs.reflect.ex01.A");
     // 파라미터로 패키지명을 포함한 전체 클래스 이름을 지정해야 한다.
     // 패키지명을 포함한 전체 클래스 이름

@@ -1,4 +1,4 @@
-// // dynamic sql 다루기 - <foreach> 사용법 2
+// dynamic sql 다루기 - <foreach> 사용법 II
 package com.eomcs.mybatis.ex03;
 
 import java.io.InputStream;
@@ -29,7 +29,7 @@ public class Exam0260 {
 
     Scanner keyScan = new Scanner(System.in);
 
-    System.out.print("조회할 게시물 번호들(예: 1 6 8 10 12, 최대 5개)? ");
+    System.out.print("조회할 게시물 번호들(예: 1 6 8 10; 최대 5개)? ");
     String[] values = keyScan.nextLine().split(" ");
 
     ArrayList<Object> noList = new ArrayList<>();

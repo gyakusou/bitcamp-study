@@ -2,10 +2,13 @@
 package com.eomcs.reflect.ex02;
 
 public class Exam05 {
+
   static interface A {
   }
+
   static interface B {
   }
+
   static interface C {
   }
 

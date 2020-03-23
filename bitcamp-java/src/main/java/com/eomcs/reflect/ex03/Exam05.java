@@ -15,7 +15,7 @@ public class Exam05 {
   }
 
   public static void main(String[] args) throws Exception {
-    Class clazz = Exam05.class;
+    Class<?> clazz = Exam05.class;
 
     // 메서드 호출 방법
     // invoke(인스턴스, 아규먼트, ...);
@@ -32,7 +32,7 @@ public class Exam05 {
     m = clazz.getMethod("minus", int.class, int.class);
 
     // => 인스턴스 메서드를 호출할 때는 반드시 인스턴스 주소를 넘겨야 한다.
-    // m.invoke(null, 10, 20); // 예외발생
+    // m.invoke(null, 10, 20); // 예외 발생!
 
     Exam05 obj = new Exam05();
     m.invoke(obj, 10, 20); // OK!

@@ -12,13 +12,11 @@ public class Exam03 {
     } // non-static nested class == inner class
 
     public void m() {
-
       class D {
       } // local class
     }
 
     public void m2() {
-
       Object obj = new Object() {}; // anonymous class
     }
 
@@ -29,7 +27,6 @@ public class Exam03 {
     }
 
     public interface X {
-
     }
   }
 

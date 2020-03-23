@@ -1,7 +1,6 @@
 package com.eomcs.mybatis.ex04;
 
 public class AttachFile {
-
   int no;
   String filePath;
   int boardNo;
@@ -34,7 +33,6 @@ public class AttachFile {
   public void setBoardNo(int boardNo) {
     this.boardNo = boardNo;
   }
-
 
 
 }

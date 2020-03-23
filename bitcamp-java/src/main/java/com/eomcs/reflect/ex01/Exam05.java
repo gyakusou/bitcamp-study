@@ -3,6 +3,7 @@ package com.eomcs.reflect.ex01;
 
 
 public class Exam05 {
+
   static class A {
     void m() {
       System.out.println("Hello!");

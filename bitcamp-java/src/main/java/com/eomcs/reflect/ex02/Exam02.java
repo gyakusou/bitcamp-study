@@ -17,6 +17,7 @@ public class Exam02 {
     System.out.println(superClazz.getName());
     System.out.println(superClazz.getSuperclass().getName());
 
+
   }
 
 }

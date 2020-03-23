@@ -1,4 +1,4 @@
-// Data Persistence Framework 도입 - Mybatis 설정 파일의 InputStream 얻는 방법
+// Data Persistence Framework 도입 - 코드 정리!
 package com.eomcs.mybatis.ex01;
 
 import org.apache.ibatis.io.Resources;
@@ -10,8 +10,6 @@ public class Exam0112 {
 
   public static void main(String[] args) throws Exception {
 
-    // 코드정리 ★
-    //
     SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(//
         Resources.getResourceAsStream(//
             "com/eomcs/mybatis/ex01/mybatis-config.xml"));

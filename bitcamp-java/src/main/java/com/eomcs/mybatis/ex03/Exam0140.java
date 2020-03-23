@@ -1,4 +1,4 @@
-// // dynamic sql 다루기 - <where> 사용 전: 조건이 빠졌을 때 문제 발생하는 경우
+// dynamic sql 다루기 - <where> 사용 전: 조건이 빠졌을 때 문제 발생하는 경우
 package com.eomcs.mybatis.ex03;
 
 import java.io.InputStream;
@@ -21,10 +21,7 @@ public class Exam0140 {
     SqlSession sqlSession = factory.openSession();
 
     // 실행 예:
-    // => 복합 검색하기, 여러개의 조건을 합쳐서 검색하기
-    // 제목+내용 검색하는 방법
-
-    // SQL Mapper 에 여러개의 파라미터 값을 넘길 때 주로 Map을 사용한다.s
+    // => 여러 개의 조건을 합쳐서 검색하기
     HashMap<String, Object> params = new HashMap<>();
 
     Scanner keyScan = new Scanner(System.in);
@@ -49,15 +46,17 @@ public class Exam0140 {
 
     keyScan.close();
 
-    List<Board> list = sqlSession.selectList("BoardMapper.select5", params);
 
-    // select5의 문제점
+    List<Board> list = sqlSession.selectList("BoardMapper.select5", //
+        params);
+
+    // select5의 문제점:
     // => no 값이 없을 경우 잘못된 SQL문을 생성한다.
     // => 생성된 SQL 문 예:
-    // ### SQL: select board_id, title, contents, created_date, view_count
+    // select board_id, title, contents, created_date, view_count
     // from x_board
     // where
-    // or title like concat('%', ?, '%') <= or 앞에 조건문이 없다. 즉 no값이 빠졌다.
+    // or title like concat('%', ?, '%') <== or 앞에 조건문이 없다.
     // or contents like concat('%', ?, '%')
 
     for (Board board : list) {

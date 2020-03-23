@@ -4,7 +4,6 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
 public class MyInvocationHandler implements InvocationHandler {
-
   @Override
   public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
     switch (method.getName()) {
@@ -15,10 +14,8 @@ public class MyInvocationHandler implements InvocationHandler {
       case "m2":
         String name = (String) args[0];
         int age = (int) args[1];
-        return name + "님의 나이는 " + age + "살 입니다.";
+        return name + "님은 나이는 " + age + "살 입니다.";
     }
     return null;
   }
-
-
 }

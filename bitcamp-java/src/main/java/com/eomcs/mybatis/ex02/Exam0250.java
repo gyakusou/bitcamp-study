@@ -19,22 +19,15 @@ public class Exam0250 {
 
     // 변경할 데이터를 객체에 담아서 넘긴다.
     Board board = new Board();
-    board.setNo(20);
+    board.setNo(5);
     board.setTitle("aaaa");
     board.setContent("bbbb");
 
-    // insert, update, delete 는 내부적으로 코드가 같지만,
-    // 유지보수를 위해서 기능에 맞는 메서드명으로 바꾸는 것이 좋다.
     int count = sqlSession.update("BoardMapper.updateBoard", board);
     System.out.println(count);
-
     sqlSession.commit();
     // commit 명령을 내리지 않으면 insert/update/delete을 테이블에 반영하지 않는다.
     // close() 할 때 취소된다.
-
-    // 용어 정리!
-    // commit : 임시 메모리에 저장된 작업 결과를 실제 테이블에 반영시키는 명령
-    // rollback : 임시 메모리에 저장된 작업 결과를 취소하는 명령
 
     sqlSession.close();
   }

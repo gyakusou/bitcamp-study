@@ -34,7 +34,7 @@ public class Exam0270 {
 
     ArrayList<Object> words = new ArrayList<>();
     for (String value : values) {
-      words.add(value.trim()); // trim 앞뒤 공백 없에준다.
+      words.add(value.trim());
     }
     params.put("words", words);
 

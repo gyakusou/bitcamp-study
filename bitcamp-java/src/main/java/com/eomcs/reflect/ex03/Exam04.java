@@ -27,7 +27,7 @@ public class Exam04 {
     System.out.println(m.getName());
 
     // primitive 타입도 클래스 정보가 있다.
-    // int = int.class
+    // int => int.class
     // byte,short,int,long,float,double,boolean,char 는 비록 클래스는 아니지만,
     // 일반 클래스처럼 타입 정보를 꺼낼 수 있도록 "class"라는 스태틱 변수를 제공한다.
     Class<?> intType = int.class;

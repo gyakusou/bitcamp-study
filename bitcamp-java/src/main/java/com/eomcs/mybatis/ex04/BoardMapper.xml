@@ -34,11 +34,6 @@
     </if>
   </select>
   
-
-<!-- resultType은 패키지를 다 적어야 한다. com.eomcs.mybatis.ex04.AttachFile 
-다 적기 싫을 경우에는 config에서 별명 설정한다. 
-컬럼값의 경우도 resultMap을 미리 정의하면 컬럼 이름이 다르더라도 -->
-
   <select id="selectFile" 
           resultMap="AttachFileMap" 
           parameterType="int">

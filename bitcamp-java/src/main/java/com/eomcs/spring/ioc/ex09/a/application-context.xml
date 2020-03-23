@@ -23,10 +23,8 @@
     -->
       
     <context:component-scan base-package="com.eomcs.spring.ioc.ex09"/>
-    <!-- com.eomcs.spring.ioc.ex09 를 포함한 하위 패키지에서 @Component, @Service, @Repository, @Controller 를 찾아,
-         자동생성시키도록 명령한다. -->
     
-    
+
 </beans>
 
 

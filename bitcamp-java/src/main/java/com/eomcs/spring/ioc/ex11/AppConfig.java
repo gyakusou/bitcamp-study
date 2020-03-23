@@ -5,37 +5,38 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
 
 
-// @CompnentScan
-// => <Context:component-scan/> 태그와 같은 역할을 한다.
+// @ComponentScan
+// => <context:component-scan/> 태그와 같은 일을 한다.
 //
 // 사용법1:
-// @ComponentScan(basePackages = {"com.eomcs.spring.ioc.ex11.p1"})
-// => 배열 항목이 한 개일 경우 중괄호 ({}) 생략 가능
-// @ComponentScan(basePackages = "com.eomcs.spring.ioc.ex11.p1")
-//
+// => 한 개의 패키지를 지정하기
+//   @ComponentScan(basePackages = {"com.eomcs.spring.ioc.ex11.p1"})
+// => 배열 항목이 한 개일 경우 중괄호({}) 생략 가능
+//   @ComponentScan(basePackages = "com.eomcs.spring.ioc.ex11.p1")
+
 // 사용법2:
-// => 여러개의 패키지 지정하기
-// @ComponentScan(basePackages = { //
-// "com.eomcs.spring.ioc.ex11.p1", //
-// "com.eomcs.spring.ioc.ex11.p2", //
-// "com.eomcs.spring.ioc.ex11.p3"})
-//
+// => 여러 개의 패키지 지정하기
+// @ComponentScan(basePackages = {//
+//   "com.eomcs.spring.ioc.ex11.p1", //
+//   "com.eomcs.spring.ioc.ex11.p2", //
+//   "com.eomcs.spring.ioc.ex11.p3"})
+
 // 사용법3:
 // => 특정 패키지나 클래스 제외하기
 @ComponentScan(//
     basePackages = "com.eomcs.spring.ioc.ex11", //
-    excludeFilters = @ComponentScan.Filter( //
+    excludeFilters = @ComponentScan.Filter(//
         type = FilterType.REGEX, //
-        pattern = "com.eomcs.spring.ioc.ex11.p2" //
+        pattern = "com.eomcs.spring.ioc.ex11.p2.*"//
     )//
 )
+// 위의 설정은 XML에서 다음과 같다.
+// <context:component-scan base-package="com.eomcs.spring.ioc.ex11">
+//   <context:exclude-filter
+//     type="regex"
+//     expression="com.eomcs.spring.ioc.ex11.p2.*"/>
+// </context:component-scan>
 
-//=> 위의 설정은 XML에서 다음과 같다.
-<context:component-scan base-Package="com.eomcs.spring.ioc.ex1">
-  <conetxt:exclude-filter
-    type="regex"
-    pattern="com.eomcs.spring.ioc.ex11.p2.*"/>
-</context:component-scan>
 
 public class AppConfig {
   @Bean

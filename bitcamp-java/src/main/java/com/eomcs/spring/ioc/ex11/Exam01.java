@@ -1,4 +1,4 @@
-// 클래스를 이용하여 스프링 설정하기 -@ComponentScan 사용법
+// 클래스를 이용하여 스프링 설정하기 - @ComponentScan 사용법
 package com.eomcs.spring.ioc.ex11;
 
 import org.springframework.context.ApplicationContext;

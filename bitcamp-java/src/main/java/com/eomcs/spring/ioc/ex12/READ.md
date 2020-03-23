@@ -1,6 +1,7 @@
 # 실습에 필요한 테이블 생성
 
-## 게시판 테이블 생성\
+## 게시판 테이블 생성
+
 ```
 create table x_board (
   board_id int not null primary key auto_increment,
@@ -14,7 +15,6 @@ create table x_board (
 ## 게시판 예제 데이터 입력
 
 ```
--- 게시물 데이터 입력 
 insert into x_board(board_id, title, contents)
 values(1, '제목1', '내용');
 
@@ -33,3 +33,10 @@ values(5, '제목5', '내용');
 insert into x_board(board_id, title, contents)
 values(6, '제목6', '내용');
 ```
+
+
+
+
+
+
+

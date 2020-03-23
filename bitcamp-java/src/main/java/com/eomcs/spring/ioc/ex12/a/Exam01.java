@@ -11,10 +11,10 @@ public class Exam01 {
 
   public static void main(String[] args) {
 
-    ApplicationContext iocContainer =
-        new ClassPathXmlApplicationContext("com/eomcs/spring/ioc/ex12/a/application-context.xml");
+    ApplicationContext iocContainer = new ClassPathXmlApplicationContext(//
+        "com/eomcs/spring/ioc/ex12/a/application-context.xml");
 
-    SpringUtils.printBeanNames(iocContainer);
+    SpringUtils.printBeanList(iocContainer);
 
     BoardDao boardDao = iocContainer.getBean(BoardDao.class);
 

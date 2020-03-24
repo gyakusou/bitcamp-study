@@ -19,27 +19,37 @@ import com.eomcs.spring.ioc.SpringUtils;
 // => XML 또는 자바 코드로 필터를 설정한다.
 //
 // AOP 용어:
-// => Advice : 메서드(join point) 호출 앞뒤에 삽입될 코드이다. 필터 객체이다.
+//
+// [Advice]
+// => 메서드(join point) 호출 앞뒤에 삽입될 코드를 담고 있는 필터 객체이다.
 // 예) MyAdvice 클래스
-// => Join Point : Advice가 들어갈 메서드이다.
-// 예) m() 메서드
-// => Pointcut : Advice를 삽입할 위치 정보이다.
-// 예) execution(* bitcamp.java106.step13.ex2.*.*(..))
-// => Target Object : Advice를 삽입할 대상 객체이다.
-// 예) X, Y, C 클래스
-// => Aspect : 어느 pointcut 에 어떤 advice를 삽입할 것인지 가리키는 정보이다.
+//
+// [Join Point]
+// => Advice가 삽입 될 메서드이다.
+// 예) m2() 메서드
+//
+// [Pointcut]
+// => Advice를 삽입할 위치 정보이다.
+// 예) execution(* com.eomcs.spring.ioc.ex13.b.*.*(..))
+//
+// [Target Object]
+// => Advice를 삽입할 대상 객체이다.
+// 예) Y, Z 클래스
+//
+// [Aspect]
+// => 어느 pointcut 에 어떤 advice를 삽입할 것인지 가리키는 정보이다.
 // 예) 설정 정보
 //
 public class Exam01 {
 
   public static void main(String[] args) {
-    ClassPathXmlApplicationContext iocContainer =
-        new ClassPathXmlApplicationContext("com/eomcs/spring/ioc/ex13/b/application-context.xml");
+    ClassPathXmlApplicationContext iocContainer = new ClassPathXmlApplicationContext(
+        "com/eomcs/spring/ioc/ex13/b/application-context-01.xml");
 
     SpringUtils.printBeanList(iocContainer);
 
-    // Caller caller = iocContainer.getBean(Caller.class);
-    // caller.test();
+    Caller caller = iocContainer.getBean(Caller.class);
+    caller.test();
   }
 
 }

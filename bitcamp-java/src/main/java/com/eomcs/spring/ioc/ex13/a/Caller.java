@@ -1,4 +1,4 @@
-package com.eomcs.spring.ioc.ex13.ex2;
+package com.eomcs.spring.ioc.ex13.a;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -6,15 +6,23 @@ import org.springframework.stereotype.Component;
 @Component
 public class Caller {
 
-  @Autowired X x;
-  @Autowired Y y;
-  @Autowired Z z;
+  @Autowired
+  X x;
+  @Autowired
+  Y y;
+  @Autowired
+  Z z;
+
+  @Override
+  public String toString() {
+    return "Caller [x=" + x + ", y=" + y + ", z=" + z + "]";
+  }
 
   public void test() {
     System.out.println("test()..... 시작");
-    x.m1();
-    y.m2();
-    z.m2();
+    x.m();
+    y.m();
+    z.m();
     System.out.println("test()..... 끝");
   }
 }

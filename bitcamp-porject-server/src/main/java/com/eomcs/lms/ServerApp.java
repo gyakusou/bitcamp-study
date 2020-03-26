@@ -170,7 +170,7 @@ public class ServerApp {
 
       if (requestHandler != null) {
         try {
-          // Request Handler 의 메서드 호출
+          // Request Handler의 메서드 호출
           requestHandler.getMethod().invoke( //
               requestHandler.getBean(), //
               params, out);
@@ -229,17 +229,14 @@ public class ServerApp {
 
   private String getServletPath(String requestUri) {
     // requestUri => /member/add?email=aaa@test.com&name=aaa&password=1111
-    return requestUri.split("\\?")[0];
+    return requestUri.split("\\?")[0]; // 예) /member/add
   }
 
   private Map<String, String> getParameters(String requestUri) throws Exception {
-
     // 데이터(Query String)는 따로 저장
     // => /member/list?email=aaa@test.com&name=aaa&password=1111
     Map<String, String> params = new HashMap<>();
-
     String[] items = requestUri.split("\\?");
-
     if (items.length > 1) {
       logger.debug(String.format("query string => %s", items[1]));
       String[] entries = items[1].split("&");
@@ -247,12 +244,15 @@ public class ServerApp {
         logger.debug(String.format("parameter => %s", entry));
         String[] kv = entry.split("=");
 
-        // 웹브라우저가 URL 인코딩하여 보낸 데이터를
-        // 디코딩하여 String 객체로 만든다.
-        String value = URLDecoder.decode(kv[1], "UTF-8");
+        if (kv.length > 1) {
+          // 웹브라우저가 URL 인코딩하여 보낸 데이터를
+          // 디코딩하여 String 객체로 만든다.
+          String value = URLDecoder.decode(kv[1], "UTF-8");
 
-        params.put(kv[0], value);
-
+          params.put(kv[0], value);
+        } else {
+          params.put(kv[0], "");
+        }
       }
     }
     return params;

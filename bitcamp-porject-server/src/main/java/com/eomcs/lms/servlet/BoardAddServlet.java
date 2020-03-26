@@ -18,7 +18,6 @@ public class BoardAddServlet {
 
   @RequestMapping("/board/add")
   public void service(Map<String, String> params, PrintStream out) throws Exception {
-
     Board board = new Board();
     board.setTitle(params.get("title"));
     boardService.add(board);

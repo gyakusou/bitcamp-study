@@ -18,9 +18,7 @@ public class BoardDetailServlet {
 
   @RequestMapping("/board/detail")
   public void service(Map<String, String> params, PrintStream out) throws Exception {
-
     int no = Integer.parseInt(params.get("no"));
-
     Board board = boardService.get(no);
 
     out.println("<!DOCTYPE html>");
@@ -31,9 +29,7 @@ public class BoardDetailServlet {
     out.println("</head>");
     out.println("<body>");
     out.println("<h1>게시물 상세정보</h1>");
-
     if (board != null) {
-
       out.printf("번호: %d<br>\n", board.getNo());
       out.printf("제목: %s<br>\n", board.getTitle());
       out.printf("등록일: %s<br>\n", board.getDate());
@@ -49,5 +45,3 @@ public class BoardDetailServlet {
     out.println("</html>");
   }
 }
-
-

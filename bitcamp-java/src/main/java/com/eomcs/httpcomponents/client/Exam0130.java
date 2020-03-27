@@ -1,4 +1,4 @@
-// Apache HttpComponents 사용법 : HttpClient5 - GET 요청하기 2
+// Apache HttpComponents 사용법 : HttpClient5 - GET 요청하기 3
 package com.eomcs.httpcomponents.client;
 
 import org.apache.hc.client5.http.classic.methods.HttpGet;
@@ -11,6 +11,7 @@ import org.apache.hc.core5.http.io.entity.EntityUtils;
 public class Exam0130 {
 
   public static void main(String[] args) throws Exception {
+    // try-with-resources 문법적용
 
     try (CloseableHttpClient httpclient = HttpClients.createDefault()) {
 

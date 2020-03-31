@@ -118,6 +118,7 @@ $ git config --global core.editor emacs
 ```
 예3) 설정 확인하기
 $ git config --list
+$ git config --l
 ```
 
 ```
@@ -163,10 +164,12 @@ $ git config --help
 예2) bin/ 디렉토리를 통째로 무시하기
 bin/
 
-예3) 현재 디렉토리의 *.log 파일만 무시하기. src/*.log처럼 기타 하위 디렉토리에 있는 *.log 파일은 포함하기
+예3) 현재 디렉토리의 *.log 파일만 무시하기. 
+- src/*.log처럼 기타 하위 디렉토리에 있는 *.log 파일은 포함하기
 /*.log
 
-예4) src/*.class 파일은 무시하고, src/main/*.class 파일은 포함하기
+예4) src/*.class 파일은 무시하고, 
+- src/main/*.class 파일은 포함하기
 src/*.class
 
 예5) src 디렉토리 및 그 하위 디렉토리에 있는 *.class 파일 무시하기
@@ -177,12 +180,16 @@ src/**/*.class
 
 예7) 확장자가 '.o' 또는 '.a'인 파일 무시하기
 *.[oa]
+- 위의 방식 대신에 아래처럼 낱개를 일일이 지정해도 된다.
+*.o
+*.a
 
 예8) *~
 파일명이 ~로 끝나는 파일
 
 예9) 만약 *.log 파일을 무시한다면, cotext.log 파일은 무시하지 않고 포함하기
-!context.log
+- 문법) !(무시하지 말아야 할 파일)
+- 예)   !context.log
 ```
 
 ### git clone [url] [폴더]
@@ -223,7 +230,7 @@ $ git add LICENSE
 $ git add .
 ```
 
-### git commit -m '이번 스냅샷을 저장하는 이유'
+### git commit -m "이번 스냅샷을 저장하는 이유"
 
 - Staging Area에 기록된 파일들(스냅샷)을 로컬 저장소에 보관한다.
 - 파일을 새로 추가하거나 변경하였다면 반드시 `git add`를 실행하여 Staging Area에 기록해야 한다.
@@ -361,8 +368,11 @@ index 0000000..3081b8d
 ### git checkout [파일]
 
 - 작업 디렉토리의 파일을 변경한 후 변경 전으로 되돌릴 때 사용한다.
-- Staging Area에 마지막으로 기록된 버전으로 되돌린다.
-- `git add`를 수행한 적이 없다면 Staging Area에는 마지막으로 커밋한 파일을 가리킨다. 따라서 마지막으로 커밋된 파일로 되돌릴 것이다.
+- Staging Area에 등록된 것이 없다면, 최종 커밋한 버전으로 되돌린다.
+- Staging Area에 등록된 것이 있다면, 현재 Staging Area에 기록된 버전으로 되돌린다.
+- `git add`를 수행한 적이 없다면 
+  Staging Area에는 마지막으로 커밋한 파일을 가리킨다. 
+  따라서 마지막으로 커밋된 파일로 되돌릴 것이다.
 
 ```
 예) src/main/webapp/index.html 파일을 편집 전으로 되돌리기
@@ -374,6 +384,7 @@ $ git checkout src/main/webapp/index.html
 - Staging Area의 기록에서 지정된 파일을 뺀다.
 - 작업 디렉토리에 해당 파일이 있다면 그 파일도 자동 삭제된다.
 - 이전 스냅샷에는 해당 파일이 계속 남아 있다.
+- 파일삭제 + git add = git rm
 
 ```
 예1) 작업 디렉토리에 있는 파일을 삭제한 후 Git에서도 제거하기

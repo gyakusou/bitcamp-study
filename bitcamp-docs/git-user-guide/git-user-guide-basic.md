@@ -14,12 +14,12 @@
   - 중앙집중식 버전 관리
     - 파일의 마지막 스냅샷을 받는다(checkout).
     - 스냅샷(snapshot)? 특정 시점의 파일 버전을 기록한 것.
-    - 로컬은 한 개의 스탭샷만 유지한다.
+    - 로컬은 한 개의 스냅샵만 유지한다.
     - 만약 서버에 문제가 생기면 모든 변경 내력(history)을 잃는다.
-    - 로컬에 있는 스냅샷 중에서 최신 버전으로만 복구한다.
+    - 로컬에 있는 스냅샵 중에서 최신 버전으로 복구한다.
     - 예) CVS, Subversion(SVN), Perforce 등
-    - CVS : commit 할 때 파일 전체를 보관한다.
-    - Subversion : commit 할 때 파일에서 변경한 부분만 보관한다.
+    - CVS: commit 할 때 파일 전체를 보관한다.
+    - Subversion: commit 할 때 파일에서 변경한 부분만 보관한다.
   - 분산 버전 관리 시스템
     - 저장소 전부를 복제한다.
     - 변경 내력(history)까지 모두 복제한다.
@@ -117,8 +117,8 @@ $ git config --global core.editor emacs
 
 ```
 예3) 설정 확인하기
+$ git config -l
 $ git config --list
-$ git config --l
 ```
 
 ```
@@ -187,9 +187,9 @@ src/**/*.class
 예8) *~
 파일명이 ~로 끝나는 파일
 
-예9) 만약 *.log 파일을 무시한다면, cotext.log 파일은 무시하지 않고 포함하기
-- 문법) !(무시하지 말아야 할 파일)
-- 예)   !context.log
+예9) *.log 파일 중에서 cotext.log 파일은 무시하지 않고 포함하기
+- 문법) !(무시하지말아야할파일)
+- 예) !context.log
 ```
 
 ### git clone [url] [폴더]
@@ -264,21 +264,21 @@ Your branch is up to date with 'origin/master'.
 Changes to be committed:
   (use "git reset HEAD <file>..." to unstage)
 
-	modified:   src/main/webapp/test02.html
-	modified:   src/main/webapp/test03.html
-	new file:   src/main/webapp/test05.html
+  modified:   src/main/webapp/test02.html
+  modified:   src/main/webapp/test03.html
+  new file:   src/main/webapp/test05.html
 
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
 
-	modified:   src/main/webapp/index.html
-	modified:   src/main/webapp/test01.html
+  modified:   src/main/webapp/index.html
+  modified:   src/main/webapp/test01.html
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
 
-	src/main/webapp/test05.html
+  src/main/webapp/test05.html
 ```
 
 ```
@@ -315,7 +315,7 @@ AM src/main/webapp/test06.html
 
 ```
 예1) 작업 디렉토리에서 변경한 파일과 Staging Area에 등록된 파일과 비교하여
-     변경경 전/후를 출력하기
+     변경 전/후를 출력하기
 
 $ git diff
 diff --git a/src/main/webapp/test01.html b/src/main/webapp/test01.html
@@ -371,8 +371,8 @@ index 0000000..3081b8d
 - Staging Area에 등록된 것이 없다면, 최종 커밋한 버전으로 되돌린다.
 - Staging Area에 등록된 것이 있다면, 현재 Staging Area에 기록된 버전으로 되돌린다.
 - `git add`를 수행한 적이 없다면 
-  Staging Area에는 마지막으로 커밋한 파일을 가리킨다. 
-  따라서 마지막으로 커밋된 파일로 되돌릴 것이다.
+   Staging Area에는 마지막으로 커밋한 파일을 가리킨다. 
+   따라서 마지막으로 커밋된 파일로 되돌릴 것이다.
 
 ```
 예) src/main/webapp/index.html 파일을 편집 전으로 되돌리기
@@ -384,7 +384,7 @@ $ git checkout src/main/webapp/index.html
 - Staging Area의 기록에서 지정된 파일을 뺀다.
 - 작업 디렉토리에 해당 파일이 있다면 그 파일도 자동 삭제된다.
 - 이전 스냅샷에는 해당 파일이 계속 남아 있다.
-- 파일삭제 + git add = git rm
+- 파일 삭제 + git add = git rm
 
 ```
 예1) 작업 디렉토리에 있는 파일을 삭제한 후 Git에서도 제거하기
@@ -502,6 +502,28 @@ index 0afb588..c0e04ec 100644
  </html>
 ```
 
+```
+예5) 커밋 정보를 한 줄로 출력해서 보기
+$ git log --oneline    
+f559e21 (HEAD -> master, b1) v0.3
+5896279 v0.2
+8dd76bf v0.1
+5d8d97b (origin/master, origin/HEAD) Initial commit 
+```
+
+```
+예6) 커밋 정보와 브랜치 정보를 함께 보기
+$ git log --oneline --graph --all
+* 6f4725e (HEAD -> master) v0.6
+| * 34fda9c (b1) v0.5
+| * 9cf510e v0.4
+|/  
+* f559e21 v0.3
+* 5896279 v0.2
+* 8dd76bf v0.1
+* 5d8d97b (origin/master, origin/HEAD) Initial commit
+```
+
 ### git commit --amend
 
 - 마지막 커밋을 다시 현재의 Staging Area의 내용으로 덮어쓴다.
@@ -547,18 +569,18 @@ origin
 ```
 예2) 원격 저장소의 이름 뿐만아니라 URL도 알아내기
 $ git remote -v
-origin	https://github.com/eomjinyoung/test.git (fetch)
-origin	https://github.com/eomjinyoung/test.git (push)
+origin  https://github.com/eomjinyoung/test.git (fetch)
+origin  https://github.com/eomjinyoung/test.git (push)
 ```
 
 ```
 예3) 원격 저장소 추가하기
 $ git remote add [단축이름] [URL]
 $ git remote add cs https://github.com/eomcs/test.git
-origin	https://github.com/eomjinyoung/test.git (fetch)
-origin	https://github.com/eomjinyoung/test.git (push)
-cs	https://github.com/eomcs/test.git (fetch)
-cs	https://github.com/eomcs/test.git (push)
+origin  https://github.com/eomjinyoung/test.git (fetch)
+origin  https://github.com/eomjinyoung/test.git (push)
+cs  https://github.com/eomcs/test.git (fetch)
+cs  https://github.com/eomcs/test.git (push)
 ```
 
 ```
@@ -694,7 +716,7 @@ v0.2
 
 ```
 예6) 로컬 저장소에 있는 태그를 서버에 공유하기
-$ git push [원격저장소 단출이름] [태그 이름]
+$ git push [원격저장소 이름] [태그 이름]
 $ git push origin v0.1
 Counting objects: 1, done.
 Writing objects: 100% (1/1), 166 bytes | 166.00 KiB/s, done.

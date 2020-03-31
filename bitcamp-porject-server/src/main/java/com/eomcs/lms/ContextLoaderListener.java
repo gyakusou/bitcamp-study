@@ -3,6 +3,7 @@ package com.eomcs.lms;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+import javax.servlet.annotation.WebListener;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.context.ApplicationContext;
@@ -14,6 +15,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 // 조건 :
 // 단, javax.servlet.ServletContextListener 인터페이스를 구현해야 한다.
 //
+
+@WebListener // 이 애노테이션을 붙이면 서블릿 컨테이너가 이 객체를 관리한다.
 public class ContextLoaderListener implements ServletContextListener {
 
   static Logger logger = LogManager.getLogger(ContextLoaderListener.class);

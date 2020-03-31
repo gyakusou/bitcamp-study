@@ -50,7 +50,7 @@ public class PhotoBoardListServlet extends GenericServlet {
 
         out.printf("  <h1>강의 사진 - %s</h1>", lesson.getTitle());
 
-        out.printf("  <a href='/photoboard/addForm?lessonNo=%d'>새 사진</a><br>\n", //
+        out.printf("  <a href='addForm?lessonNo=%d'>새 사진</a><br>\n", //
             lessonNo);
         out.println("  <table border='1'>");
         out.println("  <tr>");
@@ -64,7 +64,7 @@ public class PhotoBoardListServlet extends GenericServlet {
         for (PhotoBoard photoBoard : photoBoards) {
           out.printf("  <tr>"//
               + "<td>%d</td> "//
-              + "<td><a href='/photoboard/detail?no=%d'>%s</a></td> "//
+              + "<td><a href='detail?no=%d'>%s</a></td> "//
               + "<td>%s</td> "//
               + "<td>%d</td>"//
               + "</tr>\n", //

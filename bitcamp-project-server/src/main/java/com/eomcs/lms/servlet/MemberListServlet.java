@@ -41,7 +41,7 @@ public class MemberListServlet extends GenericServlet {
       out.println("</head>");
       out.println("<body>");
       out.println("  <h1>회원</h1>");
-      out.println("  <a href='/member/addForm'>새 회원</a><br>");
+      out.println("  <a href='addForm'>새 회원</a><br>");
       out.println("  <table border='1'>");
       out.println("  <tr>");
       out.println("    <th>번호</th>");
@@ -55,7 +55,7 @@ public class MemberListServlet extends GenericServlet {
       for (Member m : members) {
         out.printf("  <tr>"//
             + "<td>%d</td> "//
-            + "<td><a href='/member/detail?no=%d'>%s</a></td> "//
+            + "<td><a href='detail?no=%d'>%s</a></td> "//
             + "<td>%s</td> "//
             + "<td>%s</td>"//
             + "<td>%s</td>"//
@@ -72,7 +72,7 @@ public class MemberListServlet extends GenericServlet {
 
       out.println("<hr>");
 
-      out.println("<form action='/member/search'>");
+      out.println("<form action='search'>");
       out.println("검색어: <input name='keyword' type='text'>");
       out.println("<button>검색</button>");
       out.println("</body>");

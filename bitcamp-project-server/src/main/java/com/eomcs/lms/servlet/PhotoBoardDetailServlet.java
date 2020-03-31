@@ -46,7 +46,7 @@ public class PhotoBoardDetailServlet extends GenericServlet {
       out.println("<h1>사진 상세정보</h1>");
 
       if (photoBoard != null) {
-        out.println("<form action='/photoboard/update'>");
+        out.println("<form action='update'>");
         out.printf("번호: <input name='no' type='text' readonly value='%d'><br>\n", //
             photoBoard.getNo());
         out.println("내용:<br>");
@@ -70,7 +70,7 @@ public class PhotoBoardDetailServlet extends GenericServlet {
         out.println("사진: <input name='photo5' type='file'><br>");
 
         out.println("<p><button>변경</button>");
-        out.printf("<a href='/photoboard/delete?no=%d&lessonNo=%d'>삭제</a></p>\n", //
+        out.printf("<a href='delete?no=%d&lessonNo=%d'>삭제</a></p>\n", //
             photoBoard.getNo(), //
             photoBoard.getLesson().getNo());
         out.println("</form>");

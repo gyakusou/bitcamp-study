@@ -28,7 +28,7 @@ public class LoginFormServlet extends GenericServlet {
     out.println("</head>");
     out.println("<body>");
     out.println("<h1>로그인</h1>");
-    out.println("<form action='/auth/login'>");
+    out.println("<form action='login'>");
     out.println("이메일: <input name='email' type='email'><br>");
     out.println("암호: <input name='password' type='password'><br>");
     out.println("<button>로그인</button>");

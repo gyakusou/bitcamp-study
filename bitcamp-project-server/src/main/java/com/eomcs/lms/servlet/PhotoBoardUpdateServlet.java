@@ -56,7 +56,7 @@ public class PhotoBoardUpdateServlet extends GenericServlet {
       out.println("<html>");
       out.println("<head>");
       out.println("<meta charset='UTF-8'>");
-      out.printf("<meta http-equiv='refresh' content='2;url=/photoboard/list?lessonNo=%d'>", //
+      out.printf("<meta http-equiv='refresh' content='2;url=list?lessonNo=%d'>", //
           photoBoard.getLesson().getNo());
       out.println("<title>사진 변경</title>");
       out.println("</head>");

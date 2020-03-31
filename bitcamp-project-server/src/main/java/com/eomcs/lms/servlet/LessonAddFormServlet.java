@@ -28,7 +28,7 @@ public class LessonAddFormServlet extends GenericServlet {
     out.println("</head>");
     out.println("<body>");
     out.println("<h1>강의 입력</h1>");
-    out.println("<form action='/lesson/add'>");
+    out.println("<form action='add'>");
     out.println("강의명: <input name='title' type='text'><br>");
     out.println("내용:<br>");
     out.println("<textarea name='description' rows='5' cols='60'></textarea><br>");

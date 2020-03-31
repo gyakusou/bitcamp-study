@@ -54,7 +54,7 @@ public class MemberSearchServlet extends GenericServlet {
       for (Member m : members) {
         out.printf("  <tr>"//
             + "<td>%d</td> "//
-            + "<td><a href='/member/detail?no=%d'>%s</a></td> "//
+            + "<td><a href='detail?no=%d'>%s</a></td> "//
             + "<td>%s</td> "//
             + "<td>%s</td>"//
             + "<td>%s</td>"//

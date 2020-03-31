@@ -44,7 +44,7 @@ public class MemberDetailServlet extends GenericServlet {
       out.println("<h1>회원 상세정보</h1>");
 
       if (member != null) {
-        out.println("<form action='/member/update'>");
+        out.println("<form action='update'>");
         out.printf("번호: <input name='no' type='text' readonly value='%d'><br>\n", //
             member.getNo());
         out.printf("이름: <input name='name' type='text' value='%s'><br>\n", //
@@ -57,7 +57,7 @@ public class MemberDetailServlet extends GenericServlet {
         out.printf("전화: <input name='tel' type='tel' value='%s'><br>\n", //
             member.getTel());
         out.println("<p><button>변경</button>");
-        out.printf("<a href='/member/delete?no=%d'>삭제</a></p>\n", //
+        out.printf("<a href='delete?no=%d'>삭제</a></p>\n", //
             member.getNo());
         out.println("</form>");
       } else {

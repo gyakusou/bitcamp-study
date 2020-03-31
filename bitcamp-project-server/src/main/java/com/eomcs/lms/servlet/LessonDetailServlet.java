@@ -61,9 +61,9 @@ public class LessonDetailServlet extends GenericServlet {
             lesson.getDayHours());
         out.println("<p>");
         out.println("<button>변경</button>");
-        out.printf("<a href='/lesson/delete?no=%d'>삭제</a>\n", //
+        out.printf("<a href='delete?no=%d'>삭제</a>\n", //
             lesson.getNo());
-        out.printf("<a href='/photoboard/list?lessonNo=%d'>사진게시판</a>\n", //
+        out.printf("<a href='list?lessonNo=%d'>사진게시판</a>\n", //
             lesson.getNo());
         out.println("</p>");
         out.println("</form>");

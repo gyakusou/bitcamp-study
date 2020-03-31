@@ -54,7 +54,7 @@ public class LessonListServlet extends GenericServlet {
       for (Lesson l : lessons) {
         out.printf("  <tr>"//
             + "<td>%d</td> "//
-            + "<td><a href='/lesson/detail?no=%d'>%s</a></td> "//
+            + "<td><a href='detail?no=%d'>%s</a></td> "//
             + "<td>%s ~ %s</td> "//
             + "<td>%d</td>"//
             + "</tr>\n", //
@@ -70,7 +70,7 @@ public class LessonListServlet extends GenericServlet {
 
       out.println("<hr>");
 
-      out.println("<form action='/lesson/search'>");
+      out.println("<form action='search'>");
       out.println("강의명: <input name='title' type='text'><br>");
       out.println("강의 시작일: <input name='startDate' type='date'><br>");
       out.println("강의 종료일: <input name='endDate' type='date'><br>");

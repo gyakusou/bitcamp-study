@@ -41,9 +41,9 @@ public class LoginServlet extends GenericServlet {
       out.println("<head>");
       out.println("<meta charset='UTF-8'>");
       if (member != null) {
-        out.println("<meta http-equiv='refresh' content='2;url=/board/list'>");
+        out.println("<meta http-equiv='refresh' content='2;url=list'>");
       } else {
-        out.println("<meta http-equiv='refresh' content='2;url=/auth/loginForm'>");
+        out.println("<meta http-equiv='refresh' content='2;url=loginForm'>");
       }
       out.println("<title>로그인</title>");
       out.println("</head>");

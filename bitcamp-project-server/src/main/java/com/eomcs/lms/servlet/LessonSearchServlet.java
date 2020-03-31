@@ -79,7 +79,7 @@ public class LessonSearchServlet extends GenericServlet {
       for (Lesson l : lessons) {
         out.printf("  <tr>"//
             + "<td>%d</td> "//
-            + "<td><a href='/lesson/detail?no=%d'>%s</a></td> "//
+            + "<td><a href='detail?no=%d'>%s</a></td> "//
             + "<td>%s ~ %s</td> "//
             + "<td>%d</td>"//
             + "</tr>\n", //

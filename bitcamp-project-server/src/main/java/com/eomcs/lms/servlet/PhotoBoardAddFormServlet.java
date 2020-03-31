@@ -42,7 +42,7 @@ public class PhotoBoardAddFormServlet extends GenericServlet {
       out.println("</head>");
       out.println("<body>");
       out.println("<h1>사진 입력</h1>");
-      out.println("<form action='/photoboard/add'>");
+      out.println("<form action='add'>");
       out.printf("강의번호: <input name='lessonNo' type='text' value='%d' readonly><br>\n", //
           lesson.getNo());
       out.printf("강의명: %s<br>\n", lesson.getTitle());

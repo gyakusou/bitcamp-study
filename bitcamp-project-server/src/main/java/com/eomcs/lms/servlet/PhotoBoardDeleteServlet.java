@@ -32,7 +32,7 @@ public class PhotoBoardDeleteServlet extends GenericServlet {
       out.println("<html>");
       out.println("<head>");
       out.println("<meta charset='UTF-8'>");
-      out.printf("<meta http-equiv='refresh' content='2;url=/photoboard/list?lessonNo=%d'>\n", //
+      out.printf("<meta http-equiv='refresh' content='2;url=list?lessonNo=%d'>\n", //
           Integer.parseInt(req.getParameter("lessonNo")));
       out.println("<title>사진 삭제</title>");
       out.println("</head>");

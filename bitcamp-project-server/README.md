@@ -23,6 +23,39 @@
 - build.gradle 변경
   - 'eclipse' 플러그인 대신에 'eclipse-wtp' 플러그인 추가
   - 'war' 플러그인 추가 
- 
+  - 'gradle eclipse' 실행
+    - .settings/ 폴더에 웹프로젝트 관련 설정 파일이 추가된다.
+    - .project 파일에 웹프로젝트 관련 설정 정보가 추가된다.
+  - 프로젝트 refresh
+    - 프로젝트 아이콘에 지구본 모양이 추가된다.    
+    
+### 훈련4: 테스트 서버에 웹 프로젝트를 등록한다.
+
+- 'Server 뷰/테스트서버' 에 대해 컨텍스트 메뉴 출력
+- 'Add and Remove...' 메뉴 선택
+- 웹 프로젝트 추가
+
+### 훈련5: 테스트 서버 시작
+
+- '테스트서버/컨텍스트 메뉴/Publish' 선택
+  - 테스트 서버의 배치 폴더에 웹애플리케이션 배치한다.
+  - **.server.core/tmp0/wtpwebapps/ 폴더를 확인하라.
+- '테스트서버/컨텍스트 메뉴/start' 선택
+  - 서버를 실행한다.  
+    
+### 훈련5: 웹애플리케이션 테스트
+
+- http://localhost:9999/
+  - 테스트 서버에는 루트 웹 애플리케이션이 배치되지 않았기 때문에 오류가 발생한다.
+- http://localhost:9999/bitcamp-project-server/board/list    
+    
+    
+    
+    
+    
+    
+    
+    
+    
  
  

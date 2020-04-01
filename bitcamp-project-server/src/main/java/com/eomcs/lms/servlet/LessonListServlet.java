@@ -15,15 +15,12 @@ import com.eomcs.lms.service.LessonService;
 
 @WebServlet("/lesson/list")
 public class LessonListServlet extends GenericServlet {
-
   private static final long serialVersionUID = 1L;
 
   @Override
   public void service(ServletRequest req, ServletResponse res)
       throws ServletException, IOException {
-
     try {
-
       res.setContentType("text/html;charset=UTF-8");
       PrintWriter out = res.getWriter();
 
@@ -31,7 +28,6 @@ public class LessonListServlet extends GenericServlet {
       ApplicationContext iocContainer =
           (ApplicationContext) servletContext.getAttribute("iocContainer");
       LessonService lessonService = iocContainer.getBean(LessonService.class);
-
 
       out.println("<!DOCTYPE html>");
       out.println("<html>");
@@ -41,7 +37,7 @@ public class LessonListServlet extends GenericServlet {
       out.println("</head>");
       out.println("<body>");
       out.println("  <h1>강의</h1>");
-      out.println("  <a href='/lesson/addForm'>새 강의</a><br>");
+      out.println("  <a href='addForm'>새 강의</a><br>");
       out.println("  <table border='1'>");
       out.println("  <tr>");
       out.println("    <th>번호</th>");

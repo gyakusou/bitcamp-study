@@ -16,13 +16,11 @@ import com.eomcs.lms.service.LessonService;
 
 @WebServlet("/lesson/search")
 public class LessonSearchServlet extends GenericServlet {
-
   private static final long serialVersionUID = 1L;
 
   @Override
   public void service(ServletRequest req, ServletResponse res)
       throws ServletException, IOException {
-
     try {
       res.setContentType("text/html;charset=UTF-8");
       PrintWriter out = res.getWriter();
@@ -31,7 +29,6 @@ public class LessonSearchServlet extends GenericServlet {
       ApplicationContext iocContainer =
           (ApplicationContext) servletContext.getAttribute("iocContainer");
       LessonService lessonService = iocContainer.getBean(LessonService.class);
-
 
       HashMap<String, Object> map = new HashMap<>();
       String value = req.getParameter("title");
@@ -94,10 +91,10 @@ public class LessonSearchServlet extends GenericServlet {
       out.println("</table>");
       out.println("</body>");
       out.println("</html>");
-    } catch (
-
-    Exception e) {
+    } catch (Exception e) {
       throw new ServletException(e);
     }
   }
 }
+
+

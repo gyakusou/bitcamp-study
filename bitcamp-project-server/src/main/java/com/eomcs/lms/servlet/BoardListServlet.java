@@ -15,15 +15,12 @@ import com.eomcs.lms.service.BoardService;
 
 @WebServlet("/board/list")
 public class BoardListServlet extends GenericServlet {
-
   private static final long serialVersionUID = 1L;
 
   @Override
   public void service(ServletRequest req, ServletResponse res)
       throws ServletException, IOException {
-
     try {
-
       res.setContentType("text/html;charset=UTF-8");
       PrintWriter out = res.getWriter();
 

@@ -15,15 +15,12 @@ import com.eomcs.lms.service.PhotoBoardService;
 
 @WebServlet("/photoboard/detail")
 public class PhotoBoardDetailServlet extends GenericServlet {
-
   private static final long serialVersionUID = 1L;
 
   @Override
   public void service(ServletRequest req, ServletResponse res)
       throws ServletException, IOException {
-
     try {
-
       res.setContentType("text/html;charset=UTF-8");
       PrintWriter out = res.getWriter();
 
@@ -31,7 +28,6 @@ public class PhotoBoardDetailServlet extends GenericServlet {
       ApplicationContext iocContainer =
           (ApplicationContext) servletContext.getAttribute("iocContainer");
       PhotoBoardService photoBoardService = iocContainer.getBean(PhotoBoardService.class);
-
       int no = Integer.parseInt(req.getParameter("no"));
 
       PhotoBoard photoBoard = photoBoardService.get(no);
@@ -80,9 +76,7 @@ public class PhotoBoardDetailServlet extends GenericServlet {
       }
       out.println("</body>");
       out.println("</html>");
-    } catch (
-
-    Exception e) {
+    } catch (Exception e) {
       throw new ServletException(e);
     }
   }

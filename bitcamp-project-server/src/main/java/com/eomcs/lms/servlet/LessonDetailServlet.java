@@ -14,13 +14,11 @@ import com.eomcs.lms.service.LessonService;
 
 @WebServlet("/lesson/detail")
 public class LessonDetailServlet extends GenericServlet {
-
   private static final long serialVersionUID = 1L;
 
   @Override
   public void service(ServletRequest req, ServletResponse res)
       throws ServletException, IOException {
-
     try {
       res.setContentType("text/html;charset=UTF-8");
       PrintWriter out = res.getWriter();
@@ -43,7 +41,7 @@ public class LessonDetailServlet extends GenericServlet {
       out.println("<h1>수업 상세정보</h1>");
 
       if (lesson != null) {
-        out.println("<form action='/lesson/update'>");
+        out.println("<form action='update'>");
         out.printf("번호: <input name='no' readonly type='text' value='%d'><br>\n", //
             lesson.getNo());
         out.printf("강의명: <input name='title' type='text' value='%s'><br>\n", //
@@ -63,7 +61,7 @@ public class LessonDetailServlet extends GenericServlet {
         out.println("<button>변경</button>");
         out.printf("<a href='delete?no=%d'>삭제</a>\n", //
             lesson.getNo());
-        out.printf("<a href='list?lessonNo=%d'>사진게시판</a>\n", //
+        out.printf("<a href='../photoboard/list?lessonNo=%d'>사진게시판</a>\n", //
             lesson.getNo());
         out.println("</p>");
         out.println("</form>");

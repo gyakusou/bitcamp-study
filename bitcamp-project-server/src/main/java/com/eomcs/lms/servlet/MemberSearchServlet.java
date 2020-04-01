@@ -15,15 +15,12 @@ import com.eomcs.lms.service.MemberService;
 
 @WebServlet("/member/search")
 public class MemberSearchServlet extends GenericServlet {
-
   private static final long serialVersionUID = 1L;
 
   @Override
   public void service(ServletRequest req, ServletResponse res)
       throws ServletException, IOException {
-
     try {
-
       res.setContentType("text/html;charset=UTF-8");
       PrintWriter out = res.getWriter();
 
@@ -70,9 +67,7 @@ public class MemberSearchServlet extends GenericServlet {
       out.println("</table>");
       out.println("</body>");
       out.println("</html>");
-    } catch (
-
-    Exception e) {
+    } catch (Exception e) {
       throw new ServletException(e);
     }
   }

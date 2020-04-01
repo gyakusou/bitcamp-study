@@ -13,16 +13,13 @@ import org.springframework.context.ApplicationContext;
 import com.eomcs.lms.domain.Lesson;
 import com.eomcs.lms.service.LessonService;
 
-@WebServlet("lesson/update")
+@WebServlet("/lesson/update")
 public class LessonUpdateServlet extends GenericServlet {
-
   private static final long serialVersionUID = 1L;
 
   @Override
   public void service(ServletRequest req, ServletResponse res)
       throws ServletException, IOException {
-
-
     try {
       res.setContentType("text/html;charset=UTF-8");
       PrintWriter out = res.getWriter();

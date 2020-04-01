@@ -18,9 +18,7 @@ public class BoardDeleteServlet extends GenericServlet {
   @Override
   public void service(ServletRequest req, ServletResponse res)
       throws ServletException, IOException {
-
     try {
-
       res.setContentType("text/html;charset=UTF-8");
       PrintWriter out = res.getWriter();
 

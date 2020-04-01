@@ -14,15 +14,12 @@ import com.eomcs.lms.service.MemberService;
 
 @WebServlet("/member/add")
 public class MemberAddServlet extends GenericServlet {
-
   private static final long serialVersionUID = 1L;
 
   @Override
   public void service(ServletRequest req, ServletResponse res)
       throws ServletException, IOException {
-
     try {
-
       res.setContentType("text/html;charset=UTF-8");
       PrintWriter out = res.getWriter();
 
@@ -52,9 +49,7 @@ public class MemberAddServlet extends GenericServlet {
       out.println("<p>새 회원을 등록했습니다.</p>");
       out.println("</body>");
       out.println("</html>");
-    } catch (
-
-    Exception e) {
+    } catch (Exception e) {
       throw new ServletException(e);
     }
   }

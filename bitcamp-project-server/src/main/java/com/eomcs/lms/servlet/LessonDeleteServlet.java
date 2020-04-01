@@ -13,13 +13,11 @@ import com.eomcs.lms.service.LessonService;
 
 @WebServlet("/lesson/delete")
 public class LessonDeleteServlet extends GenericServlet {
-
   private static final long serialVersionUID = 1L;
 
   @Override
   public void service(ServletRequest req, ServletResponse res)
       throws ServletException, IOException {
-
     try {
       res.setContentType("text/html;charset=UTF-8");
       PrintWriter out = res.getWriter();
@@ -40,6 +38,7 @@ public class LessonDeleteServlet extends GenericServlet {
       out.println("<h1>강의 삭제 결과</h1>");
 
       int no = Integer.parseInt(req.getParameter("no"));
+
       if (lessonService.delete(no) > 0) { // 삭제했다면,
         out.println("<p>강의를 삭제했습니다.</p>");
 

@@ -19,7 +19,6 @@ public class BoardUpdateFormServlet extends GenericServlet {
   @Override
   public void service(ServletRequest req, ServletResponse res)
       throws ServletException, IOException {
-
     try {
       res.setContentType("text/html;charset=UTF-8");
       PrintWriter out = res.getWriter();
@@ -60,9 +59,7 @@ public class BoardUpdateFormServlet extends GenericServlet {
       }
       out.println("</body>");
       out.println("</html>");
-    } catch (
-
-    Exception e) {
+    } catch (Exception e) {
       throw new ServletException(e);
     }
   }

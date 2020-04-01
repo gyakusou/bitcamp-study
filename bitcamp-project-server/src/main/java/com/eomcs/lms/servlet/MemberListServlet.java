@@ -15,15 +15,12 @@ import com.eomcs.lms.service.MemberService;
 
 @WebServlet("/member/list")
 public class MemberListServlet extends GenericServlet {
-
   private static final long serialVersionUID = 1L;
 
   @Override
   public void service(ServletRequest req, ServletResponse res)
       throws ServletException, IOException {
-
     try {
-
       res.setContentType("text/html;charset=UTF-8");
       PrintWriter out = res.getWriter();
 
@@ -31,7 +28,6 @@ public class MemberListServlet extends GenericServlet {
       ApplicationContext iocContainer =
           (ApplicationContext) servletContext.getAttribute("iocContainer");
       MemberService memberService = iocContainer.getBean(MemberService.class);
-
 
       out.println("<!DOCTYPE html>");
       out.println("<html>");
@@ -77,9 +73,7 @@ public class MemberListServlet extends GenericServlet {
       out.println("<button>검색</button>");
       out.println("</body>");
       out.println("</html>");
-    } catch (
-
-    Exception e) {
+    } catch (Exception e) {
       throw new ServletException(e);
     }
   }

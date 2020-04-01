@@ -14,15 +14,12 @@ import com.eomcs.lms.service.MemberService;
 
 @WebServlet("/auth/login")
 public class LoginServlet extends GenericServlet {
-
   private static final long serialVersionUID = 1L;
 
   @Override
   public void service(ServletRequest req, ServletResponse res)
       throws ServletException, IOException {
-
     try {
-
       res.setContentType("text/html;charset=UTF-8");
       PrintWriter out = res.getWriter();
 
@@ -41,7 +38,7 @@ public class LoginServlet extends GenericServlet {
       out.println("<head>");
       out.println("<meta charset='UTF-8'>");
       if (member != null) {
-        out.println("<meta http-equiv='refresh' content='2;url=list'>");
+        out.println("<meta http-equiv='refresh' content='2;url=../board/list'>");
       } else {
         out.println("<meta http-equiv='refresh' content='2;url=loginForm'>");
       }
@@ -58,9 +55,7 @@ public class LoginServlet extends GenericServlet {
 
       out.println("</body>");
       out.println("</html>");
-    } catch (
-
-    Exception e) {
+    } catch (Exception e) {
       throw new ServletException(e);
     }
   }

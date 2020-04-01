@@ -17,13 +17,11 @@ import com.eomcs.lms.service.PhotoBoardService;
 
 @WebServlet("/photoboard/list")
 public class PhotoBoardListServlet extends GenericServlet {
-
   private static final long serialVersionUID = 1L;
 
   @Override
   public void service(ServletRequest req, ServletResponse res)
       throws ServletException, IOException {
-
     try {
       res.setContentType("text/html;charset=UTF-8");
       PrintWriter out = res.getWriter();
@@ -33,7 +31,6 @@ public class PhotoBoardListServlet extends GenericServlet {
           (ApplicationContext) servletContext.getAttribute("iocContainer");
       LessonService lessonService = iocContainer.getBean(LessonService.class);
       PhotoBoardService photoBoardService = iocContainer.getBean(PhotoBoardService.class);
-
       out.println("<!DOCTYPE html>");
       out.println("<html>");
       out.println("<head>");
@@ -49,7 +46,6 @@ public class PhotoBoardListServlet extends GenericServlet {
         }
 
         out.printf("  <h1>강의 사진 - %s</h1>", lesson.getTitle());
-
         out.printf("  <a href='addForm?lessonNo=%d'>새 사진</a><br>\n", //
             lessonNo);
         out.println("  <table border='1'>");
@@ -82,9 +78,7 @@ public class PhotoBoardListServlet extends GenericServlet {
       }
       out.println("</body>");
       out.println("</html>");
-    } catch (
-
-    Exception e) {
+    } catch (Exception e) {
       throw new ServletException(e);
     }
   }

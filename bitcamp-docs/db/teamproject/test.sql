@@ -1,14 +1,14 @@
 -- 사용자 사용자번호 1~
-insert into user(user_no, email, name, password, tel, major, introduce, profile_photo, login_method, create_date)
-  values(1, 'ha@gamil.com', '하정우', 'a1111', '010-1111-1111', '컴퓨터공학', '안녕하세요', 'a.gif', '0', '2020-4-20');
+insert into user(user_no, email, name, password, major, introduce, login_method, create_date)
+  values(1, 'ha@gamil.com', '하정우', 'a1111', '컴퓨터공학', '안녕하세요', '0', '2020-4-20');
 insert into user(user_no, email, name, password, tel, major, introduce, profile_photo, login_method, create_date)
   values(2, 'kim@gamil.com', '김사랑', 'k1111', '010-1111-2222', '수학', '안녕', 'b.gif', '1', '2020-4-21');
-insert into user(user_no, email, name, password, tel, major, introduce, profile_photo, login_method, create_date)
-  values(3, 'lim@gamil.com', '임윤아', 'l1111', '010-1111-3333', '과학', '하이', 'c.gif', '1', '2020-4-22');
+insert into user(user_no, email, name, password, tel, introduce, profile_photo, login_method, create_date)
+  values(3, 'lim@gamil.com', '임윤아', 'l1111', '010-1111-3333', '하이', 'c.gif', '1', '2020-4-22');
 insert into user(user_no, email, name, password, tel, major, introduce, profile_photo, login_method, create_date)
   values(4, 'son@gamil.com', '손흥민', 's1111', '010-1111-4444', '사회', '할룽', 'd.gif', '0', '2020-4-23');
-insert into user(user_no, email, name, password, tel, major, introduce, profile_photo, login_method, create_date)
-  values(5, 'naldo@gamil.com', '호날두', 'n1111', '010-1111-5555', '역사', '바이룽', 'e.gif', '0', '2020-4-24');
+insert into user(user_no, email, name, password, tel, major, profile_photo, login_method, create_date)
+  values(5, 'naldo@gamil.com', '호날두', 'n1111', '010-1111-5555', '역사', 'e.gif', '0', '2020-4-24');
 
 -- 쪽지 쪽지번호 11~
 insert into message(message_no, caller_no, receiver_no, content, create_date) 
@@ -23,16 +23,16 @@ insert into message(message_no, caller_no, receiver_no, content, create_date)
   values(15, '5', '3', '하이', '2020-04-24');
   
 -- 클래스 클래스번호 101~ / 룸번호 1000~
-insert into class(class_no, name, description, room, class_code, create_date) 
-  values(101, '컴퓨터', '기초컴퓨터', '어렵다', 'abc', '2020-4-20');
+insert into class(class_no, name, room, class_code, create_date) 
+  values(101, '컴퓨터', '어렵다', 'abc', '2020-4-20');
 insert into class(class_no, name, description, room, class_code, create_date) 
   values(102, '수학', '수학과놀이', '하기싫다', 'sdf', '2020-4-22');
-insert into class(class_no, name, description, room, class_code, create_date) 
-  values(103, '과학', '과학놀이터', '헐', 'wer', '2020-4-23');
+insert into class(class_no, name, description, class_code, create_date) 
+  values(103, '과학', '과학놀이터', 'wer', '2020-4-23');
 insert into class(class_no, name, description, room, class_code, create_date) 
   values(104, '사회', '사회사회', '헐퀴', 'fgh', '2020-4-24');
-insert into class(class_no, name, description, room, class_code, create_date) 
-  values(105, '역사', '역사는어렵다', '하기싫당', 'abqwe', '2020-4-25');
+insert into class(class_no, name, class_code, create_date) 
+  values(105, '역사', 'abqwe', '2020-4-25');
   
   
 -- 게시판 ~10000
@@ -62,14 +62,14 @@ insert into class_member(member_no, user_no, class_no, role)
   
   
 -- 질문 50~
-insert into question(question_no, member_no, title, content, file, deadline, create_date) 
-  values(50, '100000', '렘이란?', '무엇일까요?', 'a.gif', '2020-4-20', '2020-4-21');  
-insert into question(question_no, member_no, title, content, file, deadline, create_date) 
-  values(51, '100001', '수학이란?', '무엇?', 'l.gif', '2020-4-20', '2020-4-21');  
+insert into question(question_no, member_no, title, file, deadline, create_date) 
+  values(50, '100000', '렘이란?', 'a.gif', '2020-4-20', '2020-4-21');  
+insert into question(question_no, member_no, title, content, deadline, create_date) 
+  values(51, '100001', '수학이란?', '무엇?', '2020-4-20', '2020-4-21');  
 insert into question(question_no, member_no, title, content, file, deadline, create_date) 
   values(52, '100002', '과학이란?', 'what?', 'b.gif', '2020-4-20', '2020-4-21');  
-insert into question(question_no, member_no, title, content, file, deadline, create_date) 
-  values(53, '100003', '사회란?', 'whatthe?', 'c.gif', '2020-4-20', '2020-4-21');  
+insert into question(question_no, member_no, title, content, file, create_date) 
+  values(53, '100003', '사회란?', 'whatthe?', 'c.gif', '2020-4-21');  
 insert into question(question_no, member_no, title, content, file, deadline, create_date) 
   values(54, '100004', '역사란?', 'wow?', 'd.gif', '2020-4-20', '2020-4-21');  
   
@@ -151,28 +151,28 @@ insert into class_tag(class_no, tag_no)
   
   
 -- 과제 22~
-insert into assignment(assignment_no, class_no, member_no, title, content, file, deadline, standard, create_date) 
-  values(22, '101', '100000', '근의공식', '근의공식에 대해 알아오라', 'a.gif', '2020-04-21', '유래,기원', '2020-03-26');
+insert into assignment(assignment_no, class_no, member_no, title, file, deadline, standard, create_date) 
+  values(22, '101', '100000', '근의공식', 'a.gif', '2020-04-21', '유래,기원', '2020-03-26');
 insert into assignment(assignment_no, class_no, member_no, title, content, file, deadline, standard, create_date) 
   values(23, '102', '100001', '네모', '네모에 대해 알아오라', 'b.gif', '2020-04-21', '유래,기원', '2020-03-26');
-insert into assignment(assignment_no, class_no, member_no, title, content, file, deadline, standard, create_date) 
-  values(24, '103', '100002', '구름', '구름에 대해 알아오라', 'c.gif', '2020-04-21', '유래,기원', '2020-03-26');
+insert into assignment(assignment_no, class_no, member_no, title, content, deadline, standard, create_date) 
+  values(24, '103', '100002', '구름', '구름에 대해 알아오라', '2020-04-21', '유래,기원', '2020-03-26');
 insert into assignment(assignment_no, class_no, member_no, title, content, file, deadline, standard, create_date) 
   values(25, '104', '100003', '인간', '인간에 대해 알아오라', 'd.gif', '2020-04-21', '유래,기원', '2020-03-26');
-insert into assignment(assignment_no, class_no, member_no, title, content, file, deadline, standard, create_date) 
-  values(26, '105', '100004', '이순신', '이순신에 대해 알아오라', 'e.gif', '2020-04-21', '유래,기원', '2020-03-26');
+insert into assignment(assignment_no, class_no, member_no, title, content, file, deadline, create_date) 
+  values(27, '105', '100004', '이순신', '이순신에 대해 알아오라', 'e.gif', '2020-04-21', '2020-03-26');
   
 -- 과제제출 
-insert into assignment_submmit(member_no, assignment_no, file, score, content, feedback, create_date) 
-  values(100000, '22', 'a.gif', '100', '만점', '잘했습니다.', '2020-04-23' );  
-insert into assignment_submmit(member_no, assignment_no, file, score, content, feedback, create_date) 
-  values(100001, '23', 'b.gif', '80', '2등', '괜찮아요.', '2020-04-23' ); 
-insert into assignment_submmit(member_no, assignment_no, file, score, content, feedback, create_date) 
-  values(100002, '24', 'c.gif', '60', '3등', '힘내세요.', '2020-04-23' ); 
-insert into assignment_submmit(member_no, assignment_no, file, score, content, feedback, create_date) 
-  values(100003, '25', 'd.gif', '40', '4등', '분발하세요.', '2020-04-23' ); 
-insert into assignment_submmit(member_no, assignment_no, file, score, content, feedback, create_date) 
-  values(100004, '26', 'e.gif', '20', '5등', '낼봅시다.', '2020-04-23' ); 
+insert into assignment_submmit(member_no, assignment_no, score, content, feedback, create_date) 
+  values(100000, '22', '100', '만점', '잘했습니다.', '2020-04-23' );  
+insert into assignment_submmit(member_no, assignment_no, file, content, feedback, create_date) 
+  values(100001, '23', 'b.gif', '2등', '괜찮아요.', '2020-04-23' ); 
+insert into assignment_submmit(member_no, assignment_no, create_date) 
+  values(100002, '24', 'c.gif', '2020-04-23' ); 
+insert into assignment_submmit(member_no, assignment_no, file, score, content, create_date) 
+  values(100003, '25', 'd.gif', '40', '4등', '2020-04-23' ); 
+insert into assignment_submmit(member_no, assignment_no, file, score, feedback, create_date) 
+  values(100004, '27', 'e.gif', '20', '낼봅시다.', '2020-04-23' ); 
   
 -- 과제 태그 
 insert into assignment_tag(assignment_no, tag_no) 
@@ -184,31 +184,31 @@ insert into assignment_tag(assignment_no, tag_no)
 insert into assignment_tag(assignment_no, tag_no) 
   values(25, '5012');    
 insert into assignment_tag(assignment_no, tag_no) 
-  values(26, '5013');    
+  values(27, '5013');    
   
 -- 답변
 insert into answer(member_no, question_no, content, multiple_no, create_date) 
   values(100000, '50', '잘모르겠습니다.', '500', '2020-4-21');    
-insert into answer(member_no, question_no, content, multiple_no, create_date) 
-  values(100001, '51', '글쎼요.', '501', '2020-4-21');   
+insert into answer(member_no, question_no, multiple_no, create_date) 
+  values(100001, '51', '501', '2020-4-21');   
 insert into answer(member_no, question_no, content, multiple_no, create_date) 
   values(100002, '52', '제출함.', '502', '2020-4-21');   
 insert into answer(member_no, question_no, content, multiple_no, create_date) 
   values(100003, '53', '몰겠어여.', '503', '2020-4-21');   
-insert into answer(member_no, question_no, content, multiple_no, create_date) 
-  values(100004, '54', '어려워요.', '504', '2020-4-21');   
+insert into answer(member_no, question_no, content, create_date) 
+  values(100004, '54', '어려워요.', '2020-4-21');   
   
 -- 게시글 예제 데이터 ~100000 xxxx
 insert into post(post_no, board_no, member_no, title, content, create_date) 
-  values(777, '10000', '100001', '휴강안내합니다', '30일휴강', '2020-4-20');
+  values(777, '10000', '100000', '휴강안내합니다', '30일휴강', '2020-4-20');
 insert into post(post_no, board_no, member_no, title, content, create_date) 
-  values(778, '10001', '100002', '중간고사', '다음주', '2020-4-20');
+  values(778, '10001', '100001', '중간고사', '다음주', '2020-4-20');
 insert into post(post_no, board_no, member_no, title, content, create_date) 
-  values(779, '10002', '100003', '기말고사', '다음달', '2020-4-20');
+  values(779, '10002', '100002', '기말고사', '다음달', '2020-4-20');
+insert into post(post_no, board_no, member_no, title, create_date) 
+  values(780, '10003', '100003', '숙제', '2020-4-20');
 insert into post(post_no, board_no, member_no, title, content, create_date) 
-  values(780, '10003', '100004', '숙제', '1번문제', '2020-4-20');
-insert into post(post_no, board_no, member_no, title, content, create_date) 
-  values(781, '10004', '100005', '과제', '3번문제', '2020-4-20');
+  values(781, '10004', '100004', '과제', '3번문제', '2020-4-20');
   
   
 -- 게시글 태그

@@ -4,7 +4,7 @@
   xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
                       http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
   version="4.0"
-  metadata-complete="true">
+  metadata-complete="false">
 
 <!-- 서블릿 등록 -->
   <servlet>
@@ -15,6 +15,10 @@
     <servlet-name>Servlet02</servlet-name>
     <servlet-class>com.eomcs.web.ex01.Servlet02</servlet-class>
   </servlet>
+    <servlet>
+    <servlet-name>Servlet03</servlet-name>
+    <servlet-class>com.eomcs.web.ex01.Servlet03</servlet-class>
+  </servlet>
 
 <!-- 서블릿을 실행할 때 사용할 URL path를 설정 -->
   <servlet-mapping>
@@ -24,5 +28,9 @@
     <servlet-mapping>
     <servlet-name>Servlet02</servlet-name>
     <url-pattern>/ex01/s02</url-pattern>
+  </servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>Servlet03</servlet-name>
+    <url-pattern>/ex01/s03</url-pattern>
   </servlet-mapping>
 </web-app>

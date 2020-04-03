@@ -1,5 +1,5 @@
 // 서블릿 만들기 - @WebServlet 애노테이션
-package bitcamp.ex01;
+package com.eomcs.web.ex01;
 
 import java.io.IOException;
 import javax.servlet.GenericServlet;

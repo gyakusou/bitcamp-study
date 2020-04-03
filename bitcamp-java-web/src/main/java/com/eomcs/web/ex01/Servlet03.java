@@ -25,10 +25,16 @@ public class Servlet03 extends HttpServlet {
 
   // service()를 오버라이딩 하는 대신에
   // doGet(), doPost(), doHead() 등을 오버라이딩 하라.
+  // 호출과정:
+  // => 웹브라우저
+  //    => 톰캣 서버
+  //        => Servlet03.service(ServletRequest, ServletResponse)
+  //            => Servlet03.service(HttpServletRequest, HttpServletResponse)
+  //                => Servlet03.doGet(HttpServletRequest, HttpServletResponse)
   @Override
   public void doGet(HttpServletRequest req, HttpServletResponse res)
       throws ServletException, IOException {
-    System.out.println("Servlet03.doGet(ServletRequest,ServletResponse)");
+    System.out.println("Servlet03.doGet(HttpServletRequest,HttpServletResponse)");
   }
 }
 

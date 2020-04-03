@@ -1,5 +1,5 @@
-// 필터나 리스너를 테스트하기 위한 서블릿 
-package bitcamp.ex02;
+// 필터나 리스너를 테스트하기 위한 서블릿
+package com.eomcs.web.ex02;
 
 import java.io.IOException;
 import javax.servlet.GenericServlet;
@@ -10,7 +10,7 @@ import javax.servlet.annotation.WebServlet;
 
 @WebServlet("/ex02/s1")
 public class Servlet01 extends GenericServlet {
-  
+
   private static final long serialVersionUID = 1L;
 
   @Override
@@ -19,10 +19,5 @@ public class Servlet01 extends GenericServlet {
     System.out.println("/ex02/s1 서블릿 실행!");
   }
 }
-
-
-
-
-
 
 

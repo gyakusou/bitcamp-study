@@ -153,74 +153,74 @@ insert into class_tag(class_no, tag_no)
 -- 과제 22~
 insert into assignment(assignment_no, class_no, member_no, title, content, file, deadline, standard, create_date) 
   values(22, '101', '100000', '근의공식', '근의공식에 대해 알아오라', 'a.gif', '2020-04-21', '유래,기원', '2020-03-26');
-  insert into assignment(assignment_no, class_no, member_no, title, content, file, deadline, standard, create_date) 
+insert into assignment(assignment_no, class_no, member_no, title, content, file, deadline, standard, create_date) 
   values(23, '102', '100001', '네모', '네모에 대해 알아오라', 'b.gif', '2020-04-21', '유래,기원', '2020-03-26');
-  insert into assignment(assignment_no, class_no, member_no, title, content, file, deadline, standard, create_date) 
+insert into assignment(assignment_no, class_no, member_no, title, content, file, deadline, standard, create_date) 
   values(24, '103', '100002', '구름', '구름에 대해 알아오라', 'c.gif', '2020-04-21', '유래,기원', '2020-03-26');
-  insert into assignment(assignment_no, class_no, member_no, title, content, file, deadline, standard, create_date) 
+insert into assignment(assignment_no, class_no, member_no, title, content, file, deadline, standard, create_date) 
   values(25, '104', '100003', '인간', '인간에 대해 알아오라', 'd.gif', '2020-04-21', '유래,기원', '2020-03-26');
-  insert into assignment(assignment_no, class_no, member_no, title, content, file, deadline, standard, create_date) 
+insert into assignment(assignment_no, class_no, member_no, title, content, file, deadline, standard, create_date) 
   values(26, '105', '100004', '이순신', '이순신에 대해 알아오라', 'e.gif', '2020-04-21', '유래,기원', '2020-03-26');
   
 -- 과제제출 
 insert into assignment_submmit(member_no, assignment_no, file, score, content, feedback, create_date) 
   values(100000, '22', 'a.gif', '100', '만점', '잘했습니다.', '2020-04-23' );  
-  insert into assignment_submmit(member_no, assignment_no, file, score, content, feedback, create_date) 
+insert into assignment_submmit(member_no, assignment_no, file, score, content, feedback, create_date) 
   values(100001, '23', 'b.gif', '80', '2등', '괜찮아요.', '2020-04-23' ); 
-  insert into assignment_submmit(member_no, assignment_no, file, score, content, feedback, create_date) 
+insert into assignment_submmit(member_no, assignment_no, file, score, content, feedback, create_date) 
   values(100002, '24', 'c.gif', '60', '3등', '힘내세요.', '2020-04-23' ); 
-  insert into assignment_submmit(member_no, assignment_no, file, score, content, feedback, create_date) 
+insert into assignment_submmit(member_no, assignment_no, file, score, content, feedback, create_date) 
   values(100003, '25', 'd.gif', '40', '4등', '분발하세요.', '2020-04-23' ); 
-  insert into assignment_submmit(member_no, assignment_no, file, score, content, feedback, create_date) 
+insert into assignment_submmit(member_no, assignment_no, file, score, content, feedback, create_date) 
   values(100004, '26', 'e.gif', '20', '5등', '낼봅시다.', '2020-04-23' ); 
   
 -- 과제 태그 
 insert into assignment_tag(assignment_no, tag_no) 
   values(22, '5002');    
-  insert into assignment_tag(assignment_no, tag_no) 
+insert into assignment_tag(assignment_no, tag_no) 
   values(23, '5010');    
-  insert into assignment_tag(assignment_no, tag_no) 
+insert into assignment_tag(assignment_no, tag_no) 
   values(24, '5011');    
-  insert into assignment_tag(assignment_no, tag_no) 
+insert into assignment_tag(assignment_no, tag_no) 
   values(25, '5012');    
-  insert into assignment_tag(assignment_no, tag_no) 
+insert into assignment_tag(assignment_no, tag_no) 
   values(26, '5013');    
   
 -- 답변
 insert into answer(member_no, question_no, content, multiple_no, create_date) 
   values(100000, '50', '잘모르겠습니다.', '500', '2020-4-21');    
-  insert into answer(member_no, question_no, content, multiple_no, create_date) 
+insert into answer(member_no, question_no, content, multiple_no, create_date) 
   values(100001, '51', '글쎼요.', '501', '2020-4-21');   
-  insert into answer(member_no, question_no, content, multiple_no, create_date) 
+insert into answer(member_no, question_no, content, multiple_no, create_date) 
   values(100002, '52', '제출함.', '502', '2020-4-21');   
-  insert into answer(member_no, question_no, content, multiple_no, create_date) 
+insert into answer(member_no, question_no, content, multiple_no, create_date) 
   values(100003, '53', '몰겠어여.', '503', '2020-4-21');   
-  insert into answer(member_no, question_no, content, multiple_no, create_date) 
+insert into answer(member_no, question_no, content, multiple_no, create_date) 
   values(100004, '54', '어려워요.', '504', '2020-4-21');   
   
 -- 게시글 예제 데이터 ~100000 xxxx
 insert into post(post_no, board_no, member_no, title, content, create_date) 
-  values(777, '10001', '100001', '휴강안내합니다', '30일휴강', '2020-4-20');
-  insert into post(post_no, board_no, member_no, title, content, create_date) 
-  values(778, '10002', '100002', '중간고사', '다음주', '2020-4-20');
-  insert into post(post_no, board_no, member_no, title, content, create_date) 
-  values(779, '10003', '100003', '기말고사', '다음달', '2020-4-20');
-  insert into post(post_no, board_no, member_no, title, content, create_date) 
-  values(780, '10004', '100004', '숙제', '1번문제', '2020-4-20');
-  insert into post(post_no, board_no, member_no, title, content, create_date) 
-  values(781, '10005', '100005', '과제', '3번문제', '2020-4-20');
+  values(777, '10000', '100001', '휴강안내합니다', '30일휴강', '2020-4-20');
+insert into post(post_no, board_no, member_no, title, content, create_date) 
+  values(778, '10001', '100002', '중간고사', '다음주', '2020-4-20');
+insert into post(post_no, board_no, member_no, title, content, create_date) 
+  values(779, '10002', '100003', '기말고사', '다음달', '2020-4-20');
+insert into post(post_no, board_no, member_no, title, content, create_date) 
+  values(780, '10003', '100004', '숙제', '1번문제', '2020-4-20');
+insert into post(post_no, board_no, member_no, title, content, create_date) 
+  values(781, '10004', '100005', '과제', '3번문제', '2020-4-20');
   
   
 -- 게시글 태그
 insert into board_tag(post_no, tag_no) 
   values(777, '5014');  
-  insert into board_tag(post_no, tag_no) 
+insert into board_tag(post_no, tag_no) 
   values(778, '5015');  
-  insert into board_tag(post_no, tag_no) 
+insert into board_tag(post_no, tag_no) 
   values(779, '5016');  
-  insert into board_tag(post_no, tag_no) 
+insert into board_tag(post_no, tag_no) 
   values(780, '5017');  
-  insert into board_tag(post_no, tag_no) 
+insert into board_tag(post_no, tag_no) 
   values(781, '5018');  
   
   

@@ -160,7 +160,7 @@ insert into assignment(assignment_no, class_no, member_no, title, content, deadl
 insert into assignment(assignment_no, class_no, member_no, title, content, file, deadline, standard, create_date) 
   values(25, '104', '100003', '인간', '인간에 대해 알아오라', 'd.gif', '2020-04-21', '유래,기원', '2020-03-26');
 insert into assignment(assignment_no, class_no, member_no, title, content, file, deadline, create_date) 
-  values(27, '105', '100004', '이순신', '이순신에 대해 알아오라', 'e.gif', '2020-04-21', '2020-03-26');
+  values(26, '105', '100004', '이순신', '이순신에 대해 알아오라', 'e.gif', '2020-04-21', '2020-03-26');
   
 -- 과제제출 
 insert into assignment_submmit(member_no, assignment_no, score, content, feedback, create_date) 
@@ -168,11 +168,11 @@ insert into assignment_submmit(member_no, assignment_no, score, content, feedbac
 insert into assignment_submmit(member_no, assignment_no, file, content, feedback, create_date) 
   values(100001, '23', 'b.gif', '2등', '괜찮아요.', '2020-04-23' ); 
 insert into assignment_submmit(member_no, assignment_no, create_date) 
-  values(100002, '24', 'c.gif', '2020-04-23' ); 
+  values(100002, '24', '2020-04-23' ); 
 insert into assignment_submmit(member_no, assignment_no, file, score, content, create_date) 
   values(100003, '25', 'd.gif', '40', '4등', '2020-04-23' ); 
 insert into assignment_submmit(member_no, assignment_no, file, score, feedback, create_date) 
-  values(100004, '27', 'e.gif', '20', '낼봅시다.', '2020-04-23' ); 
+  values(100004, '26', 'e.gif', '20', '낼봅시다.', '2020-04-23' ); 
   
 -- 과제 태그 
 insert into assignment_tag(assignment_no, tag_no) 
@@ -184,7 +184,7 @@ insert into assignment_tag(assignment_no, tag_no)
 insert into assignment_tag(assignment_no, tag_no) 
   values(25, '5012');    
 insert into assignment_tag(assignment_no, tag_no) 
-  values(27, '5013');    
+  values(26, '5013');    
   
 -- 답변
 insert into answer(member_no, question_no, content, multiple_no, create_date) 

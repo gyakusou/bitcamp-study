@@ -26,6 +26,9 @@ dependencies {
     // => CompileOnly : 컴파일 한 후 생성된느 빌드 파일에 포함되지 않는다. 
     //
     
+    // Thumnailator 썸네일 생성 라이브러리
+    implementation 'net.coobird:thumbnailator:0.4.11'
+
     // Apache 의 파일업로드 처리 라이브러리
     implementation 'commons-fileupload:commons-fileupload:1.4'
     

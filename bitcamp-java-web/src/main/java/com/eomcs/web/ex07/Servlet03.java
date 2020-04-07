@@ -20,6 +20,8 @@ public class Servlet03 extends HttpServlet {
     response.setContentType("text/plain;charset=UTF-8");
     PrintWriter out = response.getWriter();
     out.println("해당 연산을 수행할 수 없습니다.");
+
+    System.out.println("ex07/Servlet03!!!");
   }
 }
 

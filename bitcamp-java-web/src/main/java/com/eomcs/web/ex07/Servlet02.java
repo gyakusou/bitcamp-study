@@ -30,10 +30,12 @@ public class Servlet02 extends HttpServlet {
       // 요청배달자 = request.getRequestDispatcher(다른 서블릿 URL);
       RequestDispatcher 요청배달자 = request.getRequestDispatcher("/ex07/s3");
 
-      // 이 서블릿이 지금까지 출력한 것은 모두 취소된다.
+      // 이 서블릿이 지금까지 버퍼로 출력한 것은 모두 취소된다.
       // => 엥! 출력된 것이 최소될 수 있나요?
       요청배달자.forward(request, response);
-      return;
+
+      System.out.println("ex07/Servlet02!!!");
+      // return;
     }
 
     int a = Integer.parseInt(request.getParameter("a"));

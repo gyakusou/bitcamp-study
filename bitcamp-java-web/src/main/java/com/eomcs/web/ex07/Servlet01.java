@@ -56,6 +56,12 @@ public class Servlet01 extends HttpServlet {
       // => 그래서 다른 서블릿으로 실행을 위임하기 전에
       // 이 서블릿이 출력한 내용을 취소할 수 있는 것이다.
       요청배달자.forward(request, response);
+
+      System.out.println("ex07/Servlet01!!!");
+      // 포워딩 한 서블릿을 실행한 후 리턴된다.
+      // 단, 리턴된 후에 출력하는 것은 모두 무시된다.
+      // 따라서 포워딩 후에 리턴되면 하위 코드를 실행하지 않고
+      // 바로 종료하도록 다음과 같이 return 명령을 삽입하라.!
       return;
     }
 

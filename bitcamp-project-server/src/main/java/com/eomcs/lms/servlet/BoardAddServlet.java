@@ -2,34 +2,63 @@ package com.eomcs.lms.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.GenericServlet;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.context.ApplicationContext;
 import com.eomcs.lms.domain.Board;
 import com.eomcs.lms.service.BoardService;
 
 @WebServlet("/board/add")
-public class BoardAddServlet extends GenericServlet {
+public class BoardAddServlet extends HttpServlet { // GenericServlet -> HttpServlet
   private static final long serialVersionUID = 1L;
 
   @Override
-  public void service(ServletRequest req, ServletResponse res)
+  protected void doGet(HttpServletRequest request, HttpServletResponse response) // doGet 메서드 만들고
+                                                                                 // BoardAddFormServlet에서
+                                                                                 // 가져오기
       throws ServletException, IOException {
-    try {
-      res.setContentType("text/html;charset=UTF-8");
-      PrintWriter out = res.getWriter();
+    response.setContentType("text/html;charset=UTF-8");
+    PrintWriter out = response.getWriter();
+    out.println("<!DOCTYPE html>");
+    out.println("<html>");
+    out.println("<head>");
+    out.println("<meta charset='UTF-8'>");
+    out.println("<title>게시글 입력</title>");
+    out.println("</head>");
+    out.println("<body>");
+    out.println("<h1>게시물 입력</h1>");
+    out.println("<form action='add' method='post'>"); // method='post' 추가
+    out.println("내용:<br>");
+    out.println("<textarea name='title' rows='5' cols='60'></textarea><br>");
+    out.println("<button>등록</button>");
+    out.println("</form>");
+    out.println("</body>");
+    out.println("</html>");
+  }
 
-      ServletContext servletContext = req.getServletContext();
+  @Override
+  protected void doPost(HttpServletRequest request, HttpServletResponse response) // doPost 메서드 생성
+      throws ServletException, IOException {
+
+    try {
+      request.setCharacterEncoding("UTF-8"); // Get과 달리 Post는 인코딩 해야 한다. 인코딩 하지 않으면 한글 깨진다.
+      response.setContentType("text/html;charset=UTF-8");
+      PrintWriter out = response.getWriter();
+
+      ServletContext servletContext = request.getServletContext(); // servletContext 꺼내는 방법
+                                                                   // getServletContext();
+                                                                   // this.getServletContext();
+                                                                   // request.getServletContext();
       ApplicationContext iocContainer =
           (ApplicationContext) servletContext.getAttribute("iocContainer");
       BoardService boardService = iocContainer.getBean(BoardService.class);
 
       Board board = new Board();
-      board.setTitle(req.getParameter("title"));
+      board.setTitle(request.getParameter("title"));
 
       boardService.add(board);
 

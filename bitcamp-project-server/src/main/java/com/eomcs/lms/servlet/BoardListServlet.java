@@ -29,13 +29,8 @@ public class BoardListServlet extends HttpServlet {
           (ApplicationContext) servletContext.getAttribute("iocContainer");
       BoardService boardService = iocContainer.getBean(BoardService.class);
 
-      out.println("<!DOCTYPE html>");
-      out.println("<html>");
-      out.println("<head>");
-      out.println("  <meta charset='UTF-8'>");
-      out.println("  <title>게시글 목록</title>");
-      out.println("</head>");
-      out.println("<body>");
+      request.getRequestDispatcher("/header").include(request, response); // 인클루드
+
       out.println("  <h1>게시글</h1>");
       out.println("  <a href='add'>새 글</a><br>");
       out.println("  <table border='1'>");
@@ -69,7 +64,7 @@ public class BoardListServlet extends HttpServlet {
     } catch (Exception e) {
       request.setAttribute("error", e);
       request.setAttribute("url", "list");
-      request.getRequestDispatcher("/error").forward(request, response);
+      request.getRequestDispatcher("/error").forward(request, response); // 포워드
     }
   }
 }

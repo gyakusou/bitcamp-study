@@ -27,7 +27,7 @@ public class HeaderServlet extends HttpServlet {
         "<link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' integrity='sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh' crossorigin='anonymous'>");
     out.println("<style>");
     out.println("body {");
-    out.println("  background-color: Lightgray;");
+    out.println("  background-color: LightGray;");
     out.println("}");
 
     out.println("div.container {");
@@ -47,21 +47,20 @@ public class HeaderServlet extends HttpServlet {
     out.println("<div class='collapse navbar-collapse' id='navbarNav'>");
     out.println("  <ul class='navbar-nav'>");
     out.println("    <li class='nav-item'>");
-    out.println("      <a class='nav-link' href='board/list'>게시글</span></a>");
+    out.println("      <a class='nav-link' href='../board/list'>게시글</span></a>");
     out.println("    </li>");
     out.println("    <li class='nav-item'>");
-    out.println("      <a class='nav-link' href='lesson/list'>수업</a>");
+    out.println("      <a class='nav-link' href='../lesson/list'>수업</a>");
     out.println("    </li>");
     out.println("    <li class='nav-item'>");
-    out.println("      <a class='nav-link' href='member/list'>회원</a>");
+    out.println("      <a class='nav-link' href='../member/list'>회원</a>");
     out.println("    </li>");
     out.println("    <li class='nav-item'>");
-    out.println("      <a class='nav-link' href='auth/login'>로그인</a>");
+    out.println("      <a class='nav-link' href='../auth/login'>로그인</a>");
     out.println("    </li>");
     out.println("  </ul>");
     out.println("</div>");
     out.println("</nav>");
-    out.println("<div class='container'>"); // 부트스트랩 시작
-
+    out.println("<div class='container'>");
   }
 }

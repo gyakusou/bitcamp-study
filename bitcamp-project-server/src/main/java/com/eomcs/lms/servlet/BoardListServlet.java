@@ -29,7 +29,7 @@ public class BoardListServlet extends HttpServlet {
           (ApplicationContext) servletContext.getAttribute("iocContainer");
       BoardService boardService = iocContainer.getBean(BoardService.class);
 
-      request.getRequestDispatcher("/header").include(request, response); // 인클루드
+      request.getRequestDispatcher("/header").include(request, response);
 
       out.println("  <h1>게시글</h1>");
       out.println("  <a href='add'>새 글</a><br>");
@@ -63,7 +63,7 @@ public class BoardListServlet extends HttpServlet {
     } catch (Exception e) {
       request.setAttribute("error", e);
       request.setAttribute("url", "list");
-      request.getRequestDispatcher("/error").forward(request, response); // 포워드
+      request.getRequestDispatcher("/error").forward(request, response);
     }
   }
 }

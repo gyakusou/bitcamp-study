@@ -10,27 +10,21 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import com.eomcs.lms.AppConfig;
 
-@WebServlet(value = "/AppInitServlet", loadOnStartup = 1) // ★
+@WebServlet(value = "/AppInitServlet", loadOnStartup = 1)
 public class AppInitServlet extends HttpServlet {
-
   private static final long serialVersionUID = 1L;
 
-  static Logger logger = LogManager.getLogger(AppInitServlet.class); // 현재 클래스 적어 log 출력
+  static Logger logger = LogManager.getLogger(AppInitServlet.class);
 
-  // tomcat -> servletcofig -> init 호출순서
   @Override
   public void init() throws ServletException {
-
     try {
       ApplicationContext iocContainer = new AnnotationConfigApplicationContext(//
           AppConfig.class);
-
       printBeans(iocContainer);
 
       ServletContext servletContext = getServletContext();
-
       servletContext.setAttribute("iocContainer", iocContainer);
-
       logger.debug("----------------------------");
 
     } catch (Exception e) {
@@ -46,6 +40,6 @@ public class AppInitServlet extends HttpServlet {
           beanName, //
           appCtx.getBean(beanName).getClass().getName()));
     }
-  }
 
+  }
 }

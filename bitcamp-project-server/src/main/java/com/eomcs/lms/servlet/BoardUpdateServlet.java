@@ -59,8 +59,11 @@ public class BoardUpdateServlet extends HttpServlet {
       }
       out.println("</body>");
       out.println("</html>");
+
     } catch (Exception e) {
-      throw new ServletException(e);
+      request.setAttribute("error", e);
+      request.setAttribute("url", "list");
+      request.getRequestDispatcher("/error").forward(request, response);
     }
   }
 
@@ -69,8 +72,6 @@ public class BoardUpdateServlet extends HttpServlet {
       throws ServletException, IOException {
     try {
       request.setCharacterEncoding("UTF-8");
-      response.setContentType("text/html;charset=UTF-8");
-      PrintWriter out = response.getWriter();
 
       ServletContext servletContext = getServletContext();
       ApplicationContext iocContainer =
@@ -81,20 +82,16 @@ public class BoardUpdateServlet extends HttpServlet {
       board.setNo(Integer.parseInt(request.getParameter("no")));
       board.setTitle(request.getParameter("title"));
 
-      boardService.update(board);
-
       if (boardService.update(board) > 0) {
         response.sendRedirect("list");
       } else {
-        request.getSession().setAttribute("errorMessage", "변경 할 게시물 번호가 유효하지 않습니다.");
-        request.getSession().setAttribute("url", "board/list");
-        response.sendRedirect("../error");
+        throw new Exception("변경할 게시물 번호가 유효하지 않습니다.");
       }
 
-      out.println("</body>");
-      out.println("</html>");
     } catch (Exception e) {
-      throw new ServletException(e);
+      request.setAttribute("error", e);
+      request.setAttribute("url", "list");
+      request.getRequestDispatcher("/error").forward(request, response);
     }
   }
 }

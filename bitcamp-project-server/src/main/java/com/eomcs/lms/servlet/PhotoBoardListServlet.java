@@ -22,6 +22,8 @@ public class PhotoBoardListServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
+
+    int lessonNo = Integer.parseInt(request.getParameter("lessonNo"));
     try {
       response.setContentType("text/html;charset=UTF-8");
       PrintWriter out = response.getWriter();
@@ -39,13 +41,13 @@ public class PhotoBoardListServlet extends HttpServlet {
       out.println("</head>");
       out.println("<body>");
       try {
-        int lessonNo = Integer.parseInt(request.getParameter("lessonNo"));
         Lesson lesson = lessonService.get(lessonNo);
         if (lesson == null) {
           throw new Exception("수업 번호가 유효하지 않습니다.");
         }
 
-        out.printf("  <h1>강의 사진 - %s</h1>", lesson.getTitle());
+        out.printf("  <h1>강의 사진 - <a href='../lesson/detail?no=%d'>%s</a></h1>", //
+            lessonNo, lesson.getTitle());
         out.printf("  <a href='add?lessonNo=%d'>새 사진</a><br>\n", //
             lessonNo);
         out.println("  <table border='1'>");
@@ -78,8 +80,11 @@ public class PhotoBoardListServlet extends HttpServlet {
       }
       out.println("</body>");
       out.println("</html>");
+
     } catch (Exception e) {
-      throw new ServletException(e);
+      request.setAttribute("error", e);
+      request.setAttribute("url", "list?lessonNo=" + lessonNo);
+      request.getRequestDispatcher("/error").forward(request, response);
     }
   }
 }

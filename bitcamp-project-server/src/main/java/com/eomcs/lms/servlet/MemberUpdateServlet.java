@@ -20,7 +20,6 @@ public class MemberUpdateServlet extends HttpServlet {
       throws ServletException, IOException {
     try {
       request.setCharacterEncoding("UTF-8");
-      response.setContentType("text/html;charset=UTF-8");
 
       ServletContext servletContext = request.getServletContext();
       ApplicationContext iocContainer =
@@ -35,18 +34,16 @@ public class MemberUpdateServlet extends HttpServlet {
       member.setPhoto(request.getParameter("photo"));
       member.setTel(request.getParameter("tel"));
 
-      memberService.update(member);
-
       if (memberService.update(member) > 0) {
         response.sendRedirect("list");
       } else {
-        request.getSession().setAttribute("errorMessage", "변경할 게시물 번호가 유효하지 않습니다.");
-        request.getSession().setAttribute("url", "member/list");
-        response.sendRedirect("../error");
+        throw new Exception("변경할 회원 번호가 유효하지 않습니다.");
       }
 
     } catch (Exception e) {
-      throw new ServletException(e);
+      request.setAttribute("error", e);
+      request.setAttribute("url", "list");
+      request.getRequestDispatcher("/error").forward(request, response);
     }
   }
 }

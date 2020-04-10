@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +15,7 @@ import com.eomcs.lms.domain.PhotoFile;
 import com.eomcs.lms.service.PhotoBoardService;
 
 @WebServlet("/photoboard/detail")
+@MultipartConfig(maxFileSize = 5000000)
 public class PhotoBoardDetailServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
@@ -38,7 +40,7 @@ public class PhotoBoardDetailServlet extends HttpServlet {
       out.println("<h1>사진 상세정보</h1>");
 
       if (photoBoard != null) {
-        out.println("<form action='update' method='post' enctype='mulitpart/form-data'>");
+        out.println("<form action='update' method='post' enctype='multipart/form-data'>");
         out.printf("번호: <input name='no' type='text' readonly value='%d'><br>\n", //
             photoBoard.getNo());
         out.println("내용:<br>");

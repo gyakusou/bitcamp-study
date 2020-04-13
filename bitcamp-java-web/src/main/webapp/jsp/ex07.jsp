@@ -7,7 +7,7 @@
     import="java.util.List,java.util.Map,java.util.Set"
     trimDirectiveWhitespaces="true"
     buffer="8kb"
-    autoFlush="false"%>
+    autoFlush="flase"%>
 <%@ page import="java.sql.Connection"%>
 <%@ page import="java.sql.Statement"%>
 <!DOCTYPE html>
@@ -23,6 +23,7 @@ for (int i = 0; i < 1000; i++) {
   out.print(". "); 
 }
 %>
+<p>출력완료</p>
 </body>
 </html>
 <%--

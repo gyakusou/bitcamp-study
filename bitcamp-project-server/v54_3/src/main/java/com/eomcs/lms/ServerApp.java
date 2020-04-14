@@ -73,7 +73,6 @@ public class ServerApp //
   // 옵저버 관련코드 끝!
 
   public void service() throws Exception {
-
     notifyApplicationInitialized();
 
     // ApplicationContext (IoC 컨테이너)를 꺼낸다.
@@ -111,7 +110,7 @@ public class ServerApp //
       }
     });
 
-    logger.info("서버 시작(9999)!");
+    logger.info("비트서버 시작(9999)!");
 
     server.awaitTermination(TimeValue.MAX_VALUE);
   } // service()
@@ -175,7 +174,7 @@ public class ServerApp //
     return params;
   }
 
-  // ExceptionListener 인터페이스 구현 - 시작
+  // ExceptionListener 인터페이스 구현
   @Override
   public void onError(final Exception ex) {
     ex.printStackTrace();
@@ -191,11 +190,9 @@ public class ServerApp //
       ex.printStackTrace();
     }
   }
-
   // ExceptionListener 인터페이스 구현 - 끝
 
-  // HttpRequestHandler 인터페이스 구현 - 시작
-
+  // HttpRequestHandler 인터페이스 구현
   @Override
   public void handle( //
       final ClassicHttpRequest request, // 클라이언트 요청처리 도구
@@ -206,9 +203,9 @@ public class ServerApp //
     logger.info("--------------------------------------");
     logger.info("클라이언트의 요청이 들어옴!");
 
-    // 클라이언트로 콘텐트를 출력할 때 사용할 도구 준비
+    // 클라이언트로 콘텐트 출력할 때 사용할 도구 준비
     // => 이 출력 스트림을 사용하여 출력하는 모든 데이터는
-    // 메모리에 임시보관된다.
+    // 메모리에 임시 보관된다.
     StringWriter outBuffer = new StringWriter();
     PrintWriter out = new PrintWriter(outBuffer);
 
@@ -222,6 +219,7 @@ public class ServerApp //
 
       Map<String, String> params = getParameters(requestUri);
       RequestHandler requestHandler = handlerMapper.getHandler(servletPath);
+
       if (requestHandler != null) {
         // Request Handler의 메서드 호출
         requestHandler.getMethod().invoke( //
@@ -232,7 +230,6 @@ public class ServerApp //
         notFound(out);
         logger.info("해당 명령을 지원하지 않습니다.");
       }
-
     } catch (Exception e) {
       error(out, e);
 
@@ -250,7 +247,6 @@ public class ServerApp //
         ContentType.create("text/html", Charset.forName("UTF-8"))));
     logger.info("클라이언트에게 응답하였음!");
   }
-
   // HttpRequestHandler 인터페이스 구현 - 끝
 
   public static void main(String[] args) throws Exception {

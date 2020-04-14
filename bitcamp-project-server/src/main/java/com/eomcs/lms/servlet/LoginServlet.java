@@ -79,7 +79,6 @@ public class LoginServlet extends HttpServlet {
 
       request.setAttribute("viewUrl", "/auth/login.jsp");
 
-
     } catch (Exception e) {
       request.setAttribute("error", e);
       request.setAttribute("url", "login");

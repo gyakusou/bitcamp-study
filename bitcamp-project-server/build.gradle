@@ -63,6 +63,9 @@ dependencies {
     // => implementation : 컴파일 한 후에 생성되는 빌드 파일에 포함된다.
     // => CompileOnly : 컴파일 한 후 생성된느 빌드 파일에 포함되지 않는다. 
     compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
+    
+    // jstl
+    implementation 'jstl:jstl:1.2'
 
     // compile -> implementation 으로 변경
     implementation 'com.google.guava:guava:28.0-jre'

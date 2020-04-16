@@ -77,7 +77,9 @@ public class RequestHandler {
 
     // 메서드의 파라미터 목록을 꺼낸다.
     Parameter[] params = method.getParameters();
-    String viewUrl = (String) method.invoke(bean, getArguments(params, request, response, model));
+    String viewUrl = (String) method.invoke( //
+        bean, // 메서드를 호출할 때 사용하는 인스턴스
+        getArguments(params, request, response, model)); // 메서드에 넘겨줄 값들 아규먼트
 
     // request handler를 호출하면,
     // model 객체에는 request handler가 담은 값이 보관되어 있다.

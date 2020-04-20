@@ -36,10 +36,10 @@ public class Controller04_1 {
       // ServletContext sc,
       // ServletContext는 파라미터로 받을 수 없다. 예외 발생!
       // 의존 객체로 주입 받아야 한다.
-      ServletRequest request, //
-      ServletResponse response, //
-      HttpServletRequest request2, //
-      HttpServletResponse response2, //
+      ServletRequest request, // =HttpServletRequest
+      ServletResponse response, // =HttpServletResponse
+      HttpServletRequest request2, // =ServletRequest
+      HttpServletResponse response2, // =ServletResponse
       HttpSession session, //
       Map<String, Object> map, // JSP에 전달할 값을 담는 임시 보관소
       Model model, // Map과 같다. 둘 중 한 개만 받으면 된다.

@@ -39,7 +39,7 @@ public class Controller04_3 {
               // 지정하면 된다.
               // 예) ...&engine.model=ok&engine.cc=1980&engine.valve=16
   ) {
-
+    // <input type="text" name="engine.model">
     out.printf("model=%s\n", model);
     out.printf("maker=%s\n", maker);
     out.printf("capacity=%s\n", capacity);

@@ -22,6 +22,7 @@ public class BoardDetailServlet extends HttpServlet {
       ServletContext servletContext = getServletContext();
       ApplicationContext iocContainer =
           (ApplicationContext) servletContext.getAttribute("iocContainer");
+     
       BoardService boardService = iocContainer.getBean(BoardService.class);
 
       int no = Integer.parseInt(request.getParameter("no"));

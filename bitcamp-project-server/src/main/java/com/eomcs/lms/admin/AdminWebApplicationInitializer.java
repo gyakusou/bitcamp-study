@@ -1,11 +1,10 @@
-package com.eomcs.lms.web;
+package com.eomcs.lms.admin;
 
 import javax.servlet.Filter;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
-import com.eomcs.lms.AppConfig;
 
-public class AppWebApplicationInitializer
+public class AdminWebApplicationInitializer
     extends AbstractAnnotationConfigDispatcherServletInitializer {
 
   // String uploadTmpDir;
@@ -16,13 +15,13 @@ public class AppWebApplicationInitializer
   // }
 
   @Override
-  protected Class<?>[] getRootConfigClasses() { // 컨텍스트 로더 리스너에서 사용할 ioc 컨테이너 설정 (공통사용)
-    return new Class<?>[] {AppConfig.class};
+  protected Class<?>[] getRootConfigClasses() {
+    return null;
   }
 
   @Override
-  protected Class<?>[] getServletConfigClasses() { // 이서블릿의 ioc 컨테이너에 대한 설정
-    return new Class<?>[] {AppWebConfig.class};
+  protected Class<?>[] getServletConfigClasses() {
+    return new Class<?>[] {AdminWebConfig.class};
   }
 
   @Override
@@ -34,12 +33,12 @@ public class AppWebApplicationInitializer
 
   @Override
   protected String[] getServletMappings() {
-    return new String[] {"/app/*"};
+    return new String[] {"/admin/*"};
   }
 
   @Override
   protected String getServletName() {
-    return "app";
+    return "admin";
   }
 
 

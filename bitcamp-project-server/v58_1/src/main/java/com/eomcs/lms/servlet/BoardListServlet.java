@@ -23,6 +23,7 @@ public class BoardListServlet extends HttpServlet {
       ServletContext servletContext = getServletContext();
       ApplicationContext iocContainer =
           (ApplicationContext) servletContext.getAttribute("iocContainer");
+      
       BoardService boardService = iocContainer.getBean(BoardService.class);
 
       List<Board> boards = boardService.list();

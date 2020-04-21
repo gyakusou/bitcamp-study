@@ -23,13 +23,13 @@ public class MemberController {
   @Autowired
   MemberService memberService;
 
-  @GetMapping("/form")
-  public void form() throws Exception {}
+  @GetMapping("form")
+  public void form() {}
 
-  @PostMapping("/add")
-  public String add(Member member, MultipartFile photoFile) throws Exception {
-    // from, detailJSP 도 photo -> photoFile로 바꾼다.
-
+  @PostMapping("add")
+  public String add( //
+      Member member, //
+      MultipartFile photoFile) throws Exception {
     if (photoFile.getSize() > 0) {
       String dirPath = servletContext.getRealPath("/upload/member");
       String filename = UUID.randomUUID().toString();
@@ -44,7 +44,7 @@ public class MemberController {
     }
   }
 
-  @GetMapping("/delete")
+  @GetMapping("delete")
   public String delete(int no) throws Exception {
     if (memberService.delete(no) > 0) { // 삭제했다면,
       return "redirect:list";
@@ -53,23 +53,25 @@ public class MemberController {
     }
   }
 
-  @GetMapping("/detail")
+  @GetMapping("detail")
   public void detail(int no, Model model) throws Exception {
     model.addAttribute("member", memberService.get(no));
   }
 
-  @GetMapping("/list")
+  @GetMapping("list")
   public void list(Model model) throws Exception {
     model.addAttribute("list", memberService.list());
   }
 
-  @GetMapping("/search")
+  @GetMapping("search")
   public void search(String keyword, Model model) throws Exception {
     model.addAttribute("list", memberService.search(keyword));
   }
 
-  @PostMapping("/update")
-  public String update(Member member, MultipartFile photoFile) throws Exception {
+  @PostMapping("update")
+  public String update( //
+      Member member, //
+      MultipartFile photoFile) throws Exception {
 
     if (photoFile.getSize() > 0) {
       String dirPath = servletContext.getRealPath("/upload/member");
@@ -85,3 +87,5 @@ public class MemberController {
     }
   }
 }
+
+

@@ -18,7 +18,7 @@ public class Controller01_1 {
   // @ResponseBody 붙이면, return 값은 그대로 출력된다.
   public String handler1(Model model) {
 
-    model.addAttribute("name", "홍길동");
+    model.addAttribute("name", "홍길동"); // 서블릿 리퀘스트 보관소
     model.addAttribute("age", 20);
 
     return "/jsp/c01_1.jsp";

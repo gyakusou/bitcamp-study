@@ -23,18 +23,20 @@ public class Controller01_2 {
 
     //
     // ViewResolver?
-    // => 페이지 컨트롤러가 리턴한 뷰 이름에 해당하는 뷰 콤포넌트를 찾아 실행하는 역할.
+    // => 실행 할 뷰를 찾는 일을 한다.
+    // => 페이지 컨트롤러가 리턴한 뷰 이름에 해당하는 뷰 콤포넌트를 찾는 역할.
     // => ResourceBundleViewResolver
     // - *.properties 에서 뷰 이름에 해당하는 콤포넌트의 URL을 찾는다.
     // => InternalResouceViewResolver
     // - 미리 지정된 접두사, 접미사를 사용하여 뷰이름으로 콤포넌트의 URL을 완성한다.
     //
     // View?
+    // => 뷰를 실행하는 일을 한다.
     // => 템플릿 엔진을 실행하여 실제 클라이언트로 보낼 콘텐트를 생성한다.
     // => FreeMarker, JSP/JSTL, Tiles, RSS/Atom, PDF, Excel 등의
     // 엔진을 이용하여 콘텐트를 생성하는 뷰가 있다.
     //
-    // ViewResolver 교
+    // ViewResolver 교체
     // => InternalResourceViewResolver를 사용하여
     // JSP URL의 접두어와 접미사를 미리 설정해 둘 수 있어 URL을 지정하기 편리하다.
     // => 교체 방법은 XML에서 설정하는 방법과 Java Config로 설정하는 방법이 있다.
@@ -54,7 +56,8 @@ public class Controller01_2 {
     // 최종 JSP URL은,
     // "/WEB-INF/jsp2/c01_2/h1.jsp"
     // 이다.
-    //
+    // => 프론트 컨트롤러는 ViewResolver가 준비한 URL을 가지고
+    // View 객체를 통해 해당 URL의 자원을 실행한다.
     return "c01_2/h1"; // => /WEB-INF/jsp2/c01_2/h1.jsp
   }
 

@@ -3,6 +3,8 @@ package bitcamp.config;
 import java.io.File;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+// app1 라는 디스패처 서블릿을 등록한다.
+
 public class App1WebApplicationInitializer
     extends AbstractAnnotationConfigDispatcherServletInitializer {
 
@@ -18,17 +20,17 @@ public class App1WebApplicationInitializer
     return null;
   }
 
-  @Override
+  @Override // 디스패처 서블릿이 갖고 있는 ioc 컨테이너 설정정보를 담고 있다. 이 클래스로 가서 어떤 객체를 생성하고 싶은지 적어라
   protected Class<?>[] getServletConfigClasses() {
     return new Class<?>[] {App1Config.class};
   }
 
-  @Override
+  @Override // 디스패처 서블릿이 어떤 요청을 하는지
   protected String[] getServletMappings() {
     return new String[] {"/app1/*"};
   }
 
-  @Override
+  @Override // 디스패처 서블릿의 이름은
   protected String getServletName() {
     return "app1";
   }

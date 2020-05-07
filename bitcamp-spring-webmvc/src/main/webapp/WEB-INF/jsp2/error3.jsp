@@ -7,9 +7,9 @@
 <title>jsp</title>
 </head>
 <body>
-<h1>/WEB-INF/jsp2/c04_1.jsp</h1>
+<h1>/WEB-INF/jsp2/error3.jsp</h1>
+<p>예외객체 : ${error}</p>
+<p>오류메세지 : ${error.getMessage()}</p>
 </body>
 </html>
-<%
-System.out.println("c04_1.jsp 실행");
-%>
+  

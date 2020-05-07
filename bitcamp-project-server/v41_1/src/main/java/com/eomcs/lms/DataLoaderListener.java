@@ -47,13 +47,13 @@ public class DataLoaderListener implements ApplicationContextListener {
 
   @Override
   public void contextDestroyed(Map<String, Object> context) {
-    // 애플리케이션이 종료 될때
+    // 애플리케이션이 종료될 때,
     // 모든 DB 커넥션을 명시적으로 끊어준다.
-    // 그러면 DBMS는 timeout 될 때 까지 기다릴 필요가 없이
+    // 그러면 DBMS는 timeout 될 때까지 기다릴 필요가 없이
     // 클라이언트와 연결된 스레드를 즉시 해제시킬 수 있다.
+    //
     DataSource dataSource = (DataSource) context.get("dataSource");
     dataSource.clean();
   }
+
 }
-
-

@@ -25,14 +25,15 @@ public class PhotoBoardDaoImpl implements PhotoBoardDao {
           "insert into lms_photo(titl,lesson_id) values('" //
               + photoBoard.getTitle() + "', " + photoBoard.getLesson().getNo() //
               + ")", //
-          Statement.RETURN_GENERATED_KEYS); // + insert 후에 PK값 리턴 받기
+          Statement.RETURN_GENERATED_KEYS // insert 후에 PK 값 리턴 받기
+      );
 
-      // auto-increment PK 값을 꺼내기 위한 준비를 한다.
-      try (ResultSet generatedKeySet = stmt.getGeneratedKeys()) { // +
+      // auto-increament PK 값을 꺼내기 위한 준비를 한다.
+      try (ResultSet generatedKeySet = stmt.getGeneratedKeys()) {
         // PK 컬럼의 값을 가져온다.
         generatedKeySet.next();
 
-        // 가져온 PK컬럼의 값을 PhotoBoard 객체에 꺼꾸로 담는다.
+        // 가져온 PK 컬럼의 값을 PhotoBoard 객체에 꺼꾸로 담는다.
         photoBoard.setNo(generatedKeySet.getInt(1));
       }
 

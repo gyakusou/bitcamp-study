@@ -21,7 +21,6 @@ public class PhotoBoardDaoImpl implements PhotoBoardDao {
       int count = sqlSession.insert(//
           "PhotoBoardMapper.insertPhotoBoard", photoBoard);
       sqlSession.commit();
-      // DAO에서는 commit 해서는 안됀다. insert, delete, udpate 할 때 다른 DAO 작업과 묶일수 없기 때문에
       return count;
     }
   }

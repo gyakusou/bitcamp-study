@@ -16,14 +16,12 @@ public class LessonDaoProxy implements LessonDao {
   ObjectOutputStream out;
 
   public LessonDaoProxy(ObjectInputStream in, ObjectOutputStream out) {
-
     this.in = in;
     this.out = out;
   }
 
   @Override
   public int insert(Lesson lesson) throws Exception {
-
     out.writeUTF("/lesson/add");
     out.writeObject(lesson);
     out.flush();
@@ -39,37 +37,30 @@ public class LessonDaoProxy implements LessonDao {
   @SuppressWarnings("unchecked")
   @Override
   public List<Lesson> findAll() throws Exception {
-
     out.writeUTF("/lesson/list");
     out.flush();
-
     String response = in.readUTF();
     if (response.equals("FAIL")) {
       throw new Exception(in.readUTF());
     }
-
     return (List<Lesson>) in.readObject();
   }
 
   @Override
   public Lesson findByNo(int no) throws Exception {
-
     out.writeUTF("/lesson/detail");
     out.writeInt(no);
     out.flush();
 
     String response = in.readUTF();
-
     if (response.equals("FAIL")) {
       throw new Exception(in.readUTF());
     }
-
     return (Lesson) in.readObject();
   }
 
   @Override
   public int update(Lesson lesson) throws Exception {
-
     out.writeUTF("/lesson/update");
     out.writeObject(lesson);
     out.flush();
@@ -78,23 +69,20 @@ public class LessonDaoProxy implements LessonDao {
     if (response.equals("FAIL")) {
       throw new Exception(in.readUTF());
     }
-
     return 1;
   }
 
   @Override
   public int delete(int no) throws Exception {
-
     out.writeUTF("/lesson/delete");
     out.writeInt(no);
     out.flush();
 
     String response = in.readUTF();
-
     if (response.equals("FAIL")) {
       throw new Exception(in.readUTF());
     }
-
     return 1;
   }
+
 }

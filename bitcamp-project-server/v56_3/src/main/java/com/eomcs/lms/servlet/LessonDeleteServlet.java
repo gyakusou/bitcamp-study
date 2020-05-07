@@ -25,11 +25,13 @@ public class LessonDeleteServlet extends HttpServlet {
 
       int no = Integer.parseInt(request.getParameter("no"));
 
-      if (lessonService.delete(no) > 0) {
+      if (lessonService.delete(no) > 0) { // 삭제했다면,
         response.sendRedirect("list");
       } else {
-        request.getSession().setAttribute("errorMessage", "삭제할 게시물 번호가 유효하지 않습니다.");
-        request.getSession().setAttribute("url", "lesson/list");
+        request.getSession().setAttribute("errorMessage", //
+            "삭제할 수업 번호가 유효하지 않습니다.");
+        request.getSession().setAttribute("url", //
+            "lesson/list");
         response.sendRedirect("../error");
       }
 

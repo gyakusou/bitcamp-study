@@ -46,7 +46,7 @@ public class HeaderServlet extends HttpServlet {
     out.println("  <span class='navbar-toggler-icon'></span>");
     out.println("</button>");
     out.println("<div class='collapse navbar-collapse' id='navbarNav'>");
-    out.println("  <ul class='navbar-nav mr-auto'>"); // 추가
+    out.println("  <ul class='navbar-nav mr-auto'>");
     out.println("    <li class='nav-item'>");
     out.println("      <a class='nav-link' href='../board/list'>게시글</span></a>");
     out.println("    </li>");
@@ -60,13 +60,13 @@ public class HeaderServlet extends HttpServlet {
     out.println("      <a class='nav-link' href='../auth/login'>로그인</a>");
     out.println("    </li>");
     out.println("  </ul>");
-    Member loginUser = (Member) request.getSession().getAttribute("loginUser"); // 로그인
-    if (loginUser != null) { // 로그인
-      out.printf("  <span class='navbar-text'>%s</span>\n", // 로그인
-          loginUser.getName()); // 로그인
-      out.println("  <a href='../auth/logout' class='btn btn-success btn-sm'>로그아웃</a>"); // 로그인
-    } else { // 로그인
-      out.println("  <a href='../auth/login' class='btn btn-success btn-sm'>로그인</a>");// 로그인
+    Member loginUser = (Member) request.getSession().getAttribute("loginUser");
+    if (loginUser != null) {
+      out.printf("  <span class='navbar-text'>%s</span>\n", //
+          loginUser.getName());
+      out.println("  <a href='../auth/logout' class='btn btn-success btn-sm'>로그아웃</a>");
+    } else {
+      out.println("  <a href='../auth/login' class='btn btn-success btn-sm'>로그인</a>");
     }
     out.println("</div>");
     out.println("</nav>");

@@ -37,7 +37,7 @@ public class DataLoaderListener implements ApplicationContextListener {
           new SqlSessionFactoryBuilder().build(inputStream));
       context.put("sqlSessionFactory", sqlSessionFactory);
 
-      // DAO 프록시 객체를 생성해 줄 Factory 를 준비
+      // DAO 프록시 객체를 생성해 줄 Factory를 준비
       MybatisDaoFactory daoFactory = new MybatisDaoFactory(sqlSessionFactory);
 
       // 서비스 객체가 사용할 DAO를 준비한다.

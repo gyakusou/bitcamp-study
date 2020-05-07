@@ -61,10 +61,9 @@ public class ServerApp {
     // ApplicationContext (IoC 컨테이너)를 꺼낸다.
     iocContainer = (ApplicationContext) context.get("iocContainer");
 
-    // SqlSessionFactory를 꺼낸다.
+    // IoC 컨테이너에서 SqlSessionFactory를 꺼낸다.
     SqlSessionFactory sqlSessionFactory = //
-        (SqlSessionFactory) iocContainer.getBean( //
-            "sqlSessionFactoryProxy");
+        (SqlSessionFactory) iocContainer.getBean("sqlSessionFactory");
 
     try (ServerSocket serverSocket = new ServerSocket(9999)) {
 

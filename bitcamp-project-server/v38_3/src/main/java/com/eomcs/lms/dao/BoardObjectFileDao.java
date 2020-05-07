@@ -5,7 +5,6 @@ import com.eomcs.lms.domain.Board;
 
 public class BoardObjectFileDao extends AbstractObjectFileDao<Board> implements BoardDao {
 
-
   public BoardObjectFileDao(String filename) {
     super(filename);
   }
@@ -62,8 +61,8 @@ public class BoardObjectFileDao extends AbstractObjectFileDao<Board> implements 
     return 1;
   }
 
-  @Override // 인터페이스와 상관 없다. 추상클래스로 구현 한 것.
-  protected <K> int indexOf(K key) { // K라는 클래스가 아니고 <K> 타입이다.
+  @Override
+  protected <K> int indexOf(K key) {
     for (int i = 0; i < list.size(); i++) {
       if (list.get(i).getNo() == (int) key) { // K가 어떤 타입인지 형변환해서 사용하라.
         return i;

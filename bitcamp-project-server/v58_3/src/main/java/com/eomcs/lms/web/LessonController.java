@@ -62,6 +62,24 @@ public class LessonController {
     return "/lesson/list.jsp";
   }
 
+  @RequestMapping("/lesson/update")
+  public String update(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    Lesson lesson = new Lesson();
+    lesson.setNo(Integer.parseInt(request.getParameter("no")));
+    lesson.setTitle(request.getParameter("title"));
+    lesson.setDescription(request.getParameter("description"));
+    lesson.setStartDate(Date.valueOf(request.getParameter("startDate")));
+    lesson.setEndDate(Date.valueOf(request.getParameter("endDate")));
+    lesson.setTotalHours(Integer.parseInt(request.getParameter("totalHours")));
+    lesson.setDayHours(Integer.parseInt(request.getParameter("dayHours")));
+
+    if (lessonService.update(lesson) > 0) {
+      return "redirect:list";
+    } else {
+      throw new Exception("변경할 수업 번호가 유효하지 않습니다.");
+    }
+  }
+
   @RequestMapping("/lesson/search")
   public String search(HttpServletRequest request, HttpServletResponse response) throws Exception {
     HashMap<String, Object> map = new HashMap<>();
@@ -93,23 +111,5 @@ public class LessonController {
     List<Lesson> lessons = lessonService.search(map);
     request.setAttribute("list", lessons);
     return "/lesson/search.jsp";
-  }
-
-  @RequestMapping("/lesson/update")
-  public String update(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    Lesson lesson = new Lesson();
-    lesson.setNo(Integer.parseInt(request.getParameter("no")));
-    lesson.setTitle(request.getParameter("title"));
-    lesson.setDescription(request.getParameter("description"));
-    lesson.setStartDate(Date.valueOf(request.getParameter("startDate")));
-    lesson.setEndDate(Date.valueOf(request.getParameter("endDate")));
-    lesson.setTotalHours(Integer.parseInt(request.getParameter("totalHours")));
-    lesson.setDayHours(Integer.parseInt(request.getParameter("dayHours")));
-
-    if (lessonService.update(lesson) > 0) {
-      return "redirect:list";
-    } else {
-      throw new Exception("변경할 수업 번호가 유효하지 않습니다.");
-    }
   }
 }

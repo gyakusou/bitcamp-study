@@ -33,8 +33,8 @@ public class AuthController {
   }
 
   @RequestMapping("/auth/login")
-  public String login(HttpServletRequest request, String email, String password, String saveEmail)
-      throws Exception {
+  public String login(HttpServletRequest request, //
+      String email, String password, String saveEmail) throws Exception {
 
     Cookie cookie = new Cookie("email", email);
     if (saveEmail != null) {

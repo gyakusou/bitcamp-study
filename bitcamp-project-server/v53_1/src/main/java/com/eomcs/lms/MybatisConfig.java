@@ -11,9 +11,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-// Spring IoC 컨테이너가 이 클래스를 Java Config 로 자동 인식하려면
+// Spring IoC 컨테이너가 이 클래스를 Java Config로 자동 인식하려면
 // 다음 태그를 붙여야 한다.
-// 단, 이 클래스가 @ComponentScan 에서 지정한 패키지안에 있어야 한다.
+// 단, 이 클래스가 @ComponentScan 에서 지정한 패키지 안에 있어야 한다.
 @Configuration
 
 // Mybatis DAO 프록시를 자동생성할 인터페이스를 지정하기
@@ -37,7 +37,7 @@ public class MybatisConfig {
       ApplicationContext appCtx // Spring IoC 컨테이너
   ) throws Exception {
 
-    // Mybatis의 log4j 활성화 시키기
+    // Mybatis의 log4j 활성화시키기
     LogFactory.useLog4JLogging();
 
     // Spring IoC 컨테이너 용으로 mybatis 측에서 따로 제작한

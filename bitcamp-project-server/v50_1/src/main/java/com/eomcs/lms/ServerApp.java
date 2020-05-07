@@ -65,13 +65,13 @@ public class ServerApp {
     // ApplicationContext (IoC 컨테이너)를 꺼낸다.
     iocContainer = (ApplicationContext) context.get("iocContainer");
 
-    // request handler mapper 를 꺼낸다.
+    // request handler mapper를 꺼낸다.
     handlerMapper = //
         (RequestMappingHandlerMapping) context.get("handlerMapper");
 
-    // SqlSessionFactory를 꺼낸다.
+    // IoC 컨테이너에서 SqlSessionFactory를 꺼낸다.
     SqlSessionFactory sqlSessionFactory = //
-        (SqlSessionFactory) iocContainer.getBean("sqlSessionFactoryProxy");
+        (SqlSessionFactory) iocContainer.getBean("sqlSessionFactory");
 
     try (ServerSocket serverSocket = new ServerSocket(9999)) {
 
@@ -147,7 +147,6 @@ public class ServerApp {
         quit(out);
         return;
       }
-
 
       RequestHandler requestHandler = handlerMapper.getHandler(request);
 

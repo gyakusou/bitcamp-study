@@ -23,22 +23,14 @@ public class LessonDaoImpl implements LessonDao {
 
   @Override
   public int insert(Lesson lesson) throws Exception {
-
     try (Connection con = DriverManager.getConnection(jdbcUrl, username, password);
         Statement stmt = con.createStatement()) {
 
-      con.setAutoCommit(true);
-
-      int result =
-          stmt.executeUpdate("insert into lms_lesson(sdt, edt, tot_hr, day_hr, titl, conts) "
-              + " values('" + lesson.getStartDate().toString() //
-              + "', '" + lesson.getEndDate().toString() //
-              + "', " + lesson.getTotalHours() //
-              + ", " + lesson.getDayHours() //
-              + ", '" + lesson.getTitle() //
-              + "', '" + lesson.getDescription() //
-              + "')");
-
+      int result = stmt.executeUpdate(
+          "insert into lms_lesson(sdt, edt, tot_hr, day_hr, titl, conts)" + " values('"
+              + lesson.getStartDate().toString() + "', '" + lesson.getEndDate().toString() + "', "
+              + lesson.getTotalHours() + ", " + lesson.getDayHours() + ", '" + lesson.getTitle()
+              + "', '" + lesson.getDescription() + "')");
       return result;
     }
   }
@@ -46,15 +38,13 @@ public class LessonDaoImpl implements LessonDao {
   @Override
   public List<Lesson> findAll() throws Exception {
     try (Connection con = DriverManager.getConnection(jdbcUrl, username, password);
-        Statement stmt = con.createStatement(); //
-
-        ResultSet rs = stmt.executeQuery(
-            "select lesson_id, titl, sdt, edt, tot_hr from lms_lesson order by lesson_id desc")) {
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery( //
+            "select lesson_id, titl, sdt, edt, tot_hr from lms_lesson")) {
 
       ArrayList<Lesson> list = new ArrayList<>();
 
       while (rs.next()) {
-
         Lesson lesson = new Lesson();
 
         lesson.setNo(rs.getInt("lesson_id"));
@@ -70,21 +60,16 @@ public class LessonDaoImpl implements LessonDao {
     }
   }
 
-
   @Override
   public Lesson findByNo(int no) throws Exception {
-
     try (Connection con = DriverManager.getConnection(jdbcUrl, username, password);
         Statement stmt = con.createStatement();
-
         ResultSet rs = stmt.executeQuery( //
             "select lesson_id, titl, conts, sdt, edt, tot_hr, day_hr" + " from lms_lesson"
                 + " where lesson_id=" + no)) {
 
-      if (rs.next()) {
-
+      if (rs.next()) { // 데이터를 한 개 가져왔으면 true를 리턴한다.
         Lesson lesson = new Lesson();
-
         lesson.setNo(rs.getInt("lesson_id"));
         lesson.setTitle(rs.getString("titl"));
         lesson.setDescription(rs.getString("conts"));
@@ -92,7 +77,6 @@ public class LessonDaoImpl implements LessonDao {
         lesson.setEndDate(rs.getDate("edt"));
         lesson.setTotalHours(rs.getInt("tot_hr"));
         lesson.setDayHours(rs.getInt("day_hr"));
-
         return lesson;
 
       } else {
@@ -121,14 +105,13 @@ public class LessonDaoImpl implements LessonDao {
 
   @Override
   public int delete(int no) throws Exception {
-
     try (Connection con = DriverManager.getConnection(jdbcUrl, username, password);
         Statement stmt = con.createStatement()) {
 
-      int result = stmt.executeUpdate //
-      ("delete from lms_lesson where lesson_id=" + no);
+      int result = stmt.executeUpdate("delete from lms_lesson where lesson_id=" + no);
 
       return result;
     }
   }
+
 }

@@ -63,8 +63,7 @@ public class LoginServlet extends HttpServlet {
       out.println("<head>");
       out.println("<meta charset='UTF-8'>");
       if (member != null) {
-        out.println("<meta http-equiv='refresh' content='2;url=../index.html'>"); // 로그인 성공 후 메인
-                                                                                  // 페이지로 이동
+        out.println("<meta http-equiv='refresh' content='2;url=../index.html'>");
       } else {
         out.println("<meta http-equiv='refresh' content='2;url=login'>");
       }
@@ -75,7 +74,7 @@ public class LoginServlet extends HttpServlet {
 
       if (member != null) {
         out.printf("<p>'%s'님 환영합니다.</p>\n", member.getName());
-        request.getSession().setAttribute("loginUser", member); // 로그인 유저 정보를 세션에 저장
+        request.getSession().setAttribute("loginUser", member);
       } else {
         out.println("<p>사용자 정보가 유효하지 않습니다.</p>");
       }

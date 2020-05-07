@@ -14,8 +14,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import com.eomcs.lms.context.ApplicationContextListener;
 import com.eomcs.lms.dao.BoardDao;
-import com.eomcs.lms.dao.json.LessonJsonFileDao;
-import com.eomcs.lms.dao.json.MemberJsonFileDao;
+import com.eomcs.lms.dao.LessonDao;
+import com.eomcs.lms.dao.MemberDao;
 import com.eomcs.lms.servlet.BoardAddServlet;
 import com.eomcs.lms.servlet.BoardDeleteServlet;
 import com.eomcs.lms.servlet.BoardDetailServlet;
@@ -35,9 +35,11 @@ import com.eomcs.lms.servlet.Servlet;
 
 public class ServerApp {
 
+  // 옵저버 관련 코드
   Set<ApplicationContextListener> listeners = new HashSet<>();
   Map<String, Object> context = new HashMap<>();
 
+  // 커맨드(예: Servlet 구현체) 디자인 패턴과 관련된 코드
   Map<String, Servlet> servletMap = new HashMap<>();
 
   // 스레드 풀
@@ -68,12 +70,12 @@ public class ServerApp {
 
     notifyApplicationInitialized();
 
-    BoardDao boardDao = (BoardDao) context.get("boardDao"); /////////////////////
+    // DataLoaderListener가 준비한 DAO 객체를 꺼내 변수에 저장한다.
+    BoardDao boardDao = (BoardDao) context.get("boardDao");
+    LessonDao lessonDao = (LessonDao) context.get("lessonDao");
+    MemberDao memberDao = (MemberDao) context.get("memberDao");
 
-    LessonJsonFileDao lessonDao = (LessonJsonFileDao) context.get("lessonDao");
-    MemberJsonFileDao memberDao = (MemberJsonFileDao) context.get("memberDao");
-
-
+    // 커맨드 객체 역할을 수행하는 서블릿 객체를 맵에 보관한다.
     servletMap.put("/board/list", new BoardListServlet(boardDao));
     servletMap.put("/board/add", new BoardAddServlet(boardDao));
     servletMap.put("/board/detail", new BoardDetailServlet(boardDao));
@@ -92,7 +94,10 @@ public class ServerApp {
     servletMap.put("/member/update", new MemberUpdateServlet(memberDao));
     servletMap.put("/member/delete", new MemberDeleteServlet(memberDao));
 
-    try (ServerSocket serverSocket = new ServerSocket(9999)) {
+    try (
+        // 서버쪽 연결 준비
+        // => 클라이언트의 연결을 9999번 포트에서 기다린다.
+        ServerSocket serverSocket = new ServerSocket(9999)) {
 
       System.out.println("클라이언트 연결 대기중...");
 
@@ -100,18 +105,17 @@ public class ServerApp {
         Socket socket = serverSocket.accept();
         System.out.println("클라이언트와 연결되었음!");
 
-        // 스레드풀을 사용할때는 직접 스레드를 만들지 않는다.
-        // 단지 스레드 풀에 "스레드가 실행할 코드(Runnable 구현체)" 를 제출한다.
+        // 스레드풀을 사용할 때는 직접 스레드를 만들지 않는다.
+        // 단지 스레드풀에 "스레드가 실행할 코드(Runnable 구현체)"를 제출한다.
         // => ExecutorService.submit(new Runnable() {...});
-        // => 스레드 풀에 스레드가 없으면 새로 만들어 러너블 구현체를 실행한다.
-        // => 스레드 풀에 스레드가 있으면 그 스레드를 이용하여 Runnable 구현체를 실행한다.
-
+        // => 스레드풀에 스레드가 없으면 새로 만들어 Runnable 구현체를 실행한다.
+        // => 스레드풀에 스레드가 있으면 그 스레드를 이용하여 Runnable 구현체를 실행한다.
+        //
         executorService.submit(() -> {
           processRequest(socket);
           System.out.println("--------------------------------------");
         });
       }
-
 
     } catch (Exception e) {
       System.out.println("서버 준비 중 오류 발생!");
@@ -119,10 +123,10 @@ public class ServerApp {
 
     notifyApplicationDestroyed();
 
-    // 스레드풀을 다 사용했으면 종료 하라고 해야한다.
+    // 스레드풀을 다 사용했으면 종료하라고 해야 한다.
     executorService.shutdown();
     // => 스레드풀을 당장 종료시키는 것이 아니다.
-    // => 스레드풀에 소속된 스레드들의 작업이 모두 끝나면 종료하라는 뜻이다.
+    // => 스레드풀에 소속된 스레드들의 작업이 모두 끝나면 종료하는 뜻이다.
 
   } // service()
 
@@ -140,26 +144,29 @@ public class ServerApp {
 
       if (request.equalsIgnoreCase("/server/stop")) {
         quit(out);
-        return 9;
+        return 9; // 서버를 종료한다.
       }
 
+      // 클라이언트의 요청을 처리할 객체를 찾는다.
       Servlet servlet = servletMap.get(request);
 
       if (servlet != null) {
+        // 클라이언트 요청을 처리할 객체를 찾았으면 작업을 실행시킨다.
         try {
           servlet.service(in, out);
 
         } catch (Exception e) {
+          // 요청한 작업을 수행하다가 오류 발생할 경우 그 이유를 간단히 응답한다.
           out.writeUTF("FAIL");
           out.writeUTF(e.getMessage());
 
+          // 서버쪽 화면에는 더 자세하게 오류 내용을 출력한다.
           System.out.println("클라이언트 요청 처리 중 오류 발생:");
           e.printStackTrace();
         }
-      } else {
+      } else { // 없다면? 간단한 아내 메시지를 응답한다.
         notFound(out);
       }
-
       out.flush();
       System.out.println("클라이언트에게 응답하였음!");
 

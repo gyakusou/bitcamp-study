@@ -5,7 +5,6 @@ import java.io.ObjectOutputStream;
 import java.util.List;
 import com.eomcs.lms.domain.Lesson;
 
-
 public class LessonDetailServlet implements Servlet {
 
   List<Lesson> lessons;
@@ -16,7 +15,6 @@ public class LessonDetailServlet implements Servlet {
 
   @Override
   public void service(ObjectInputStream in, ObjectOutputStream out) throws Exception {
-
     int no = in.readInt();
 
     Lesson lesson = null;

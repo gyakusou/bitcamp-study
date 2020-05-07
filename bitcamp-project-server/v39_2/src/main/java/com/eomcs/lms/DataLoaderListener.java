@@ -18,20 +18,21 @@ public class DataLoaderListener implements ApplicationContextListener {
   public void contextInitialized(Map<String, Object> context) {
 
     try {
-      // DB 연결 객체 준비
+      // DB 연결 정보
       String jdbcUrl = "jdbc:mariadb://localhost:3306/studydb";
       String username = "study";
       String password = "1111";
 
       // Connection 팩토리 준비
-      ConnectionFactory conFactory = new ConnectionFactory(jdbcUrl, username, password);
+      ConnectionFactory conFactory = new ConnectionFactory(//
+          jdbcUrl, username, password);
 
       // 이 메서드를 호출한 쪽(App)에서 DAO 객체를 사용할 수 있도록 Map 객체에 담아둔다.
       context.put("boardDao", new BoardDaoImpl(conFactory));
       context.put("lessonDao", new LessonDaoImpl(conFactory));
       context.put("memberDao", new MemberDaoImpl(conFactory));
       context.put("photoBoardDao", new PhotoBoardDaoImpl(conFactory));
-      context.put("photoFileDao", new PhotoFileDaoImpl(conFactory)); // +
+      context.put("photoFileDao", new PhotoFileDaoImpl(conFactory));
 
     } catch (Exception e) {
       e.printStackTrace();
@@ -41,4 +42,3 @@ public class DataLoaderListener implements ApplicationContextListener {
   @Override
   public void contextDestroyed(Map<String, Object> context) {}
 }
-//

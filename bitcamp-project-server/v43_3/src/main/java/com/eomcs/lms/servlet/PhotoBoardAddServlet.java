@@ -18,8 +18,6 @@ import com.eomcs.util.Prompt;
 public class PhotoBoardAddServlet implements Servlet {
 
   TransactionTemplate transactionTemplate;
-  // 트랜잭션으로 묶여야 할 작업을 주면 트랜잭션 하에서 작업을 수행하면서 에러나면 롤백, 완료되면
-  // 커밋한다.
   PhotoBoardDao photoBoardDao;
   LessonDao lessonDao;
   PhotoFileDao photoFileDao;
@@ -65,7 +63,6 @@ public class PhotoBoardAddServlet implements Servlet {
     // => 트랜잭션으로 묶어서 처리할 작업은 TransactionCallback 규칙에 따라
     // 객체를 만들어 파라미터로 넘겨주면 된다.
     transactionTemplate.execute(new TransactionCallback() {
-
       @Override
       public Object doInTransaction() throws Exception {
         // 이 메서드는 TransactionTemplate의 execute()에서

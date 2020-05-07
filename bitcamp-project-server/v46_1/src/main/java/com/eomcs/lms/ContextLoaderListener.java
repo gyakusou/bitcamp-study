@@ -39,7 +39,7 @@ public class ContextLoaderListener implements ApplicationContextListener {
           new SqlSessionFactoryBuilder().build(inputStream));
       beans.put("sqlSessionFactory", sqlSessionFactory);
 
-      // DAO 프록시 객체를 생성해 줄 Factory 를 준비
+      // DAO 프록시 객체를 생성해 줄 Factory를 준비
       MybatisDaoFactory daoFactory = new MybatisDaoFactory(sqlSessionFactory);
 
       // 서비스 객체가 사용할 DAO를 준비한다.
@@ -57,7 +57,8 @@ public class ContextLoaderListener implements ApplicationContextListener {
       // IoC 컨테이너 준비
       ApplicationContext appCtx = new ApplicationContext(//
           "com.eomcs.lms", // 새로 생성할 객체의 패키지
-          beans); // 기존에 따로 생성한 객체 목록
+          beans // 기존에 따로 생성한 객체 목록
+      );
       appCtx.printBeans();
 
       // ServerApp이 사용할 수 있게 context 맵에 담아 둔다.

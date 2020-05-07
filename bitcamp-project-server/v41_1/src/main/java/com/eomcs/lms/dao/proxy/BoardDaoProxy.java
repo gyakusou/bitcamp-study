@@ -21,7 +21,6 @@ public class BoardDaoProxy implements BoardDao {
 
   @Override
   public int insert(Board board) throws Exception {
-
     out.writeUTF("/board/add");
     out.writeObject(board);
     out.flush();
@@ -37,37 +36,30 @@ public class BoardDaoProxy implements BoardDao {
   @SuppressWarnings("unchecked")
   @Override
   public List<Board> findAll() throws Exception {
-
     out.writeUTF("/board/list");
     out.flush();
-
     String response = in.readUTF();
     if (response.equals("FAIL")) {
       throw new Exception(in.readUTF());
     }
-
     return (List<Board>) in.readObject();
   }
 
   @Override
   public Board findByNo(int no) throws Exception {
-
     out.writeUTF("/board/detail");
     out.writeInt(no);
     out.flush();
 
     String response = in.readUTF();
-
     if (response.equals("FAIL")) {
       throw new Exception(in.readUTF());
     }
-
     return (Board) in.readObject();
   }
 
   @Override
   public int update(Board board) throws Exception {
-
     out.writeUTF("/board/update");
     out.writeObject(board);
     out.flush();
@@ -76,23 +68,19 @@ public class BoardDaoProxy implements BoardDao {
     if (response.equals("FAIL")) {
       throw new Exception(in.readUTF());
     }
-
     return 1;
   }
 
   @Override
   public int delete(int no) throws Exception {
-
     out.writeUTF("/board/delete");
     out.writeInt(no);
     out.flush();
 
     String response = in.readUTF();
-
     if (response.equals("FAIL")) {
       throw new Exception(in.readUTF());
     }
-
     return 1;
   }
 

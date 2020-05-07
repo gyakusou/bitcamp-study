@@ -10,7 +10,7 @@
 
 - DAO가 작업을 수행(예: findAll(), insert() 호출되는 것)한 후에는
   try-with-resource 문장에 의해 Connection 객체의 close()가 자동 호출된다.
-- 따라서 스레드에 보관된 Connection 객a체는 더이상 사용할 수 없다.
+- 따라서 스레드에 보관된 Connection 객체는 더이상 사용할 수 없다.
 - 테스트:
   - "/photoboard/list" 명령을 실행해 보라.
   - LessonDao.findByNo()가 실행된 후에 커넥션이 닫히기 때문에,
@@ -41,7 +41,7 @@
 
 - src/main/java/com/eomcs/sql/ConnectionProxy.java 추가
 - src/main/java/com/eomcs/util/ConnectionFactory.java 변경
-- src/main/java/com/eomcs/lms/ServletApp.java 변경
+- src/main/java/com/eomcs/lms/ServerApp.java 변경
 
 ## 실습  
 

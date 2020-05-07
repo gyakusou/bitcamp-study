@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/error")
 public class ErrorServlet extends HttpServlet {
-
   private static final long serialVersionUID = 1L;
 
   @Override
@@ -29,7 +28,8 @@ public class ErrorServlet extends HttpServlet {
     out.println("<body>");
     out.println("<h1>오류 내용</h1>");
 
-    out.printf("<p>%s</p>", (String) request.getSession().getAttribute("errorMessage"));
+    out.printf("<p>%s</p>", //
+        (String) request.getSession().getAttribute("errorMessage"));
 
     String url = (String) request.getSession().getAttribute("url");
     if (url != null) {

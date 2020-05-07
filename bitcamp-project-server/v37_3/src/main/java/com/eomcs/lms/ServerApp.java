@@ -82,7 +82,7 @@ public class ServerApp {
     servletMap.put("/board/detail", new BoardDetailServlet(boardDao));
     servletMap.put("/board/update", new BoardUpdateServlet(boardDao));
     servletMap.put("/board/delete", new BoardDeleteServlet(boardDao));
-    //
+
     servletMap.put("/lesson/list", new LessonListServlet(lessonDao));
     servletMap.put("/lesson/add", new LessonAddServlet(lessonDao));
     servletMap.put("/lesson/detail", new LessonDetailServlet(lessonDao));

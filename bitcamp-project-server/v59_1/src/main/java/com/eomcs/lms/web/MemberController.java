@@ -1,6 +1,5 @@
 package com.eomcs.lms.web;
 
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
@@ -18,14 +17,12 @@ public class MemberController {
   MemberService memberService;
 
   @RequestMapping("/member/form")
-  public String form() throws Exception {
+  public String form() {
     return "/member/form.jsp";
   }
 
   @RequestMapping("/member/add")
   public String add(HttpServletRequest request, Member member, Part photoFile) throws Exception {
-    // from, detailJSP 도 photo -> photoFile로 바꾼다.
-
     if (photoFile.getSize() > 0) {
       String dirPath = request.getServletContext().getRealPath("/upload/member");
       String filename = UUID.randomUUID().toString();
@@ -64,14 +61,12 @@ public class MemberController {
 
   @RequestMapping("/member/search")
   public String search(String keyword, Map<String, Object> model) throws Exception {
-    List<Member> members = memberService.search(keyword);
-    model.put("list", members);
+    model.put("list", memberService.search(keyword));
     return "/member/search.jsp";
   }
 
   @RequestMapping("/member/update")
   public String update(HttpServletRequest request, Member member, Part photoFile) throws Exception {
-
     if (photoFile.getSize() > 0) {
       String dirPath = request.getServletContext().getRealPath("/upload/member");
       String filename = UUID.randomUUID().toString();

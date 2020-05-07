@@ -26,9 +26,6 @@ public class BoardDaoImpl implements BoardDao {
     System.out.println(c1 == c2);
     System.out.println(c1 == c3);
 
-    System.out.println("---------------------------------");
-
-
     try (Connection con = conFactory.getConnection(); //
         Statement stmt = con.createStatement()) {
 
@@ -43,7 +40,6 @@ public class BoardDaoImpl implements BoardDao {
   public List<Board> findAll() throws Exception {
     try (Connection con = conFactory.getConnection();
         Statement stmt = con.createStatement();
-
         ResultSet rs = stmt.executeQuery( //
             "select board_id, conts, cdt, vw_cnt from lms_board order by board_id desc")) {
 
@@ -66,7 +62,7 @@ public class BoardDaoImpl implements BoardDao {
 
   @Override
   public Board findByNo(int no) throws Exception {
-    try (Connection con = conFactory.getConnection();
+    try (Connection con = conFactory.getConnection(); //
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery( //
             "select board_id, conts, cdt, vw_cnt from lms_board where board_id=" + no)) {
@@ -99,7 +95,8 @@ public class BoardDaoImpl implements BoardDao {
 
   @Override
   public int delete(int no) throws Exception {
-    try (Connection con = conFactory.getConnection(); Statement stmt = con.createStatement()) {
+    try (Connection con = conFactory.getConnection(); //
+        Statement stmt = con.createStatement()) {
 
       int result = stmt.executeUpdate("delete from lms_board where board_id=" + no);
 

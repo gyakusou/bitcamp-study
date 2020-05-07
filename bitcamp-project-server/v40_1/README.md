@@ -1,4 +1,4 @@
-# 40_1 - Connection을 스레드에 보관하기: ThreadLocal을 사용하여 스레드에 값 보관하기
+# 40_1 - Connection을 스레드에 보관하기: ThreadLocal을 사용하여 Connection 보관하기
 
 ## 학습목표
 
@@ -19,7 +19,7 @@
 
 - src/main/java/com/eomcs/util/ConnectionFactory.java 추가
 - src/main/java/com/eomcs/lms/DataLoaderListener.java 변경
-- src/main/java/com/eomcs/lms/dao/mariadb/XxxDaoImpl.java 변경
+- src/main/java/com/eomcs/lms/ServerApp.java 변경
 
 ## 실습  
 

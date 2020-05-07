@@ -23,9 +23,6 @@ public class PhotoBoardListServlet {
     this.lessonService = lessonService;
   }
 
-  // http://localhost:9999/photoboard/list?lessonNo=101
-  // lesson/list 의 번호참조
-
   @RequestMapping("/photoboard/list")
   public void service(Map<String, String> params, PrintStream out) throws Exception {
     out.println("<!DOCTYPE html>");
@@ -43,7 +40,6 @@ public class PhotoBoardListServlet {
       }
 
       out.printf("  <h1>강의 사진 - %s</h1>", lesson.getTitle());
-
       out.printf("  <a href='/photoboard/addForm?lessonNo=%d'>새 사진</a><br>\n", //
           lessonNo);
       out.println("  <table border='1'>");

@@ -15,7 +15,6 @@ public class BoardDetailServlet implements Servlet {
 
   @Override
   public void service(ObjectInputStream in, ObjectOutputStream out) throws Exception {
-
     int no = in.readInt();
 
     Board board = null;

@@ -21,7 +21,6 @@ public class LessonUpdateServlet extends HttpServlet {
       throws ServletException, IOException {
     try {
       request.setCharacterEncoding("UTF-8");
-      response.setContentType("text/html;charset=UTF-8");
 
       ServletContext servletContext = getServletContext();
       ApplicationContext iocContainer =
@@ -37,13 +36,13 @@ public class LessonUpdateServlet extends HttpServlet {
       lesson.setTotalHours(Integer.parseInt(request.getParameter("totalHours")));
       lesson.setDayHours(Integer.parseInt(request.getParameter("dayHours")));
 
-      lessonService.update(lesson);
-
       if (lessonService.update(lesson) > 0) {
         response.sendRedirect("list");
       } else {
-        request.getSession().setAttribute("errorMessage", "변경 할 게시물 번호가 유효하지 않습니다.");
-        request.getSession().setAttribute("url", "lesson/list");
+        request.getSession().setAttribute("errorMessage", //
+            "변경할 수업 번호가 유효하지 않습니다.");
+        request.getSession().setAttribute("url", //
+            "lesson/list");
         response.sendRedirect("../error");
       }
 

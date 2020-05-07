@@ -16,12 +16,11 @@ public class PhotoFileDaoImpl implements PhotoFileDao {
     this.sqlSessionFactory = sqlSessionFactory;
   }
 
-  // +
   @Override
-  public int insert(PhotoBoard photoboard) throws Exception {
+  public int insert(PhotoBoard photoBoard) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       int count = sqlSession.insert(//
-          "PhotoFileMapper.insertPhotoFile", photoboard);
+          "PhotoFileMapper.insertPhotoFile", photoBoard);
       return count;
     }
   }

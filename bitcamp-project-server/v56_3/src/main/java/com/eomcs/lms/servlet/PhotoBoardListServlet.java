@@ -45,7 +45,8 @@ public class PhotoBoardListServlet extends HttpServlet {
           throw new Exception("수업 번호가 유효하지 않습니다.");
         }
 
-        out.printf("  <h1>강의 사진 - %s</h1>", lesson.getTitle());
+        out.printf("  <h1>강의 사진 - <a href='../lesson/detail?no=%d'>%s</a></h1>", //
+            lessonNo, lesson.getTitle());
         out.printf("  <a href='add?lessonNo=%d'>새 사진</a><br>\n", //
             lessonNo);
         out.println("  <table border='1'>");

@@ -22,6 +22,7 @@ public class BoardServiceImpl2 implements BoardService {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       // SqlSession 객체를 사용하여 BoardDao 인터페이스의 구현체를 얻는다.
       BoardDao boardDao = sqlSession.getMapper(BoardDao.class);
+
       boardDao.insert(board);
     }
   }
@@ -29,7 +30,6 @@ public class BoardServiceImpl2 implements BoardService {
   @Override
   public List<Board> list() throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-      // SqlSession 객체를 사용하여 BoardDao 인터페이스의 구현체를 얻는다.
       BoardDao boardDao = sqlSession.getMapper(BoardDao.class);
       return boardDao.findAll();
     }
@@ -38,7 +38,6 @@ public class BoardServiceImpl2 implements BoardService {
   @Override
   public int delete(int no) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-      // SqlSession 객체를 사용하여 BoardDao 인터페이스의 구현체를 얻는다.
       BoardDao boardDao = sqlSession.getMapper(BoardDao.class);
       return boardDao.delete(no);
     }
@@ -47,7 +46,6 @@ public class BoardServiceImpl2 implements BoardService {
   @Override
   public Board get(int no) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-      // SqlSession 객체를 사용하여 BoardDao 인터페이스의 구현체를 얻는다.
       BoardDao boardDao = sqlSession.getMapper(BoardDao.class);
       return boardDao.findByNo(no);
     }
@@ -56,7 +54,6 @@ public class BoardServiceImpl2 implements BoardService {
   @Override
   public int update(Board board) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-      // SqlSession 객체를 사용하여 BoardDao 인터페이스의 구현체를 얻는다.
       BoardDao boardDao = sqlSession.getMapper(BoardDao.class);
       return boardDao.update(board);
     }

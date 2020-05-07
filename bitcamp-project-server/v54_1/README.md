@@ -1,4 +1,4 @@
-# 54_1 HTTP 프로토콜 적용하기
+# 54_1 - HTTP 프로토콜 적용하기
 
 ## 학습목표
 
@@ -13,13 +13,17 @@
 
 ### 훈련1: HTTP 프로토콜에 따라 클라이언트 요청을 처리한다.
 
-- com.comcs.lms.ServerApp 변경
+- com.eomcs.lms.ServerApp 변경
 
 ### 훈련2: HTTP 요청/응답 확인한다.
 
 - 요청
   - 클라이언트의 데이터를 요구하지 않는 일반 요청을 테스트한다.
-  - 클라이언트는 ClientApp 대신에 Web Browser 를 사용한다.
-  - /board/list 요청에 대한 응답 확인
+  - 클라이언트는 ClientApp 대신에 Web Browser를 사용한다.
+  - /board/list 요청에 대한 응답 확인 
   - /member/list 요청에 대한 응답 확인
   - /lesson/list 요청에 대한 응답 확인
+
+
+
+

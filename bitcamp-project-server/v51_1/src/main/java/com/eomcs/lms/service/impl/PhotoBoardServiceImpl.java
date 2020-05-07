@@ -38,7 +38,7 @@ public class PhotoBoardServiceImpl implements PhotoBoardService {
           }
           photoFileDao.insert(photoBoard);
         } catch (Exception e) {
-          // 직접 롤백 하는 것이 아니라 관리자에게 롤백하라고 요구한다.
+          // 직접 롤백하는 것이 아니라 관리자에게 롤백하라고 요구한다.
           status.setRollbackOnly();
         }
         return null;
@@ -68,7 +68,7 @@ public class PhotoBoardServiceImpl implements PhotoBoardService {
           photoFileDao.insert(photoBoard);
         }
       } catch (Exception e) {
-        // 직접 롤백 하는 것이 아니라 관리자에게 롤백하라고 요구한다.
+        // Spring의 트랜잭션 관리자에게 롤백하라고 요구한다.
         status.setRollbackOnly();
       }
       return null;
@@ -84,7 +84,7 @@ public class PhotoBoardServiceImpl implements PhotoBoardService {
           throw new Exception("해당 번호의 사진 게시글이 없습니다.");
         }
       } catch (Exception e) {
-        // 직접 롤백 하는 것이 아니라 관리자에게 롤백하라고 요구한다.
+        // Spring의 트랜잭션 관리자에게 롤백을 요구한다.
         status.setRollbackOnly();
       }
       return null;

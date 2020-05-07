@@ -63,7 +63,7 @@ public class ServerApp {
     // ApplicationContext (IoC 컨테이너)를 꺼낸다.
     iocContainer = (ApplicationContext) context.get("iocContainer");
 
-    // request handler mapper 를 꺼낸다.
+    // request handler mapper를 꺼낸다.
     handlerMapper = //
         (RequestMappingHandlerMapping) context.get("handlerMapper");
 
@@ -138,7 +138,6 @@ public class ServerApp {
         quit(out);
         return;
       }
-
 
       RequestHandler requestHandler = handlerMapper.getHandler(request);
 

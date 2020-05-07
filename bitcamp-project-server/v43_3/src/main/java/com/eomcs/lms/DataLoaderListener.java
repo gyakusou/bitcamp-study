@@ -23,12 +23,11 @@ public class DataLoaderListener implements ApplicationContextListener {
   public void contextInitialized(Map<String, Object> context) {
 
     try {
-
       // Mybatis 객체 준비
       InputStream inputStream = Resources.getResourceAsStream(//
           "com/eomcs/lms/conf/mybatis-config.xml");
 
-      // 트랜잭션 제어를 위해 오리지널 객체 대신 프록시 객체에 담아 사용한다.
+      // 트랜잭션 제어를 위해 오리지널 객체를 프록시 객체에 담아 사용한다.
       SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryProxy(//
           new SqlSessionFactoryBuilder().build(inputStream));
 
@@ -44,8 +43,8 @@ public class DataLoaderListener implements ApplicationContextListener {
           sqlSessionFactory);
       context.put("transactionManager", txManager);
 
-      // ServerApp 에서 SqlSession 객체를 꺼낼수 있도록
-      // SqlSessionFactory를 저장한다.
+      // ServerApp에서 SqlSession 객체를 꺼낼 수 있도록,
+      // SqlSessionFactory 를 저장한다.
       context.put("sqlSessionFactory", sqlSessionFactory);
 
     } catch (Exception e) {

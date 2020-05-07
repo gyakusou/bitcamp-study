@@ -12,7 +12,6 @@ public class PlatformTransactionManager {
   }
 
   public void beginTransaction() throws Exception {
-
     // 기존에 스레드에 존재하는 SqlSession 객체를 지운다.
     ((SqlSessionFactoryProxy) sqlSessionFactory).closeSession();
 
@@ -32,9 +31,8 @@ public class PlatformTransactionManager {
   }
 
   public void rollback() throws Exception {
-    // 이 SqlSession 객체로 작업했던 모든 데이터 변경을 취소한다.
     SqlSession sqlSession = sqlSessionFactory.openSession();
-
+    // 이 SqlSession 객체로 작업했던 모든 데이터 변경을 취소한다.
     sqlSession.rollback();
   }
 }

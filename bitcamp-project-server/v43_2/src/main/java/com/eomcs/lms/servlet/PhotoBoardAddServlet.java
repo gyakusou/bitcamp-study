@@ -18,8 +18,6 @@ import com.eomcs.util.Prompt;
 public class PhotoBoardAddServlet implements Servlet {
 
   TransactionTemplate transactionTemplate;
-  // 트랜잭션으로 묶여야 할 작업을 주면 트랜잭션 하에서 작업을 수행하면서 에러나면 롤백, 완료되면
-  // 커밋한다.
   PhotoBoardDao photoBoardDao;
   LessonDao lessonDao;
   PhotoFileDao photoFileDao;

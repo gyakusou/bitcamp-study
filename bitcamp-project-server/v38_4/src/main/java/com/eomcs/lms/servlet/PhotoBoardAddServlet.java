@@ -44,9 +44,9 @@ public class PhotoBoardAddServlet implements Servlet {
 
     photoBoard.setLesson(lesson);
 
-    // 트랜잭션을 시작하기 위해 auto-commit을 수동으로 바꾼다. ★
+    // 트랜잭션을 시작하기 위해 auto-commit을 수동으로 바꾼다.
     DataLoaderListener.con.setAutoCommit(false);
-    // 이 이후부터 하는 데이터 작업은
+    // 이 이후부터 하는 데이터 변경 작업은
     // 모두 임시 테이블에 보관된다.
     // 오직 commit 명령을 DBMS에 보낼 때만 진짜 테이블에 적용된다.
 
@@ -64,7 +64,7 @@ public class PhotoBoardAddServlet implements Servlet {
 
     } catch (Exception e) {
       DataLoaderListener.con.rollback();
-      out.println(e.getMessage()); // "사진 게시글 등록에 실패했습니다." 출력
+      out.println(e.getMessage());
 
     } finally {
       DataLoaderListener.con.setAutoCommit(true);

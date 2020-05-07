@@ -5,7 +5,6 @@ import java.io.ObjectOutputStream;
 import java.util.List;
 import com.eomcs.lms.domain.Member;
 
-
 public class MemberUpdateServlet implements Servlet {
 
   List<Member> members;
@@ -16,7 +15,6 @@ public class MemberUpdateServlet implements Servlet {
 
   @Override
   public void service(ObjectInputStream in, ObjectOutputStream out) throws Exception {
-
     Member member = (Member) in.readObject();
 
     int index = -1;

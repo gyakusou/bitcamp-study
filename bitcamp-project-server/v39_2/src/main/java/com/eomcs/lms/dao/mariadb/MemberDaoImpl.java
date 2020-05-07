@@ -19,7 +19,8 @@ public class MemberDaoImpl implements MemberDao {
 
   @Override
   public int insert(Member member) throws Exception {
-    try (Connection con = conFactory.getConnection(); Statement stmt = con.createStatement()) {
+    try (Connection con = conFactory.getConnection(); //
+        Statement stmt = con.createStatement()) {
 
       int result = stmt.executeUpdate("insert into lms_member(name, email, pwd, tel, photo) "
           + "values('" + member.getName() + "', '" + member.getEmail() + "', '"
@@ -31,7 +32,7 @@ public class MemberDaoImpl implements MemberDao {
 
   @Override
   public List<Member> findAll() throws Exception {
-    try (Connection con = conFactory.getConnection();
+    try (Connection con = conFactory.getConnection(); //
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery( //
             "select member_id, name, email, tel, cdt from lms_member")) {
@@ -56,7 +57,7 @@ public class MemberDaoImpl implements MemberDao {
 
   @Override
   public Member findByNo(int no) throws Exception {
-    try (Connection con = conFactory.getConnection();
+    try (Connection con = conFactory.getConnection(); //
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery( //
             "select member_id, name, email, pwd, tel, photo" + " from lms_member"
@@ -105,7 +106,7 @@ public class MemberDaoImpl implements MemberDao {
 
   @Override
   public List<Member> findByKeyword(String keyword) throws Exception {
-    try (Connection con = conFactory.getConnection();
+    try (Connection con = conFactory.getConnection(); //
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery( //
             "select member_id, name, email, tel, cdt" //
@@ -133,4 +134,3 @@ public class MemberDaoImpl implements MemberDao {
   }
 
 }
-//

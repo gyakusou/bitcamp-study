@@ -4,7 +4,7 @@ import java.io.PrintStream;
 import java.util.Scanner;
 import com.eomcs.lms.dao.PhotoBoardDao;
 import com.eomcs.lms.domain.Lesson;
-import com.eomcs.lms.domain.PhotoBoard;;
+import com.eomcs.lms.domain.PhotoBoard;
 
 public class PhotoBoardAddServlet implements Servlet {
 
@@ -19,21 +19,25 @@ public class PhotoBoardAddServlet implements Servlet {
 
     PhotoBoard photoBoard = new PhotoBoard();
 
-    out.println("제목? \n!{}!");
+    out.println("제목? ");
+    out.println("!{}!");
+    out.flush();
     photoBoard.setTitle(in.nextLine());
 
-    out.println("수업번호? \n!{}!");
+    out.println("수업 번호? ");
+    out.println("!{}!");
+    out.flush();
+
     Lesson lesson = new Lesson();
     lesson.setNo(Integer.parseInt(in.nextLine()));
+
     photoBoard.setLesson(lesson);
 
-    if (photoBoardDao.insert(photoBoard) > 0) { // 등록했다면,
+    if (photoBoardDao.insert(photoBoard) > 0) {
       out.println("새 사진 게시글을 등록했습니다.");
 
     } else {
-      out.println(" 사진 게시글 등록에 실패했습니다.");
+      out.println("사진 게시글 등록에 실패했습니다.");
     }
   }
 }
-// ★
-// FK colum 이 있기 때문에 가리키는 no가 아니면 등록이 되지 않는다.

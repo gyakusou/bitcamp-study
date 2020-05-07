@@ -18,16 +18,11 @@ public class MemberDaoImpl implements MemberDao {
 
   @Override
   public int insert(Member member) throws Exception {
-
     try (Statement stmt = con.createStatement()) {
 
-      int result =
-          stmt.executeUpdate("insert into lms_member(name, email, pwd, tel, photo) " + "values(" //
-              + "'" + member.getName() + "', " //
-              + "'" + member.getEmail() + "', " //
-              + "'" + member.getPassword() + "'," //
-              + "'" + member.getTel() + "', " //
-              + "'" + member.getPhoto() + "')");
+      int result = stmt.executeUpdate("insert into lms_member(name, email, pwd, tel, photo) "
+          + "values('" + member.getName() + "', '" + member.getEmail() + "', '"
+          + member.getPassword() + "', '" + member.getTel() + "', '" + member.getPhoto() + "')");
 
       return result;
     }
@@ -35,17 +30,13 @@ public class MemberDaoImpl implements MemberDao {
 
   @Override
   public List<Member> findAll() throws Exception {
-
-    try (Statement stmt = con.createStatement(); //
-
-        ResultSet rs = stmt.executeQuery(
-            "select member_id, name, email, tel, cdt from lms_member order by member_id desc")) {
+    try (Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery( //
+            "select member_id, name, email, tel, cdt from lms_member")) {
 
       ArrayList<Member> list = new ArrayList<>();
 
-      // ResultSet 도구를 사용하여 데이터를 하나씩 가져온다.
-      while (rs.next()) { // 데이터를 한개 가져왔으면 true를 리턴한다.
-
+      while (rs.next()) {
         Member member = new Member();
 
         member.setNo(rs.getInt("member_id"));
@@ -63,12 +54,9 @@ public class MemberDaoImpl implements MemberDao {
 
   @Override
   public Member findByNo(int no) throws Exception {
-
     try (Statement stmt = con.createStatement();
-
         ResultSet rs = stmt.executeQuery( //
-            "select member_id, name, email, pwd, tel, photo" + //
-                " from lms_member" //
+            "select member_id, name, email, pwd, tel, photo" + " from lms_member"
                 + " where member_id=" + no)) {
 
       if (rs.next()) {
@@ -89,7 +77,6 @@ public class MemberDaoImpl implements MemberDao {
 
   @Override
   public int update(Member member) throws Exception {
-
     try (Statement stmt = con.createStatement()) {
 
       int result =

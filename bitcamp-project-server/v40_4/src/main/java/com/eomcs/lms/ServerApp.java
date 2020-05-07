@@ -85,7 +85,8 @@ public class ServerApp {
     notifyApplicationInitialized();
 
     // ConnectionFactory 꺼낸다.
-    ConnectionFactory conFactory = (ConnectionFactory) context.get("connectionFactory");
+    ConnectionFactory conFactory = (ConnectionFactory) context.get(//
+        "connectionFactory");
 
     // DataLoaderListener가 준비한 DAO 객체를 꺼내 변수에 저장한다.
     BoardDao boardDao = (BoardDao) context.get("boardDao");
@@ -147,9 +148,8 @@ public class ServerApp {
               // 커넥션 객체를 진짜로 닫는다.
               con.realClose();
             } catch (Exception e) {
-              // DB 커넥션을 닫다가 예외가 발생한 것은 무시한다.
-              // 왜?
-              // 개발자가 따로 처리할 게 없다.
+              // DB 커넥션을 닫다가 예외가 발생한 것은 그냥 무시한다.
+              // 왜? 개발자가 따로 처리할 게 없다.
             }
           }
           System.out.println("--------------------------------------");

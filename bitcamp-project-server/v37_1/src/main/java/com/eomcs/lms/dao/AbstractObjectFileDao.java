@@ -11,14 +11,12 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-
-// 서브클래스에게 공통 필드나 메서드를 상속해주는 역할을 하기 때문에
+// 서브 클래스에게 공통 필드나 메서드를 상속해주는 역할을 하기 때문에
 // => abstract
-// 서브 클래스에게 상속해주는 메서드 중에서 idexOf()처럼 구현되지 않은 메서드가 있기때문에
+// 서브 클래스에게 상속 해주는 메서드 중에서 indexOf() 처럼 구현되지 않은 메서드가 있기 때문에
 // => abstract
 //
-public abstract class AbstractObjectFileDao<T> { // <T, K>
-
+public abstract class AbstractObjectFileDao<T> {
   protected String filename;
   protected List<T> list;
 
@@ -58,15 +56,16 @@ public abstract class AbstractObjectFileDao<T> { // <T, K>
   }
 
   // 서브 클래스들의 공통 메서드이기 때문에
-  // => 수퍼클래스에 정의한다.
+  // => 수퍼 클래스에 정의한다.
   // 서브 클래스에서 접근할 수 있어야 하기 때문에
   // => protected
   // 서브 클래스마다 구현 방법이 다르기 때문에
   // => abstract
-  // => (수퍼 클래스에서 구현할수도 없고, 구현해봐야 소용없다.)
+  // => 수퍼 클래스에서 구현할 수도 없고, 구현해 봐야 소용없다.
   // 서브 클래스에서 반드시 구현해야 할 메서드이기 때문에
   // => abstract
   //
   protected abstract <K> int indexOf(K key);
-
 }
+
+

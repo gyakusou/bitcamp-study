@@ -33,7 +33,7 @@ public class DataLoaderListener implements ApplicationContextListener {
       context.put("lessonDao", new LessonDaoImpl(con));
       context.put("memberDao", new MemberDaoImpl(con));
       context.put("photoBoardDao", new PhotoBoardDaoImpl(con));
-      context.put("photoFileDao", new PhotoFileDaoImpl(con)); // +
+      context.put("photoFileDao", new PhotoFileDaoImpl(con));
 
     } catch (Exception e) {
       e.printStackTrace();

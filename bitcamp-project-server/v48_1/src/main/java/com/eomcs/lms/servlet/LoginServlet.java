@@ -17,7 +17,7 @@ public class LoginServlet {
     this.memberService = memberService;
   }
 
-  @RequestMapping("/auth/longin")
+  @RequestMapping("/auth/login")
   public void service(Scanner in, PrintStream out) throws Exception {
     String email = Prompt.getString(in, out, "이메일? ");
     String password = Prompt.getString(in, out, "암호? ");

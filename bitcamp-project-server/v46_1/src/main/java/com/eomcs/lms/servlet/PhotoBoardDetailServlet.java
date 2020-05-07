@@ -8,7 +8,7 @@ import com.eomcs.lms.service.PhotoBoardService;
 import com.eomcs.util.Component;
 import com.eomcs.util.Prompt;
 
-@Component("photoboard/detail")
+@Component("/photoboard/detail")
 public class PhotoBoardDetailServlet implements Servlet {
 
   PhotoBoardService photoBoardService;

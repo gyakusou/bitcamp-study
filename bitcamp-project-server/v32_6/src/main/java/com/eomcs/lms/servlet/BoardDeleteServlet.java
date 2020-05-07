@@ -15,7 +15,6 @@ public class BoardDeleteServlet implements Servlet {
 
   @Override
   public void service(ObjectInputStream in, ObjectOutputStream out) throws Exception {
-
     int no = in.readInt();
 
     int index = -1;

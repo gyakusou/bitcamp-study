@@ -7,7 +7,7 @@ import com.eomcs.lms.domain.Lesson;
 import com.eomcs.lms.service.LessonService;
 import com.eomcs.util.Component;
 
-@Component("lesson/list")
+@Component("/lesson/list")
 public class LessonListServlet implements Servlet {
 
   LessonService lessonService;

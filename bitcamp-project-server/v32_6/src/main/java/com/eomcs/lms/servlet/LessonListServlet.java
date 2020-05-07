@@ -5,7 +5,6 @@ import java.io.ObjectOutputStream;
 import java.util.List;
 import com.eomcs.lms.domain.Lesson;
 
-
 public class LessonListServlet implements Servlet {
 
   List<Lesson> lessons;

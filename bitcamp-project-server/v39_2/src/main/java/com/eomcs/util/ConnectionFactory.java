@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class ConnectionFactory {
-
   String jdbcUrl;
   String username;
   String password;
@@ -19,4 +18,3 @@ public class ConnectionFactory {
     return DriverManager.getConnection(jdbcUrl, username, password);
   }
 }
-//

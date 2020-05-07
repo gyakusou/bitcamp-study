@@ -86,7 +86,7 @@ public class ServerApp {
     LessonDao lessonDao = (LessonDao) context.get("lessonDao");
     MemberDao memberDao = (MemberDao) context.get("memberDao");
     PhotoBoardDao photoBoardDao = (PhotoBoardDao) context.get("photoBoardDao");
-    PhotoFileDao photoFileDao = (PhotoFileDao) context.get("photoFileDao"); // +
+    PhotoFileDao photoFileDao = (PhotoFileDao) context.get("photoFileDao");
 
     // 커맨드 객체 역할을 수행하는 서블릿 객체를 맵에 보관한다.
     servletMap.put("/board/list", new BoardListServlet(boardDao));
@@ -111,8 +111,8 @@ public class ServerApp {
     servletMap.put("/photoboard/list", new PhotoBoardListServlet( //
         photoBoardDao, lessonDao));
     servletMap.put("/photoboard/detail", new PhotoBoardDetailServlet( //
-        photoBoardDao, photoFileDao)); // +
-    servletMap.put("/photoboard/add", new PhotoBoardAddServlet( // +
+        photoBoardDao, photoFileDao));
+    servletMap.put("/photoboard/add", new PhotoBoardAddServlet( //
         photoBoardDao, lessonDao, photoFileDao));
     servletMap.put("/photoboard/update", new PhotoBoardUpdateServlet( //
         photoBoardDao, photoFileDao));

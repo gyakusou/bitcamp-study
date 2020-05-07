@@ -30,12 +30,11 @@ public class PhotoBoardDeleteServlet implements Servlet {
       if (photoBoardDao.delete(no) == 0) {
         throw new Exception("해당 번호의 사진 게시글이 없습니다.");
       }
-
       out.println("사진 게시글을 삭제했습니다.");
 
     } catch (Exception e) {
-
       out.println(e.getMessage());
+
     }
   }
 }

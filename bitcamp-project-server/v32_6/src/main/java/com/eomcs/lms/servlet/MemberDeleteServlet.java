@@ -5,7 +5,6 @@ import java.io.ObjectOutputStream;
 import java.util.List;
 import com.eomcs.lms.domain.Member;
 
-
 public class MemberDeleteServlet implements Servlet {
 
   List<Member> members;
@@ -16,7 +15,6 @@ public class MemberDeleteServlet implements Servlet {
 
   @Override
   public void service(ObjectInputStream in, ObjectOutputStream out) throws Exception {
-
     int no = in.readInt();
 
     int index = -1;

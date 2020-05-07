@@ -46,7 +46,7 @@ public class ServerApp {
   // 스레드 풀
   ExecutorService executorService = Executors.newCachedThreadPool();
 
-  // 서버 멈춤 여부 설정 변수 +
+  // 서버 멈춤 여부 설정 변수
   boolean serverStop = false;
 
   public void addApplicationContextListener(ApplicationContextListener listener) {
@@ -112,7 +112,7 @@ public class ServerApp {
           System.out.println("--------------------------------------");
         });
 
-        // 현재 '서버 멈춤' 상태라면
+        // 현재 '서버 멈춤' 상태라면,
         // 다음 클라이언트 요청을 받지 않고 종료한다.
         if (serverStop) {
           break;
@@ -124,45 +124,44 @@ public class ServerApp {
       System.out.println("서버 준비 중 오류 발생!");
     }
 
+
     // 스레드풀을 다 사용했으면 종료하라고 해야 한다.
     executorService.shutdown();
     // => 스레드풀을 당장 종료시키는 것이 아니다.
     // => 스레드풀에 소속된 스레드들의 작업이 모두 끝나면
-    // 스레드 풀의 동작을 종료하는 뜻이다.
-    // => 따라서 shutdown()을 호출했다고 해서 모든 스레드가 즉시 작업을 멈추는 것이 아니다.
-    // => 스레드풀 종료를 예약한 다음에 바로 리턴한다.
-    //
+    // 스레드풀의 동작을 종료하라는 뜻이다.
+    // => 따라서 shutdown()을 호출했다고 해서
+    // 모든 스레드가 즉시 작업을 멈추는 것이 아니다.
+    // => 즉 스레드풀 종료를 예약한 다음에 바로 리턴한다.
 
-    // 모든 스레드가 끝날 때 까지 DB커넥션을 종료하고 싶지 않다면
+    // 모든 스레드가 끝날 때까지 DB 커넥션을 종료하고 싶지 않다면,
     // 스레드가 끝났는지 검사하며 기다려야 한다.
     while (true) {
       if (executorService.isTerminated()) {
-        // 모든 쓰레드가 업무를 완료할때 까지 대기.
         break;
       }
       try {
-        Thread.sleep(500); // 0.5초마다 깨어나서 스레드 종료 여부를 검사한다.
+        // 0.5초 마다 깨어나서 스레드 종료 여부를 검사한다.
+        Thread.sleep(500);
       } catch (Exception e) {
         e.printStackTrace();
       }
     }
 
-
     // 클라이언트 요청을 처리하는 스레드가 모두 종료된 후에
-    // DB 커넥션을 닫도록 한다. ★
+    // DB 커넥션을 닫도록 한다.
     notifyApplicationDestroyed();
 
-    System.out.println("서버종료");
+    System.out.println("서버 종료!");
   } // service()
 
 
-  void processRequest(Socket clientSocket) { // +
+  void processRequest(Socket clientSocket) {
 
     try (Socket socket = clientSocket;
         Scanner in = new Scanner(socket.getInputStream());
         PrintStream out = new PrintStream(socket.getOutputStream())) {
 
-      // 클라이언트가 보낸 명령을 읽는다.
       String request = in.nextLine();
       System.out.printf("=> %s\n", request);
 

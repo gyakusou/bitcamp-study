@@ -15,7 +15,6 @@ public class BoardUpdateServlet implements Servlet {
 
   @Override
   public void service(ObjectInputStream in, ObjectOutputStream out) throws Exception {
-
     Board board = (Board) in.readObject();
 
     int index = -1;
@@ -29,7 +28,6 @@ public class BoardUpdateServlet implements Servlet {
     if (index != -1) {
       boards.set(index, board);
       out.writeUTF("OK");
-
     } else {
       out.writeUTF("FAIL");
       out.writeUTF("해당 번호의 게시물이 없습니다.");

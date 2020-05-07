@@ -21,7 +21,6 @@ public class BoardController {
 
   @RequestMapping("/board/add")
   public String add(Board board) throws Exception {
-
     boardService.add(board);
     return "redirect:list";
   }
@@ -49,8 +48,8 @@ public class BoardController {
     return "/board/list.jsp";
   }
 
-  @RequestMapping("/board/updateForm") // request handler (요청을 처리할 메서드)
-  public String from(int no, Map<String, Object> model) throws Exception {
+  @RequestMapping("/board/updateForm")
+  public String updateForm(int no, Map<String, Object> model) throws Exception {
     model.put("board", boardService.get(no));
     return "/board/updateform.jsp";
   }

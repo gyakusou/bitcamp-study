@@ -8,10 +8,6 @@ import com.eomcs.lms.domain.Board;
 
 public class BoardListServlet implements Servlet {
 
-  // DAO 클래스를 구체적으로 지정하기 보다는
-  // 인터페이스를 지정함으로써
-  // 향후 다른 구현체로 교체하기 쉽도록 한다.
-  //
   BoardDao boardDao;
 
   public BoardListServlet(BoardDao boardDao) {
@@ -20,16 +16,9 @@ public class BoardListServlet implements Servlet {
 
   @Override
   public void service(Scanner in, PrintStream out) throws Exception {
-    // Application Server 아키텍처에서는
-    // 클라이언트가 출려할 내용을 서버에게 보내주는 거이 핵심이다.
-    // 왜?
-    // 클라이언트의 역할은 서버가 보낸 데이터를 단순히 출력하는 것이기 때문이다.
-    // 이렇게 함으로써 출력 내용을 변경할 때 서버쪽만 변경하면 된다.
-    // 클라이언트는 그대로 출력하는 것이기 때문에 변경할 필요가 없다.
-    //
     List<Board> boards = boardDao.findAll();
     for (Board board : boards) {
-      out.printf("%d, %s, %s, %d\n", //
+      out.printf("=> %d, %s, %s, %d\n", //
           board.getNo(), //
           board.getTitle(), //
           board.getDate(), //
@@ -38,5 +27,3 @@ public class BoardListServlet implements Servlet {
     }
   }
 }
-
-

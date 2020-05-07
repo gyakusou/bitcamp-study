@@ -83,7 +83,8 @@ public class ServerApp {
     notifyApplicationInitialized();
 
     // ConnectionFactory 꺼낸다.
-    ConnectionFactory conFactory = (ConnectionFactory) context.get("connectionFactory");
+    ConnectionFactory conFactory = (ConnectionFactory) context.get(//
+        "connectionFactory");
 
     // DataLoaderListener가 준비한 DAO 객체를 꺼내 변수에 저장한다.
     BoardDao boardDao = (BoardDao) context.get("boardDao");
@@ -133,9 +134,7 @@ public class ServerApp {
 
         executorService.submit(() -> {
           processRequest(socket);
-
-          conFactory.removeConnection(); // +
-
+          conFactory.removeConnection();
           System.out.println("--------------------------------------");
         });
 

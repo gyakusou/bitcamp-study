@@ -77,9 +77,10 @@ public class RequestHandler {
 
     // 메서드의 파라미터 목록을 꺼낸다.
     Parameter[] params = method.getParameters();
-    String viewUrl = (String) method.invoke( //
+    String viewUrl = (String) method.invoke(//
         bean, // 메서드를 호출할 때 사용하는 인스턴스
-        getArguments(params, request, response, model)); // 메서드에 넘겨줄 값들 아규먼트
+        getArguments(params, request, response, model) // 메서드에 넘겨 줄 값들
+    );
 
     // request handler를 호출하면,
     // model 객체에는 request handler가 담은 값이 보관되어 있다.
@@ -193,8 +194,9 @@ public class RequestHandler {
       }
 
       // 세터에 넘겨 줄 값을 준비하지 못했드면 다음 메서드로 넘어간다.
-      if (value == null)
+      if (value == null) {
         continue;
+      }
 
       logger.debug(String.format("    %s()", m.getName()));
       m.invoke(pojo, value);
@@ -212,60 +214,61 @@ public class RequestHandler {
       return null;
     }
 
-    if (paramType == byte.class || paramType == Byte.class)
+    if (paramType == byte.class || paramType == Byte.class) {
       try {
         return Byte.parseByte(value);
       } catch (Exception e) {
         return (byte) 0;
       }
-    else if (paramType == short.class || paramType == Short.class)
+    } else if (paramType == short.class || paramType == Short.class) {
       try {
         return Short.parseShort(value);
       } catch (Exception e) {
         return (short) 0;
       }
-    else if (paramType == int.class || paramType == Integer.class)
+    } else if (paramType == int.class || paramType == Integer.class) {
       try {
         return Integer.parseInt(value);
       } catch (Exception e) {
         return 0;
       }
-    else if (paramType == long.class || paramType == Long.class)
+    } else if (paramType == long.class || paramType == Long.class) {
       try {
         return Long.parseLong(value);
       } catch (Exception e) {
         return (long) 0;
       }
-    else if (paramType == float.class || paramType == Float.class)
+    } else if (paramType == float.class || paramType == Float.class) {
       try {
         return Float.parseFloat(value);
       } catch (Exception e) {
-        return (float) 0;
+        return 0.0f;
       }
-    else if (paramType == double.class || paramType == Double.class)
+    } else if (paramType == double.class || paramType == Double.class) {
       try {
         return Double.parseDouble(value);
       } catch (Exception e) {
-        return (double) 0;
+        return 0.0;
       }
-    else if (paramType == char.class || paramType == Character.class)
+    } else if (paramType == char.class || paramType == Character.class) {
       try {
         return value.charAt(0);
       } catch (Exception e) {
         return (char) 0;
       }
-    else if (paramType == boolean.class || paramType == Boolean.class)
+    } else if (paramType == boolean.class || paramType == Boolean.class) {
       try {
         return Boolean.parseBoolean(value);
       } catch (Exception e) {
         return false;
       }
-    else if (paramType == java.util.Date.class || paramType == java.sql.Date.class)
+    } else if (paramType == java.util.Date.class || paramType == java.sql.Date.class) {
       try {
         return java.sql.Date.valueOf(value); // 문자열 형식: "yyyy-MM-dd" 이어야 한다.
       } catch (Exception e) {
         return null;
       }
+    }
     return value;
   }
 

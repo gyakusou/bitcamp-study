@@ -14,15 +14,14 @@
     <result column="tel" property="tel"/>
     <result column="cdt" property="registeredDate"/>
   </resultMap>
-    
-    <sql id="select1">
+  
+  <sql id="select1">
       member_id, 
       name, 
       email, 
-      tel, 
-    </sql>
-    
-    
+      tel,
+  </sql>
+  
   <insert id="insertMember" parameterType="Member">
     insert into lms_member(
       name, 
@@ -50,7 +49,7 @@
   
   <select id="selectDetail" resultMap="MemberMap" parameterType="int">
     select 
-    <include refid="select1"/>
+      <include refid="select1"/>
       pwd, 
       photo
     from 
@@ -60,14 +59,11 @@
   </select>
   
   <update id="updateMember" parameterType="Member">
-    update lms_member 
-    <!--
-    set 은 update 할때 사용하면 유용하다. 
-    string 일때 null / '' 둘다 사용한다. 그 외는 null 만 -->
-    <set> 
+    update lms_member
+    <set>
       <if test="name != null and name != ''">name=#{name},</if>
-      <if test="email != null and email != ''">email=#{email},</if>
-      <if test="password != null">pwd=password(#{password}),</if>
+      <if test="email != null and email != ''">email=#{email},</if> 
+      <if test="password != null and password != ''">pwd=password(#{password}),</if>
       <if test="tel != null and tel != ''">tel=#{tel},</if>
       <if test="photo != null and photo != ''">photo=#{photo}</if>
     </set>
@@ -85,7 +81,7 @@
     parameterType="string">
     <bind name="keywordPattern" value="'%' + _parameter + '%'"/>
     select 
-    <include refid="select1"/>
+      <include refid="select1"/>
       cdt
     from 
       lms_member
@@ -99,7 +95,7 @@
     resultMap="MemberMap" 
     parameterType="map">
     select 
-    <include refid="select1"/>
+      <include refid="select1"/>
       pwd, 
       photo
     from lms_member

@@ -14,15 +14,16 @@ public class MemberDeleteServlet implements Servlet {
 
   @Override
   public void service(Scanner in, PrintStream out) throws Exception {
-
-    out.println("번호? \n!{}!");
+    out.println("번호? ");
+    out.println("!{}!");
+    out.flush();
     int no = Integer.parseInt(in.nextLine());
 
-    if (memberDao.delete(no) > 0) {
-      out.println("멤버를 삭제했습니다.");
+    if (memberDao.delete(no) > 0) { // 삭제했다면,
+      out.println("회원을 삭제했습니다.");
 
     } else {
-      out.println("해당 번호의 멤버가 없습니다.");
+      out.println("해당 번호의 회원이 없습니다.");
     }
   }
 }

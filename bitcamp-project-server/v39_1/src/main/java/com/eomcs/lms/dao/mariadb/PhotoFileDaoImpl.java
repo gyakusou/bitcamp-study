@@ -26,10 +26,8 @@ public class PhotoFileDaoImpl implements PhotoFileDao {
     try (Connection con = DriverManager.getConnection(jdbcUrl, username, password);
         Statement stmt = con.createStatement()) {
 
-      // '' 싱글쿼테이션은 문자열 인 경우만 사용.
-      // int 값을 받을때는 '' 뺀다.
       int result = stmt.executeUpdate( //
-          "insert into lms_photo_file(photo_id,file_path) values(" // ★
+          "insert into lms_photo_file(photo_id,file_path) values(" //
               + photoFile.getBoardNo() + ", '" + photoFile.getFilepath() //
               + "')");
 
@@ -48,16 +46,7 @@ public class PhotoFileDaoImpl implements PhotoFileDao {
                 + " order by photo_file_id asc")) {
 
       ArrayList<PhotoFile> list = new ArrayList<>();
-
       while (rs.next()) {
-        // 1) 생성자를 통해 인스턴스 필드의 값을 설정하기.
-        // list.add(new PhotoFile( //
-        // rs.getInt("photo_file_id"), //
-        // rs.getString("file_path"), //
-        // rs.getInt("photo_id")));
-
-        // 2) 셋터를 통해 체인 방식으로 인스턴스 필드의 값을 설정하기.
-        // 장점 : 생성자를 여러 개 만들 필요가 없다.
         list.add(new PhotoFile() //
             .setNo(rs.getInt("photo_file_id")) //
             .setFilepath(rs.getString("file_path")) //
@@ -77,4 +66,5 @@ public class PhotoFileDaoImpl implements PhotoFileDao {
       return result;
     }
   }
+
 }

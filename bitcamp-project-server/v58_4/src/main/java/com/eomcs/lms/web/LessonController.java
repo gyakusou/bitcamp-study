@@ -15,13 +15,12 @@ public class LessonController {
   LessonService lessonService;
 
   @RequestMapping("/lesson/form")
-  public String from() throws Exception {
+  public String form() {
     return "/lesson/form.jsp";
   }
 
   @RequestMapping("/lesson/add")
   public String add(Lesson lesson) throws Exception {
-
     if (lessonService.add(lesson) > 0) {
       return "redirect:list";
     } else {
@@ -50,9 +49,19 @@ public class LessonController {
     return "/lesson/list.jsp";
   }
 
+  @RequestMapping("/lesson/update")
+  public String update(Lesson lesson) throws Exception {
+    if (lessonService.update(lesson) > 0) {
+      return "redirect:list";
+    } else {
+      throw new Exception("변경할 수업 번호가 유효하지 않습니다.");
+    }
+  }
+
   @RequestMapping("/lesson/search")
   public String search(Lesson lesson, Map<String, Object> model) throws Exception {
     HashMap<String, Object> map = new HashMap<>();
+
     if (lesson.getTitle().length() > 0) {
       map.put("title", lesson.getTitle());
     }
@@ -75,14 +84,5 @@ public class LessonController {
 
     model.put("list", lessonService.search(map));
     return "/lesson/search.jsp";
-  }
-
-  @RequestMapping("/lesson/update")
-  public String update(Lesson lesson) throws Exception {
-    if (lessonService.update(lesson) > 0) {
-      return "redirect:list";
-    } else {
-      throw new Exception("변경할 수업 번호가 유효하지 않습니다.");
-    }
   }
 }

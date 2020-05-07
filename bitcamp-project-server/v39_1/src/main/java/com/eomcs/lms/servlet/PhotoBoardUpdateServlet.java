@@ -40,9 +40,10 @@ public class PhotoBoardUpdateServlet implements Servlet {
     photoBoard.setNo(no);
 
     try {
-      if (photoBoardDao.update(photoBoard) > 0) { // 변경했다면,
+      if (photoBoardDao.update(photoBoard) == 0) {
         throw new Exception("사진 게시글 변경에 실패했습니다.");
       }
+
       printPhotoFiles(out, no);
 
       out.println();
@@ -64,11 +65,11 @@ public class PhotoBoardUpdateServlet implements Servlet {
           photoFileDao.insert(photoFile);
         }
       }
-
       out.println("사진 게시글을 변경했습니다.");
 
     } catch (Exception e) {
       out.println(e.getMessage());
+
     }
   }
 

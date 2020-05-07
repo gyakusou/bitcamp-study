@@ -5,7 +5,6 @@ import java.io.ObjectOutputStream;
 import java.util.List;
 import com.eomcs.lms.domain.Member;
 
-
 public class MemberListServlet implements Servlet {
 
   List<Member> members;

@@ -44,7 +44,7 @@ public class ContextLoaderListener implements ApplicationContextListener {
           new SqlSessionFactoryBuilder().build(inputStream));
       beans.put("sqlSessionFactory", sqlSessionFactory);
 
-      // DAO 프록시 객체를 생성해 줄 Factory 를 준비
+      // DAO 프록시 객체를 생성해 줄 Factory를 준비
       MybatisDaoFactory daoFactory = new MybatisDaoFactory(sqlSessionFactory);
 
       // 서비스 객체가 사용할 DAO를 준비한다.
@@ -62,23 +62,23 @@ public class ContextLoaderListener implements ApplicationContextListener {
       // IoC 컨테이너 준비
       ApplicationContext appCtx = new ApplicationContext(//
           "com.eomcs.lms", // 새로 생성할 객체의 패키지
-          beans); // 기존에 따로 생성한 객체 목록
+          beans // 기존에 따로 생성한 객체 목록
+      );
       appCtx.printBeans();
 
       // ServerApp이 사용할 수 있게 context 맵에 담아 둔다.
       context.put("iocContainer", appCtx);
 
-      System.out.println("---------------------------------");
+      System.out.println("----------------------------");
 
       // @Component 애노테이션이 붙은 객체를 찾는다.
       RequestMappingHandlerMapping handlerMapper = //
           new RequestMappingHandlerMapping();
-
       String[] beanNames = appCtx.getBeanNamesForAnnotation(Component.class);
       for (String beanName : beanNames) {
         Object component = appCtx.getBean(beanName);
 
-        // @RequestHandler 가 붙은 메서드를 찾는다.
+        // @RequestHandler가 붙은 메서드를 찾는다.
         Method method = getRequestHandler(component.getClass());
         if (method != null) {
           // 클라이언트 명령을 처리하는 메서드 정보를 준비한다.
@@ -90,7 +90,7 @@ public class ContextLoaderListener implements ApplicationContextListener {
         }
       }
 
-      // ServerApp에서 request handler를 사용할 수 있도록 공유한다.
+      // ServerApp 에서 request handler를 사용할 수 있도록 공유한다.
       context.put("handlerMapper", handlerMapper);
 
     } catch (Exception e) {
@@ -109,6 +109,7 @@ public class ContextLoaderListener implements ApplicationContextListener {
         return m;
       }
     }
+
     return null;
   }
 

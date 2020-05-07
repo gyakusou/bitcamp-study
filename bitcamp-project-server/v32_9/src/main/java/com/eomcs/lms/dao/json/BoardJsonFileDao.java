@@ -5,7 +5,6 @@ import com.eomcs.lms.domain.Board;
 
 public class BoardJsonFileDao extends AbstractJsonFileDao<Board> {
 
-
   public BoardJsonFileDao(String filename) {
     super(filename);
   }
@@ -58,7 +57,7 @@ public class BoardJsonFileDao extends AbstractJsonFileDao<Board> {
   }
 
   @Override
-  protected <K> int indexOf(K key) { // K라는 클래스가 아니고 <K> 타입이다.
+  protected <K> int indexOf(K key) {
     for (int i = 0; i < list.size(); i++) {
       if (list.get(i).getNo() == (int) key) { // K가 어떤 타입인지 형변환해서 사용하라.
         return i;

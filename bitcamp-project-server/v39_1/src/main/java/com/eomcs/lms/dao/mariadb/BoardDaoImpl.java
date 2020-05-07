@@ -23,7 +23,7 @@ public class BoardDaoImpl implements BoardDao {
 
   @Override
   public int insert(Board board) throws Exception {
-    try (Connection con = DriverManager.getConnection(jdbcUrl, username, password); //
+    try (Connection con = DriverManager.getConnection(jdbcUrl, username, password);
         Statement stmt = con.createStatement()) {
 
       int result = stmt.executeUpdate("insert into lms_board(conts) values('" //
@@ -37,7 +37,6 @@ public class BoardDaoImpl implements BoardDao {
   public List<Board> findAll() throws Exception {
     try (Connection con = DriverManager.getConnection(jdbcUrl, username, password);
         Statement stmt = con.createStatement();
-
         ResultSet rs = stmt.executeQuery( //
             "select board_id, conts, cdt, vw_cnt from lms_board order by board_id desc")) {
 

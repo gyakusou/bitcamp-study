@@ -2,6 +2,7 @@ package com.eomcs.lms;
 
 import java.lang.reflect.Method;
 import java.util.Map;
+import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -16,8 +17,7 @@ import com.eomcs.util.RequestMappingHandlerMapping;
 //
 public class ContextLoaderListener implements ApplicationContextListener {
 
-  static Logger logger = Logger.getLogger(ContextLoaderListener.class);
-
+  static Logger logger = LogManager.getLogger(ContextLoaderListener.class);
 
   @Override
   public void contextInitialized(Map<String, Object> context) {

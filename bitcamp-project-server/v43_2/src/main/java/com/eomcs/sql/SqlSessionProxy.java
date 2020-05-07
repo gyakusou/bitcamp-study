@@ -21,10 +21,9 @@ public class SqlSessionProxy implements SqlSession {
   // close() 메서드를 변경한다.
   @Override
   public void close() {
-    // try-whth-resources 문장에서 자동으로 close()를 호출 할 때
-    // SqlSession 을 닫지 않게 변경한다.
-    // 왜?
-    // 계속해서 다른 DAO가 사용 할 수 있기 때문이다.
+    // try-with-resources 문장에서 자동으로 close()를 호출할 때
+    // SqlSession을 닫지 않게 변경한다.
+    // 왜? 계속해서 다른 DAO가 사용할 수 있기 때문이다.
     //
     // original.close();
   }
@@ -165,7 +164,6 @@ public class SqlSessionProxy implements SqlSession {
     return original.flushStatements();
   }
 
-
   @Override
   public void clearCache() {
     original.clearCache();
@@ -185,7 +183,6 @@ public class SqlSessionProxy implements SqlSession {
   public Connection getConnection() {
     return original.getConnection();
   }
-
 
 
 }

@@ -1,13 +1,10 @@
 package com.eomcs.lms;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import com.eomcs.lms.context.ApplicationContextListener;
 import com.eomcs.lms.dao.json.BoardJsonFileDao;
 import com.eomcs.lms.dao.json.LessonJsonFileDao;
 import com.eomcs.lms.dao.json.MemberJsonFileDao;
-import com.eomcs.lms.domain.Member;
 
 // 애플리케이션이 시작되거나 종료될 때
 // 데이터를 로딩하고 저장하는 일을 한다.

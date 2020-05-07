@@ -23,8 +23,8 @@ import com.eomcs.sql.SqlSessionFactoryProxy;
 public class AppConfig {
 
   // Spring IoC 컨테이너에 수동으로 객체를 등록하고 싶다면,
-  // 그 객체를 만들어주는 팩토리 메서드를 정의해야 한다.
-  // => 단, 메서드 선언부에 @Bean 애노테이션을 붙여야한다.
+  // 그 객체를 만들어 주는 팩토리 메서드를 정의해야 한다.
+  // => 단 메서드 선언부에 @Bean 애노테이션을 붙여야 한다.
   // => 그래야만 Spring IoC 컨테이너는
   // 이 메서드를 호출하고 그 리턴 값을 보관한다.
 
@@ -40,64 +40,64 @@ public class AppConfig {
   }
 
   @Bean
-  public MybatisDaoFactory daoFactory(//
+  public MybatisDaoFactory daoFactory(
       // 이 메서드를 호출할 때 Spring IoC 컨테이너에 들어 있는 객체를 원한다면,
       // 이렇게 파라미터로 선언하라.
       // 그러면 Spring IoC 컨테이너가 이 팩토리 메서드를 호출하기 전에
       // SqlSessionFactory를 먼저 준비한 다음에 이 메서드를 실행할 것이다.
       SqlSessionFactory sqlSessionFactory) {
 
+    // DAO 프록시 객체를 생성해 줄 Factory를 준비
     return new MybatisDaoFactory(sqlSessionFactory);
   }
 
   @Bean
-  public PlatformTransactionManager TransactionManager( //
+  public PlatformTransactionManager transactionManager(
       // 필요한 값이 있다면 이렇게 파라미터로 선언만 하라.
-      // 단 IoC 컨테이너에 들어있는 값이어야 한다.
+      // 단 IoC 컨테이너에 들어 있는 값이어야 한다.
       SqlSessionFactory sqlSessionFactory) {
     return new PlatformTransactionManager(sqlSessionFactory);
   }
 
   @Bean
-  public BoardDao boardDao( //
+  public BoardDao boardDao(
       // 필요한 값이 있다면 이렇게 파라미터로 선언만 하라.
-      // 단 IoC 컨테이너에 들어있는 값이어야 한다.
+      // 단 IoC 컨테이너에 들어 있는 값이어야 한다.
       MybatisDaoFactory daoFactory) {
     return daoFactory.createDao(BoardDao.class);
   }
 
   @Bean
-  public LessonDao lessonDao( //
+  public LessonDao lessonDao(
       // 필요한 값이 있다면 이렇게 파라미터로 선언만 하라.
-      // 단 IoC 컨테이너에 들어있는 값이어야 한다.
+      // 단 IoC 컨테이너에 들어 있는 값이어야 한다.
       MybatisDaoFactory daoFactory) {
     return daoFactory.createDao(LessonDao.class);
   }
 
   @Bean
-  public MemberDao memberDao( //
+  public MemberDao memberDao(
       // 필요한 값이 있다면 이렇게 파라미터로 선언만 하라.
-      // 단 IoC 컨테이너에 들어있는 값이어야 한다.
+      // 단 IoC 컨테이너에 들어 있는 값이어야 한다.
       MybatisDaoFactory daoFactory) {
     return daoFactory.createDao(MemberDao.class);
   }
 
   @Bean
-  public PhotoBoardDao photoBoardDao( //
+  public PhotoBoardDao photoBoardDao(
       // 필요한 값이 있다면 이렇게 파라미터로 선언만 하라.
-      // 단 IoC 컨테이너에 들어있는 값이어야 한다.
+      // 단 IoC 컨테이너에 들어 있는 값이어야 한다.
       MybatisDaoFactory daoFactory) {
     return daoFactory.createDao(PhotoBoardDao.class);
   }
 
   @Bean
-  public PhotoFileDao photoFileDao( //
+  public PhotoFileDao photoFileDao(
       // 필요한 값이 있다면 이렇게 파라미터로 선언만 하라.
-      // 단 IoC 컨테이너에 들어있는 값이어야 한다.
+      // 단 IoC 컨테이너에 들어 있는 값이어야 한다.
       MybatisDaoFactory daoFactory) {
     return daoFactory.createDao(PhotoFileDao.class);
   }
-
 
 }
 

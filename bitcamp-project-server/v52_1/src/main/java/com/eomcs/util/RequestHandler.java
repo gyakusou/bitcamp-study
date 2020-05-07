@@ -7,12 +7,10 @@ public class RequestHandler {
   String path;
   Method method;
 
-  // 기본생성자
   public RequestHandler() {
 
   }
 
-  // 값을 모두 받을 경우에는 이 생성자를 사용한다.
   public RequestHandler(Method method, Object bean) {
     this.method = method;
     this.bean = bean;
@@ -33,14 +31,6 @@ public class RequestHandler {
     this.bean = bean;
   }
 
-  public String getPath() {
-    return path;
-  }
-
-  public void setPath(String path) {
-    this.path = path;
-  }
-
   public Method getMethod() {
     return method;
   }
@@ -49,4 +39,11 @@ public class RequestHandler {
     this.method = method;
   }
 
+  public String getPath() {
+    return path;
+  }
+
+  public void setPath(String path) {
+    this.path = path;
+  }
 }

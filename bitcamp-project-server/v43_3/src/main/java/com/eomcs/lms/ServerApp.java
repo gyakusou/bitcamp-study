@@ -145,8 +145,8 @@ public class ServerApp {
 
         executorService.submit(() -> {
           processRequest(socket);
+
           // 스레드에 보관된 SqlSession 객체를 제거한다.
-          //
           ((SqlSessionFactoryProxy) sqlSessionFactory).closeSession();
 
           System.out.println("--------------------------------------");

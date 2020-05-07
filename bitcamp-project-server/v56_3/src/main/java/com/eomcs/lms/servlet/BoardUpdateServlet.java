@@ -69,8 +69,6 @@ public class BoardUpdateServlet extends HttpServlet {
       throws ServletException, IOException {
     try {
       request.setCharacterEncoding("UTF-8");
-      response.setContentType("text/html;charset=UTF-8");
-      PrintWriter out = response.getWriter();
 
       ServletContext servletContext = getServletContext();
       ApplicationContext iocContainer =
@@ -81,18 +79,16 @@ public class BoardUpdateServlet extends HttpServlet {
       board.setNo(Integer.parseInt(request.getParameter("no")));
       board.setTitle(request.getParameter("title"));
 
-      boardService.update(board);
-
       if (boardService.update(board) > 0) {
         response.sendRedirect("list");
       } else {
-        request.getSession().setAttribute("errorMessage", "변경 할 게시물 번호가 유효하지 않습니다.");
-        request.getSession().setAttribute("url", "board/list");
+        request.getSession().setAttribute("errorMessage", //
+            "변경할 게시물 번호가 유효하지 않습니다.");
+        request.getSession().setAttribute("url", //
+            "board/list");
         response.sendRedirect("../error");
       }
 
-      out.println("</body>");
-      out.println("</html>");
     } catch (Exception e) {
       throw new ServletException(e);
     }

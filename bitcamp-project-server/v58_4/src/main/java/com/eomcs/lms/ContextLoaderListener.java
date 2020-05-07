@@ -104,9 +104,7 @@ public class ContextLoaderListener implements ServletContextListener {
   }
 
   private Iterator<Method> getRequestHandlers(Class<?> type) {
-
     ArrayList<Method> handlers = new ArrayList<>();
-
     // 클라이언트 명령을 처리할 메서드는 public 이기 때문에
     // 클래스에서 public 메서드만 조사한다.
     Method[] methods = type.getMethods();
@@ -117,7 +115,6 @@ public class ContextLoaderListener implements ServletContextListener {
         handlers.add(m);
       }
     }
-
     return handlers.iterator();
   }
 

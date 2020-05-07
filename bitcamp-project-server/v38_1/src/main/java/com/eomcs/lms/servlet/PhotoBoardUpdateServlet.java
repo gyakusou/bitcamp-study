@@ -16,7 +16,9 @@ public class PhotoBoardUpdateServlet implements Servlet {
   @Override
   public void service(Scanner in, PrintStream out) throws Exception {
 
-    out.println("번호? \n!{}!");
+    out.println("번호? ");
+    out.println("!{}!");
+    out.flush();
     int no = Integer.parseInt(in.nextLine());
 
     PhotoBoard old = photoBoardDao.findByNo(no);
@@ -25,9 +27,9 @@ public class PhotoBoardUpdateServlet implements Servlet {
       return;
     }
 
-    out.printf("제목(%s)? \n!{}!\n", old.getTitle());
-    // 위 번호? 와 다르게 제목은 printf 이기 때문에 마지막에 줄바꿈 기호를 꼭 넣어줘야 한다.
-    // '\n'
+    out.printf("제목(%s)? \n", old.getTitle());
+    out.println("!{}!");
+    out.flush();
 
     PhotoBoard photoBoard = new PhotoBoard();
     photoBoard.setTitle(in.nextLine());

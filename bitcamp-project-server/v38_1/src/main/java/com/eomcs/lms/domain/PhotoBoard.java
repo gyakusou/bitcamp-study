@@ -11,10 +11,7 @@ public class PhotoBoard implements Serializable {
   String title;
   Date createdDate;
   int viewCount;
-
-  // 수업정보는 따로 Lesson에 담는다.
   Lesson lesson;
-
 
   @Override
   public String toString() {

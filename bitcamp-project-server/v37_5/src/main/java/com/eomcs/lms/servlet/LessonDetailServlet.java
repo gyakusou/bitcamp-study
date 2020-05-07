@@ -15,8 +15,9 @@ public class LessonDetailServlet implements Servlet {
 
   @Override
   public void service(Scanner in, PrintStream out) throws Exception {
-
-    out.println("번호 \n!{}!");
+    out.println("번호? ");
+    out.println("!{}!");
+    out.flush();
     int no = Integer.parseInt(in.nextLine());
 
     Lesson lesson = lessonDao.findByNo(no);
@@ -29,9 +30,8 @@ public class LessonDetailServlet implements Servlet {
       out.printf("종료일: %s\n", lesson.getEndDate());
       out.printf("총수업시간: %d\n", lesson.getTotalHours());
       out.printf("일수업시간: %d\n", lesson.getDayHours());
-
     } else {
-      out.println("해당 수업 조회에 실패했습니다.");
+      out.println("해당 번호의 강의가 없습니다.");
     }
   }
 }

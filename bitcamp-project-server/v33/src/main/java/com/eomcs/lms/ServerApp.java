@@ -12,8 +12,8 @@ import java.util.Map;
 import java.util.Set;
 import com.eomcs.lms.context.ApplicationContextListener;
 import com.eomcs.lms.dao.BoardDao;
-import com.eomcs.lms.dao.json.LessonJsonFileDao;
-import com.eomcs.lms.dao.json.MemberJsonFileDao;
+import com.eomcs.lms.dao.LessonDao;
+import com.eomcs.lms.dao.MemberDao;
 import com.eomcs.lms.servlet.BoardAddServlet;
 import com.eomcs.lms.servlet.BoardDeleteServlet;
 import com.eomcs.lms.servlet.BoardDetailServlet;
@@ -66,11 +66,9 @@ public class ServerApp {
     notifyApplicationInitialized();
 
     // DataLoaderListener가 준비한 DAO 객체를 꺼내 변수에 저장한다.
-    BoardDao boardDao = (BoardDao) context.get("boardDao"); /////////////////////
-
-    LessonJsonFileDao lessonDao = (LessonJsonFileDao) context.get("lessonDao");
-    MemberJsonFileDao memberDao = (MemberJsonFileDao) context.get("memberDao");
-
+    BoardDao boardDao = (BoardDao) context.get("boardDao");
+    LessonDao lessonDao = (LessonDao) context.get("lessonDao");
+    MemberDao memberDao = (MemberDao) context.get("memberDao");
 
     // 커맨드 객체 역할을 수행하는 서블릿 객체를 맵에 보관한다.
     servletMap.put("/board/list", new BoardListServlet(boardDao));
@@ -94,13 +92,12 @@ public class ServerApp {
     try (
         // 서버쪽 연결 준비
         // => 클라이언트의 연결을 9999번 포트에서 기다린다.
-        // queue 방식으로 대기
         ServerSocket serverSocket = new ServerSocket(9999)) {
 
       System.out.println("클라이언트 연결 대기중...");
 
       while (true) {
-        Socket socket = serverSocket.accept(); // 대기열에 기다리고 있는 것을 하나 빼낸다.
+        Socket socket = serverSocket.accept();
         System.out.println("클라이언트와 연결되었음!");
 
         if (processRequest(socket) == 9) {
@@ -155,7 +152,6 @@ public class ServerApp {
       } else { // 없다면? 간단한 아내 메시지를 응답한다.
         notFound(out);
       }
-
       out.flush();
       System.out.println("클라이언트에게 응답하였음!");
 

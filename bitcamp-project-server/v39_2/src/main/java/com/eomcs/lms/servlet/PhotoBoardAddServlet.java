@@ -55,7 +55,7 @@ public class PhotoBoardAddServlet implements Servlet {
       out.println("새 사진 게시글을 등록했습니다.");
 
     } catch (Exception e) {
-      out.println(e.getMessage()); // "사진 게시글 등록에 실패했습니다." 출력
+      out.println(e.getMessage());
 
     }
   }

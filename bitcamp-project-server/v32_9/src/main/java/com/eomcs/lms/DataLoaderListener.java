@@ -19,7 +19,7 @@ public class DataLoaderListener implements ApplicationContextListener {
     System.out.println("데이터를 로딩합니다.");
 
     // 애플리케이션의 데이터를 처리할 객체를 준비한다.
-    BoardJsonFileDao boardDao = new BoardJsonFileDao("./board.json");////////////////////////////////
+    BoardJsonFileDao boardDao = new BoardJsonFileDao("./board.json");
     LessonJsonFileDao lessonDao = new LessonJsonFileDao("./lesson.json");
     MemberJsonFileDao memberDao = new MemberJsonFileDao("./member.json");
 

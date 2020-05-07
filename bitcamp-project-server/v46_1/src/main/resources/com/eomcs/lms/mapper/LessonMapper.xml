@@ -75,7 +75,7 @@
     where lesson_id=#{no}
   </delete>
   
-    <select id="findByKeyword" resultMap="LessonMap" parameterType="map">
+  <select id="findByKeyword" resultMap="LessonMap" parameterType="map">
     <include refid="select1"/>
     from lms_lesson
     <where>
@@ -86,7 +86,6 @@
       <if test="dayHours != null">and day_hr &lt;= #{dayHours}</if>
     </where>
   </select>
-  
 </mapper>
 
 

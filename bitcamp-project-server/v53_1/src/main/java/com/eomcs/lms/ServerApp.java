@@ -23,7 +23,7 @@ import com.eomcs.util.RequestMappingHandlerMapping;
 
 public class ServerApp {
 
-  // logger4j의 logger 준비
+  // log4j의 logger 준비
   static Logger logger = LogManager.getLogger(ServerApp.class);
 
   // 옵저버 관련 코드
@@ -70,7 +70,7 @@ public class ServerApp {
     // ApplicationContext (IoC 컨테이너)를 꺼낸다.
     iocContainer = (ApplicationContext) context.get("iocContainer");
 
-    // request handler mapper 를 꺼낸다.
+    // request handler mapper를 꺼낸다.
     handlerMapper = //
         (RequestMappingHandlerMapping) context.get("handlerMapper");
 
@@ -84,7 +84,6 @@ public class ServerApp {
 
         executorService.submit(() -> {
           processRequest(socket);
-
           logger.info("--------------------------------------");
         });
 
@@ -97,7 +96,8 @@ public class ServerApp {
       }
 
     } catch (Exception e) {
-      logger.error(String.format("서버 준비 중 오류 발생!: %s", e.getMessage()));
+      logger.error(String.format("서버 준비 중 오류 발생!: %s", //
+          e.getMessage()));
     }
 
 
@@ -146,7 +146,6 @@ public class ServerApp {
         return;
       }
 
-
       RequestHandler requestHandler = handlerMapper.getHandler(request);
 
       if (requestHandler != null) {
@@ -159,7 +158,7 @@ public class ServerApp {
           out.println("요청 처리 중 오류 발생!");
           out.println(e.getMessage());
 
-          logger.info("클라이언트 요청 처리 중 오류 발생:");
+          logger.info("클라이언트 요청 처리 중 오류 발생");
           logger.info(e.getMessage());
           StringWriter strWriter = new StringWriter();
           e.printStackTrace(new PrintWriter(strWriter));

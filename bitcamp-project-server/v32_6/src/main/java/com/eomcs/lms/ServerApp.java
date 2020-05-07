@@ -41,9 +41,12 @@ public class ServerApp {
   // 커맨드(예: Servlet 구현체) 디자인 패턴과 관련된 코드
   Map<String, Servlet> servletMap = new HashMap<>();
 
+
   List<Board> boards;
   List<Member> members;
   List<Lesson> lessons;
+
+
 
   public void addApplicationContextListener(ApplicationContextListener listener) {
     listeners.add(listener);
@@ -83,17 +86,17 @@ public class ServerApp {
     servletMap.put("/board/update", new BoardUpdateServlet(boards));
     servletMap.put("/board/delete", new BoardDeleteServlet(boards));
 
-    servletMap.put("/member/list", new MemberListServlet(members));
-    servletMap.put("/member/add", new MemberAddServlet(members));
-    servletMap.put("/member/detail", new MemberDetailServlet(members));
-    servletMap.put("/member/update", new MemberUpdateServlet(members));
-    servletMap.put("/member/delete", new MemberDeleteServlet(members));
-
     servletMap.put("/lesson/list", new LessonListServlet(lessons));
     servletMap.put("/lesson/add", new LessonAddServlet(lessons));
     servletMap.put("/lesson/detail", new LessonDetailServlet(lessons));
     servletMap.put("/lesson/update", new LessonUpdateServlet(lessons));
     servletMap.put("/lesson/delete", new LessonDeleteServlet(lessons));
+
+    servletMap.put("/member/list", new MemberListServlet(members));
+    servletMap.put("/member/add", new MemberAddServlet(members));
+    servletMap.put("/member/detail", new MemberDetailServlet(members));
+    servletMap.put("/member/update", new MemberUpdateServlet(members));
+    servletMap.put("/member/delete", new MemberDeleteServlet(members));
 
     try (
         // 서버쪽 연결 준비
@@ -146,29 +149,25 @@ public class ServerApp {
         // 클라이언트의 요청을 처리할 객체를 찾는다.
         Servlet servlet = servletMap.get(request);
 
-        // 없다면? 간단한 안내 메세지를 응답한다.
         if (servlet != null) {
+          // 클라이언트 요청을 처리할 객체를 찾았으면 작업을 실행시킨다.
           try {
-            // 클라이언트 요청을 처리할 객체를 찾았으면 작업을 실행시킨다.
             servlet.service(in, out);
 
           } catch (Exception e) {
-
-            // 요청한 작업을 수행하다가 오류가 발생할 경우 그 이유를 간단히 응답한다.
+            // 요청한 작업을 수행하다가 오류 발생할 경우 그 이유를 간단히 응답한다.
             out.writeUTF("FAIL");
             out.writeUTF(e.getMessage());
 
             // 서버쪽 화면에는 더 자세하게 오류 내용을 출력한다.
-            System.out.println("클라이언트 요청 처리중 오류 발생");
+            System.out.println("클라이언트 요청 처리 중 오류 발생:");
             e.printStackTrace();
           }
-
-        } else { // 없다면 간단한 응답 메세지를 보낸다.
+        } else { // 없다면? 간단한 아내 메시지를 응답한다.
           notFound(out);
         }
 
         out.flush();
-
         System.out.println("클라이언트에게 응답하였음!");
         System.out.println("------------------------------------");
       }

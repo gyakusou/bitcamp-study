@@ -20,7 +20,7 @@ public class PhotoFileDaoImpl implements PhotoFileDao {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       int count = sqlSession.insert(//
           "PhotoFileMapper.insertPhotoFile", photoFile);
-      sqlSession.commit(); //
+      sqlSession.commit();
       return count;
     }
   }

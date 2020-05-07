@@ -15,29 +15,38 @@ public class MemberAddServlet implements Servlet {
 
   @Override
   public void service(Scanner in, PrintStream out) throws Exception {
-
     Member member = new Member();
 
-    out.println("이름? \n!{}!");
+    out.println("이름? ");
+    out.println("!{}!");
+    out.flush();
     member.setName(in.nextLine());
 
-    out.println("이메일? \n!{}!");
+    out.println("이메일? ");
+    out.println("!{}!");
+    out.flush();
     member.setEmail(in.nextLine());
 
-    out.println("암호? \n!{}!");
+    out.println("암호? ");
+    out.println("!{}!");
+    out.flush();
     member.setPassword(in.nextLine());
 
-    out.println("사진? \n!{}!");
+    out.println("사진? ");
+    out.println("!{}!");
+    out.flush();
     member.setPhoto(in.nextLine());
 
-    out.println("전화? \n!{}!");
+    out.println("전화? ");
+    out.println("!{}!");
+    out.flush();
     member.setTel(in.nextLine());
 
     if (memberDao.insert(member) > 0) {
-      out.println("새 멤버를 등록했습니다.");
+      out.println("회원을 저장했습니다.");
 
     } else {
-      out.println("멤버 등록에 실패했습니다.");
+      out.println("저장에 실패했습니다.");
     }
   }
 }

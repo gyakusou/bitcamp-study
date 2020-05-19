@@ -19,5 +19,6 @@ public interface MemberService {
 
   int update(Member member) throws Exception;
 
-
+  // 추가
+  Member get(String email) throws Exception;
 }

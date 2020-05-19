@@ -23,7 +23,8 @@
       photo,
   </sql>
   
-  <insert id="insert" parameterType="Member">
+  <insert id="insert" parameterType="Member"
+    useGeneratedKeys="true" keyColumn="member_id" keyProperty="no">
     insert into lms_member(
       name, 
       email, 
@@ -102,6 +103,18 @@
       email=#{email} 
       and pwd=password(#{password})
   </select>
+  
+  <!-- ////////////////////////////////////////////////////////////////////////////////////// -->
+    <select id="findByEmail" resultMap="MemberMap" parameterType="string">
+    select *
+    from 
+      lms_member
+    where 
+      email=#{email}
+  </select>
+  <!-- 파라미터 타입이 int string.. 인경우 #{마음대로} 
+  mysql -> lms_member -> email -->
+  
 </mapper>
 
 

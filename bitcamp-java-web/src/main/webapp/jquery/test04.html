@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery 만들기</title>
+</head>
+<body>
+
+<h1>jquery 사용</h1>
+
+<div id="d1">이전 값!</div>
+<div id="d2"></div>
+
+<script src="jquery04.js"></script>
+
+<script>
+var tag = $('#d1');
+var tag2 = $('#d2');
+// 제이쿼리로 받는 경우는 이터러블 객체
+
+var content = tag.html();
+tag2.html(content);
+tag.html('바꾼 값!');
+
+var divList = $('div');
+
+for (var d of divList) {
+	  d.style.border = "5px dashed black";
+	  d.style.margin = "10px";
+}
+
+tag.style.color = "red";
+// tag.style.background-color = 'gray'; -는 사용할 수 없다. 이 경우 [] 를 사용하라.
+// tag.style["background-color"] = 'gray'; // 사용가능
+tag.style.backgroundColor = 'gray'; // 사용가능
+tag.onclick = function() {
+	alert('okok!');
+}
+</script>
+
+</body>
+</html>
